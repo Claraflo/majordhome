@@ -10,21 +10,19 @@
 // The main application program.
 int main(void) {
 
-    unsigned int sizeInput = 5;
-
-    char *input = malloc(sizeof(input) * sizeInput);
-
-    if (input == NULL) {
-        return EXIT_FAILURE;
-    }
+    char input[6];
 
     printf("Entrez le numero d'id en 5 caracteres :  ");
     fgets(input, 6, stdin);
 
+
+    if(input[strlen(input)-1] == '\n'){
+        input[strlen(input)-1] = '\0';
+    }
+
     doBasicQrCode(input);
 
 
-    free(input);
 
     return EXIT_SUCCESS;
 }

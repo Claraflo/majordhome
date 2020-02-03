@@ -1,4 +1,3 @@
-
 #include "qrCode.h"
 
 
@@ -39,11 +38,15 @@ void printQr(const uint8_t qrcode[],char* input) {
 
 FILE* openFile(char* input){
 
-    char path[30] = "..\\qrCode\\";
+    char path[30] = "..\\qrCode\\"; //12
+    char ext[5] = ".txt";
+
     strcat(path,input);
+    strcat(path,ext);
 
     FILE* pf;
     pf = fopen(path,"r+");
+
     if (pf==NULL){
         pf = fopen(path,"a+");
     }
