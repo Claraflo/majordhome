@@ -27,7 +27,7 @@ void printQr(const uint8_t qrcode[],char* input) {
 
     for (int y = -border; y < size + border; y++) {
         for (int x = -border; x < size + border; x++) {
-            fputs((qrcodegen_getModule(qrcode, x, y) ? "##" : "  "), pf);
+            fputs((qrcodegen_getModule(qrcode, x, y) ? "██" : "  "), pf);
 
         }
         fputs("\n", pf);
