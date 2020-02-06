@@ -1,0 +1,44 @@
+.logo{
+
+
+	width: 25%;
+}
+
+#nav{
+
+
+	background-color: #23272d;
+}
+
+
+
+.colorLink{
+
+
+	color: #FFFFFF !important;
+	font-family: Raleway;
+	font-size: 15px;
+
+
+}
+
+.active{
+
+	color: #aa956f !important;
+}
+
+
+.colorLink:hover{
+
+	color: #aa956f !important;
+
+}
+
+#btnLogin {
+
+	background-color:#aa956f;
+	color: #FFFFFF;
+	transform: all 1s;
+
+}
+
