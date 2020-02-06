@@ -30,7 +30,7 @@
     	<div class="collapse navbar-collapse" id="navbarNav">
       		<ul class="navbar-nav ml-auto">
         		<li class="nav-item active">
-         			<a class="nav-link active colorLink" href="index.php" title="">Accueil
+         			<a class="nav-link colorLink" href="index.php" title="">Accueil
                 	<span class="sr-only">(current)</span>
               </a>
         		
@@ -64,7 +64,54 @@
 
 </header>
 
-<section></section>
+<section>
+  
+ <div class="container-fluid">
+   
+     <div class="AboutUs">
+       <h3 class="text-center titleAboutUs"> Qui sommes-nous ?</h3>
+       <hr class="hr">
+     </div>
+
+
+     <div class="row pt-5">
+      
+       <div class="col-md-6 p-0">
+         <img src="img/test.jpg" class="img-fluid imgAboutUs">
+       </div>
+       <div class="col-md-6 text-justify containAboutUs p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+      
+   
+     </div>
+
+
+       <div class="row">
+      
+     <div class="col-md-6 text-justify containAboutUs p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+       quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+       consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+       cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+       proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+       <div class="col-md-6 p-0">
+         <img src="img/test.jpg" class="imgAboutUs img-fluid">
+       </div>
+       
+   
+     </div>
+   </div>
+
+
+ </div> 
+
+
+
+</section>
 
 <footer></footer>
 
