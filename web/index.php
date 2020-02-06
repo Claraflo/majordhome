@@ -50,12 +50,18 @@
 
             <li class="nav-item">
               
-              <a href="nav-link"><button class="btn" id="btnLogin">Connexion</button></a>
+              <a href="nav-link"><button class="btn" id="btnLogin">Connexion</button></a> 
+
+
+
 
         	</ul>
     	</div>
   	</div>
 </nav>
+
+<div class="masthead"></div>
+
 </header>
 
 <section></section>

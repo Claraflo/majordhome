@@ -8,6 +8,7 @@
 
 
 	background-color: #23272d;
+	border-bottom: 1px solid #aa956f;
 }
 
 
@@ -38,7 +39,17 @@
 
 	background-color:#aa956f;
 	color: #FFFFFF;
-	transform: all 1s;
+	
 
+}
+
+.masthead{
+
+/*
+	background-image:url(../img/test.jpg);
+	background-size: cover;
+	background-position: center;*/
+	background-color:#23272d; 
+	height: 400px;
 }
 
