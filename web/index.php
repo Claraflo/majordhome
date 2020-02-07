@@ -69,7 +69,7 @@
  <div class="container-fluid">
    
      <div class="AboutUs">
-       <h3 class="text-center titleAboutUs"> Qui sommes-nous ?</h3>
+       <h3 class="text-center title"> Qui sommes-nous ?</h3>
        <hr class="hr">
      </div>
 
@@ -77,7 +77,7 @@
      <div class="row pt-5">
       
        <div class="col-md-6 p-0">
-         <img src="img/test.jpg" class="img-fluid imgAboutUs">
+         <img src="img/test.jpg" class="img-fluid">
        </div>
        <div class="col-md-6 text-justify containAboutUs p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -90,26 +90,59 @@
      </div>
 
 
-       <div class="row">
+    <div class="row">
       
-     <div class="col-md-6 text-justify containAboutUs p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      <div class="col-md-6 text-justify containAboutUs p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
-       <div class="col-md-6 p-0">
-         <img src="img/test.jpg" class="imgAboutUs img-fluid">
-       </div>
-       
-   
-     </div>
+      <div class="col-md-6 p-0">
+         <img src="img/test.jpg" class="img-fluid">
+      </div>
+    </div>
    </div>
 
 
  </div> 
 
 
+</section>
+
+
+<section>
+    <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+          
+          <h3 class="text-center title"> Confiance</h3>
+          <hr class="hr">
+
+          <p class=" text-justify p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        </div>
+        <div class="col-md-6">
+          
+
+          <h3 class="text-center title"> Expertise</h3>
+          <hr class="hr">
+
+          <p class=" text-justify p-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+        </div>
+    </div>
+    </div>
 
 </section>
 
