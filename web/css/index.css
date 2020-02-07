@@ -1,3 +1,4 @@
+
 .logo{
 
 
@@ -96,3 +97,16 @@
 	background-color: #23272d;
 }
 
+.subscription{
+
+	border:1px solid #aa956f !important;
+	font-family: Raleway;
+}
+
+.subscriptionHeader{
+
+	border-bottom: 1px solid #aa956f !important;
+	background-color: #aa956f !important;
+	color: #FFFFFF;
+
+}

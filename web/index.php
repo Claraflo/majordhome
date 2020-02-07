@@ -217,7 +217,84 @@
   </div>
 </section>
 
+<section class="pb-5">
+  
+  <div class="container">
+    
+    <h3 class="text-center title"> Nos abonnements</h3>
+    <hr class="hr">
 
+    <div class="row pt-5">
+      
+      <div class="col-md-4">
+        
+        <div class="card subscription">
+          <div class="card-header subscriptionHeader">
+            <h5 class="text-center">Abonnement de base</h5>
+          </div>
+
+          <div class="card-body text-center">
+            
+            <h3 class="card-title">2400€ TTC <small>/an</small></h3>
+            <br>
+
+            <p>Bénéficiez d'un accès privilégié en illimité 5j/7 de 9h à 20h</p>
+            <br>
+            <p>Demandes illimitées de renseignements </p>
+            <br>
+            <h5>12h de services /mois</h5>
+
+          </div>
+        </div>
+      </div>
+       <div class="col-md-4">
+        
+        <div class="card subscription">
+          <div class="card-header subscriptionHeader">
+            <h5 class="text-center">Abonnement Familial</h5>
+          </div>
+
+          <div class="card-body text-center">
+            
+            <h3 class="card-title">3600€ TTC <small>/an</small></h3>
+            <br>
+
+            <p>Bénéficiez d'un accès privilégié en illimité 6j/7 de 9h à 20h</p>
+            <br>
+            <p>Demandes illimitées de renseignements </p>
+            <br>
+            <h5>25h de services /mois</h5>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        
+        <div class="card subscription">
+          <div class="card-header subscriptionHeader">
+            <h5 class="text-center">Abonnement Premium</h5>
+          </div>
+
+          <div class="card-body text-center">
+            
+            <h3 class="card-title">6000€ TTC <small>/an</small></h3>
+            <br>
+
+            <p>Bénéficiez d'un accès privilégié en illimité 7j/7 de 24h/24</p>
+            <br>
+            <p>Demandes illimitées de renseignements </p>
+            <br>
+            <h5>50h de services /mois</h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</section>
 
 <footer></footer>
 
