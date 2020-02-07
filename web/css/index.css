@@ -47,12 +47,14 @@
 
 .masthead{
 
-/*
-	background-image:url(../img/test.jpg);
+
+/*	background-image:url(../img/test.jpg);
 	background-size: cover;
-	background-position: center;*/
+	background-position: center;
+	background-attachment: fixed;*/
 	background-color:#23272d; 
-	height: 400px;
+
+	height: 400px
 }
 
 
@@ -62,6 +64,13 @@
 	color: #000000;
 	padding-top: 70px;
 
+}
+
+.titleServices{
+
+	font-family: Raleway;
+	color: #FFFFFF;
+	padding-top: 70px;
 }
 
 .hr{
@@ -75,6 +84,15 @@
 	font-size: 18px;
 	font-family: Raleway;
 }
+.containService{
 
+	padding-top: 25px;
+	color: #FFFFFF;
+	font-family: Raleway;
+}
 
+.services{
+
+	background-color: #23272d;
+}
 

@@ -13,6 +13,12 @@
 	<!-- Lien police d'écriture -->
 	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
+  <!-- Lien Icon -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+
 </head>
 <body>
 
@@ -99,7 +105,7 @@
        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
       <div class="col-md-6 p-0">
-         <img src="img/test.jpg" class="img-fluid">
+         <img src="img/test.jpg" class="img-fluid" >
       </div>
     </div>
    </div>
@@ -145,6 +151,73 @@
     </div>
 
 </section>
+
+
+<section class="services">
+  <div class="container pb-5">
+    <h3 class="text-center titleServices"> Nos services</h3>
+    <hr class="hr">
+    
+    <div class="row pt-3">
+
+
+
+      <div class="col-md-3">
+        <img src="img/test.jpg" class="img-fluid">
+        <div class="containService text-center">
+
+          <i class="fas fa-plane fa-2x icon" aria-hidden="true"></i>
+          <h5 class="pt-2">VOYAGES</h5>
+          <p>Lorem ipsum ...</p>
+        </div>
+
+      </div>
+
+
+      <div class="col-md-3">
+        <img src="img/test.jpg" class="img-fluid">
+        <div class="containService text-center">
+
+          <i class="fas fa-plane fa-2x icon" aria-hidden="true"></i>
+           <h5 class="pt-2">VOYAGES</h5>
+            <p>Lorem ipsum ...</p>
+      
+        </div>
+
+      </div>
+
+
+      <div class="col-md-3">
+        <img src="img/test.jpg" class="img-fluid">
+        <div class="containService text-center">
+
+          <i class="fas fa-plane fa-2x icon" aria-hidden="true"></i>
+           <h5 class="pt-2">VOYAGES</h5>
+            <p>Lorem ipsum ...</p>
+      
+        </div>
+
+      </div>
+
+      <div class="col-md-3">
+        <img src="img/test.jpg" class="img-fluid">
+        <div class="containService text-center">
+
+          <i class="fas fa-plane fa-2x icon" aria-hidden="true"></i>
+          <h5 class="pt-2">VOYAGES</h5>
+           <p>Lorem ipsum ...</p>
+      
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</section>
+
+
 
 <footer></footer>
 
