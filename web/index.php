@@ -155,7 +155,7 @@
 
 <section class="services">
   <div class="container pb-5">
-    <h3 class="text-center titleServices"> Nos services</h3>
+    <h3 class="text-center title2"> Nos services</h3>
     <hr class="hr">
     
     <div class="row pt-3">
@@ -294,6 +294,36 @@
 
   </div>
 
+</section>
+
+
+<section class="contactUs">
+  
+  <div class="container-fluid text-center">
+
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6 p-0">
+         
+        <div class="overlayContactUs">
+          <h3 class="text-center title2 "> Contactez-nous</h3>
+          <hr class="hr">
+
+
+            <div class="pt-4">
+              <img class="logo" src="img/majordhome.png" title="logo" alt="Logo Majord'home">
+            <h5>Tél : 00.00.00.00.00</h5>
+            <h5>Adresse e-mail : Bob@hotmail.fr</h5>
+        </div>
+           
+          
+
+      </div>
+   
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <footer></footer>

@@ -67,7 +67,7 @@
 
 }
 
-.titleServices{
+.title2{
 
 	font-family: Raleway;
 	color: #FFFFFF;
@@ -109,4 +109,22 @@
 	background-color: #aa956f !important;
 	color: #FFFFFF;
 
+}
+
+.contactUs{
+
+	background-image:url(../img/test.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	height: 500px;
+
+}
+
+.overlayContactUs{
+	font-family: Raleway;
+
+	background-color: rgba(0,0,0,0.7);
+	height: 500px;
+	color: #FFFFFF;
 }
