@@ -6,6 +6,7 @@ $image = imagecreate(400, 200);
 
 
 
+
 $charAuthorized = "abcdefghijklmnopqrstuvwxyz0123456789";
 $lenghtCaptcha = rand(5, 8);
 $charAuthorized = str_shuffle($charAuthorized);

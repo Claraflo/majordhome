@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,81 +32,81 @@
 
 
 <section class="text-center">
-    <form class="form-signin" method="post">
+    <?php if(!empty($_SESSION["errorsFormAuth"])){
+        echo "<div class='alert alert-danger'>";
+        foreach ($_SESSION["errorsFormAuth"] as $error) {
+            echo "<li>".$error;
+        }
+        echo "</div>";
+        unset($_SESSION["errorsFormAuth"]);
+    }
+    ?>
+    <form class="form-signin" action="saveUser.php" method="post">
         <img class="mb-4" src="../img/icon.png" alt="" width="72" height="72">
 
         <div class="mb-3">
             <label for="firstName">Prénom</label>
-            <input type="text" id="firstName" class="form-control inputRegister" placeholder="Jean" required="" autocomplete="off" autofocus="">
+            <input name="firstName" type="text" id="firstName" class="form-control inputRegister" placeholder="Jean" required="" autocomplete="off" autofocus="" value="<?php echo isset($_SESSION["dataFormAuth"]["firstName"])?$_SESSION["dataFormAuth"]["firstName"]:"" ?>">
         </div>
 
         <div class="mb-3">
             <label for="lastName">Nom</label>
-            <input type="text" id="lastName" class="form-control inputRegister" placeholder="Dufour" required="" autocomplete="off">
+            <input name="lastName" type="text" id="lastName" class="form-control inputRegister" placeholder="Dufour" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["lastName"])?$_SESSION["dataFormAuth"]["lastName"]:"" ?>">
         </div>
 
         <div class="mb-3">
             <label for="inputEmail">Email</label>
-            <input type="email" id="inputEmail" class="form-control inputRegister" placeholder="jeandufour@gmail.com" required="" autocomplete="off">
+            <input name="email" type="email" id="inputEmail" class="form-control inputRegister" placeholder="jeandufour@gmail.com" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["email"])?$_SESSION["dataFormAuth"]["email"]:"" ?>">
         </div>
 
         <div class="mb-3">
             <label for="date">Date de naissance</label>
-            <input type="date" id="date" class="form-control inputRegister" required="" autocomplete="off">
+            <input name="date" type="date" id="date" class="form-control inputRegister" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["date"])?$_SESSION["dataFormAuth"]["date"]:"" ?>">
         </div>
 
         <div class="mb-3">
             <label for="phone">Téléphone</label>
-            <input type="tel" id="phone" class="form-control inputRegister" placeholder="0606060606" required="" autocomplete="off">
+            <input name="phone" type="tel" id="phone" class="form-control inputRegister" placeholder="0606060606" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["phone"])?$_SESSION["dataFormAuth"]["phone"]:"" ?>">
         </div>
 
         <div class="mb-3">
             <label for="address">Adresse</label>
-            <input type="text" id="address" class="form-control inputRegister" placeholder="Adresse" required="" autocomplete="off">
+            <input name="address" type="text" id="address" class="form-control inputRegister" placeholder="75 rue George" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["address"])?$_SESSION["dataFormAuth"]["address"]:"" ?>">
+        </div>
+
+        <div class="mb-3">
+            <label for="city">Ville</label>
+            <input name="city" type="text" id="city" class="form-control inputRegister" placeholder="Paris" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["city"])?$_SESSION["dataFormAuth"]["city"]:"" ?>">
         </div>
 
         <div class="mb-3">
             <label for="code">Code postal</label>
-            <input type="text" id="code" class="form-control inputRegister" placeholder="75000" required="" autocomplete="off">
+            <input name="code" type="text" id="code" class="form-control inputRegister" placeholder="75000" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["code"])?$_SESSION["dataFormAuth"]["code"]:"" ?>">
         </div>
 
         <div class="mb-3">
             <label for="inputPassword">Mot de passe</label>
-            <input type="password" id="inputPassword" class="form-control inputRegister" required="" autocomplete="off">
+            <input name="pwd" type="password" id="inputPassword" class="form-control inputRegister" required="" autocomplete="off">
         </div>
 
         <div class="mb-3">
             <label for="inputConfirm">Confirmation du mot de passe</label>
-            <input type="password" id="inputConfirm" class="form-control inputRegister" required="" autocomplete="off">
+            <input name="pwdConfirm" type="password" id="inputConfirm" class="form-control inputRegister" required="" autocomplete="off">
         </div>
 
         <img src="../captcha/image.php" width="300px">
-        <input type="captcha" id="captcha" class="form-control inputRegister" placeholder="Veuillez saisir le captcha" required="" autocomplete="off">
+        <input name="captcha" type="captcha" id="captcha" class="form-control inputRegister" placeholder="Veuillez saisir le captcha" required="" autocomplete="off">
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
     </form>
 </section>
-
+<?php unset($_SESSION["dataFormAuth"]);?>
 
 <footer>
 
     <p class="text-center pt-4">Copyright © Majord'home 2020</p>
 
 </footer>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
