@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Accueil</title>
+	<title>Inscription</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<link rel="stylesheet" type="text/css" href="../css/register.css">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -19,11 +19,23 @@
 </head>
 <body>
 
-<header></header>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
+        <div class="container">
+            <a class="navbar-brand active" href="index.php" title="">
+                <img class="logo" src="../img/majordhome.png" title="logo" alt="Logo Majord'home">
+            </a>
+        </div>
+    </nav>
+</header>
 
 
 <section></section>
-<footer></footer>
+<footer>
+
+    <p class="text-center pt-4">Copyright © Majord'home 2020</p>
+
+</footer>
 
 
 
