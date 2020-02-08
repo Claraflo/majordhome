@@ -31,7 +31,7 @@
 
 
 <section class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" method="post">
         <img class="mb-4" src="../img/icon.png" alt="" width="72" height="72">
 
         <div class="mb-3">
@@ -78,6 +78,9 @@
             <label for="inputConfirm">Confirmation du mot de passe</label>
             <input type="password" id="inputConfirm" class="form-control inputRegister" required="" autocomplete="off">
         </div>
+
+        <img src="../captcha/image.php" width="300px">
+        <input type="captcha" id="captcha" class="form-control inputRegister" placeholder="Veuillez saisir le captcha" required="" autocomplete="off">
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Inscription</button>
     </form>
