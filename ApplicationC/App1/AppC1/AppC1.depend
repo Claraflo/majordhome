@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1581173192 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
+	"main.h"
+
+1581173192 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.h
+	<stdbool.h>
+	<stddef.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"qrcodegen.h"
+	"qrCode.h"
+
+1581173192 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\qrcodegen.h
+	<stdbool.h>
+	<stddef.h>
+	<stdint.h>
+
+1581173192 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\qrcode.h
+	<stdbool.h>
+	<stddef.h>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"qrcodegen.h"
+
+1581173192 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\qrcodegen.c
+	<assert.h>
+	<limits.h>
+	<stdlib.h>
+	<string.h>
+	"qrcodegen.h"
+

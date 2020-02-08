@@ -38,7 +38,7 @@ void printQr(const uint8_t qrcode[],char* input) {
 
 FILE* openFile(char* input){
 
-    char path[30] = "..\\qrCode\\"; //12
+    char path[30] = ".\\qrCode\\"; //12
     char ext[5] = ".txt";
 
     strcat(path,input);
