@@ -19,7 +19,7 @@
 
     font-family: Raleway;
     color: #000000;
-    padding-top: 70px;
+    padding-top: 20px;
 
 }
 
@@ -37,6 +37,15 @@
 }
 
 
+.form{
+
+        padding-top: 50px;
+        padding-bottom: 50px;
+
+
+}
+
+
 
 footer{
 
@@ -49,10 +58,22 @@ footer{
 }
 
 .form-signin {
-    width: 100%;
-    max-width: 330px;
+    /*width: 100%;*/
+    max-width: 500px;
     padding: 15px;
     margin: auto;
+    border: 1px solid #aa956f;
+    
+    border-radius: 10px;
+
+}
+
+#btnSubscription {
+    width: 100%;
+    background-color:#aa956f;
+    color: #FFFFFF;
+    
+
 }
 
 .inputRegister {
