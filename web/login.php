@@ -29,9 +29,40 @@
     </nav>
 </header>
 
+ <div class="container">
+    <div class="form">
+    <form class="formLogin" action="saveUser.php" method="post">
 
 
+    <h3 class="text-center title">Connectez-vous</h3>
+    <hr class="hr">
+   
+    
 
+        <div class="form-group">
+            <label for="inputEmail">Email *</label>
+            <input name="email" type="email" id="inputEmail" class="form-control inputRegister" placeholder="jeandufour@gmail.com" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["email"])?$_SESSION["dataFormAuth"]["email"]:"" ?>">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Mot de passe *</label>
+            <input name="address" type="text" id="address" class="form-control inputRegister" placeholder="75 rue George" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["address"])?$_SESSION["dataFormAuth"]["address"]:"" ?>">
+        </div>
+
+   
+
+    <i class="p-2">* Champs obligatoires</i>
+    <br>
+    <a href="#" class="p-3">Je n'ai pas de compte</a>
+    <br>
+
+        <center><button class="btn m-3" id="btnLogin" type="submit">Connexion</button></center>
+
+        </div>
+    </form>
+    </div>
+    </div>
+</section>
 
 
 

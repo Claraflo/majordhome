@@ -1,3 +1,8 @@
+body{
+
+	position: relative;
+}
+
 .logo{
 
 
@@ -10,6 +15,50 @@
 	background-color: #23272d;
 	border-bottom: 1px solid #aa956f;
 
+
+}
+
+.title{
+
+	font-family: Raleway;
+	color: #000000;
+	padding-top: 30px;
+
+}
+
+.hr{
+
+	width: 5%;
+    border: 1px solid #aa956f;
+}
+
+
+.formLogin{
+
+	max-width: 500px;
+	margin: auto;
+	border: 1px solid #aa956f;
+	border-radius: 10px;
+	padding: 10px;
+
+}
+
+.form{
+
+padding-top: 50px;
+
+}
+
+i{
+
+	font-size: 12px;
+}
+
+#btnLogin {
+
+	background-color:#aa956f;
+	color: #FFFFFF;
+	
 
 }
 
