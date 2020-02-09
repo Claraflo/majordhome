@@ -29,6 +29,7 @@
     </nav>
 </header>
 
+<section>
  <div class="container">
     <div class="form">
     <form class="formLogin" action="saveUser.php" method="post">
@@ -41,12 +42,12 @@
 
         <div class="form-group">
             <label for="inputEmail">Email *</label>
-            <input name="email" type="email" id="inputEmail" class="form-control inputRegister" placeholder="jeandufour@gmail.com" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["email"])?$_SESSION["dataFormAuth"]["email"]:"" ?>">
+            <input name="email" type="email" id="inputEmail" class="form-control" placeholder="jeandufour@gmail.com" required="required">
         </div>
 
         <div class="form-group">
-            <label for="address">Mot de passe *</label>
-            <input name="address" type="text" id="address" class="form-control inputRegister" placeholder="75 rue George" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["address"])?$_SESSION["dataFormAuth"]["address"]:"" ?>">
+            <label for="pwd">Mot de passe *</label>
+            <input name="pwd" type="password" id="pwd" class="form-control" placeholder="*****" required="required">
         </div>
 
    
@@ -64,6 +65,14 @@
     </div>
 </section>
 
+
+
+
+<footer>
+  
+  <p class="text-center pt-4">Copyright © Majord'home 2020</p>
+ 
+</footer>
 
 
 
