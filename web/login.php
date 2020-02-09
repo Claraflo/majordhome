@@ -1,3 +1,8 @@
+<?php
+ session_start();
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,9 +35,23 @@
 </header>
 
 <section>
+
+
+     <?php if(!empty($_SESSION["errorsAuth"])){
+        echo "<div class='alert alert-danger'>";
+        
+            echo "<li>".$_SESSION["errorsAuth"];
+        
+        echo "</div>";
+        unset($_SESSION["errorsAuth"]);
+    }
+    ?>
+
+
+
  <div class="container">
     <div class="form">
-    <form class="formLogin" action="saveUser.php" method="post">
+    <form class="formLogin" action="auth.php" method="post">
 
 
     <h3 class="text-center title">Connectez-vous</h3>
