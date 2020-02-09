@@ -16,6 +16,15 @@ if(count($_POST) == 11
 ){
 
 
+        $email = trim($_POST['email']);
+        $pwd = $_POST['pwd'];
+        $pwdConfirm = $_POST['pwdConfirm'];
+        $firstName = trim($_POST['firstName']);
+        $lastName = trim($_POST['lastName']);
+        $phone = trim($_POST['phone']);
+        $code = trim($_POST['code']);
+        $birthday = trim($_POST['date']);
+
         $errors = [];
 
         $captcha = strtolower($_POST['captcha']);
@@ -27,15 +36,15 @@ if(count($_POST) == 11
         }
 
 
-        if(empty($_POST['lastName']) || !preg_match('/^[a-zA-Z0-9_éçèàôùîï]+$/', $_POST['lastName'])) {
+        if(!preg_match('/^[a-zA-Z0-9_éçèàôùîï]+$/', $lastName)) {
             $errors['lastName'] = "Le nom que vous avez indiqué n'est pas valide.";
         }
 
-        if(empty($_POST['firstName']) || !preg_match('/^[a-zA-Z0-9_éçèàôùîï]+$/', $_POST['firstName'])) {
+        if(!preg_match('/^[a-zA-Z0-9_éçèàôùîï]+$/', $firstName)) {
             $errors['firstName'] = "Le prénom que vous avez indiqué n'est pas valide.";
         }
 
-        if(empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+        if( !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = "L'email que vous avez indiqué n'est pas valide.";
         } //else {
 //            $req = $bdd->prepare('SELECT id FROM users WHERE email = ?');
@@ -46,22 +55,25 @@ if(count($_POST) == 11
 //            }
 //        }
 
-        if(empty($_POST['pwd'])
-            || $_POST['pwd'] == $_POST['lastName']
-            || $_POST['pwd'] == $_POST['firstName']
-            || $_POST['pwd'] != $_POST['pwdConfirm']
-            || strlen($_POST['pwd'])<8
-            || strlen($_POST['pwd'])>64
-            || !preg_match("#[a-z]#", $_POST['pwd'])
-            || !preg_match("#[A-Z]#", $_POST['pwd'])
-            || !preg_match("#[0-9]#", $_POST['pwd'])) {
+        if( $pwd == $lastName
+            || $pwd == $firstName
+            || strlen($pwd)<8
+            || strlen($pwd)>64
+            || !preg_match("#[a-z]#", $pwd)
+            || !preg_match("#[A-Z]#", $pwd)
+            || !preg_match("#[0-9]#", $pwd)) {
             $errors['pwd'] = "Le mot de passe que vous avez indiqué n'est pas valide, il doit faire entre 8 et 64 caractères avec des minuscules, majuscules et chiffres.";
         }
 
-        if(empty($_POST['phone'])
-            || strlen($_POST['code'])<5
-            || strlen($_POST['code'])>5
-            || !preg_match('/^[0-9_]+$/', $_POST['phone'])) {
+
+
+        if($pwd != $pwdConfirm){
+                
+                $errors['pwdConfirm']= "La confirmation de votre mot de passe ne correspond pas à votre mot de passe";
+        }
+
+        if(strlen($phone) != 10
+            || !preg_match('/^[0-9_]+$/', $phone)) {
             $errors['phone'] = "Le numéro de téléphone que vous avez indiqué n'est pas valide.";
         } //else {
     //        $req = $bdd->prepare('SELECT id FROM users WHERE phone = ?');
@@ -73,22 +85,22 @@ if(count($_POST) == 11
     //    }
 
 
-        if(empty($_POST['code']) || !preg_match('/^[0-9_]+$/', $_POST['code'])) {
+        if(strlen($code) != 5 || !preg_match('/^[0-9_]+$/', $code)) {
             $errors['code'] = "Le code postal que vous avez indiqué n'est pas valide.";
         }
 
         //Date de naissance entre 18ans et 120ans
-        if (!preg_match("#\d{4}-\d{2}-\d{2}#", $_POST['date'])){
+        if (!preg_match("#\d{4}-\d{2}-\d{2}#", $birthday)){
             $errors[] = " Votre date de naissance doit être au format YYYY-MM-DD";
         }else{
 
             //Je dois mettre dans des variables le mois le jour et l'année
-            $birthdayExploded = explode("-", $_POST['date']);
+            $birthdayExploded = explode("-", $birthday);
 
             //Time correspond au nombre de secondes depuis 1 Jan 1970
             //
             //
-            $secondeLife = time() - strtotime($_POST['date']);
+            $secondeLife = time() - strtotime($birthday);
             $yearLife = $secondeLife/3600/24/365.242;
 
             if( !checkdate($birthdayExploded[1], $birthdayExploded[2], $birthdayExploded[0])  ){
