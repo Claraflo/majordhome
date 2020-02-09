@@ -41,6 +41,16 @@
         unset($_SESSION["errorsFormAuth"]);
     }
     ?>
+
+    <?php if(!empty($_SESSION["confirmFormAuth"])){
+        echo "<div class='alert alert-success'>";
+        foreach ($_SESSION["confirmFormAuth"] as $confirm) {
+            echo "<li>".$confirm;
+        }
+        echo "</div>";
+        unset($_SESSION["confirmFormAuth"]);
+    }
+    ?>
     <form class="form-signin" action="saveUser.php" method="post">
         <img class="mb-4" src="../img/icon.png" alt="" width="72" height="72">
 
