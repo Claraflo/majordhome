@@ -35,51 +35,48 @@
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">Abonnements</h1>
     </div>
-    <div class="container">
+    <div class="container borderSubscription">
         <div class="card-deck mb-3 text-center">
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Pro</h4>
+                    <h4 class="my-0 font-weight-normal">Abonnement de base</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+                    <h2 class="card-title pricing-card-title">2400€ TTC <small class="text-muted">/ an</small></h2>
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li>20 users included</li>
-                        <li>10 GB of storage</li>
-                        <li>Priority email support</li>
-                        <li>Help center access</li>
+                        <li class="liSubscription">Bénéficiez d'un accès privilégié en illimité 5j/7 de 9h à 20h
+                        <li class="liSubscription">Demandes illimitées de renseignements
+                        <li class="liSubscription">12h de services / mois
                     </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-primary btnSubscription">Get started</button>
+                    <button type="button" class="btnSubscription">Choisir</button>
                 </div>
             </div>
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Enterprise</h4>
+                    <h4 class="my-0 font-weight-normal">Abonnement Familial</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
+                    <h2 class="card-title pricing-card-title">3600€ TTC <small class="text-muted">/ an</small></h2>
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li>30 users included</li>
-                        <li>15 GB of storage</li>
-                        <li>Phone and email support</li>
-                        <li>Help center access</li>
+                        <li class="liSubscription">Bénéficiez d'un accès privilégié en illimité 6j/7 de 9h à 20h
+                        <li class="liSubscription">Demandes illimitées de renseignements
+                        <li class="liSubscription">25h de services / mois
                     </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+                    <button type="button" class="btnSubscription">Choisir</button>
                 </div>
             </div>
             <div class="card mb-4 shadow-sm">
                 <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Enterprise</h4>
+                    <h4 class="my-0 font-weight-normal">Abonnement Prenium</h4>
                 </div>
                 <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
+                    <h2 class="card-title pricing-card-title">6000€ TTC <small class="text-muted">/ an</small></h2>
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li>30 users included</li>
-                        <li>15 GB of storage</li>
-                        <li>Phone and email support</li>
-                        <li>Help center access</li>
+                        <li class="liSubscription">Bénéficiez d'un accès privilégié en illimité 7j/7 24h/24
+                        <li class="liSubscription">Demandes illimitées de renseignements
+                        <li class="liSubscription">50h de services / mois
                     </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+                    <button type="button" class="btnSubscription">Choisir</button>
                 </div>
             </div>
         </div>

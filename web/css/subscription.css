@@ -57,7 +57,7 @@ footer{
 
 }
 
-.form-signin {
+.borderSubscription {
     /*width: 100%;*/
     max-width: 500px;
     padding: 15px;
@@ -70,10 +70,22 @@ footer{
 
 .btnSubscription {
     width: 100%;
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 400;
     background-color:#aa956f;
     color: #FFFFFF;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    line-height: 1.5;
+    text-align: center;
+    vertical-align: middle;
 
 
+}
+
+.liSubscription {
+    margin-bottom: 30px;
 }
 
 
