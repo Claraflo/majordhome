@@ -1,4 +1,9 @@
 <?php
+require('functions.php');
+
+
+$connect = connectDb();
+
 session_start();
 
 if(count($_POST) == 11
