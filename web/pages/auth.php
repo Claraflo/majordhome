@@ -1,4 +1,5 @@
 <?php
+require("functions.php");
 session_start();
 
 if (isset($_POST['email']) && isset($_POST['pwd'])) {
@@ -7,11 +8,11 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 	$pwd = $_POST['pwd'];
 
 	
-		// $connect = connectDb();
+		$connect = connectDb();
 
-		// $queryPrepared = $connect->prepare('SELECT id_users,nom,pwd FROM Utilisateurs WHERE email = :email AND confirmkey = 1');
-		// $queryPrepared->execute([':email' => $email]);
-		// $arrayPwd = $queryPrepared->fetch();
+		$queryPrepared = $connect->prepare('SELECT idPersonne,nom,prenom,pwd FROM Personne WHERE mail = :email');
+		$queryPrepared->execute([':email' => $email]);
+		$arrayPwd = $queryPrepared->fetch();
 
 
 			if (password_verify($pwd,$arrayPwd['pwd'])) {
@@ -20,7 +21,7 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 				// $_SESSION['nom'] = $arrayPwd['nom'];
 				// $_SESSION['id'] = $arrayPwd['id_users'];
 
-				//header('Location:pages/pilotage.php');
+				header('Location: ../index.php');
 				
 			}else{
 

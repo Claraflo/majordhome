@@ -73,7 +73,7 @@
 
     <i class="p-2">* Champs obligatoires</i>
     <br>
-    <a href="#" class="p-3">Je n'ai pas de compte</a>
+    <a href="register.php" class="p-3">Je n'ai pas de compte</a>
     <br>
 
         <center><button class="btn m-3" id="btnLogin" type="submit">Connexion</button></center>
