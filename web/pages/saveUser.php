@@ -2,8 +2,6 @@
 require('functions.php');
 
 
-$connect = connectDb();
-
 session_start();
 
 if(count($_POST) == 11
@@ -30,6 +28,9 @@ if(count($_POST) == 11
         $code = trim($_POST['code']);
         $birthday = trim($_POST['date']);
 
+        $address = $_POST['address'];
+        $city = $_POST['city'];
+
         $errors = [];
 
         $captcha = strtolower($_POST['captcha']);
@@ -51,14 +52,18 @@ if(count($_POST) == 11
 
         if( !filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors['email'] = "L'email que vous avez indiqué n'est pas valide.";
-        } //else {
-//            $req = $bdd->prepare('SELECT id FROM users WHERE email = ?');
-//            $req->execute([$_POST['email']]);
-//            $user = $req->fetch();
-//            if($user) {
-//                $errors['email'] = "Cet email est déjà utilisé.";
-//            }
-//        }
+        } else {
+
+            $connect = connectDb();
+
+            $req = $connect->prepare("SELECT idPersonne FROM Personne WHERE mail = :mail");
+            $req->execute([":mail" => $email]);
+           
+            if (!empty($req->fetchAll())) {
+                
+                $errors['email']= "Email déjà existant";
+            }
+       }
 
         if( $pwd == $lastName
             || $pwd == $firstName
@@ -80,14 +85,17 @@ if(count($_POST) == 11
         if(strlen($phone) != 10
             || !preg_match('/^[0-9_]+$/', $phone)) {
             $errors['phone'] = "Le numéro de téléphone que vous avez indiqué n'est pas valide.";
-        } //else {
-    //        $req = $bdd->prepare('SELECT id FROM users WHERE phone = ?');
-    //        $req->execute([$_POST['phone']]);
-    //        $user = $req->fetch();
-    //        if($user) {
-    //            $errors['phone'] = "Ce numéro de téléphone est déjà utilisé.";
-    //        }
-    //    }
+        } else {
+
+            $connect = connectDb();
+           $req = $connect->prepare('SELECT idPersonne FROM Personne WHERE tel = :tel');
+           $req->execute([ ":tel " => $phone]);
+          
+            if (!empty($req->fetchAll())) {
+            
+                $errors['phone'] = "Ce numéro de téléphone est déjà utilisé.";
+            }
+       }
 
 
         if(strlen($code) != 5 || !preg_match('/^[0-9_]+$/', $code)) {
@@ -117,6 +125,30 @@ if(count($_POST) == 11
         if(empty($errors)) {
             $confirm[] = "Merci pour votre inscription";
             $_SESSION["confirmFormAuth"] = $confirm;
+
+            $connect = connectDb();
+
+            $queryPrepared = $connect->prepare("INSERT INTO Personne(mail,pwd,nom,prenom,dateNaissance,tel,adresse,ville,codePostal,statut) VALUES (:mail,:pwd,:nom,:prenom,:dateNaissance,:tel,:adresse,:ville,:codePostal,1)");
+
+            $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+            $queryPrepared->execute([
+
+                    ":mail"=>$email, 
+                    ":pwd"=>$pwd, 
+                    ":nom"=>$lastName, 
+                    ":prenom"=>$firstName,
+                    ":dateNaissance"=>$birthday,
+                    ":tel"=>$phone,
+                    ":adresse"=>$address,
+                    ":ville"=>$city,
+                    ":codePostal"=>$code
+                  
+
+                ]);
+
+
+
             header("Location: register.php");
         }
 }
