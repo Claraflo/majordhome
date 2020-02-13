@@ -67,7 +67,7 @@
     <div class="masthead">
       
 
-      <div style="width:50%;position: absolute; bottom: 0;right: 0; color: white; padding: 30px; background-color: rgba(0,0,0,0.5);font-family:Raleway; font-size: 25px;">Découvrez nos services haut de gamme !</div>
+      <div class="containHeader">Découvrez nos services haut de gamme !</div>
     </div>
 
 </header>
