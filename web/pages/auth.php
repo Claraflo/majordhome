@@ -17,11 +17,11 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 
 			if (password_verify($pwd,$arrayPwd['pwd'])) {
 
-				// $_SESSION['auth'] = true;
-				// $_SESSION['nom'] = $arrayPwd['nom'];
-				// $_SESSION['id'] = $arrayPwd['id_users'];
+				$_SESSION['auth'] = true;
+				$_SESSION['nom'] = $arrayPwd['nom'];
+				$_SESSION['id'] = $arrayPwd['idPersonne'];
 
-				header('Location: ../index.php');
+				header('Location: ../services.php');
 				
 			}else{
 
