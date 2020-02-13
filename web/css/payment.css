@@ -39,8 +39,8 @@
 
 .form{
 
-    padding-top: 50px;
-    padding-bottom: 50px;
+        padding-top: 50px;
+        padding-bottom: 50px;
 
 
 }
@@ -57,48 +57,39 @@ footer{
 
 }
 
-.borderSubscription {
-    /*width: 100%;*/
-    max-width: 500px;
+#form-payement {
+    max-width: 700px;
     padding: 15px;
     margin: auto;
     border: 1px solid #aa956f;
-
     border-radius: 10px;
 
 }
 
-.btnSubscription {
-    width: 100%;
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 400;
+.btnPayement {
+    width: 30%;
+    margin-top: 40px;
     background-color:#aa956f;
     color: #FFFFFF;
-    border-radius: 0.3rem;
-    padding: 0.5rem 1rem;
-    line-height: 1.5;
+    margin-left: 50%;
+    margin-right: 50%;
+    transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+}
+
+.inputPayement {
+    margin-bottom: 20px;
+}
+
+
+#card-element {
+    border: 1px solid #ced4da;
+}
+
+.alert {
     text-align: center;
-    vertical-align: middle;
-
-
 }
 
-.btnSubscription:hover {
-    color: red;
-    background-color: white;
-    text-decoration: none;
+h2 {
+    text-align: center;
 }
-
-.liSubscription {
-    margin-bottom: 30px;
-}
-
-
-.col-md-4 {
-    margin-bottom: 50px;
-}
-
-
-
 

@@ -41,35 +41,18 @@ try{
 
 
 <section >
-    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Abonnements</h1>
-        <hr class="hr">
-    </div>
-    <form method="post">
-    <div class="container borderSubscription">
-        <div class="row text-center">
-            <?php
-            $data = $bdd->query("SELECT id, name, price, duration, description FROM subscription");
-            foreach ($data->fetchAll() as $key => $subscription) {
-                    echo '<div class="col-md-4">';
-                        echo '<div class="card shadow-sm">';
-                            echo '<div class="card-header">';
-                                echo '<h4 class="my-0 font-weight-normal">'.$subscription['name'].'</h4>';
-                            echo "</div>";
-                            echo '<div class="card-body">';
-                                echo '<h2 class="card-title pricing-card-title">'.$subscription['price'].'€ TTC <small class="text-muted">/ an</small></h2>';
-                                echo '<ul class="list-unstyled mt-3 mb-4">';
-                                    echo '<li class="liSubscription">'.$subscription['description'];
-                                echo '</ul>';
-                                echo '<a class="btnSubscription" href="payment.php?id='.$subscription['id'].'">Payer</a>';
-                            echo '</div>';
-                        echo '</div>';
-                    echo '</div>';
-                }
-            ?>
+    <div class="page-wrap d-flex flex-row align-items-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 text-center">
+                    <span class="display-1 d-block">404</span>
+                    <div class="mb-4 lead">Ce produit n'existe pas</div>
+                    <a href="subscription.php" class="btn btn-primary">Retourner aux abonnements</a>
+                </div>
+            </div>
         </div>
     </div>
-    </form>
+
 </section>
 
 
