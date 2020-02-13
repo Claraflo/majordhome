@@ -21,7 +21,7 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 				$_SESSION['nom'] = $arrayPwd['nom'];
 				$_SESSION['id'] = $arrayPwd['idPersonne'];
 
-				header('Location: ../services.php');
+				header('Location: services.php');
 				
 			}else{
 
