@@ -38,10 +38,25 @@
 
 }
 
-#btnLogout {
+.btnServices {
 
-	background-color:#aa956f;
-	color: #FFFFFF;
+	background-color:#aa956f !important;
+	color: #FFFFFF !important;
+	
+
+}
+
+.servicesCard{
+
+
+	border:1px solid #aa956f !important;
+	font-family: Raleway;
+}
+
+.cardHeader{
+
+	border-bottom: 1px solid #aa956f !important;
+	
 	
 
 }
@@ -78,7 +93,11 @@
 
 
 
+.servicesSection{
 
+
+	padding-bottom: 200px;
+}
 .title{
 
 	font-family: Raleway;

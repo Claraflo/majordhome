@@ -55,7 +55,7 @@
 
           		<li class="nav-item">
 
-          		  <a href="nav-link"><button class="btn" id="btnLogout">Déconnexion</button></a> 
+          		  <a href="nav-link"><button class="btn btnServices">Déconnexion</button></a> 
           		
 
         	</ul>
@@ -71,6 +71,108 @@
     </div>
 
 </header>
+
+
+<section class="pt-5 servicesSection">
+
+<div class="container">
+
+<div class="input-group ">
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Sélectionnez une catégorie de service ..</option>
+    <option value="1">Voyage</option>
+    <option value="2">Restaurant</option>
+    <option value="3">Evenement</option>
+  </select>
+</div>
+
+
+
+<div class="row pt-5 ">
+  <div class="col-md-3">
+        
+    <div class="card servicesCard">
+      <div class="card-header cardHeader">
+        <h5 class="text-center">Serveur</h5>
+      </div>
+
+      <div class="card-body text-center">
+            
+        <h3 class="card-title">22 € <small>/h</small></h3>
+
+        <p>Lorem ipsum</p>
+
+        <a href="#" class="btn btnServices btn-block ">Réserver</a>
+
+      </div>
+   </div>
+ </div>
+
+   <div class="col-md-3">
+        
+    <div class="card servicesCard">
+      <div class="card-header cardHeader">
+        <h5 class="text-center">Serveur</h5>
+      </div>
+
+      <div class="card-body text-center">
+            
+        <h3 class="card-title">22 € <small>/h</small></h3>
+
+        <p>Lorem ipsum</p>
+
+        <a href="#" class="btn btnServices btn-block ">Réserver</a>
+
+      </div>
+   </div>
+ </div>
+
+
+   <div class="col-md-3">
+        
+    <div class="card servicesCard">
+      <div class="card-header cardHeader">
+        <h5 class="text-center">Serveur</h5>
+      </div>
+
+      <div class="card-body text-center">
+            
+        <h3 class="card-title">22 € <small>/h</small></h3>
+
+        <p>Lorem ipsum</p>
+
+        <a href="#" class="btn btnServices btn-block ">Réserver</a>
+
+      </div>
+   </div>
+ </div>
+
+
+
+   <div class="col-md-3">
+        
+    <div class="card servicesCard">
+      <div class="card-header cardHeader">
+        <h5 class="text-center">Serveur</h5>
+      </div>
+
+      <div class="card-body text-center">
+            
+        <h3 class="card-title">22 € <small>/h</small></h3>
+
+        <p>Lorem ipsum</p>
+
+        <a href="#" class="btn btnServices btn-block ">Réserver</a>
+
+      </div>
+   </div>
+ </div>
+
+
+
+</div>
+
+</section>
 
 
 
