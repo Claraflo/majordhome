@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,25 +35,45 @@
 
 
 <section >
+    <?php if(!empty($_SESSION["errorsFormAuth"])){
+        echo "<div class='alert alert-danger'>";
+        foreach ($_SESSION["errorsFormAuth"] as $error) {
+            echo "<li>".$error;
+        }
+        echo "</div>";
+        unset($_SESSION["errorsFormAuth"]);
+    }
+    ?>
+
+    <?php if(!empty($_SESSION["hackFormAuth"])){
+        echo "<div class='alert alert-danger'>";
+        foreach ($_SESSION["hackFormAuth"] as $hack) {
+            echo "<li>".$hack;
+        }
+        echo "</div>";
+        unset($_SESSION["hackFormAuth"]);
+    }
+    ?>
+
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <h1 class="display-4">Création d'un abonnement</h1>
         <hr class="hr">
     </div>
     <div class="container borderSubscription">
-        <form method="POST" action="">
+        <form method="POST" action="saveSubscription.php">
 
             <label for="title" class="lab">Titre *</label>
-            <input id="title" type="text" class="form-control" required="required" name="title" placeholder="Titre" autofocus="">
+            <input id="title" type="text" class="form-control" required="required" name="title" placeholder="Titre" autofocus="" value="<?php echo isset($_SESSION["dataFormAuth"]["title"])?$_SESSION["dataFormAuth"]["title"]:"" ?>">
 
 
 
             <label for="price " class="lab">Prix en euros *</label>
-            <input id="price " type="text" class="form-control" required="required" name="price" value="20.99">
+            <input id="price " type="text" class="form-control" required="required" name="price" placeholder="20.90" value="<?php echo isset($_SESSION["dataFormAuth"]["price"])?$_SESSION["dataFormAuth"]["price"]:"" ?>">
 
 
 
             <label for="description" class="lab">Description *</label>
-            <textarea id="description" class="form-control" name="description" rows="3"></textarea>
+            <textarea id="description" class="form-control" name="description" required="required" rows="3"><?php echo isset($_SESSION["dataFormAuth"]["description"])?$_SESSION["dataFormAuth"]["description"]:"" ?></textarea>
 
 
             <input type="submit" class="btn btn-success" value="Ajouter un abonnement">
@@ -57,7 +81,7 @@
         </form>
     </div>
 </section>
-
+<?php unset($_SESSION["dataFormAuth"]);?>
 
 <footer>
 

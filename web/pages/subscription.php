@@ -39,6 +39,16 @@ try{
     </nav>
 </header>
 
+<?php if(!empty($_SESSION["confirmFormAuth"])){
+    echo "<div class='alert alert-success'>";
+    foreach ($_SESSION["confirmFormAuth"] as $confirm) {
+        echo "<li>".$confirm;
+    }
+    echo "</div>";
+    unset($_SESSION["confirmFormAuth"]);
+}
+?>
+
 
 <section >
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -46,7 +56,7 @@ try{
         <hr class="hr">
     </div>
     <div class="container borderSubscription">
-        <a class="btn btn-success" id="add">Ajouter un abonnement</a>
+        <a class="btn btn-success" id="add" href="createSubscription.php">Ajouter un abonnement</a>
         <div class="row text-center">
             <?php
             $data = $bdd->query("SELECT id, name, price, duration, description FROM subscription");
