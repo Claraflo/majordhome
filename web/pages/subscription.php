@@ -74,7 +74,7 @@ try{
                                 echo '<ul class="list-unstyled mt-3 mb-4">';
                                     echo '<li class="liSubscription">'.$subscription['description'];
                                 echo '</ul>';
-                                echo '<a class="btn btn-primary" href="createSubscription.php">Modifier</a>';
+                                echo '<a class="btn btn-primary" href="modificationSubscription.php?id='.$subscription['id'].'">Modifier</a>';
                                 echo '<a class="btn btn-danger" href="payment.php?id='.$subscription['id'].'">Supprimer</a>';
                             echo '</div>';
                         echo '</div>';
