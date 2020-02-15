@@ -77,16 +77,33 @@
 
 <div class="container">
 
+
+  <div class="row">
+
+
+<div class="col-md-7">
+
+<div class="form">
+
+
 <div class="input-group ">
   <select class="custom-select" id="inputGroupSelect01">
-    <option selected>Sélectionnez une catégorie de service ..</option>
+    <option selected>Sélectionnez une catégorie de service ...</option>
     <option value="1">Voyage</option>
     <option value="2">Restaurant</option>
     <option value="3">Evenement</option>
   </select>
 </div>
+</div>
 
+</div>
 
+<div class="col-md-5">
+  
+  <a href="#"><button class="btn btnServices">Demande de service</button></a>
+</div>
+
+</div>
 
 <div class="row pt-5 ">
   <div class="col-md-3">
