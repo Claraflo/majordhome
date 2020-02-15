@@ -40,6 +40,15 @@ if(count($_POST) == 3
     }
 
     if(empty($errors)) {
+
+        $req = $bdd->prepare('INSERT INTO subscription(name, price, duration, description) VALUES(:title, :price, :duration, :description)');
+        $req->execute([':title'=>$title,
+            ':price'=>$price,
+            ':duration'=>'365',
+            ':description'=>$description
+        ]);
+
+
         $confirm[] = "L'abonnement a bien été créé";
         $_SESSION["confirmFormAuth"] = $confirm;
         header("Location: subscription.php");

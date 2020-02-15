@@ -67,7 +67,7 @@ try{
                                 echo '<h4 class="my-0 font-weight-normal">'.$subscription['name'].'</h4>';
                             echo "</div>";
                             echo '<div class="card-body">';
-                                echo '<h2 class="card-title pricing-card-title">'.$subscription['price'].'€ TTC <small class="text-muted">/ an</small></h2>';
+                                echo '<h2 class="card-title pricing-card-title">'.($subscription['price']/100).'€ TTC <small class="text-muted">/ an</small></h2>';
                                 echo '<ul class="list-unstyled mt-3 mb-4">';
                                     echo '<li class="liSubscription">'.$subscription['description'];
                                 echo '</ul>';
