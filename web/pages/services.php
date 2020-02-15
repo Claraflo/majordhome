@@ -55,7 +55,7 @@
 
           		<li class="nav-item">
 
-          		  <a href="nav-link"><button class="btn" id="btnLogout">Déconnexion</button></a> 
+          		  <a href="logout.php"><button class="btn" id="btnLogout">Déconnexion</button></a> 
           		
 
         	</ul>

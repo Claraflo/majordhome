@@ -56,7 +56,7 @@
 
             <li class="nav-item">
               
-              <a href="nav-link"><button class="btn" id="btnLogin">Connexion</button></a> 
+              <a href="pages/login.php"><button class="btn" id="btnLogin">Connexion</button></a> 
 
 
 
