@@ -45,8 +45,8 @@ try{
         <h1 class="display-4">Abonnements</h1>
         <hr class="hr">
     </div>
-    <form method="post">
     <div class="container borderSubscription">
+        <a class="btn btn-success" id="add">Ajouter un abonnement</a>
         <div class="row text-center">
             <?php
             $data = $bdd->query("SELECT id, name, price, duration, description FROM subscription");
@@ -61,7 +61,8 @@ try{
                                 echo '<ul class="list-unstyled mt-3 mb-4">';
                                     echo '<li class="liSubscription">'.$subscription['description'];
                                 echo '</ul>';
-                                echo '<a class="btnSubscription" href="payment.php?id='.$subscription['id'].'">Payer</a>';
+                                echo '<a class="btn btn-primary" href="payment.php?id='.$subscription['id'].'">Modifier</a>';
+                                echo '<a class="btn btn-danger" href="payment.php?id='.$subscription['id'].'">Supprimer</a>';
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
@@ -69,7 +70,6 @@ try{
             ?>
         </div>
     </div>
-    </form>
 </section>
 
 

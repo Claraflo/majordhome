@@ -4,8 +4,8 @@
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/payment.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/payment.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/payment.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/payment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/subscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/subscription.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/subscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +106,7 @@
       <workItem from="1581692859441" duration="147000" />
       <workItem from="1581707949190" duration="3247000" />
       <workItem from="1581765533558" duration="480000" />
+      <workItem from="1581766261075" duration="1820000" />
     </task>
     <servers />
   </component>
@@ -133,5 +134,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581181904225" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1581767141510">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581767141510" />
   </component>
 </project>

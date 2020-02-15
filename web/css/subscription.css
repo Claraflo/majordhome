@@ -37,13 +37,6 @@
 }
 
 
-.form{
-
-    padding-top: 50px;
-    padding-bottom: 50px;
-
-
-}
 
 
 
@@ -68,27 +61,6 @@ footer{
 
 }
 
-.btnSubscription {
-    width: 100%;
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 400;
-    background-color:#aa956f;
-    color: #FFFFFF;
-    border-radius: 0.3rem;
-    padding: 0.5rem 1rem;
-    line-height: 1.5;
-    text-align: center;
-    vertical-align: middle;
-
-
-}
-
-.btnSubscription:hover {
-    color: red;
-    background-color: white;
-    text-decoration: none;
-}
 
 .liSubscription {
     margin-bottom: 30px;
@@ -97,6 +69,24 @@ footer{
 
 .col-md-4 {
     margin-bottom: 50px;
+}
+
+#add {
+    margin-bottom: 20px;
+    color: white;
+}
+.btn-primary {
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    width: 100px;
+}
+
+.btn-danger {
+    width: 100px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 15px;
 }
 
 
