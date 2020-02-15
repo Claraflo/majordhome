@@ -79,6 +79,39 @@ session_start();
 
             </div>
 
+            <div class="row pt-4">
+
+                <div class="col-md-4">
+                    <label for="years">Nombre d'années *</label>
+                    <select name="years" id="years" class="custom-select d-block w-100">
+                        <?php
+                            for ($i = 0; $i < 11; $i++){
+                                echo '<option value="'.$i.'">'.$i.'</option>';
+                            }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="months">Nombre de mois *</label>
+                    <select name="months" id="months" class="custom-select d-block w-100">
+                        <?php
+                        for ($i = 0; $i < 12; $i++){
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="days">Nombre de jours *</label>
+                    <input name="days" type="number" id="days" class="form-control inputRegister" placeholder="99" required="" autocomplete="off"
+                </div>
+
+
+
+            </div>
+
             <label for="description" class="lab">Description *</label>
             <textarea id="description" class="form-control" name="description" required="required" rows="3"><?php echo isset($_SESSION["dataFormAuth"]["description"])?$_SESSION["dataFormAuth"]["description"]:"" ?></textarea>
 

@@ -7,7 +7,7 @@ try{
     die("Erreur SQL ".$e->getMessage());
 }
 
-if(count($_POST) == 4
+if(count($_POST) == 7
     && !empty($_POST['title'])
     && !empty($_POST['priceEur'])
     && !empty($_POST['priceCent'])
@@ -18,6 +18,9 @@ if(count($_POST) == 4
     $title = trim($_POST['title']);
     $priceEur = trim($_POST['priceEur']);
     $priceCent = trim($_POST['priceCent']);
+    $years = trim($_POST['years']);
+    $months = trim($_POST['months']);
+    $days = trim($_POST['days']);
     $description = trim($_POST['description']);
 
     $errors = [];
@@ -42,15 +45,33 @@ if(count($_POST) == 4
         $errors['priceCent'] = "Les centimes indiqués ne sont pas valides.";
     }
 
+    if(!empty($years) && !preg_match('/^[0-9]{1,2}$/', $years)) {
+        $errors['years'] = "Le nombre d'années n'est pas valide.";
+    }
+
+    if(!empty($months) && !preg_match('/^[0-9]{1,2}$/', $months)) {
+        $errors['months'] = "Le nombre de mois n'est pas valide.";
+    }
+
+    if(!empty($days) && !preg_match('/^[0-9]+$/', $days)) {
+        $errors['days'] = "Le nombre de jours n'est pas valide.";
+    }
+
+    if (empty($years) && empty($months) && (empty($days) || $days == 0)){
+        $errors['days'] = "L'abonnement doit avoir une durée minimum d'un jour.";
+    }
+
     $price = $priceEur.$priceCent;
 
     if(empty($errors)) {
 
-        $req = $bdd->prepare('INSERT INTO subscription(name, price, duration, description) VALUES(:title, :price, :duration, :description)');
+        $req = $bdd->prepare('INSERT INTO subscription(name, price, description, years, months, days) VALUES(:title, :price, :description, :years, :months, :days)');
         $req->execute([':title'=>$title,
             ':price'=>$price,
-            ':duration'=>'365',
-            ':description'=>$description
+            ':description'=>$description,
+            'years'=>$years,
+            'months'=>$months,
+            'days'=>$days
         ]);
 
 

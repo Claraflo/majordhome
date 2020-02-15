@@ -59,7 +59,7 @@ try{
         <a class="btn btn-success" id="add" href="createSubscription.php">Ajouter un abonnement</a>
         <div class="row text-center">
             <?php
-            $data = $bdd->query("SELECT id, name, price, duration, description FROM subscription");
+            $data = $bdd->query("SELECT id, name, price, description FROM subscription");
             foreach ($data->fetchAll() as $key => $subscription) {
                     if ($subscription['price']%100 != 00){
                         $subscription['price'] = $subscription['price']/100;
