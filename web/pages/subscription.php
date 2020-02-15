@@ -61,13 +61,16 @@ try{
             <?php
             $data = $bdd->query("SELECT id, name, price, duration, description FROM subscription");
             foreach ($data->fetchAll() as $key => $subscription) {
+                    if ($subscription['price']%100 != 00){
+                        $subscription['price'] = $subscription['price']/100;
+                    }
                     echo '<div class="col-md-4">';
                         echo '<div class="card shadow-sm">';
                             echo '<div class="card-header">';
                                 echo '<h4 class="my-0 font-weight-normal">'.$subscription['name'].'</h4>';
                             echo "</div>";
                             echo '<div class="card-body">';
-                                echo '<h2 class="card-title pricing-card-title">'.($subscription['price']/100).'€ TTC <small class="text-muted">/ an</small></h2>';
+                                echo '<h2 class="card-title pricing-card-title">'.$subscription['price'].'€ TTC <small class="text-muted">/ an</small></h2>';
                                 echo '<ul class="list-unstyled mt-3 mb-4">';
                                     echo '<li class="liSubscription">'.$subscription['description'];
                                 echo '</ul>';
