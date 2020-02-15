@@ -112,11 +112,12 @@ session_start();
 
             </div>
 
-            <label for="description" class="lab">Description *</label>
-            <textarea id="description" class="form-control" name="description" required="required" rows="3"><?php echo isset($_SESSION["dataFormAuth"]["description"])?$_SESSION["dataFormAuth"]["description"]:"" ?></textarea>
+
+            <label for="description" class="lab area">Description *</label>
+            <textarea id="description" class="form-control area" name="description" required="required" rows="3"><?php echo isset($_SESSION["dataFormAuth"]["description"])?$_SESSION["dataFormAuth"]["description"]:"" ?></textarea>
 
 
-            <input type="submit" class="btn btn-success" value="Ajouter un abonnement">
+            <input type="submit" class="btn btn-success area" value="Ajouter un abonnement">
 
         </form>
     </div>

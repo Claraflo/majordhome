@@ -4,9 +4,8 @@
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/createSubscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/createSubscription.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/createSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/createSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/saveSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/saveSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/subscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
