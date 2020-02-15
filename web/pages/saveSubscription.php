@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+try{
+    $bdd = new PDO("mysql:host=localhost;dbname=subscription;port=3306", "root", "root");
+}catch(Exception $e){
+    die("Erreur SQL ".$e->getMessage());
+}
+
 if(count($_POST) == 3
     && !empty($_POST['title'])
     && !empty($_POST['price'])
@@ -15,8 +21,19 @@ if(count($_POST) == 3
     $errors = [];
 
 
+    $data = $bdd->query("SELECT name FROM subscription WHERE name = '$title'");
+
+    foreach ($data->fetchAll() as $key => $subscription) {
+        $count = $data->rowCount();
+
+        if ($count != 0) {
+            $errors['title'] = "Un abonnement avec un titre similaire existe déjà";
+        }
+    }
+
+
     if (preg_match('/^\d+(\.\d{2})?$/', $price) == '0') {
-        $errors['price'] = "Le prix n'est pas valide.";
+        $errors['price'] = "Le prix n'est pas valide. Les euros et les centimes doivent être séparés par un point. Les centimes doivent contenir 2 chiffres obligatoirement.";
     }else{
         $priceTab = explode(".", $price);
         $price = $priceTab[0].$priceTab[1];
