@@ -40,15 +40,24 @@
         echo "</div>";
         unset($_SESSION["errorsFormAuth"]);
     }
-    ?>
 
-    <?php if(!empty($_SESSION["confirmFormAuth"])){
+
+    if(!empty($_SESSION["confirmFormAuth"])){
         echo "<div class='alert alert-success'>";
         foreach ($_SESSION["confirmFormAuth"] as $confirm) {
             echo "<li>".$confirm;
         }
         echo "</div>";
         unset($_SESSION["confirmFormAuth"]);
+    }
+
+    if(!empty($_SESSION["hackFormAuth"])){
+        echo "<div class='alert alert-danger'>";
+        foreach ($_SESSION["hackFormAuth"] as $hack) {
+            echo "<li>".$hack;
+        }
+        echo "</div>";
+        unset($_SESSION["hackFormAuth"]);
     }
     ?>
 

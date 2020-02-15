@@ -122,6 +122,8 @@ if(count($_POST) == 11
                 $errors[] = " Vous être trop jeunes ou trop vieux";
             }
         }
+
+
         if(empty($errors)) {
             $confirm[] = "Merci pour votre inscription";
             $_SESSION["confirmFormAuth"] = $confirm;
@@ -151,11 +153,16 @@ if(count($_POST) == 11
 
             header("Location: register.php");
         }
-}
-if (!empty($errors)){
-    $_SESSION["errorsFormAuth"] = $errors;
-    unset($_POST["pwd"]);
-    unset($_POST["pwdConfirm"]);
-    $_SESSION["dataFormAuth"] = $_POST;
-    header("Location: register.php");
+
+        if (!empty($errors)){
+            $_SESSION["errorsFormAuth"] = $errors;
+            unset($_POST["pwd"]);
+            unset($_POST["pwdConfirm"]);
+            $_SESSION["dataFormAuth"] = $_POST;
+            header("Location: register.php");
+        }
+}else{
+    $Hack[] = "Tentative de hack detectée";
+    $_SESSION["hackFormAuth"] = $Hack;
+    header("Location: createSubscription.php");
 }
