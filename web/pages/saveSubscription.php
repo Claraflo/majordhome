@@ -7,15 +7,17 @@ try{
     die("Erreur SQL ".$e->getMessage());
 }
 
-if(count($_POST) == 3
+if(count($_POST) == 4
     && !empty($_POST['title'])
-    && !empty($_POST['price'])
+    && !empty($_POST['priceEur'])
+    && !empty($_POST['priceCent'])
     && !empty($_POST['description'])
 ){
 
 
     $title = trim($_POST['title']);
-    $price = trim($_POST['price']);
+    $priceEur = trim($_POST['priceEur']);
+    $priceCent = trim($_POST['priceCent']);
     $description = trim($_POST['description']);
 
     $errors = [];
@@ -30,14 +32,17 @@ if(count($_POST) == 3
             $errors['title'] = "Un abonnement avec un titre similaire existe déjà";
         }
     }
+    
 
-
-    if (preg_match('/^\d+(\.\d{2})?$/', $price) == '0') {
-        $errors['price'] = "Le prix n'est pas valide. Les euros et les centimes doivent être séparés par un point. Les centimes doivent contenir 2 chiffres obligatoirement.";
-    }else{
-        $priceTab = explode(".", $price);
-        $price = $priceTab[0].$priceTab[1];
+    if(!preg_match('/^[0-9]+$/', $priceEur)) {
+        $errors['priceEur'] = "Les euros indiqués ne sont pas valides.";
     }
+
+    if(!preg_match('/^[0-9][0-9]$/', $priceCent)) {
+        $errors['priceCent'] = "Les centimes indiqués ne sont pas valides.";
+    }
+
+    $price = $priceEur.$priceCent;
 
     if(empty($errors)) {
 

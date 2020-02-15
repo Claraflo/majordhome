@@ -66,11 +66,18 @@ session_start();
             <input id="title" type="text" class="form-control" required="required" name="title" placeholder="Titre" autofocus="" value="<?php echo isset($_SESSION["dataFormAuth"]["title"])?$_SESSION["dataFormAuth"]["title"]:"" ?>">
 
 
+            <div class="row pt-4">
+                <div class="col-md-6">
+                    <label for="priceEur">Euros *</label>
+                    <input name="priceEur" type="text" id="priceEur" class="form-control inputRegister" placeholder="20" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["priceEur"])?$_SESSION["dataFormAuth"]["priceEur"]:"" ?>">
+                </div>
 
-            <label for="price " class="lab">Prix en euros *</label>
-            <input id="price " type="text" class="form-control" required="required" name="price" placeholder="20.90" value="<?php echo isset($_SESSION["dataFormAuth"]["price"])?$_SESSION["dataFormAuth"]["price"]:"" ?>">
+                <div class=" col-md-6">
+                    <label for="priceCent">Centimes *</label>
+                    <input name="priceCent" type="text" id="priceCent" class="form-control inputRegister" placeholder="99" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["priceCent"])?$_SESSION["dataFormAuth"]["priceCent"]:"" ?>">
+                </div>
 
-
+            </div>
 
             <label for="description" class="lab">Description *</label>
             <textarea id="description" class="form-control" name="description" required="required" rows="3"><?php echo isset($_SESSION["dataFormAuth"]["description"])?$_SESSION["dataFormAuth"]["description"]:"" ?></textarea>
