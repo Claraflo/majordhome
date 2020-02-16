@@ -20,22 +20,28 @@ var clientSecret = cardButton.dataset.secret;
 
 
 cardButton.addEventListener('click', function (ev) {
+
+    ev.preventDefault();
     stripe.handleCardPayment(
         clientSecret, card, {
             payment_method_data: {
                 billing_details: {name: cardHolderName.value}
             }
+
         }
     ).then(function (result) {
 
+
         if (result.error) {
+           
             let section = document.getElementsByTagName('header')[0];
             let alert = document.createElement('div');
             alert.setAttribute('class', 'alert alert-danger');
             alert.textContent = 'Une erreur est survenue. Vérifiez vos informations !';
             section.appendChild(alert);
-        }else if(result.paymentIntent && result.paymentIntent.status === 'succeeded') {
-            alert("yes");
+        }else{
+            
+            alert("Paiement effectué avec succès !");
         }
     });
 });

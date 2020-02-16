@@ -19,9 +19,9 @@ $subscription = $req->fetch();
 
 $count = $req->rowCount();
 
-if ($count == 0){
-    header('Location: error.php');
-}
+// if ($count == 0){
+//     header('Location: error.php');
+// }
 
 
 require ('../stripe-php-master/init.php');
@@ -29,7 +29,7 @@ require ('../stripe-php-master/init.php');
 \Stripe\Stripe::setApiKey('sk_test_KIoaPZUhWtezXMfycCQWaVP300pmT5edj0');
 
 $intent = \Stripe\PaymentIntent::create([
-        'amount'=> $subscription['price'],
+        'amount'=> 5000,
         'currency' => 'eur',
         'statement_descriptor' => 'Majordhome',
         'description' => $subscription['name'],
