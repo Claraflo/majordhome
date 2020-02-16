@@ -1,3 +1,8 @@
+<?php
+session_start();
+require('functions.php');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +39,7 @@
     	<div class="collapse navbar-collapse" id="navbarNav">
       		<ul class="navbar-nav ml-auto">
         		<li class="nav-item ">
-         			<a class="nav-link colorLink active" href="booking.php" title="">Services
+         			<a class="nav-link colorLink active" href="services.php" title="">Services
                 	
               		</a>
         		
@@ -86,13 +91,30 @@
 <div class="form">
 
 
-<div class="input-group ">
+<div class="input-group">
   <select class="custom-select" id="inputGroupSelect01">
     <option selected>Sélectionnez une catégorie de service ...</option>
-    <option value="1">Voyage</option>
-    <option value="2">Restaurant</option>
-    <option value="3">Evenement</option>
+
+
+  <?php
+
+    $connect = connectDb();
+    $query = $connect->query('SELECT idCategorie,nom FROM Categorie;');
+    $query->execute();
+   
+
+    foreach ($query->fetchAll() as $value) {
+      
+        echo "<option value='1'>".$value['nom']."</option>";
+
+  }
+
+ ?>
+   
+   
   </select>
+
+
 </div>
 </div>
 
