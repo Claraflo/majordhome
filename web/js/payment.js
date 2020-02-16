@@ -33,15 +33,19 @@ cardButton.addEventListener('click', function (ev) {
 
 
         if (result.error) {
-           
-            let section = document.getElementsByTagName('header')[0];
-            let alert = document.createElement('div');
-            alert.setAttribute('class', 'alert alert-danger');
-            alert.textContent = 'Une erreur est survenue. Vérifiez vos informations !';
-            section.appendChild(alert);
+
+            let danger = document.getElementsByClassName('alert alert-danger');
+
+            if(danger.length == 0){
+                let section = document.getElementsByTagName('header')[0];
+                let alert = document.createElement('div');
+                alert.setAttribute('class', 'alert alert-danger');
+                alert.textContent = 'Une erreur est survenue. Vérifiez vos informations !';
+                section.appendChild(alert);
+            }
+
         }else{
-            
-            alert("Paiement effectué avec succès !");
+            window.location.href = "success.php";
         }
     });
 });

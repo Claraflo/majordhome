@@ -1,56 +1,19 @@
 <?php
 session_start();
 
-if(!empty($_GET)){
-    $id = $_GET['id'];
-}else{
-    $id = 0;
-}
-
 try{
     $bdd = new PDO("mysql:host=localhost;dbname=subscription;port=3306", "root", "root");
 }catch(Exception $e){
     die("Erreur SQL ".$e->getMessage());
 }
 
-$req = $bdd->prepare("SELECT name, price FROM subscription WHERE id = $id");
-$req->execute(array());
-$subscription = $req->fetch();
-
-$count = $req->rowCount();
-
-if ($count == 0){
-    header('Location: error.php');
-}
-
-$price = $subscription['price'];
-require ('../stripe-php-master/init.php');
-
-\Stripe\Stripe::setApiKey('sk_test_KIoaPZUhWtezXMfycCQWaVP300pmT5edj0');
-
-$intent = \Stripe\PaymentIntent::create([
-        'amount'=> $price,
-        'currency' => 'eur',
-        'statement_descriptor' => 'Majordhome',
-        'description' => $subscription['name'],
-        'payment_method_types' => ['card'],
-        'setup_future_usage' => 'off_session',
-]);
-
-if ($subscription['price']%100 != 00){
-    $subscription['price'] = $subscription['price']/100;
-}
-
-
-
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Paiement</title>
+    <title>Validation</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/payment.css">
+    <link rel="stylesheet" type="text/css" href="../css/subscription.css">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -77,23 +40,17 @@ if ($subscription['price']%100 != 00){
 </header>
 
 
-<section>
-    <div class="container">
-        <div class="form">
-            <form id="form-payement">
-                <h3 class="text-center title"><?php echo $subscription['name']?></h3>
-                <h2 class="card-title pricing-card-title"><?php echo $subscription['price'] ?>€ TTC <small class="text-muted">/ an</small></h2>
-                <hr class="hr">
-
-                <label for="cardholder-name">Nom du titulaire de la carte *</label>
-                <input id="cardholder-name" class="form-control inputPayement" type="text" placeholder="Dufour" required="">
-
-                <div id="card-element" class="form-control"></div>
-                <button id="card-button" class="btnPayement" data-secret="<?= $intent->client_secret ?>">Payer</button>
-            </form>
+<section >
+    <div class="card text-center">
+        <div class="card-body">
+            <h5 class="card-title">Merci pour votre achat !</h5>
+            <p class="card-text">Une facture va bientôt vous être envoyée sur votre adresse email</p>
+            <a href="subscription.php" class="btn btn-primary">Retourner aux abonnements</a>
         </div>
     </div>
+
 </section>
+
 
 <footer>
 
@@ -104,10 +61,7 @@ if ($subscription['price']%100 != 00){
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://js.stripe.com/v3/"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="../js/payment.js"></script>
-
 
 </body>
 </html>

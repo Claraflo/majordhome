@@ -11,7 +11,7 @@ try{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Inscription</title>
+	<title>Erreurs</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/subscription.css">
 	<meta name="description" content="">
