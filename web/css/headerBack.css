@@ -1,0 +1,86 @@
+body{
+
+	font-family:'Raleway' !important;
+}
+
+.logo{
+
+
+    width: 25%;
+}
+
+#nav{
+
+
+    background-color: #23272d;
+    border-bottom: 1px solid #aa956f;
+
+
+}
+
+
+
+.userConnected {
+
+	background-color: #23272d;
+	border-bottom: 1px solid #aa956f;
+	height: 20px;
+}
+
+.userConnected p {
+
+	font-size: 12px;
+	color: #aa956f;
+	padding: 2px; 
+	text-align: center;
+}
+
+.colorLink{
+
+
+	color: #FFFFFF !important;
+	font-family: Raleway;
+	font-size: 15px;
+
+
+}
+
+.active{
+
+	color: #aa956f !important;
+}
+
+
+.colorLink:hover{
+
+	color: #aa956f !important;
+
+}
+
+#btnLogout {
+
+	background-color:#aa956f;
+	color: #FFFFFF;
+	
+
+}
+
+
+
+
+footer{
+
+
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	background-color: #23272d;
+	height: 100px; 
+	border-top: 2px solid #aa956f;
+	color: #FFFFFF;
+	font-family: Raleway;
+
+
+}
+
+
