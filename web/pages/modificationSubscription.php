@@ -91,7 +91,7 @@ $price = explode(".", $subscription['price']/100);
         <form method="POST" action="updateSubscription.php">
 
             <label for="title" class="lab">Titre *</label>
-            <input id="title" type="text" class="form-control" required="required" name="title" placeholder="Titre" autofocus="" value="<?php echo isset($_SESSION["dataFormAuth"]["title"])?$_SESSION["dataFormAuth"]["title"]:$subscription['name'] ?>">
+            <input id="title" type="text" class="form-control" required="required" name="title" placeholder="Titre" value="<?php echo isset($_SESSION["dataFormAuth"]["title"])?$_SESSION["dataFormAuth"]["title"]:$subscription['name'] ?>">
 
 
             <div class="row pt-4">
@@ -133,7 +133,7 @@ $price = explode(".", $subscription['price']/100);
 
                 <div class="col-md-4">
                     <label for="days">Nombre de jours *</label>
-                    <input name="days" type="number" id="days" class="form-control inputRegister" placeholder="99" required="" autocomplete="off">
+                    <input name="days" type="number" id="days" class="form-control inputRegister" placeholder="5" required="" autocomplete="off">
                 </div>
 
 
@@ -150,6 +150,7 @@ $price = explode(".", $subscription['price']/100);
         </form>
     </div>
 </section>
+
 <?php unset($_SESSION["dataFormAuth"]);?>
 
 <footer>

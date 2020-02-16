@@ -75,7 +75,7 @@ try{
                                     echo '<li class="liSubscription">'.$subscription['description'];
                                 echo '</ul>';
                                 echo '<a class="btn btn-primary" href="modificationSubscription.php?id='.$subscription['id'].'">Modifier</a>';
-                                echo '<a class="btn btn-danger" href="payment.php?id='.$subscription['id'].'">Supprimer</a>';
+                                echo '<button class="btn btn-danger" id="delete">Supprimer</button>';
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
@@ -86,6 +86,15 @@ try{
 </section>
 
 
+
+<div id="content-delete" class="content-delete">
+    <div class="delete">
+        <span class="cross">&times;</span>
+        <p>Voulez-vous vraiment supprimer cet abonnement ?</p>
+    </div>
+</div>
+
+
 <footer>
 
     <p class="text-center pt-4">Copyright © Majord'home 2020</p>
@@ -93,7 +102,7 @@ try{
 </footer>
 
 
-
+<script src="../js/delete.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 

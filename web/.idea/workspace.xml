@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/createSubscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/createSubscription.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/subscription.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/subscription.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/createSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/createSubscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/modificationSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/modificationSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/updateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/updateSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/subscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -112,7 +114,7 @@
       <workItem from="1581766261075" duration="8786000" />
       <workItem from="1581775671100" duration="6763000" />
       <workItem from="1581794677862" duration="2228000" />
-      <workItem from="1581878316988" duration="598000" />
+      <workItem from="1581878316988" duration="4719000" />
     </task>
     <servers />
   </component>
