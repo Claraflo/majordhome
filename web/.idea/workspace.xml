@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/subscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/createSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/createSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modificationSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/modificationSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/updateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/updateSubscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +112,7 @@
       <workItem from="1581766261075" duration="8786000" />
       <workItem from="1581775671100" duration="6763000" />
       <workItem from="1581794677862" duration="2228000" />
+      <workItem from="1581878316988" duration="598000" />
     </task>
     <servers />
   </component>
@@ -118,10 +120,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1581775668453">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1581878314194">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581775668453" />
+    <state x="740" y="275" key="FileChooserDialogImpl/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581878314194" />
     <state x="794" y="444" key="NewPhpFileDialog" timestamp="1581795225494">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

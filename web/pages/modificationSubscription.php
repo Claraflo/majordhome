@@ -133,7 +133,7 @@ $price = explode(".", $subscription['price']/100);
 
                 <div class="col-md-4">
                     <label for="days">Nombre de jours *</label>
-                    <input name="days" type="number" id="days" class="form-control inputRegister" placeholder="99" required="" autocomplete="off"
+                    <input name="days" type="number" id="days" class="form-control inputRegister" placeholder="99" required="" autocomplete="off">
                 </div>
 
 

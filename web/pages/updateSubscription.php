@@ -24,7 +24,7 @@ if(count($_POST) == 7
     $months = trim($_POST['months']);
     $days = trim($_POST['days']);
     $description = trim($_POST['description']);
-    $id = trim($_POST['id']);
+    $id = trim($id);
 
     $errors = [];
 
