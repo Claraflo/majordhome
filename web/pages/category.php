@@ -24,7 +24,103 @@
 
 
 
+<section>
 
+
+<div class="title text-center pt-5">
+	<h1>Gestion des catégories</h1>
+	<hr class="hr">
+</div>
+
+<div class="container pt-4">
+	
+	<div class="row">
+		
+		<div class="col-md-6">
+			
+			<div class="title pb-4">
+				
+				<h4>Liste des catégories</h4>
+				
+			</div>
+
+
+			<table class="table table-striped table-hover table-bordered">
+  				<thead>
+   					<tr>
+     					<th scope="col">Id</th>
+     					<th scope="col">Nom</th>
+     					<th scope="col">description</th>
+     					<th scope="col">Action</th>
+    				</tr>
+  				</thead>
+ 				<tbody>
+    				<tr>
+      					<th scope="row">1</th>
+      					<td>Mark</td>
+      					<td>Otto</td>
+      					<td>
+      						<button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+      						<button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+      					</td>
+     				
+    				</tr>
+    				<tr>
+      					<th scope="row">2</th>
+      					<td>lorem</td>
+      					<td>Thornton</td>
+      					<td>Thornton</td>
+     
+    				</tr>
+    			<tr>
+   
+  				</tbody>
+			</table>
+
+		</div>
+		<div class="col-md-6">
+			
+
+			<div class="form">
+
+			<div class="title pb-3">
+		
+				<h4>Créer une catégorie</h4>
+				
+			</div>
+
+			 
+    		<form>
+   
+    
+
+        <div class="form-group">
+            <label for="inputEmail">Nom *</label>
+            <input name="name" type="text" id="inputName" class="form-control" placeholder="Voyage" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="pwd">Description </label>
+            <textarea name="description"  id="inputDescription" class="form-control" placeholder="Voyage "></textarea>
+        </div>
+
+   
+
+    <i class="p-2">* Champs obligatoires</i>
+   
+        <center><button class="btn mt-3 btnCategory btn-block" type="submit">Créer une catégorie</button></center>
+
+        </div>
+    </form>
+    </div>
+		</div>
+
+	</div>
+
+
+</div>
+
+</section>
 
 
 
