@@ -4,11 +4,9 @@
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/createSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/createSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/displaySubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/displaySubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/error.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/modificationSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/modificationSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/saveSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/saveSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/updateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/updateSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/subscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,6 +117,7 @@
       <workItem from="1581936686549" duration="7255000" />
       <workItem from="1581946141803" duration="46000" />
       <workItem from="1581955560556" duration="7465000" />
+      <workItem from="1581966304150" duration="73000" />
     </task>
     <servers />
   </component>

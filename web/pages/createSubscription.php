@@ -5,7 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Inscription</title>
+    <title>Création d'un abonnement</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../css/createSubscription.css">
     <meta name="description" content="">
