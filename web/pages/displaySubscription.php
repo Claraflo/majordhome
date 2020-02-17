@@ -7,7 +7,7 @@ try{
     die("Erreur SQL ".$e->getMessage());
 }
 
-$data = $bdd->query("SELECT id, name, description, price FROM subscription");
+$data = $bdd->query("SELECT id, name, description, price, week, time, timeStart, timeEnd FROM subscription");
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($rows as $row) {
@@ -22,7 +22,9 @@ foreach ($rows as $row) {
             echo '<div class="card-body">';
                 echo '<h2 class="card-title pricing-card-title">'.$row['price'].'€ TTC <small class="text-muted">/ an</small></h2>';
                 echo '<ul class="list-unstyled mt-3 mb-4">';
+                    echo "<li class='liSubscription'>Bénéficiez d'un accès privilégié en illimité ".$row['week']."j/7, ".$row['timeStart']."h/h".$row['timeEnd'];
                     echo '<li class="liSubscription">'.$row['description'];
+                    echo '<li class="liSubscription">'.$row['time'].'h de services/mois';
                 echo '</ul>';
                 echo '<a class="btn btn-primary" href="modificationSubscription.php?id='.$row['id'].'">Modifier</a>';
                 echo '<button class="btn btn-danger" onclick="show('.$row['id'].')">Supprimer</button>';

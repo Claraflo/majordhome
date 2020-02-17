@@ -3,9 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/delete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/createSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/createSubscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/subscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/displaySubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/displaySubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modificationSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/modificationSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/saveSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/saveSubscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/updateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/updateSubscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +116,9 @@
       <workItem from="1581775671100" duration="6763000" />
       <workItem from="1581794677862" duration="2228000" />
       <workItem from="1581878316988" duration="4751000" />
-      <workItem from="1581936686549" duration="7176000" />
+      <workItem from="1581936686549" duration="7255000" />
+      <workItem from="1581946141803" duration="46000" />
+      <workItem from="1581955560556" duration="7465000" />
     </task>
     <servers />
   </component>
@@ -134,17 +138,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581164791379" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1581781053769">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1581964781984">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581781053769" />
+    <state width="498" height="446" key="SwitcherDM/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581964781984" />
     <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581769348254">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581769348254" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1581767141510">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1581965674137">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581767141510" />
+    <state x="616" y="240" key="run.anything.popup/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581965674137" />
   </component>
 </project>

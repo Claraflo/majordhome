@@ -12,7 +12,7 @@ if(!empty($_POST['id'])) {
     }catch(Exception $e){
         die("Erreur SQL ".$e->getMessage());
     }
-    
+
 
     $data = $bdd->prepare("DELETE FROM subscription WHERE id = $id ");
     $data->execute(array());

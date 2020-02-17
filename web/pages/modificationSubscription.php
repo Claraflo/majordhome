@@ -13,7 +13,7 @@ try{
     die("Erreur SQL ".$e->getMessage());
 }
 
-$req = $bdd->prepare("SELECT name, price, description FROM subscription WHERE id = $id");
+$req = $bdd->prepare("SELECT name, price, description, time, days FROM subscription WHERE id = $id");
 $req->execute(array());
 $subscription = $req->fetch();
 
@@ -24,8 +24,14 @@ if ($count == 0){
 }
 
 $_SESSION["id"] = $id;
+if ($subscription['price']%100 == 0){
+    $price[0] = $subscription['price'];
+    $price[1] = 0;
+}else{
+    $price = explode(".", $subscription['price']/100);
+}
 
-$price = explode(".", $subscription['price']/100);
+
 
 
 ?>
@@ -97,12 +103,58 @@ $price = explode(".", $subscription['price']/100);
             <div class="row pt-4">
                 <div class="col-md-6">
                     <label for="priceEur">Euros *</label>
-                    <input name="priceEur" type="text" id="priceEur" class="form-control inputRegister" placeholder="20" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["priceEur"])?$_SESSION["dataFormAuth"]["priceEur"]:$price[0] ?>">
+                    <input name="priceEur" type="number" id="priceEur" class="form-control inputRegister" placeholder="20" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["priceEur"])?$_SESSION["dataFormAuth"]["priceEur"]:$price[0] ?>">
                 </div>
 
                 <div class=" col-md-6">
                     <label for="priceCent">Centimes *</label>
-                    <input name="priceCent" type="text" id="priceCent" class="form-control inputRegister" placeholder="99" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["priceCent"])?$_SESSION["dataFormAuth"]["priceCent"]:$price[1] ?>">
+                    <input name="priceCent" type="number" id="priceCent" class="form-control inputRegister" placeholder="99" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["priceCent"])?$_SESSION["dataFormAuth"]["priceCent"]:$price[1] ?>">
+                </div>
+
+            </div>
+
+            <div class="row pt-4">
+
+                <div class="col-md-6">
+                    <label for="week">Nombre de jours par semaine *</label>
+                    <select name="week" id="week" class="custom-select d-block w-100">
+                        <?php
+                        for ($i = 1; $i < 8; $i++){
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="time">Nombre d'heures autorisées par mois *</label>
+                    <input id="time" type="number" class="form-control" required="required" name="time" placeholder="5" value="<?php echo isset($_SESSION["dataFormAuth"]["time"])?$_SESSION["dataFormAuth"]["time"]:$subscription['time'] ?>">
+                </div>
+
+            </div>
+
+            <div class="row pt-4">
+
+                <div class="col-md-6">
+                    <label for="timeStart">Heure de début *</label>
+                    <select name="timeStart" id="timeStart" class="custom-select d-block w-100">
+                        <?php
+                        for ($i = 1; $i < 25; $i++){
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="timeEnd">Heure de fin *</label>
+                    <select name="timeEnd" id="timeEnd" class="custom-select d-block w-100">
+                        <?php
+                        for ($i = 1; $i < 25; $i++){
+                            echo '<option value="'.$i.'">'.$i.'</option>';
+                        }
+                        ?>
+                    </select>
                 </div>
 
             </div>
@@ -133,7 +185,7 @@ $price = explode(".", $subscription['price']/100);
 
                 <div class="col-md-4">
                     <label for="days">Nombre de jours *</label>
-                    <input name="days" type="number" id="days" class="form-control inputRegister" placeholder="5" required="" autocomplete="off">
+                    <input name="days" type="number" id="days" class="form-control inputRegister" placeholder="5" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["days"])?$_SESSION["dataFormAuth"]["days"]:$subscription['days'] ?>">
                 </div>
 
 
