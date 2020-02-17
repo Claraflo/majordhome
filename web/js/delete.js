@@ -1,25 +1,58 @@
-// Get the modal
-var content = document.getElementById("content-delete");
+function show(id) {
 
-// Get the button that opens the modal
-var btn = document.getElementById("delete");
+    var content = document.getElementById("content-delete");
+    var span = document.getElementsByClassName("cross")[0];
+    var no = document.getElementById("no");
+    var yes = document.getElementById('yes');
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("cross")[0];
+    yes.setAttribute('onclick', 'validation('+id+')');
 
-// When the user clicks the button, open the modal
-btn.onclick = function() {
     content.style.display = "block";
-}
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    content.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == content) {
+    span.onclick = function() {
         content.style.display = "none";
     }
+
+    no.onclick = function() {
+        content.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == content) {
+            content.style.display = "none";
+        }
+    }
+}
+
+
+
+function validation(id) {
+
+    var content = document.getElementById("content-delete");
+
+    const request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if(request.readyState === 4) {
+            console.log(request.status);
+        }
+    }
+    request.open("POST", "delete.php");
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(`id=${id}`);
+
+    content.style.display = "none";
+
+}
+
+
+function display() {
+    const request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (request.readyState === 4) {
+            const messages = document.getElementById('messages');
+            messages.innerHTML = request.responseText;
+        }
+    };
+    request.open('GET', 'chatClientDisplay.php');
+    request.send();
 }

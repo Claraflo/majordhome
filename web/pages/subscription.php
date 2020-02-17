@@ -47,6 +47,17 @@ try{
     echo "</div>";
     unset($_SESSION["confirmFormAuth"]);
 }
+
+
+if (!empty($_SESSION["delete"])) {
+    echo "<div class='alert alert-danger'>";
+    foreach ($_SESSION["delete"] as $delete) {
+        echo "<li>" . $delete;
+    }
+    echo "</div>";
+    unset($_SESSION["delete"]);
+}
+
 ?>
 
 
@@ -75,7 +86,7 @@ try{
                                     echo '<li class="liSubscription">'.$subscription['description'];
                                 echo '</ul>';
                                 echo '<a class="btn btn-primary" href="modificationSubscription.php?id='.$subscription['id'].'">Modifier</a>';
-                                echo '<button class="btn btn-danger" id="delete">Supprimer</button>';
+                                echo '<button class="btn btn-danger" onclick="show('.$subscription['id'].')">Supprimer</button>';
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
@@ -91,6 +102,8 @@ try{
     <div class="delete">
         <span class="cross">&times;</span>
         <p>Voulez-vous vraiment supprimer cet abonnement ?</p>
+        <button class="btn btn-primary" id="no">Non</button>
+        <button class="btn btn-danger" id="yes">Oui</button>
     </div>
 </div>
 

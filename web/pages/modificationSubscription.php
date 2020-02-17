@@ -20,7 +20,7 @@ $subscription = $req->fetch();
 $count = $req->rowCount();
 
 if ($count == 0){
-    //header('Location: error.php');
+    header('Location: error.php');
 }
 
 $_SESSION["id"] = $id;
@@ -71,9 +71,9 @@ $price = explode(".", $subscription['price']/100);
         echo "</div>";
         unset($_SESSION["errorsFormAuth"]);
     }
-    ?>
 
-    <?php if(!empty($_SESSION["hackFormAuth"])){
+
+    if(!empty($_SESSION["hackFormAuth"])){
         echo "<div class='alert alert-danger'>";
         foreach ($_SESSION["hackFormAuth"] as $hack) {
             echo "<li>".$hack;
