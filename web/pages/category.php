@@ -27,6 +27,9 @@
 <section>
 
 
+<div id="information"></div>
+
+
 <div class="title text-center pt-5">
 	<h1>Gestion des catégories</h1>
 	<hr class="hr">
@@ -44,8 +47,8 @@
 				
 			</div>
 
-
-			<table class="table table-striped table-hover table-bordered">
+			<div id="table"></div>
+	<!-- 		<table class="table table-striped table-hover table-bordered">
   				<thead>
    					<tr>
      					<th scope="col">Id</th>
@@ -65,17 +68,11 @@
       					</td>
      				
     				</tr>
-    				<tr>
-      					<th scope="row">2</th>
-      					<td>lorem</td>
-      					<td>Thornton</td>
-      					<td>Thornton</td>
-     
-    				</tr>
-    			<tr>
+    				
+  
    
   				</tbody>
-			</table>
+			</table> -->
 
 		</div>
 		<div class="col-md-6">
@@ -90,28 +87,28 @@
 			</div>
 
 			 
-    		<form>
+    	<!-- 	<form> -->
    
     
 
         <div class="form-group">
             <label for="inputEmail">Nom *</label>
-            <input name="name" type="text" id="inputName" class="form-control" placeholder="Voyage" required="required">
+            <input name="name" type="text" id="name" class="form-control" placeholder="Voyage" required="required">
         </div>
 
         <div class="form-group">
             <label for="pwd">Description </label>
-            <textarea name="description"  id="inputDescription" class="form-control" placeholder="Voyage "></textarea>
+            <textarea name="description"  id="description" class="form-control" placeholder="Voyage "></textarea>
         </div>
 
    
 
     <i class="p-2">* Champs obligatoires</i>
    
-        <center><button class="btn mt-3 btnCategory btn-block" type="submit">Créer une catégorie</button></center>
+        <center><button class="btn mt-3 btnCategory btn-block" onclick="createCategory();">Créer une catégorie</button></center>
 
         </div>
-    </form>
+   <!--  </form> -->
     </div>
 		</div>
 
@@ -138,5 +135,5 @@
 
 
 
-
+<script src="../js/category.js"></script>
 <?php require('footerBack.php'); ?>
