@@ -87,13 +87,13 @@ if(count($_POST) == 7
     if (!empty($errors)){
         $_SESSION["errorsFormAuth"] = $errors;
         $_SESSION["dataFormAuth"] = $_POST;
-        header("Location: modificationSubscription.php?=$id");
+        header("Location: modificationSubscription.php?id=$id");
     }
 
 }else{
     $Hack[] = "Tentative de hack detectée";
     $_SESSION["hackFormAuth"] = $Hack;
-    header("Location: modificationSubscription.php?=$id");
+    header("Location: modificationSubscription.php?id=$id");
 }
 
 

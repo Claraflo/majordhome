@@ -1,12 +1,6 @@
 <?php
 session_start();
 
-try{
-    $bdd = new PDO("mysql:host=localhost;dbname=subscription;port=3306", "root", "root");
-}catch(Exception $e){
-    die("Erreur SQL ".$e->getMessage());
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -68,31 +62,7 @@ if (!empty($_SESSION["delete"])) {
     </div>
     <div class="container borderSubscription">
         <a class="btn btn-success" id="add" href="createSubscription.php">Ajouter un abonnement</a>
-        <div class="row text-center">
-            <?php
-            $data = $bdd->query("SELECT id, name, price, description FROM subscription");
-            foreach ($data->fetchAll() as $key => $subscription) {
-                    if ($subscription['price']%100 != 00){
-                        $subscription['price'] = $subscription['price']/100;
-                    }
-                    echo '<div class="col-md-4">';
-                        echo '<div class="card shadow-sm">';
-                            echo '<div class="card-header">';
-                                echo '<h4 class="my-0 font-weight-normal">'.$subscription['name'].'</h4>';
-                            echo "</div>";
-                            echo '<div class="card-body">';
-                                echo '<h2 class="card-title pricing-card-title">'.$subscription['price'].'€ TTC <small class="text-muted">/ an</small></h2>';
-                                echo '<ul class="list-unstyled mt-3 mb-4">';
-                                    echo '<li class="liSubscription">'.$subscription['description'];
-                                echo '</ul>';
-                                echo '<a class="btn btn-primary" href="modificationSubscription.php?id='.$subscription['id'].'">Modifier</a>';
-                                echo '<button class="btn btn-danger" onclick="show('.$subscription['id'].')">Supprimer</button>';
-                            echo '</div>';
-                        echo '</div>';
-                    echo '</div>';
-                }
-            ?>
-        </div>
+        <div class="row text-center" id="subscription"></div>
     </div>
 </section>
 

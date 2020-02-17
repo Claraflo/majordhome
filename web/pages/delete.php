@@ -12,23 +12,13 @@ if(!empty($_POST['id'])) {
     }catch(Exception $e){
         die("Erreur SQL ".$e->getMessage());
     }
-
-    $req = $bdd->prepare("SELECT id FROM subscription WHERE id = $id");
-    $req->execute(array());
-    $subscription = $req->fetch();
-
-    $count = $req->rowCount();
-
-    if ($count == 0){
-        $delete = "haie";
-        $_SESSION['delete'] = $delete;
-    }
-
+    
 
     $data = $bdd->prepare("DELETE FROM subscription WHERE id = $id ");
     $data->execute(array());
-    echo $id;
+
 }
+
 
 
 ?>

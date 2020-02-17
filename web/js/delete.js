@@ -1,3 +1,4 @@
+display();
 function show(id) {
 
     var content = document.getElementById("content-delete");
@@ -41,6 +42,7 @@ function validation(id) {
     request.send(`id=${id}`);
 
     content.style.display = "none";
+    display();
 
 }
 
@@ -49,10 +51,10 @@ function display() {
     const request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === 4) {
-            const messages = document.getElementById('messages');
-            messages.innerHTML = request.responseText;
+            const subscription = document.getElementById('subscription');
+            subscription.innerHTML = request.responseText;
         }
     };
-    request.open('GET', 'chatClientDisplay.php');
+    request.open('GET', 'displaySubscription.php');
     request.send();
 }
