@@ -48,34 +48,9 @@
 			</div>
 
 			<div id="table"></div>
-	<!-- 		<table class="table table-striped table-hover table-bordered">
-  				<thead>
-   					<tr>
-     					<th scope="col">Id</th>
-     					<th scope="col">Nom</th>
-     					<th scope="col">description</th>
-     					<th scope="col">Action</th>
-    				</tr>
-  				</thead>
- 				<tbody>
-    				<tr>
-      					<th scope="row">1</th>
-      					<td>Mark</td>
-      					<td>Otto</td>
-      					<td>
-      						<button class="btn btn-primary"><i class="fas fa-edit"></i></button>
-      						<button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-      					</td>
-     				
-    				</tr>
-    				
-  
-   
-  				</tbody>
-			</table> -->
 
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-6 pt-2">
 			
 
 			<div class="form">
@@ -87,7 +62,6 @@
 			</div>
 
 			 
-    	<!-- 	<form> -->
    
     
 
@@ -108,7 +82,7 @@
         <center><button class="btn mt-3 btnCategory btn-block" onclick="createCategory();">Créer une catégorie</button></center>
 
         </div>
-   <!--  </form> -->
+ 
     </div>
 		</div>
 

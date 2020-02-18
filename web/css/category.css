@@ -43,3 +43,10 @@ section{
     color: #FFFFFF !important;
 
 }
+
+#table{
+
+	overflow: scroll !important;
+	height: 300px !important;
+	
+}

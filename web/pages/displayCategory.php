@@ -19,16 +19,16 @@ echo "<table class='table table-striped table-hover table-bordered'>";
      	echo "</tr>";		
     echo "</thead>";			
     echo "<tbody>";			
-  	
+  
   	foreach ($query->fetchAll() as $value) {
 		
-		echo "<tr>";
+		echo "<tr id='category-" . $value['idCategorie'] ." '>";
       		echo "<th scope='row'>".$value['idCategorie']."</th>";
       		echo "<td>".$value['nom']."</td>";
       		echo "<td>".$value['description']."</td>";		
       		echo "<td>";
       			echo "<button class='btn btn-primary m-1'><i class='fas fa-edit'></i></button>";
-      			echo "<button class='btn btn-danger m-1'><i class='fas fa-trash-alt'></i></button>";				
+      			echo "<button onclick='deleteCategory(".$value['idCategorie'].");' class='btn btn-danger m-1'><i class='fas fa-trash-alt'></i></button>";				
       		echo "</td>";
     	echo "</tr>";		
 	}

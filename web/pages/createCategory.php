@@ -1,14 +1,17 @@
 <?php
 require('functions.php');
-if (isset($_POST['name'])) {
+if (isset($_POST['name']) && !empty($_POST['name'])) {
 
 
-	$name = $_POST['name'];
-	$connect = connectDb();
+	$name = trim($_POST['name']);
+	
 
-	if (isset($_POST['description'])) {
+	if (isset($_POST['description']) && $name != "") {
 
-		$description = $_POST['description'];
+
+		$connect = connectDb();
+
+		$description = trim($_POST['description']);
 		
 		$queryPrepared = $connect->prepare("INSERT INTO Categorie(nom,description) VALUES(:name,:description);");
 		$queryPrepared->execute([
@@ -21,22 +24,13 @@ if (isset($_POST['name'])) {
 
 	}else{
 
-
-		$queryPrepared = $connect->prepare("INSERT INTO Categorie(nom) VALUES(:name);");
-		$queryPrepared->execute([
-			":name"=>$name
-			
-		]);
-
-
-		echo "<div class='alert alert-success'>Catégorie créée ! </div>";
-
+		echo "<div class='alert alert-danger'>Erreur de saisie !</div>";
 
 	}
 
 
 }else{
 
-	echo "<div class='alert alert-success'> Erreur ! </div>";
+	echo "<div class='alert alert-danger'> Vous devez obligatoirement saisir le nom de la catégorie !</div>";
 
 }

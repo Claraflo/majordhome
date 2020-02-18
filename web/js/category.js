@@ -44,3 +44,19 @@ setInterval("displayCategory()", 1000);
 
 
 
+function deleteCategory(id){
+
+const request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+	if(request.readyState === 4) {
+     
+        const del = document.getElementById('category-' + id);
+        del.parentNode.removeChild(del);
+   
+    }
+  };
+  request.open('DELETE', 'deleteCategory.php?id=' + id);
+  request.send();
+
+}
+
