@@ -19,8 +19,7 @@ int main(int argc, char** argv) {
     g_signal_connect(G_OBJECT(pWindow), "destroy", G_CALLBACK(OnDestroy), NULL);
 
 
-    //Display Window
-    gtk_widget_show_all(pWindow);
+
     gtk_main();
 
 

@@ -19,7 +19,6 @@ GtkWidget* creatWindow(GtkWidget* pWindow){
 
 void displayContainWelcomPage(GtkWidget* pWindow){
 
-
   //Initialization of Widgets
 
     GtkWidget *usernameLabel, *passwordLabel, *helloLabel;
@@ -42,10 +41,6 @@ void displayContainWelcomPage(GtkWidget* pWindow){
     gtk_entry_set_max_length(passwordEntry,50);
     gtk_entry_set_visibility(GTK_ENTRY(passwordEntry), FALSE);// Password is not display, instead, dots replace characters
     okButton = gtk_button_new_with_label("Valider");
-
-    t_inputAuth* inputData = creatStructInput(inputData,usernameEntry,passwordEntry);
-
-    g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),inputData);
 
     hboxIcon = gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
     hbox0 = gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
@@ -70,11 +65,15 @@ void displayContainWelcomPage(GtkWidget* pWindow){
 
     gtk_container_add(GTK_CONTAINER(pWindow), vbox);
 
+    //Display Window
+    gtk_widget_show_all(pWindow);
 
+    t_inputAuth* inputData = creatStructInput(inputData,usernameEntry,passwordEntry,vbox);
+    g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),inputData);
 
    }
 
-t_inputAuth* creatStructInput(t_inputAuth* inputData, GtkWidget* usernameEntry, GtkWidget* passwordEntry){
+t_inputAuth* creatStructInput(t_inputAuth* inputData, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox){
 
     inputData = malloc(sizeof(t_inputAuth));
 
@@ -84,15 +83,13 @@ t_inputAuth* creatStructInput(t_inputAuth* inputData, GtkWidget* usernameEntry, 
         }
     inputData->username = usernameEntry;
     inputData->password = passwordEntry;
-
+    inputData->vbox = vbox;
 return inputData;
 }
 
 void ValidationAuthentication(GtkWidget *button, t_inputAuth* inputData){
 
-    printf("%s",gtk_entry_get_text(GTK_ENTRY(inputData->username)));
-    printf("\n%s",gtk_entry_get_text(GTK_ENTRY(inputData->password)));
-
+    authentification(inputData);
     free(inputData);
 
 }

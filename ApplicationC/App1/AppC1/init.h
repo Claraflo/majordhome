@@ -7,15 +7,14 @@
 #include <gtk/gtk.h>
 
 #include "structures.h"
-#include "qrcodegen.h"
-#include "qrCode.h"
+#include "authentication.h"
 
 
 
 GtkWidget* creatWindow(GtkWidget* pWindow);
 void displayContainWelcomPage(GtkWidget* pWindow);
 void ValidationAuthentication(GtkWidget *button, t_inputAuth* inputData);
-t_inputAuth* creatStructInput(t_inputAuth* inputData, GtkWidget* usernameEntry, GtkWidget* passwordEntry);
+t_inputAuth* creatStructInput(t_inputAuth* inputData, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
 char** creatArrayInput(char** arrayDataInput);
 
 #endif //APP1_INIT_H

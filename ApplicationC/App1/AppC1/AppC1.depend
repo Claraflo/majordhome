@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1582219884 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
+1582241631 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
 	"main.h"
 
 1582218815 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.h
@@ -2502,17 +2502,16 @@
 1580766493 c:\gkt\include\gtk-3.0\gtk\deprecated\gtkvseparator.h
 	<gtk/gtkseparator.h>
 
-1582236110 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.c
+1582242231 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.c
 	"init.h"
 
-1582230169 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.h
+1582241898 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<gtk/gtk.h>
 	"structures.h"
-	"qrcodegen.h"
-	"qrCode.h"
+	"authentication.h"
 
 1135285278 c:\api_mysql\mysql\mysql.h
 	<sys/types.h>
@@ -2537,7 +2536,7 @@
 
 1130013324 c:\api_mysql\mysql\my_alloc.h
 
-1582229712 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
+1582240464 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2546,4 +2545,16 @@
 	"qrCode.h"
 
 1582230560 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.c
+
+1582237157 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<gtk/gtk.h>
+	<windows.h>
+	<mysql.h>
+	"structures.h"
+
+1582241708 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
+	"authentication.h"
 

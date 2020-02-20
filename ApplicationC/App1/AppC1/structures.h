@@ -22,6 +22,7 @@ typedef struct
 
     GtkWidget* username;
     GtkWidget* password;
+    GtkWidget* vbox;
 
 }t_inputAuth;
 
