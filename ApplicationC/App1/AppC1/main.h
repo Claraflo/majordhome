@@ -2,17 +2,18 @@
 #ifndef APP1_MAIN_H
 #define APP1_MAIN_H
 
-
-#include <stdbool.h>
-#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-//#include <gtk/gtk.h>
+#include <gtk/gtk.h>
+#include <windows.h>
+#include <mysql.h>
 
 #include "qrcodegen.h"
 #include "qrCode.h"
+#include "init.h"
 
 
+void OnDestroy(GtkWidget *pWidget, gpointer pData);
 
 #endif //APP1_MAIN_H

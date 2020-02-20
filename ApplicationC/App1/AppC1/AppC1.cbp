@@ -29,8 +29,8 @@
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-mms-bitfields" />
 			<Add option="-Wall" />
+			<Add option="-mms-bitfields" />
 			<Add directory="C:/gkt/include" />
 			<Add directory="C:/gkt/include/gtk-3.0" />
 			<Add directory="C:/gkt/include/cairo" />
@@ -41,16 +41,32 @@
 			<Add directory="C:/gkt/lib/gtk-3.0/include" />
 			<Add directory="C:/gkt/include/atk-1.0" />
 			<Add directory="C:/gkt/include/gdk-pixbuf-2.0" />
+			<Add directory="C:/api_mysql/MYSQL" />
 		</Compiler>
 		<Linker>
 			<Add library="gtk-win32-3.0" />
 			<Add library="gobject-2.0" />
 			<Add library="glib-2.0" />
+			<Add library="C:/api_mysql/libmysqlclient.a" />
 			<Add directory="C:/gkt/lib" />
 		</Linker>
+		<Unit filename="init.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="init.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="main.h" />
+		<Unit filename="qrCode.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="qrCode.h" />
+		<Unit filename="qrcodegen.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="qrcodegen.h" />
+		<Unit filename="structures.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

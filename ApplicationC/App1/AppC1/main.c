@@ -8,8 +8,36 @@
 
 
 // The main application program.
-int main(void) {
+int main(int argc, char** argv) {
 
+    gtk_init(&argc,&argv);
+
+    //Creation of Window
+    GtkWidget* pWindow = creatWindow(pWindow);
+
+    //Event Close
+    g_signal_connect(G_OBJECT(pWindow), "destroy", G_CALLBACK(OnDestroy), NULL);
+
+
+    //Display Window
+    gtk_widget_show_all(pWindow);
+    gtk_main();
+
+
+
+    return EXIT_SUCCESS;
+}
+
+
+void OnDestroy(GtkWidget *pWidget, gpointer pData)
+{
+    /* Arret de la boucle evenementielle */
+    gtk_main_quit();
+    gtk_widget_destroy(pWidget);
+
+}
+
+/*QRCODE
     char input[6];
 
     printf("Entrez le numero d'id en 5 caracteres :  ");
@@ -25,5 +53,4 @@ int main(void) {
 
 
     return EXIT_SUCCESS;
-}
-
+*/
