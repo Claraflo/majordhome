@@ -75,7 +75,6 @@
             <textarea name="description"  id="description" class="form-control" placeholder="Voyage "></textarea>
         </div>
 
-   
 
     <i class="p-2">* Champs obligatoires</i>
    
@@ -90,6 +89,68 @@
 
 
 </div>
+
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <!-- <h4 class="modal-title">Modification</h4> -->
+        <i class='fas fa-2x fa-edit'></i>
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+       <div class="form-group">
+       	
+       	<label>Nom *</label>
+       	<input type="text" id="updateName" class="form-control" required="required" placeholder="Voyage">
+       </div>
+
+        <div class="form-group">
+       	
+       	<label>Description</label>
+       	<textarea type="text" id="updateDescription" class="form-control" placeholder="Voyage ..."></textarea>
+
+       </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+        <button id="update" type="button" class="btn btn-primary" data-dismiss="modal">Modifier</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="modalDelete" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        <p>Etes-vous sûr de vouloir supprimer cette catégorie ?</p>
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button id="btnDelete" class="btn btn-danger" data-dismiss="modal">Supprimer</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
 
 </section>
 
