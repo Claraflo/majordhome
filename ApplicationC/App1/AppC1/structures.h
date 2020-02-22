@@ -23,7 +23,7 @@ typedef struct
     GtkWidget* username;
     GtkWidget* password;
     GtkWidget* vbox;
-
+    t_program* t_program;
 
 }t_pageAuth;
 

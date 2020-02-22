@@ -7,9 +7,10 @@
 #include <gtk/gtk.h>
 #include <windows.h>
 #include <mysql.h>
-#include <wchar.h>
+
 
 #include "structures.h"
+#include "error.h"
 
 
 void authentication(t_pageAuth* inputData);

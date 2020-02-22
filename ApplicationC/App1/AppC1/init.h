@@ -8,14 +8,16 @@
 
 #include "structures.h"
 #include "authentication.h"
+#include"error.h"
 
 
 
 GtkWidget* creatWindow(GtkWidget* pWindow);
 void displayContainWelcomPage(GtkWidget* pWindow);
 void ValidationAuthentication(GtkWidget *button, t_pageAuth* inputData);
-t_pageAuth* creatStructInput(t_pageAuth* inputData, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
-char** creatArrayInput(char** arrayDataInput);
+t_pageAuth* creatStructPageAuth(t_pageAuth* inputData,GtkWidget* pWindow, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
+t_program* creatStructProgram(GtkWidget* windows);
+
 
 #endif //APP1_INIT_H
 

@@ -42,19 +42,21 @@ void authentication(t_pageAuth* inputData){
     requestAuth = g_strconcat(requestAuth,conversionPasswordUTF8,NULL);
     requestAuth = g_strconcat(requestAuth,"'",NULL);
 
-    printf("\n%s",requestAuth);
     mysql_query(sock,requestAuth);
 
     res = mysql_use_result(sock);
     row = mysql_fetch_row(res);
 
     if(row){
+        free(inputData);
         gtk_widget_hide(inputData->vbox);
+        //Fonction
 
     }else if(!row){
-        printf("N'existe pas");
+        errorMessage(inputData->t_program->pWindow,"Erreur dans l'id ou le mot de passe.","Fenetre d'erreur");
     }
 
     mysql_free_result(res);
     mysql_close(sock);
 }
+
