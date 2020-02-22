@@ -11,7 +11,7 @@
 
 #include "structures.h"
 
-void errorMessage(t_program* pWindow, char* message,char* title);
+void errorMessage(t_program* t_program, char* message,char* title,GtkMessageType messageType, GtkButtonsType buttons);
 
 #endif //APP1_AUTHENTICATION_H
 

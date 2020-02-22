@@ -11,13 +11,15 @@ GtkWidget* creatWindow(GtkWidget* pWindow){
     gtk_window_set_title(GTK_WINDOW(pWindow), "Providers Manager");
     gtk_container_set_border_width(GTK_CONTAINER(pWindow), 15);
 
-    displayContainWelcomPage(pWindow);
+    t_program* t_program = creatStructProgram(pWindow);
+
+    displayContainWelcomPage(t_program);
 
     return  pWindow;
 }
 
 
-void displayContainWelcomPage(GtkWidget* pWindow){
+void displayContainWelcomPage(t_program* t_program){
 
   //Initialization of Widgets
 
@@ -63,38 +65,38 @@ void displayContainWelcomPage(GtkWidget* pWindow){
     gtk_box_pack_start(GTK_BOX(vbox), hbox2, FALSE, FALSE, 2);
     gtk_box_pack_start(GTK_BOX(vbox), okButton, FALSE, FALSE, 2);
 
-    gtk_container_add(GTK_CONTAINER(pWindow), vbox);
+    gtk_container_add(GTK_CONTAINER(t_program->pWindow), vbox);
 
     //Display Window
-    gtk_widget_show_all(pWindow);
+    gtk_widget_show_all(t_program->pWindow);
 
-    t_pageAuth* inputData = creatStructPageAuth(inputData,pWindow, usernameEntry,passwordEntry,vbox);
-    g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),inputData);
+    t_pageAuth* t_pageAuth = creatStructPageAuth(t_pageAuth,t_program, usernameEntry,passwordEntry,vbox);
+    g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),t_program);
 
    }
 
-t_pageAuth* creatStructPageAuth(t_pageAuth* inputData,GtkWidget* pWindow, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox){
+t_pageAuth* creatStructPageAuth(t_pageAuth* t_pageAuth,t_program* t_program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox){
 
-    inputData = malloc(sizeof(t_pageAuth));
+    t_pageAuth = malloc(sizeof(t_pageAuth));
 
-        if(!inputData){
+        if(!t_pageAuth){
             // créer fonction erreur
             return NULL;
         }
 
-    t_program* t_program = creatStructProgram(pWindow);
 
-    inputData->username = usernameEntry;
-    inputData->password = passwordEntry;
-    inputData->vbox = vbox;
-    inputData->t_program = t_program;
+    t_pageAuth->username = usernameEntry;
+    t_pageAuth->password = passwordEntry;
+    t_pageAuth->vbox = vbox;
 
-return inputData;
+    t_program->t_pageAuth = t_pageAuth;
+
+return t_pageAuth;
 }
 
-void ValidationAuthentication(GtkWidget *button, t_pageAuth* inputData){
+void ValidationAuthentication(GtkWidget *button, t_program* t_program){
 
-    authentication(inputData);
+    authentication(t_program);
 
 }
 
@@ -108,6 +110,8 @@ t_program* creatStructProgram(GtkWidget* pWindow){
         }
 
     t_program->pWindow= pWindow;
+    t_program->t_pageAuth = NULL;
+    t_program->t_pageMenu = NULL;
 
 return t_program;
 }

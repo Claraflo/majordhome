@@ -13,9 +13,9 @@
 
 
 GtkWidget* creatWindow(GtkWidget* pWindow);
-void displayContainWelcomPage(GtkWidget* pWindow);
-void ValidationAuthentication(GtkWidget *button, t_pageAuth* inputData);
-t_pageAuth* creatStructPageAuth(t_pageAuth* inputData,GtkWidget* pWindow, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
+void displayContainWelcomPage(t_program* t_program);
+void ValidationAuthentication(GtkWidget *button, t_program* t_program);
+t_pageAuth* creatStructPageAuth(t_pageAuth* t_pageAuth,t_program* program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
 t_program* creatStructProgram(GtkWidget* windows);
 
 

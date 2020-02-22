@@ -9,23 +9,30 @@
 #include "qrcodegen.h"
 #include "qrCode.h"
 
-
-
-typedef struct
-{
-    GtkWidget* pWindow; // main window
-
-} t_program;
-
 typedef struct
 {
 
     GtkWidget* username;
     GtkWidget* password;
     GtkWidget* vbox;
-    t_program* t_program;
 
 }t_pageAuth;
+
+typedef struct
+{
+
+}t_pageMenu;
+
+
+typedef struct
+{
+    GtkWidget* pWindow; // main window
+    t_pageAuth* t_pageAuth;
+    t_pageMenu* t_pageMenu;
+
+} t_program;
+
+
 
 #endif //APP1_STRUCTURES_H
 

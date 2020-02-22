@@ -13,7 +13,7 @@
 #include "error.h"
 
 
-void authentication(t_pageAuth* inputData);
+void authentication(t_program* t_program);
 MYSQL* connection(MYSQL* sock);
 
 #endif //APP1_AUTHENTICATION_H

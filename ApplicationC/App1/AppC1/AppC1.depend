@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1582242394 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
+1582391607 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
 	"main.h"
 
 1582218815 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.h
@@ -2502,10 +2502,10 @@
 1580766493 c:\gkt\include\gtk-3.0\gtk\deprecated\gtkvseparator.h
 	<gtk/gtkseparator.h>
 
-1582388672 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.c
+1582392698 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.c
 	"init.h"
 
-1582388118 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.h
+1582392725 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2537,7 +2537,7 @@
 
 1130013324 c:\api_mysql\mysql\my_alloc.h
 
-1582388367 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
+1582392754 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2545,10 +2545,10 @@
 	"qrcodegen.h"
 	"qrCode.h"
 
-1582388770 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.c
+1582392645 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.c
 	"error.h"
 
-1582387611 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.h
+1582392412 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2558,10 +2558,10 @@
 	"structures.h"
 	"error.h"
 
-1582388654 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
+1582392546 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
 	"authentication.h"
 
-1582388613 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.h
+1582392656 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2569,4 +2569,16 @@
 	<windows.h>
 	<mysql.h>
 	"structures.h"
+
+1582390139 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.c
+	"menu.h"
+
+1582390106 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<gtk/gtk.h>
+	"structures.h"
+	"authentication.h"
+	"error.h"
 
