@@ -68,14 +68,14 @@ void displayContainWelcomPage(GtkWidget* pWindow){
     //Display Window
     gtk_widget_show_all(pWindow);
 
-    t_inputAuth* inputData = creatStructInput(inputData,usernameEntry,passwordEntry,vbox);
+    t_pageAuth* inputData = creatStructInput(inputData,usernameEntry,passwordEntry,vbox);
     g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),inputData);
 
    }
 
-t_inputAuth* creatStructInput(t_inputAuth* inputData, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox){
+t_pageAuth* creatStructInput(t_pageAuth* inputData, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox){
 
-    inputData = malloc(sizeof(t_inputAuth));
+    inputData = malloc(sizeof(t_pageAuth));
 
         if(!inputData){
             // créer fonction erreur
@@ -84,12 +84,12 @@ t_inputAuth* creatStructInput(t_inputAuth* inputData, GtkWidget* usernameEntry, 
     inputData->username = usernameEntry;
     inputData->password = passwordEntry;
     inputData->vbox = vbox;
+
 return inputData;
 }
 
-void ValidationAuthentication(GtkWidget *button, t_inputAuth* inputData){
+void ValidationAuthentication(GtkWidget *button, t_pageAuth* inputData){
 
-    authentification(inputData);
-    free(inputData);
+    authentication(inputData);
 
 }

@@ -50,6 +50,14 @@
 			<Add library="C:/api_mysql/libmysqlclient.a" />
 			<Add directory="C:/gkt/lib" />
 		</Linker>
+		<Unit filename="authentication.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="authentication.h" />
+		<Unit filename="error.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="error.h" />
 		<Unit filename="init.c">
 			<Option compilerVar="CC" />
 		</Unit>

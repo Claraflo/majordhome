@@ -24,7 +24,8 @@ typedef struct
     GtkWidget* password;
     GtkWidget* vbox;
 
-}t_inputAuth;
+
+}t_pageAuth;
 
 #endif //APP1_STRUCTURES_H
 

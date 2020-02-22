@@ -7,11 +7,12 @@
 #include <gtk/gtk.h>
 #include <windows.h>
 #include <mysql.h>
+#include <wchar.h>
 
 #include "structures.h"
 
 
-void authentification(t_inputAuth* inputData);
-
+void authentication(t_pageAuth* inputData);
+MYSQL* connection(MYSQL* sock);
 
 #endif //APP1_AUTHENTICATION_H

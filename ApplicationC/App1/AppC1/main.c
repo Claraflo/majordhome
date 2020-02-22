@@ -18,11 +18,7 @@ int main(int argc, char** argv) {
     //Event Close
     g_signal_connect(G_OBJECT(pWindow), "destroy", G_CALLBACK(OnDestroy), NULL);
 
-
-
     gtk_main();
-
-
 
     return EXIT_SUCCESS;
 }
