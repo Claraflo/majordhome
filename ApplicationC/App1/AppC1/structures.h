@@ -16,10 +16,12 @@ typedef struct
     GtkWidget* password;
     GtkWidget* vbox;
 
+
 }t_pageAuth;
 
 typedef struct
 {
+    GtkWidget* vbox;
 
 }t_pageMenu;
 
@@ -27,6 +29,7 @@ typedef struct
 typedef struct
 {
     GtkWidget* pWindow; // main window
+    GtkWidget* pbox;    // main box
     t_pageAuth* t_pageAuth;
     t_pageMenu* t_pageMenu;
 

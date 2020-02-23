@@ -10,26 +10,27 @@
 // The main application program.
 int main(int argc, char** argv) {
 
+    //Initialization
     gtk_init(&argc,&argv);
-
-    //Creation of Window
-    GtkWidget* pWindow = creatWindow(pWindow);
+    t_program* t_program = initProgram(t_program);
 
     //Event Close
-    g_signal_connect(G_OBJECT(pWindow), "destroy", G_CALLBACK(OnDestroy), NULL);
+    g_signal_connect(G_OBJECT(t_program->pWindow), "destroy", G_CALLBACK(OnDestroy), t_program);
 
+    // Loop GTK
     gtk_main();
 
     return EXIT_SUCCESS;
 }
 
 
-void OnDestroy(GtkWidget *pWidget, gpointer pData)
+void OnDestroy(GtkWidget *pWidget, t_program* t_program)
 {
     /* Arret de la boucle evenementielle */
     gtk_main_quit();
     gtk_widget_destroy(pWidget);
 
+    endProgram(t_program);
 }
 
 /*QRCODE

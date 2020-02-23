@@ -11,7 +11,7 @@
 
 #include "structures.h"
 #include "error.h"
-
+#include "menu.h"
 
 void authentication(t_program* t_program);
 MYSQL* connection(MYSQL* sock);

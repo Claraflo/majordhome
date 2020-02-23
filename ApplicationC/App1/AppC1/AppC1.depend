@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1582391607 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
+1582396747 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
 	"main.h"
 
-1582218815 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.h
+1582396482 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -12,6 +12,7 @@
 	"qrcodegen.h"
 	"qrCode.h"
 	"init.h"
+	"endProgram.h"
 
 1581173192 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\qrcodegen.h
 	<stdbool.h>
@@ -2502,10 +2503,10 @@
 1580766493 c:\gkt\include\gtk-3.0\gtk\deprecated\gtkvseparator.h
 	<gtk/gtkseparator.h>
 
-1582392698 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.c
+1582470710 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.c
 	"init.h"
 
-1582392725 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.h
+1582470672 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2537,7 +2538,7 @@
 
 1130013324 c:\api_mysql\mysql\my_alloc.h
 
-1582392754 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
+1582470740 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2548,7 +2549,7 @@
 1582392645 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.c
 	"error.h"
 
-1582392412 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.h
+1582395101 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2557,8 +2558,9 @@
 	<mysql.h>
 	"structures.h"
 	"error.h"
+	"menu.h"
 
-1582392546 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
+1582471865 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
 	"authentication.h"
 
 1582392656 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.h
@@ -2570,10 +2572,22 @@
 	<mysql.h>
 	"structures.h"
 
-1582390139 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.c
+1582472159 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.c
 	"menu.h"
 
-1582390106 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.h
+1582471537 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<gtk/gtk.h>
+	"structures.h"
+	"authentication.h"
+	"error.h"
+
+1582396641 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\endprogram.c
+	"endProgram.h"
+
+1582396544 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\endprogram.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

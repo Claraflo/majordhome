@@ -10,5 +10,7 @@
 #include "authentication.h"
 #include"error.h"
 
+void displayMenu(t_program* t_program);
+t_pageMenu* creatStructPageMenu(t_pageMenu* t_pageMenu,GtkWidget* vbox);
 
 #endif //APP1_MENU_H

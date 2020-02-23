@@ -12,8 +12,9 @@
 #include "qrcodegen.h"
 #include "qrCode.h"
 #include "init.h"
+#include "endProgram.h"
 
 
-void OnDestroy(GtkWidget *pWidget, gpointer pData);
+void OnDestroy(GtkWidget *pWidget, t_program* t_program);
 
 #endif //APP1_MAIN_H
