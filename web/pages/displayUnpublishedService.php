@@ -24,7 +24,7 @@ echo "<table class='table table-striped table-hover table-bordered'>";
   
   	foreach ($dataService as $value) {
 		
-		echo '<tr id="category-' . $value['idService'] .'">';
+		echo '<tr id="service-' . $value['idService'] .'">';
       		echo "<th scope='row'>".$value['idService']."</th>";
       		echo "<td>".$value['nom']."</td>";
           echo "<td>".$value['description']."</td>";    

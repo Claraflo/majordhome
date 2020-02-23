@@ -60,3 +60,35 @@ function displayUnpublishedService(){
 
 
 }
+
+
+
+function deleteConfirm(id){
+
+const btnDelete = document.getElementById('btnDelete');
+btnDelete.setAttribute('onclick', 'deleteService('+id+')');
+
+
+}
+
+function deleteService(id){
+
+const request = new XMLHttpRequest();
+request.onreadystatechange = function() {
+	if(request.readyState === 4) {
+     
+        const del = document.getElementById('service-' +id);
+        del.parentNode.removeChild(del);
+   
+  }
+}
+request.open('DELETE', 'deleteService.php?id=' + id);
+request.send();
+
+}
+
+
+
+
+
+
