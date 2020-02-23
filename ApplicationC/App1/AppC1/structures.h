@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <gtk/gtk.h>
+#include <windows.h>
+#include <mysql.h>
 
 #include "qrcodegen.h"
 #include "qrCode.h"
@@ -44,6 +46,7 @@ typedef struct
 {
     GtkWidget* pWindow; // main window
     GtkWidget* pbox;    // main box
+    MYSQL* sock;
     t_pageAuth* t_pageAuth;
     t_pageMenu* t_pageMenu;
     t_pageForm* t_pageForm;

@@ -2538,11 +2538,13 @@
 
 1130013324 c:\api_mysql\mysql\my_alloc.h
 
-1582478762 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
+1582489729 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<gtk/gtk.h>
+	<windows.h>
+	<mysql.h>
 	"qrcodegen.h"
 	"qrCode.h"
 
@@ -2560,7 +2562,7 @@
 	"error.h"
 	"menu.h"
 
-1582471865 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
+1582488714 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
 	"authentication.h"
 
 1582392656 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.h
@@ -2584,7 +2586,7 @@
 	"authentication.h"
 	"error.h"
 
-1582478589 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\endprogram.c
+1582489845 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\endprogram.c
 	"endProgram.h"
 
 1582396544 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\endprogram.h
@@ -2596,17 +2598,17 @@
 	"authentication.h"
 	"error.h"
 
-1582478530 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\form.c
+1582487639 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\form.c
 	"form.h"
 
-1582477798 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\form.h
+1582483872 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\form.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<gtk/gtk.h>
 	"structures.h"
-	"authentication.h"
 	"error.h"
+	"addDataBase.h"
 
 1582474712 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\research.c
 	"research.h"
@@ -2618,4 +2620,17 @@
 	<gtk/gtk.h>
 	"structures.h"
 	"error.h"
+
+1582489722 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\adddatabase.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<gtk/gtk.h>
+	<windows.h>
+	<mysql.h>
+	"structures.h"
+	"error.h"
+
+1582489825 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\adddatabase.c
+	"addDataBase.h"
 

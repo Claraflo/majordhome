@@ -50,6 +50,10 @@
 			<Add library="C:/api_mysql/libmysqlclient.a" />
 			<Add directory="C:/gkt/lib" />
 		</Linker>
+		<Unit filename="addDataBase.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="addDataBase.h" />
 		<Unit filename="authentication.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -62,6 +66,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="error.h" />
+		<Unit filename="form.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="form.h" />
 		<Unit filename="init.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -82,6 +90,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="qrcodegen.h" />
+		<Unit filename="research.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="research.h" />
 		<Unit filename="structures.h" />
 		<Extensions>
 			<code_completion />

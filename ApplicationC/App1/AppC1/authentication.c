@@ -33,6 +33,7 @@ void authentication(t_program* t_program){
     MYSQL_RES* res = NULL;
 
     sock = connection(sock);
+    t_program->sock = sock;
 
     gchar* conversionUsernameUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->username)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     gchar* conversionPasswordUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->password)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
@@ -60,6 +61,5 @@ void authentication(t_program* t_program){
     free(conversionPasswordUTF8);
     free(requestAuth);
     mysql_free_result(res);
-    mysql_close(sock);
 }
 

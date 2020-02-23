@@ -2,6 +2,8 @@
 
 void endProgram(t_program* t_program)
 {
+
+    mysql_close(t_program->sock);
     gtk_main_quit();
     gtk_widget_destroy(t_program->pWindow);
     free(t_program->t_pageAuth);

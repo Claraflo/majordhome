@@ -7,11 +7,11 @@
 #include <gtk/gtk.h>
 
 #include "structures.h"
-#include "authentication.h"
-#include"error.h"
+#include "error.h"
+#include "addDataBase.h"
 
 void displayForm(t_program* t_program);
-t_pageForm* creatStructPageForm(t_pageForm* t_pageForm,GtkWidget* vBoxForm);
+t_pageForm* creatStructPageForm(t_pageForm* t_pageForm,GtkWidget* vBoxForm,GtkWidget* entry[]);
 void ValidationFormProviders(GtkWidget *buttonValidForm, t_program* t_program);
 void ValidationReturnMenu(GtkWidget *buttonExit, t_program* t_program);
 
