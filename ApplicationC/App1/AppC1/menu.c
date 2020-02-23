@@ -17,7 +17,8 @@ void displayMenu(t_program* t_program){
 
     buttonForm = gtk_button_new_with_label("Formulaire");
     buttonSelect = gtk_button_new_with_label("Recherche");
-    buttonExit = gtk_button_new_with_label("Deconnexion");
+    buttonExit = gtk_button_new_from_stock(GTK_STOCK_QUIT);
+
 
     vBoxMenu = gtk_box_new(GTK_ORIENTATION_VERTICAL,60);
     labelBox = gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
@@ -70,13 +71,15 @@ return t_pageMenu;
 
 void ValidationForm(GtkWidget *buttonForm, t_program* t_program){
 
-    //initForm(t_program);
+    gtk_widget_hide(t_program->t_pageMenu->vbox);
+    displayForm(t_program);
 
 }
 
 void ValidationSelect(GtkWidget *buttonSelect, t_program* t_program){
 
-    //initResearch(t_program);
+    gtk_widget_hide(t_program->t_pageMenu->vbox);
+    initResearch(t_program);
 
 }
 

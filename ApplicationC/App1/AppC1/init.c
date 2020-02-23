@@ -27,7 +27,7 @@ GtkWidget* creatWindow(GtkWidget* pWindow){
     pWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
 
-    gtk_window_set_position(GTK_WINDOW(pWindow), GTK_WIN_POS_CENTER);
+    gtk_window_set_position(GTK_WINDOW(pWindow),GTK_WIN_POS_CENTER_ALWAYS);
     gtk_window_set_default_size(GTK_WINDOW(pWindow), 400, 300);
     gtk_window_set_title(GTK_WINDOW(pWindow), "Providers Manager");
     gtk_container_set_border_width(GTK_CONTAINER(pWindow), 15);
