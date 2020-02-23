@@ -79,6 +79,7 @@ request.onreadystatechange = function() {
      
         const del = document.getElementById('service-' +id);
         del.parentNode.removeChild(del);
+        displayUnpublishedService();
    
   }
 }

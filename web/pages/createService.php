@@ -91,8 +91,8 @@ $query->execute();
        	
        				<label>Prix du service *</label>
        				<input type="number" id="price" class="form-control" required="required" placeholder="12">
-      			</div>
-		</div>
+      				</div>
+					</div>
 
 
 
