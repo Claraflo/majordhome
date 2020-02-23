@@ -12,5 +12,9 @@
 
 void displayMenu(t_program* t_program);
 t_pageMenu* creatStructPageMenu(t_pageMenu* t_pageMenu,GtkWidget* vbox);
+void ValidationForm(GtkWidget *buttonForm, t_program* t_program);
+void ValidationSelect(GtkWidget *buttonSelect, t_program* t_program);
+void ValidationExit(GtkWidget *buttonExit, t_program* t_program);
+void returnAuth(t_program* t_program);
 
 #endif //APP1_MENU_H

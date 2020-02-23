@@ -27,9 +27,9 @@ void displayMenu(t_program* t_program){
 
 
     gtk_box_pack_start(GTK_BOX(labelBox), labelMenu, TRUE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(buttonFormBox), buttonForm, TRUE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(buttonSelectBox), buttonSelect, TRUE, FALSE, 5);
-    gtk_box_pack_start(GTK_BOX(buttonExitBox), buttonExit, TRUE, FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(buttonFormBox), buttonForm, TRUE, TRUE, 5);
+    gtk_box_pack_start(GTK_BOX(buttonSelectBox), buttonSelect, TRUE, TRUE, 5);
+    gtk_box_pack_start(GTK_BOX(buttonExitBox), buttonExit, TRUE, TRUE, 5);
 
     gtk_box_pack_start(GTK_BOX(vBoxMenu), labelBox, FALSE, FALSE, 2);
     gtk_box_pack_start(GTK_BOX(vBoxMenu), buttonFormBox, FALSE, FALSE, 2);
@@ -44,8 +44,13 @@ void displayMenu(t_program* t_program){
 
     t_pageMenu* t_pageMenu = creatStructPageMenu(t_pageMenu,vBoxMenu);
     t_program->t_pageMenu = t_pageMenu;
-}
 
+
+    g_signal_connect(G_OBJECT(buttonForm), "clicked", G_CALLBACK(ValidationForm),t_program);
+    g_signal_connect(G_OBJECT(buttonSelect), "clicked", G_CALLBACK(ValidationSelect),t_program);
+    g_signal_connect(G_OBJECT(buttonExit), "clicked", G_CALLBACK(ValidationExit),t_program);
+
+}
 
 
 t_pageMenu* creatStructPageMenu(t_pageMenu* t_pageMenu,GtkWidget* vbox){
@@ -60,5 +65,31 @@ t_pageMenu* creatStructPageMenu(t_pageMenu* t_pageMenu,GtkWidget* vbox){
     t_pageMenu->vbox = vbox ;
 
 return t_pageMenu;
+
+}
+
+void ValidationForm(GtkWidget *buttonForm, t_program* t_program){
+
+    //initForm(t_program);
+
+}
+
+void ValidationSelect(GtkWidget *buttonSelect, t_program* t_program){
+
+    //initResearch(t_program);
+
+}
+
+void ValidationExit(GtkWidget *buttonExit, t_program* t_program){
+
+    returnAuth(t_program);
+}
+
+void returnAuth(t_program* t_program){
+
+    gtk_widget_hide(t_program->t_pageMenu->vbox);
+    gtk_entry_set_text (t_program->t_pageAuth->username,"");
+    gtk_entry_set_text (t_program->t_pageAuth->password,"");
+    gtk_widget_show_all(t_program->t_pageAuth->vbox);
 
 }
