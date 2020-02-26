@@ -28,12 +28,10 @@ MYSQL* connection(MYSQL* sock){
 
 void authentication(t_program* t_program){
 
-    MYSQL* sock;
+
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
-    sock = connection(sock);
-    t_program->sock = sock;
 
     gchar* conversionUsernameUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->username)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     gchar* conversionPasswordUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->password)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
@@ -43,9 +41,9 @@ void authentication(t_program* t_program){
     requestAuth = g_strconcat(requestAuth,"'",NULL);
 
 
-    mysql_query(sock,requestAuth);
+    mysql_query(t_program->sock,requestAuth);
 
-    res = mysql_use_result(sock);
+    res = mysql_use_result(t_program->sock);
     row = mysql_fetch_row(res);
 
     if(row){

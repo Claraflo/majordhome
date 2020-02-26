@@ -6,7 +6,7 @@ t_program* initProgram(t_program* t_program){
     t_program  = malloc(sizeof(t_program));
 
         if(!t_program){
-            //fenetre erreur;
+            printf("erreur malloc program");
             return NULL;
         }
 
@@ -16,6 +16,20 @@ t_program* initProgram(t_program* t_program){
     t_program->pWindow= pWindow;
     t_program->t_pageAuth = NULL;
     t_program->t_pageMenu = NULL;
+    t_program->t_pageForm = NULL;
+    t_program->t_pageResearch = NULL;
+
+    MYSQL* sock;
+
+    sock = connection(sock);
+
+    if(!sock){
+        printf("erreur sock");
+        return NULL;
+    }
+
+    t_program->sock = sock;
+
 
     displayContainWelcomPage(t_program);
 
@@ -100,7 +114,7 @@ t_pageAuth* creatStructPageAuth(t_pageAuth* t_pageAuth,t_program* t_program, Gtk
     t_pageAuth = malloc(sizeof(t_pageAuth));
 
         if(!t_pageAuth){
-            // créer fonction erreur
+            printf("erreur malloc pageAuth");
             return NULL;
         }
 

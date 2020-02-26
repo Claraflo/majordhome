@@ -23,7 +23,8 @@ typedef struct
 
 typedef struct
 {
-    GtkWidget* entry[8];
+    GtkWidget** entry;
+    GtkWidget* combo;
     GtkWidget* vbox;
 
 }t_pageForm;
@@ -50,6 +51,7 @@ typedef struct
     t_pageAuth* t_pageAuth;
     t_pageMenu* t_pageMenu;
     t_pageForm* t_pageForm;
+    t_pageForm* t_pageResearch;
 
 } t_program;
 

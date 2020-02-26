@@ -59,7 +59,7 @@ t_pageMenu* creatStructPageMenu(t_pageMenu* t_pageMenu,GtkWidget* vbox){
     t_pageMenu = malloc(sizeof(t_pageMenu));
 
         if(!t_pageMenu){
-            //fenetre erreur;
+            printf("erreur malloc pageMenu");
             return NULL;
         }
 

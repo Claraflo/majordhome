@@ -15,6 +15,10 @@
 
 void addInputInDB(t_program* t_program);
 void returnForm(t_program* t_program);
+char *str_replace(char *orig, char *rep, char *with);
+gchar* verificationString(t_program* t_program,gchar* text);
+int verificationBirthday(t_program* t_program,gchar* dateBirthday);
+int verificationPhone(t_program* t_program,gchar* phone);
 
 
 #endif //APP1_ADDDATABASE_H

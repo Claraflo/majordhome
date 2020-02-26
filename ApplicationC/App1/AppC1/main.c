@@ -17,6 +17,7 @@ int main(int argc, char** argv) {
     //Event Close
     g_signal_connect(G_OBJECT(t_program->pWindow), "destroy", G_CALLBACK(OnDestroy), t_program);
 
+
     // Loop GTK
     gtk_main();
 
