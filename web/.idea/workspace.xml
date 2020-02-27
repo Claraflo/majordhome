@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/createSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/createSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/error.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/error.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modificationSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/modificationSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/subscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/displaySubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/displaySubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/saveSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/saveSubscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +75,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../bob" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -118,6 +117,11 @@
       <workItem from="1581946141803" duration="46000" />
       <workItem from="1581955560556" duration="7465000" />
       <workItem from="1581966304150" duration="73000" />
+      <workItem from="1582383208762" duration="77000" />
+      <workItem from="1582635923513" duration="22000" />
+      <workItem from="1582743518753" duration="162000" />
+      <workItem from="1582743725960" duration="17000" />
+      <workItem from="1582823632539" duration="455000" />
     </task>
     <servers />
   </component>
@@ -125,10 +129,11 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1581878314194">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582743741471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581878314194" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582743741471" />
     <state x="794" y="444" key="NewPhpFileDialog" timestamp="1581942507858">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

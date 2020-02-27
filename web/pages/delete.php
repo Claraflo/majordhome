@@ -14,8 +14,11 @@ if(!empty($_POST['id'])) {
     }
 
 
-    $data = $bdd->prepare("DELETE FROM subscription WHERE id = $id ");
-    $data->execute(array());
+    $req = $bdd->prepare("UPDATE subscription set statut =:statut WHERE id =:id;");
+    $req->execute([
+        ':statut'=>-1,
+        ':id'=>$id
+    ]);
 
 }
 
