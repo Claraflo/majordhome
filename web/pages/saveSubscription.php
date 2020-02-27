@@ -98,7 +98,7 @@ if(count($_POST) == 11
 
     if(empty($errors)) {
 
-        $req = $bdd->prepare('INSERT INTO subscription(name, price, description, years, months, days, week, time, timeStart, timeEnd, statut) VALUES(:title, :price, :description, :years, :months, :days, :week, :time, :timeStart, :timeEnd, :statut)');
+        $req = $bdd->prepare('INSERT INTO subscription(name, price, description, years, months, days, week, time, timeStart, timeEnd, status) VALUES(:title, :price, :description, :years, :months, :days, :week, :time, :timeStart, :timeEnd, :status)');
         $req->execute([':title'=>$title,
             ':price'=>$price,
             ':description'=>$description,
@@ -109,7 +109,7 @@ if(count($_POST) == 11
             'time'=>$time,
             'timeStart'=>$timeStart,
             'timeEnd'=>$timeEnd,
-            'statut'=>0
+            'status'=>0
         ]);
 
 

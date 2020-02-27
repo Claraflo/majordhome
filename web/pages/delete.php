@@ -14,9 +14,9 @@ if(!empty($_POST['id'])) {
     }
 
 
-    $req = $bdd->prepare("UPDATE subscription set statut =:statut WHERE id =:id;");
+    $req = $bdd->prepare("UPDATE subscription set status =:status WHERE id =:id;");
     $req->execute([
-        ':statut'=>-1,
+        ':status'=>-1,
         ':id'=>$id
     ]);
 

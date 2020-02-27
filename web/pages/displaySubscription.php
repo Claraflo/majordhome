@@ -7,7 +7,7 @@ try{
     die("Erreur SQL ".$e->getMessage());
 }
 
-$data = $bdd->query("SELECT id, name, description, price, week, time, timeStart, timeEnd FROM subscription WHERE statut=0");
+$data = $bdd->query("SELECT id, name, description, price, week, time, timeStart, timeEnd FROM subscription WHERE status=0");
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($rows as $row) {
