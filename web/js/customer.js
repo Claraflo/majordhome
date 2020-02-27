@@ -51,10 +51,10 @@ function display() {
     const request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === 4) {
-            const subscription = document.getElementById('subscription');
+            const subscription = document.getElementById('customer');
             subscription.innerHTML = request.responseText;
         }
     };
-    request.open('GET', 'displaySubscription.php');
+    request.open('GET', 'displayCustomer.php');
     request.send();
 }

@@ -50,9 +50,8 @@ footer{
 
 }
 
-.borderSubscription {
-    /*width: 100%;*/
-    max-width: 500px;
+.borderCustomer {
+    max-width: 95%;
     padding: 15px;
     margin: auto;
     border: 1px solid #aa956f;
@@ -61,15 +60,6 @@ footer{
 
 }
 
-
-.liSubscription {
-    margin-bottom: 30px;
-}
-
-
-.col-md-4 {
-    margin-bottom: 50px;
-}
 
 #add {
     margin-bottom: 20px;
@@ -128,5 +118,6 @@ footer{
     text-decoration: none;
     cursor: pointer;
 }
+
 
 

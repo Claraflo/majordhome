@@ -60,9 +60,26 @@ if (!empty($_SESSION["delete"])) {
         <h1 class="display-4">Clients</h1>
         <hr class="hr">
     </div>
-    <div class="container borderSubscription">
-        <a class="btn btn-success" id="add" href="createSubscription.php">Ajouter un abonnement</a>
-        <div class="row text-center" id="subscription"></div>
+    <div class="borderCustomer">
+        <a class="btn btn-success" id="add" href="createCustomer.php">Ajouter un client</a>
+        <div class="container">
+            <table class="table-hover table-bordered">
+                <thead>
+                    <th>Prenom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Date de naissance</th>
+                    <th>Adresse</th>
+                    <th>Ville</th>
+                    <th>Code postal</th>
+                    <th>Téléphone</th>
+                    <th>Modifier</th>
+                    <th>Supprimer</th>
+                </thead>
+                <tbody id="customer">
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
 
