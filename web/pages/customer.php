@@ -5,9 +5,9 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Abonnements</title>
+	<title>Clients</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/subscription.css">
+	<link rel="stylesheet" type="text/css" href="../css/customer.css">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -57,7 +57,7 @@ if (!empty($_SESSION["delete"])) {
 
 <section >
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Abonnements</h1>
+        <h1 class="display-4">Clients</h1>
         <hr class="hr">
     </div>
     <div class="container borderSubscription">
@@ -85,7 +85,7 @@ if (!empty($_SESSION["delete"])) {
 </footer>
 
 
-<script src="../js/delete.js" type="text/javascript"></script>
+<script src="../js/customer.js" type="text/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
