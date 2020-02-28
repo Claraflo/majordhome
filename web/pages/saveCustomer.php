@@ -83,9 +83,8 @@ if(count($_POST) == 10
         || !preg_match('/^[0-9_]+$/', $phone)) {
         $errors['phone'] = "Le numéro de téléphone que vous avez indiqué n'est pas valide.";
     } else {
-
         $req = $bdd->prepare('SELECT id FROM customer WHERE telephone = :tel');
-        $req->execute([ ":tel " => $phone]);
+        $req->execute([":tel"=>$phone]);
 
         if (!empty($req->fetchAll())) {
 
@@ -125,28 +124,25 @@ if(count($_POST) == 10
         $_SESSION["confirmFormAuth"] = $confirm;
 
 
-        $queryPrepared = $bdd->prepare("INSERT INTO customer(mail,pwd,nom,prenom,dateNaissance,telephone,adresse,ville,codePostal,status) VALUES (:mail,:pwd,:nom,:prenom,:dateNaissance,:tel,:adresse,:ville,:codePostal,1)");
-
         $pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-        $queryPrepared->execute([
-
-            ":mail"=>$email,
-            ":pwd"=>$pwd,
-            ":nom"=>$lastName,
-            ":prenom"=>$firstName,
-            ":dateNaissance"=>$birthday,
-            ":tel"=>$phone,
-            ":adresse"=>$address,
-            ":ville"=>$city,
-            ":codePostal"=>$code
-
-
+        $req = $bdd->prepare('INSERT INTO customer(nom, prenom, mail, status, type, dateNaissance, adresse, ville, codePostal, telephone, pwd) VALUES(:nom, :prenom, :mail, :status, :type, :dateNaissance, :adresse, :ville, :codePostal, :telephone, :pwd)');
+        $req->execute([':nom'=>$lastName,
+            ':prenom'=>$firstName,
+            ':mail'=>$email,
+            ':status'=>0,
+            ':type'=>'c',
+            ':dateNaissance'=>$yearLife,
+            ':adresse'=>$address,
+            ':ville'=>$city,
+            ':codePostal'=>$code,
+            ':telephone'=>$phone,
+            ':pwd'=>$pwd
         ]);
 
 
 
-        header("Location: createCustomer.php");
+        //header("Location: createCustomer.php");
     }
 
     if (!empty($errors)){
