@@ -21,7 +21,7 @@ echo "<table class='table table-striped table-hover table-bordered'>";
         echo "<th scope='col'>Id</th>";   
         echo "<th>Nom</th>";    
         echo "<th>Description</th>";    
-        echo "<th>Prix €</th>";    
+        echo "<th>€ /h</th>";    
         echo "<th>Catégorie</th>";   
         echo "<th>Action</th>";   
       echo "</tr>";   
@@ -37,7 +37,7 @@ echo "<table class='table table-striped table-hover table-bordered'>";
           echo "<td>".$value['prix']. "</td>";    
           echo "<td>".$value['nomCateg']."</td>";   
           echo "<td>";
-                echo "<button data-toggle='modal' data-target='#myModal' class='btn btn-primary' onclick='getData(".$value['idService'].")'>Modifier</button>";
+                echo "<button data-toggle='modal' data-target='#myModal' class='btn btn-primary' onclick='getData(".$value['idService'].")'><i class='fas fa-pen'></i></button>";
 
           echo "</td>";
       echo "</tr>";   

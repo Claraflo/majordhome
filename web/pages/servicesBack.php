@@ -14,11 +14,6 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -95,6 +90,8 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
       					echo "<td>".$value['prix']."</td>";		
       					echo "<td>".$value['nomCateg']."</td>";		
       					echo "<td>";
+
+      							echo "<button class='btn btn-primary' >Ne pas publié</button>";
       						
       					echo "</td>";
     				echo "</tr>";
@@ -109,94 +106,6 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 
 </section>
-
-<!-- 
-
-<div class="container">
-
-	<div class="pt-4">
-	<h4>Créer votre service</h4>
-	<hr>
-	</div>
-
-	<div class="row">
-		
-		<div class="col-md-6">
-			<div class="form-group">
-       	
-       			<label>Nom du service *</label>
-       			<input type="text" id="updateName" class="form-control" required="required" placeholder="Plombier">
-      		</div>
-		</div>
-		<div class="col-md-6">
-			<div class="form-group">
-       			<label>Description </label>
-       			<textarea type="text" id="updateName" class="form-control" placeholder="Théo le plombier.."></textarea>
-      		</div>
-		</div>
-	</div>
-
-
-
-	<div class="pt-4">
-	<h4>Qu'avez-vous besoin de savoir concernant votre service ? </h4>
-	<hr>
-	</div>
-	<div class="row">
-
-		<div class="col-md-5">
-
-			<div class="form-group">
-       			<label>Nom du champ  </label>
-       			<input id='name' type="text" class="form-control" placeholder="Nom">
-      		</div>
-			
-		</div>
-		<div class="col-md-5">
-			<div class="form-group">
-
-				<label>Type du champ  </label>
-	  			<select id='select' class="custom-select form-control" >
-	    			<option>Date</option>
-	    			<option>Text</option>
-	 			</select>
-			</div>
-		</div>
-
-		<div class="col-md-2">
-			<button onclick='test()' class="btn btn-success"><i class='fas fa-plus'></i></button>
-		</div>
-		
-	</div>
-
-
-
-
-	<div class="row mt-4">
-		<div class="col-md-12">
-			<div id="form" class="form-group">
-		</div>
-	</div>
-		
-	</div>
-
-</div>
-
-
-
-
-</section> -->
-
-
-
-
-
-
-
-
-
-
-
 
 
 

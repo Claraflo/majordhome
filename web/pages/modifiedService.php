@@ -71,7 +71,7 @@ if (isset($_POST['name']) && !empty($_POST['name'])
 
    		echo "<div class='alert alert-danger'>";
    			foreach ($errors as  $value) {
-				echo "<li>".	$value. "</li>";
+				echo "<li>".$value. "</li>";
 	
    			}
 
@@ -81,6 +81,10 @@ if (isset($_POST['name']) && !empty($_POST['name'])
 
 
 	
+}else{
+
+	echo "<div class='alert alert-danger'> Erreur ! </div>";
+
 }
 
 

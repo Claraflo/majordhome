@@ -15,8 +15,19 @@ $query = $connect->query('SELECT nom FROM Categorie;');
 $query->execute();
 
 
+$queryPrepared = $connect->prepare('SELECT c.nom,c.type FROM Caracteristique c, Service s WHERE c.idService = s.idService AND c.idService = :id ');
+		
+		$queryPrepared->execute([
+
+					":id"=>$_GET['id']
+				
+
+				]);
+
+	$array = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 
+		
 
 
 
@@ -43,7 +54,7 @@ $query->execute();
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 </head>
-<body onload="displayService(<?php echo $_GET['id'] ?>)">
+<body onload="init(<?php echo $_GET['id'] ?>);">
 
 <?php require('headerBack.php'); ?>
 
@@ -65,8 +76,51 @@ $query->execute();
 	<h4>Mon service</h4>
 	<hr>
 
-<div id="table"></div>
+<div id="table" class="pb-4"></div>
+
+
+<h4>Mon formulaire </h4>
+<hr>
+
+
+<div class="row">
+
+		<div class="col-md-4">
+
+			<div class="form-group">
+       			<label>Nom du champ  </label>
+       			<input id='name' type="text" class="form-control" placeholder="Nom">
+      		</div>
+			
+		
+			<div class="form-group">
+
+				<label>Type du champ  </label>
+	  			<select id='select2' class="custom-select form-control" >
+	    			<option>Texte</option>
+	    			<option>Date</option>
+	    			<option>Nombre</option>
+	    			
+	 			</select>
+			</div>
+
+
+			<button onclick='addFeature(<?php echo $_GET['id'] ?>)' class="btn btn-success">Ajouter <i class='fas fa-plus'></i></button>
+		</div>
+
+
+
+
+		<div class="col-md-8 form" id="form"></div>
+	</div>
+
+
 </div>
+
+
+
+
+
 
 
 
