@@ -33,7 +33,7 @@ echo "<table class='table table-striped table-hover table-bordered'>";
       		echo "<td>";
       			echo "<a href='updateService.php?id=".$value['idService']."'><button data-toggle='modal' data-target='#myModal' class='btn btn-primary m-1'><i class='fas fa-edit'></i></button></a>";
             echo "<button onclick='deleteConfirm(".$value['idService'].");'  data-toggle='modal' data-target='#modalDelete' class='btn btn-danger m-1'><i class='fas fa-trash-alt'></i></button>";  
-      			echo "<button data-toggle='modal' data-target='#modalPublished' class='btn btn-success m-1'>Publié</button>";	
+      			echo "<button onclick='publishConfirm(".$value['idService'].");' data-toggle='modal' data-target='#modalPublished' class='btn btn-success m-1'>Publié</button>";	
 
       		echo "</td>";
     	echo "</tr>";		

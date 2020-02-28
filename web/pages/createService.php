@@ -89,7 +89,7 @@ $query->execute();
 
       					<div class="form-group">
        	
-       				<label>Prix du service *</label>
+       				<label>Prix du service /h *</label>
        				<input type="number" id="price" class="form-control" required="required" placeholder="12">
       				</div>
 					</div>
@@ -178,7 +178,7 @@ $query->execute();
       <div class="modal-footer">
        
         <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-        <button id="btnDelete" class="btn btn-success" data-dismiss="modal">Publié</button>
+        <button id="btnPublish" class="btn btn-success" data-dismiss="modal">Publié</button>
       </div>
     </div>
 
