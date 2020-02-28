@@ -88,7 +88,7 @@ if (!empty($_SESSION["delete"])) {
 <div id="content-delete" class="content-delete">
     <div class="delete">
         <span class="cross">&times;</span>
-        <p>Voulez-vous vraiment supprimer cet abonnement ?</p>
+        <p>Voulez-vous vraiment supprimer ce client ?</p>
         <button class="btn btn-primary" id="no">Non</button>
         <button class="btn btn-danger" id="yes">Oui</button>
     </div>

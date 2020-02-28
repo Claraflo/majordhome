@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/customer.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/customer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/customer.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/customer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/customer.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/customer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/displayCustomer.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/displayCustomer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -123,6 +120,7 @@
       <workItem from="1582743518753" duration="162000" />
       <workItem from="1582743725960" duration="17000" />
       <workItem from="1582823632539" duration="1122000" />
+      <workItem from="1582902543768" duration="1844000" />
     </task>
     <servers />
   </component>
@@ -135,10 +133,10 @@
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581878314194" />
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582743741471" />
-    <state x="794" y="444" key="NewPhpFileDialog" timestamp="1581942507858">
+    <state x="794" y="444" key="NewPhpFileDialog" timestamp="1582903702856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="444" key="NewPhpFileDialog/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581942507858" />
+    <state x="794" y="444" key="NewPhpFileDialog/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1582903702856" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1581164791379">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -147,13 +145,13 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1582827190437" />
-    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581769348254">
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1582904103768">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581769348254" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1582826917035">
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1582904103768" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1582903706227">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1582826917035" />
+    <state x="616" y="240" key="run.anything.popup/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1582903706227" />
   </component>
 </project>
