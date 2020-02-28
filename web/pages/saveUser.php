@@ -164,5 +164,5 @@ if(count($_POST) == 11
 }else{
     $Hack[] = "Tentative de hack detectée";
     $_SESSION["hackFormAuth"] = $Hack;
-    header("Location: createSubscription.php");
+    header("Location: register.php");
 }
