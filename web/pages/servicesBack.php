@@ -42,7 +42,7 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 
 <section>
-
+<div id="information"></div>
 <div class="title text-center pt-4">
 	<h1>Gestion des services</h1>
 	<hr class="hr">
@@ -58,6 +58,7 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 <div class="container pt-3">
+	
 	<div class="row">
 		<div class="col-md-12">
 			<div>
@@ -83,7 +84,7 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 		    		foreach ($dataService as $value) {
 
-		    		echo '<tr id="category-' . $value['idService'] .'">';
+		    		echo '<tr id="service-' . $value['idService'] .'">';
       					echo "<th scope='row'>".$value['idService']."</th>";
       					echo "<td>".$value['nom']."</td>";
       					echo "<td>".$value['description']."</td>";		
@@ -91,7 +92,7 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
       					echo "<td>".$value['nomCateg']."</td>";		
       					echo "<td>";
 
-      							echo "<button class='btn btn-primary' >Ne pas publié</button>";
+      							echo "<button onclick='unpublishedConfirm(".$value['idService'].");' data-toggle='modal' data-target='#modalUnpublished' class='btn btn-success m-1'>Ne pas publié</button>";	
       						
       					echo "</td>";
     				echo "</tr>";
@@ -108,7 +109,27 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 
+<div id="modalUnpublished" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
+      </div>
+      <div class="modal-body">
+        <p>Etes-vous sûr de ne pas publié ce service ?</p>
+      </div>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+        <button id="btnUnpublish" class="btn btn-success" data-dismiss="modal">Ne pas publié</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 <script src="../js/servicesBack.js"></script>
