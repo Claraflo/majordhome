@@ -23,6 +23,8 @@ if ($count == 0){
     header('Location: error.php');
 }
 
+$_SESSION["id"] = $id;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -143,7 +145,7 @@ if ($count == 0){
                     <i class="p-2">* Champs obligatoires</i>
                     <br>
 
-                    <button class="btn m-3" id="btnSubscription" type="submit">Modification</button>
+                    <button class="btn m-3" id="btnSubscription" type="submit">Modifier</button>
 
                 </div>
             </form>
