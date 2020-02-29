@@ -225,10 +225,15 @@ require('functions.php');
 
 
 
-<footer>
-  
-  <p class="text-center pt-4">Copyright © Majord'home 2020</p>
- 
+<footer class="container-fluid footer">
+    <div class="container">
+        <p class="text-center pt-4">Copyright © Majord'home 2020</p>
+    </div>
+
+
+
+
+
 </footer>
 
 
