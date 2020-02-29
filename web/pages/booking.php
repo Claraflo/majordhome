@@ -7,7 +7,7 @@ session_start();
 <head>
 	<title>Clients</title>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="../css/customer.css">
+	<link rel="stylesheet" type="text/css" href="../css/booking.css">
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
