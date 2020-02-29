@@ -51,14 +51,14 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 <div class="container pt-5">
 
 	
-	<button class="btn btnService"><i class="fas fa-eye"> </i> Liste des services non publié</button>
+	<a href="createService.php"><button class="btn btnService"><i class="fas fa-eye"> </i> Liste des services non publié</button></a>
 	<a href="createService.php"><button class="btn btnService"> <i class="fas fa-plus"> </i> Créer un nouveau service</button></a>
 	<hr>
 
 </div>
 
 <div class="container pt-3">
-	
+
 	<div class="row">
 		<div class="col-md-12">
 			<div>
