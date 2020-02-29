@@ -48,13 +48,22 @@ function validation(id) {
 
 
 function display() {
+
+    var search = document.getElementById('search').value;
+    var type = document.getElementById('type').value;
+
+    search = search.trim();
+
     const request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (request.readyState === 4) {
-            const subscription = document.getElementById('customer');
-            subscription.innerHTML = request.responseText;
+            const customer = document.getElementById('customer');
+            customer.innerHTML = request.responseText;
         }
     };
-    request.open('GET', 'displayCustomer.php');
-    request.send();
+    request.open('POST', 'displayCustomer.php');
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send(`search=${search}&&type=${type}`);
 }
+
+setInterval(display, 500);

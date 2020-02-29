@@ -1,14 +1,22 @@
 <?php
 session_start ();
 
+$search =  $_POST['search'];
+$type = $_POST['type'];
+
 try{
     $bdd = new PDO("mysql:host=localhost;dbname=subscription;port=3306", "root", "root");
 }catch(Exception $e){
     die("Erreur SQL ".$e->getMessage());
 }
 
-$data = $bdd->query("SELECT idPersonne, prenom, nom, mail, dateNaissance, adresse, ville, codePostal, telephone FROM personne WHERE statut = 0 ORDER BY dateCreation DESC");
-$rows = $data->fetchAll(PDO::FETCH_ASSOC);
+
+if($search == '' || !preg_match("/^[^'|;\"\/]+$/", $search)) {
+    $data = $bdd->query("SELECT idPersonne, prenom, nom, mail, dateNaissance, adresse, ville, codePostal, telephone FROM personne WHERE statut = 0 ORDER BY dateCreation DESC");
+}else{
+    $data = $bdd->query("SELECT idPersonne, prenom, nom, mail, dateNaissance, adresse, ville, codePostal, telephone FROM personne WHERE statut = 0 AND $type LIKE '$search%' ORDER BY dateCreation DESC");
+}
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<div class="container">';
 
@@ -18,13 +26,15 @@ foreach ($rows as $row) {
         echo'<td>'.$row["prenom"].'</td>';
         echo '<td>'.$row["nom"].'</td>';
         echo '<td>'.$row["mail"].'</td>';
-        echo '<td>'.$row["dateNaissance"].'</td>';
+        echo '<td>'.strftime($row["dateNaissance"]).'</td>';
         echo '<td>'.$row["adresse"].'</td>';
         echo '<td>'.$row["ville"].'</td>';
         echo '<td>'.$row["codePostal"].'</td>';
         echo '<td>'.$row["telephone"].'</td>';
-        echo '<td><a class="btn btn-primary" href="modificationCustomer.php?id='.$row['idPersonne'].'">Modifier</a></td>';
-        echo '<td><button class="btn btn-danger" onclick="show('.$row['idPersonne'].')">Supprimer</button></td>';
+        echo '<td>';
+            echo '<a class="btn btn-primary" href="modificationCustomer.php?id='.$row['idPersonne'].'">Modifier</a>';
+            echo '<button class="btn btn-danger" onclick="show('.$row['idPersonne'].')">Supprimer</button>';
+        echo '</td>';
     echo '</tr>';
 }
 

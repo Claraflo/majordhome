@@ -64,22 +64,40 @@ if (!empty($_SESSION["delete"])) {
     <div class="borderCustomer">
         <a class="btn btn-success" id="add" href="createCustomer.php">Ajouter un client</a>
         <div class="container">
-            <table class="table-hover table-bordered">
-                <thead>
-                    <th>Prenom</th>
-                    <th>Nom</th>
-                    <th>Email</th>
-                    <th>Date de naissance</th>
-                    <th>Adresse</th>
-                    <th>Ville</th>
-                    <th>Code postal</th>
-                    <th>Téléphone</th>
-                    <th>Modifier</th>
-                    <th>Supprimer</th>
-                </thead>
-                <tbody id="customer">
-                </tbody>
-            </table>
+
+            <div class="row">
+                <label for="type">Trier par:</label>
+                <select name="type" id="type" class="form-control">
+                    <option value="nom">Nom</option>
+                    <option value="prenom">Prénom</option>
+                    <option value="dateNaissance">Date de naissance</option>
+                    <option value="adresse">Adresse</option>
+                    <option value="ville">Ville</option>
+                    <option value="codePostal">Code Postal</option>
+                    <option value="telephone">Téléphone</option>
+                </select>
+
+                <input class="form-control" type="text" id="search" placeholder="Rechercher">
+
+            </div>
+
+            <div id="tab">
+                <table class="table table-bordered">
+                    <thead>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Date de naissance</th>
+                        <th scope="col">Adresse</th>
+                        <th scope="col">Ville</th>
+                        <th scope="col">Code postal</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Actions</th>
+                    </thead>
+                    <tbody id="customer">
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </section>
