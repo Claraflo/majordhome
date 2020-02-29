@@ -149,5 +149,8 @@ if(count($_POST) == 8
 }else{
     $Hack[] = "Tentative de hack detectée";
     $_SESSION["hackFormAuth"] = $Hack;
+    unset($_POST["pwd"]);
+    unset($_POST["pwdConfirm"]);
+    $_SESSION["dataFormAuth"] = $_POST;
     header("Location: createCustomer.php");
 }

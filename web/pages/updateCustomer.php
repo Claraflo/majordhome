@@ -12,7 +12,7 @@ try{
 
 
 
-if(count($_POST) == 8
+if(count($_POST) == 9
     && !empty($_POST['firstName'])
     && !empty($_POST['lastName'])
     && !empty($_POST['email'])
@@ -21,6 +21,8 @@ if(count($_POST) == 8
     && !empty($_POST['address'])
     && !empty($_POST['city'])
     && !empty($_POST['code'])
+    && !empty($_POST['pwd'])
+    && ($_POST['pwd'] == 'no' || $_POST['pwd'] == 'yes')
 ){
 
 
@@ -30,6 +32,7 @@ if(count($_POST) == 8
     $phone = trim($_POST['phone']);
     $code = trim($_POST['code']);
     $birthday = trim($_POST['date']);
+    $pwdSelect = trim($_POST['pwd']);
 
     $address = $_POST['address'];
     $city = $_POST['city'];
@@ -103,6 +106,20 @@ if(count($_POST) == 8
     }
 
 
+    function pwdGenerator($numberCaracteres, $string = 'abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789*!?%&@#')
+    {
+        $numberLetters = strlen($string) - 1;
+        $generation = '';
+        for($i=0; $i < $numberCaracteres; $i++)
+        {
+            $pos = mt_rand(0, $numberLetters);
+            $caractere = $string[$pos];
+            $generation .= $caractere;
+        }
+        return $generation;
+    }
+
+
     if(empty($errors)) {
         $confirm[] = "Le client a bien été modifié";
         $_SESSION["confirmFormAuth"] = $confirm;
@@ -110,17 +127,38 @@ if(count($_POST) == 8
 
 
 
-        $req = $bdd->prepare("UPDATE personne set prenom =:prenom, nom =:nom, mail =:mail, dateNaissance =:dateNaissance, adresse =:adresse, ville =:ville, codePostal =:codePostal, telephone =:telephone WHERE idPersonne =:id;");
-        $req->execute([':nom'=>$lastName,
-            ':prenom'=>$firstName,
-            ':mail'=>$email,
-            ':dateNaissance'=>$birthday,
-            ':adresse'=>$address,
-            ':ville'=>$city,
-            ':codePostal'=>$code,
-            ':telephone'=>$phone,
-            ':id'=>$id,
-        ]);
+        if ($pwdSelect == 'no') {
+
+            $req = $bdd->prepare("UPDATE personne set prenom =:prenom, nom =:nom, mail =:mail, dateNaissance =:dateNaissance, adresse =:adresse, ville =:ville, codePostal =:codePostal, telephone =:telephone WHERE idPersonne =:id;");
+            $req->execute([':nom' => $lastName,
+                ':prenom' => $firstName,
+                ':mail' => $email,
+                ':dateNaissance' => $birthday,
+                ':adresse' => $address,
+                ':ville' => $city,
+                ':codePostal' => $code,
+                ':telephone' => $phone,
+                ':id' => $id
+            ]);
+
+        }else if ($pwdSelect == 'yes') {
+
+            $pwd = password_hash(pwdGenerator(15), PASSWORD_DEFAULT);
+
+
+            $req = $bdd->prepare("UPDATE personne set prenom =:prenom, nom =:nom, mail =:mail, dateNaissance =:dateNaissance, adresse =:adresse, ville =:ville, codePostal =:codePostal, telephone =:telephone, mdp =:mdp WHERE idPersonne =:id;");
+            $req->execute([':nom' => $lastName,
+                ':prenom' => $firstName,
+                ':mail' => $email,
+                ':dateNaissance' => $birthday,
+                ':adresse' => $address,
+                ':ville' => $city,
+                ':codePostal' => $code,
+                ':telephone' => $phone,
+                ':id' => $id,
+                ':mdp'=> $pwd
+            ]);
+        }
 
 
 
@@ -132,10 +170,13 @@ if(count($_POST) == 8
         unset($_POST["pwd"]);
         unset($_POST["pwdConfirm"]);
         $_SESSION["dataFormAuth"] = $_POST;
-        header("Location: createCustomer.php");
+        header("Location: modificationCustomer.php?id=$id");
     }
 }else{
     $Hack[] = "Tentative de hack detectée";
     $_SESSION["hackFormAuth"] = $Hack;
-    header("Location: createCustomer.php");
+    unset($_POST["pwd"]);
+    unset($_POST["pwdConfirm"]);
+    $_SESSION["dataFormAuth"] = $_POST;
+    header("Location: modificationCustomer.php?id=$id");
 }

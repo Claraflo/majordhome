@@ -139,6 +139,12 @@ $_SESSION["id"] = $id;
 
                 </div>
 
+                <label for="pwd">Générer un nouveau mot de passe *</label>
+                <select name="pwd" id="pwd" class="form-control" required="">
+                    <option value="no">Non</option>
+                    <option value="yes">Oui</option>
+                </select>
+
 
                 <div class="row">
 
