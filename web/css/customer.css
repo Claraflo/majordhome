@@ -132,7 +132,7 @@ footer{
 }
 
 #tab {
-    overflow-x: scroll;
+    overflow-x: auto;
 }
 
 
