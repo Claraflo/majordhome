@@ -23,7 +23,7 @@ foreach ($rows as $row) {
         echo '<td>'.$row["ville"].'</td>';
         echo '<td>'.$row["codePostal"].'</td>';
         echo '<td>'.$row["telephone"].'</td>';
-        echo '<td><a class="btn btn-primary" href="modificationSubscription.php?id='.$row['idPersonne'].'">Modifier</a></td>';
+        echo '<td><a class="btn btn-primary" href="modificationCustomer.php?id='.$row['idPersonne'].'">Modifier</a></td>';
         echo '<td><button class="btn btn-danger" onclick="show('.$row['idPersonne'].')">Supprimer</button></td>';
     echo '</tr>';
 }
