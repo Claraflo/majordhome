@@ -42,15 +42,6 @@
     }
 
 
-    if(!empty($_SESSION["confirmFormAuth"])){
-        echo "<div class='alert alert-success'>";
-        foreach ($_SESSION["confirmFormAuth"] as $confirm) {
-            echo "<li>".$confirm;
-        }
-        echo "</div>";
-        unset($_SESSION["confirmFormAuth"]);
-    }
-
     if(!empty($_SESSION["hackFormAuth"])){
         echo "<div class='alert alert-danger'>";
         foreach ($_SESSION["hackFormAuth"] as $hack) {
@@ -119,16 +110,6 @@
                     </div>
 
 
-                </div>
-
-                <div class="">
-                    <label for="inputPassword">Mot de passe *</label>
-                    <input name="pwd" type="password" id="inputPassword" class="form-control inputRegister" required="" autocomplete="off">
-                </div>
-
-                <div class="">
-                    <label for="inputConfirm">Confirmation du mot de passe *</label>
-                    <input name="pwdConfirm" type="password" id="inputConfirm" class="form-control inputRegister" required="" autocomplete="off">
                 </div>
 
 

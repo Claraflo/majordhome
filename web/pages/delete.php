@@ -14,9 +14,9 @@ if(!empty($_POST['id'])) {
     }
 
 
-    $req = $bdd->prepare("UPDATE customer set status =:status WHERE id =:id;");
+    $req = $bdd->prepare("UPDATE personne set statut =:statut WHERE idPersonne =:id;");
     $req->execute([
-        ':status'=>-1,
+        ':statut'=>-1,
         ':id'=>$id
     ]);
 

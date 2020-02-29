@@ -6,10 +6,9 @@ try{
     die("Erreur SQL ".$e->getMessage());
 }
 
-
 session_start();
 
-if(count($_POST) == 10
+if(count($_POST) == 8
     && !empty($_POST['firstName'])
     && !empty($_POST['lastName'])
     && !empty($_POST['email'])
@@ -18,14 +17,10 @@ if(count($_POST) == 10
     && !empty($_POST['address'])
     && !empty($_POST['city'])
     && !empty($_POST['code'])
-    && !empty($_POST['pwd'])
-    && !empty($_POST['pwdConfirm'])
 ){
 
 
     $email = trim($_POST['email']);
-    $pwd = $_POST['pwd'];
-    $pwdConfirm = $_POST['pwdConfirm'];
     $firstName = trim($_POST['firstName']);
     $lastName = trim($_POST['lastName']);
     $phone = trim($_POST['phone']);
@@ -62,22 +57,7 @@ if(count($_POST) == 10
         }
     }
 
-    if( $pwd == $lastName
-        || $pwd == $firstName
-        || strlen($pwd)<8
-        || strlen($pwd)>64
-        || !preg_match("#[a-z]#", $pwd)
-        || !preg_match("#[A-Z]#", $pwd)
-        || !preg_match("#[0-9]#", $pwd)) {
-        $errors['pwd'] = "Le mot de passe que vous avez indiqué n'est pas valide, il doit faire entre 8 et 64 caractères avec des minuscules, majuscules et chiffres.";
-    }
 
-
-
-    if($pwd != $pwdConfirm){
-
-        $errors['pwdConfirm']= "La confirmation de votre mot de passe ne correspond pas à votre mot de passe";
-    }
 
     if(strlen($phone) != 10
         || !preg_match('/^[0-9_]+$/', $phone)) {
@@ -119,30 +99,44 @@ if(count($_POST) == 10
     }
 
 
+    function pwdGenerator($numberCaracteres, $string = 'abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789*!?%&@#')
+    {
+        $numberLetters = strlen($string) - 1;
+        $generation = '';
+        for($i=0; $i < $numberCaracteres; $i++)
+        {
+            $pos = mt_rand(0, $numberLetters);
+            $caractere = $string[$pos];
+            $generation .= $caractere;
+        }
+        return $generation;
+    }
+
     if(empty($errors)) {
-        $confirm[] = "Merci pour votre inscription";
+        $confirm[] = "Le client a bien été enregistré";
         $_SESSION["confirmFormAuth"] = $confirm;
 
 
-        $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+        $pwd = password_hash(pwdGenerator(15), PASSWORD_DEFAULT);
 
-        $req = $bdd->prepare('INSERT INTO customer(nom, prenom, mail, status, type, dateNaissance, adresse, ville, codePostal, telephone, pwd) VALUES(:nom, :prenom, :mail, :status, :type, :dateNaissance, :adresse, :ville, :codePostal, :telephone, :pwd)');
+
+
+        $req = $bdd->prepare('INSERT INTO personne(nom, prenom, mail, statut, dateNaissance, adresse, ville, codePostal, telephone, mdp) VALUES(:nom, :prenom, :mail, :statut, :dateNaissance, :adresse, :ville, :codePostal, :telephone, :mdp)');
         $req->execute([':nom'=>$lastName,
             ':prenom'=>$firstName,
             ':mail'=>$email,
-            ':status'=>0,
-            ':type'=>'c',
-            ':dateNaissance'=>$yearLife,
+            ':statut'=>0,
+            ':dateNaissance'=>$birthday,
             ':adresse'=>$address,
             ':ville'=>$city,
             ':codePostal'=>$code,
             ':telephone'=>$phone,
-            ':pwd'=>$pwd
+            ':mdp'=>$pwd,
         ]);
 
 
 
-        //header("Location: createCustomer.php");
+        header("Location: customer.php");
     }
 
     if (!empty($errors)){

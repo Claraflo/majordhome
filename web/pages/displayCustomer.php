@@ -7,7 +7,7 @@ try{
     die("Erreur SQL ".$e->getMessage());
 }
 
-$data = $bdd->query("SELECT id, prenom, nom, mail, dateNaissance, adresse, ville, codePostal, telephone FROM customer WHERE status = 0");
+$data = $bdd->query("SELECT idPersonne, prenom, nom, mail, dateNaissance, adresse, ville, codePostal, telephone FROM personne WHERE statut = 0 ORDER BY dateCreation DESC");
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<div class="container">';
@@ -23,8 +23,8 @@ foreach ($rows as $row) {
         echo '<td>'.$row["ville"].'</td>';
         echo '<td>'.$row["codePostal"].'</td>';
         echo '<td>'.$row["telephone"].'</td>';
-        echo '<td><a class="btn btn-primary" href="modificationSubscription.php?id='.$row['id'].'">Modifier</a></td>';
-        echo '<td><button class="btn btn-danger" onclick="show('.$row['id'].')">Supprimer</button></td>';
+        echo '<td><a class="btn btn-primary" href="modificationSubscription.php?id='.$row['idPersonne'].'">Modifier</a></td>';
+        echo '<td><button class="btn btn-danger" onclick="show('.$row['idPersonne'].')">Supprimer</button></td>';
     echo '</tr>';
 }
 
