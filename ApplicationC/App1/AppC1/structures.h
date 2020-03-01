@@ -8,8 +8,6 @@
 #include <windows.h>
 #include <mysql.h>
 
-#include "qrcodegen.h"
-#include "qrCode.h"
 
 typedef struct
 {

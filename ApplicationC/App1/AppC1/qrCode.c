@@ -1,5 +1,10 @@
 #include "qrCode.h"
 
+void createQRC(t_program* t_program,char* idCode)
+{
+    doBasicQrCode(idCode);
+}
+
 
 // Creates a single QR Code, then prints it to the console.
 void doBasicQrCode(char* input) {

@@ -8,6 +8,7 @@
 
 #include "structures.h"
 #include "authentication.h"
+#include "research.h"
 #include"error.h"
 
 void displayMenu(t_program* t_program);

@@ -12,13 +12,13 @@ void displayForm(t_program* t_program){
     GtkWidget *buttonValidForm,*buttonExit;
     GtkWidget *combo;
 
-    label = malloc(sizeof(GtkWidget *)*10);
-    for(i=0;i<10;i++){
+    label = malloc(sizeof(GtkWidget *)*9);
+    for(i=0;i<9;i++){
         label[i]= malloc(sizeof(GtkWidget));
     }
 
-    entry = malloc(sizeof(GtkWidget *)*10);
-    for(i=0;i<10;i++){
+    entry = malloc(sizeof(GtkWidget *)*9);
+    for(i=0;i<9;i++){
         entry[i]= malloc(sizeof(GtkWidget));
     }
 
@@ -29,28 +29,27 @@ void displayForm(t_program* t_program){
     label[2] = gtk_label_new("Email :");
     label[3] = gtk_label_new("Date de naissance (AAAA-MM-JJ) :");
     label[4] = gtk_label_new("Telephone :");
-    label[5] = gtk_label_new("Telephone pro :");
-    label[6] = gtk_label_new("Adresse :");
-    label[7] = gtk_label_new("Ville :");
-    label[8] = gtk_label_new("Code Postal :");
-    label[9] = gtk_label_new("Metier :");
+    label[5] = gtk_label_new("Adresse :");
+    label[6] = gtk_label_new("Ville :");
+    label[7] = gtk_label_new("Code Postal :");
+    label[8] = gtk_label_new("Metier :");
 
 
-    for(i =0; i<10;i++){
+    for(i =0; i<9;i++){
 
         entry[i]=gtk_entry_new();
 
         if(i== 0 || i == 1){
             gtk_entry_set_max_length(GTK_ENTRY(entry[i]),80);
-        }else if(i == 2 || i == 6){
-            gtk_entry_set_max_length(GTK_ENTRY(entry[i]),400);
-        }else if(i==3 || i== 4 ||i==5){
+        }else if(i == 2 || i == 5){
+            gtk_entry_set_max_length(GTK_ENTRY(entry[i]),255);
+        }else if(i==3 || i== 4){
             gtk_entry_set_max_length(GTK_ENTRY(entry[i]),10);
-        }else if(i == 7){
+        }else if(i == 6){
             gtk_entry_set_max_length(GTK_ENTRY(entry[i]),100);
-        }else if(i == 8){
+        }else if(i == 7){
             gtk_entry_set_max_length(GTK_ENTRY(entry[i]),5);
-        }else if(i == 9){
+        }else if(i == 8){
             gtk_entry_set_max_length(GTK_ENTRY(entry[i]),50);
         }
     }
@@ -63,9 +62,9 @@ void displayForm(t_program* t_program){
     boxButton=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
 
     //Add Widgets in the page
-    for(i =0; i<10;i++){
+    for(i =0; i<9;i++){
         gtk_box_pack_start(GTK_BOX(vBoxForm), label[i], TRUE, FALSE, 2);
-        if(i != 9){
+        if(i != 8){
             gtk_box_pack_start(GTK_BOX(vBoxForm), entry[i], TRUE, FALSE, 2);
         }
     }
@@ -73,7 +72,7 @@ void displayForm(t_program* t_program){
     combo = creatCombo(t_program,combo);
 
     boxJob = gtk_box_new(GTK_ORIENTATION_HORIZONTAL,2);
-    gtk_box_pack_start(GTK_BOX(boxJob), entry[9], TRUE, TRUE, 2);
+    gtk_box_pack_start(GTK_BOX(boxJob), entry[8], TRUE, TRUE, 2);
     gtk_box_pack_start(GTK_BOX(boxJob), combo, TRUE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vBoxForm), boxJob, TRUE, FALSE, 2);
 
@@ -108,9 +107,9 @@ t_pageForm* creatStructPageForm(t_pageForm* t_pageForm,GtkWidget* vBoxForm,GtkWi
     t_pageForm->vbox = vBoxForm ;
 
 
-    t_pageForm->entry = malloc(sizeof(GtkWidget*)*10);
+    t_pageForm->entry = malloc(sizeof(GtkWidget*)*9);
 
-    for(int i =0; i<10;i++){
+    for(int i =0; i<9;i++){
         t_pageForm->entry[i] = malloc(sizeof(GtkWidget));
         t_pageForm->entry[i] = entry[i];
     }

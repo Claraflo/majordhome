@@ -34,20 +34,4 @@ void OnDestroy(GtkWidget *pWidget, t_program* t_program)
     endProgram(t_program);
 }
 
-/*QRCODE
-    char input[6];
 
-    printf("Entrez le numero d'id en 5 caracteres :  ");
-    fgets(input, 6, stdin);
-
-
-    if(input[strlen(input)-1] == '\n'){
-        input[strlen(input)-1] = '\0';
-    }
-
-    doBasicQrCode(input);
-
-
-
-    return EXIT_SUCCESS;
-*/
