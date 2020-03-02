@@ -37,9 +37,9 @@ $intent = \Stripe\PaymentIntent::create([
         'setup_future_usage' => 'off_session',
 ]);
 
-if ($subscription['price']%100 != 00){
+
     $subscription['price'] = $subscription['price']/100;
-}
+
 
 
 

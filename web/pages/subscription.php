@@ -55,9 +55,9 @@ try{
             <?php
             $data = $bdd->query("SELECT id, name, price, description FROM subscription");
             foreach ($data->fetchAll() as $key => $subscription) {
-                    if ($subscription['price']%100 != 00){
-                        $subscription['price'] = $subscription['price']/100;
-                    }
+
+                    $subscription['price'] = $subscription['price']/100;
+
                     echo '<div class="col-md-4">';
                         echo '<div class="card shadow-sm">';
                             echo '<div class="card-header">';
