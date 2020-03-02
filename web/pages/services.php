@@ -100,9 +100,9 @@ $connect = connectDb();
 
                                 foreach ($query->fetchAll() as $value) {
 
-                                    echo "<option value='1'>".$value['nom']."</option>";
+                                  echo "<option value='1'>".$value['nom']."</option>";
 
-                              }
+                                }
 
                              ?>
 
@@ -125,7 +125,7 @@ $connect = connectDb();
         <div class="row pt-5 ">
 
         <?php
-            $data = $connect->query("SELECT idService, nom, prix, description FROM service");
+            $data = $connect->query("SELECT idService, nom, prix, description FROM service WHERE statut = 1");
             foreach ($data->fetchAll() as $key => $service) {
                 echo '<div class="col-md-3">';
                     echo '<div class="card servicesCard">';
@@ -135,7 +135,7 @@ $connect = connectDb();
                         echo '<div class="card-body text-center">';
                             echo '<h3 class="card-title">'.$service["prix"].' € <small>/h</small></h3>';
                             echo '<p>'.$service["description"].'</p>';
-                            echo '<a href="registerServices.php" class="btn btnServices btn-block ">Réserver</a>';
+                            echo '<a href="registerServices.php?id='.$service["idService"].'" class="btn btnServices btn-block ">Réserver</a>';
                         echo '</div>';
                     echo '</div>';
                 echo '</div>';

@@ -1,19 +1,32 @@
 <?php
+require('functions.php');
 session_start();
 
-try{
-    $bdd = new PDO("mysql:host=localhost;dbname=subscription;port=3306", "root", "root");
-}catch(Exception $e){
-    die("Erreur SQL ".$e->getMessage());
+if(!empty($_GET)){
+    $id = $_GET['id'];
+}else{
+    $id = 0;
+}
+
+$connect = connectDb();
+
+
+$req = $connect->prepare("SELECT nom, type FROM caracteristique WHERE idService = $id");
+$req->execute(array());
+
+$count = $req->rowCount();
+
+if ($count == 0){
+    header('Location: error.php');
 }
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Abonnements</title>
+    <title>Réservation</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="../css/registerServices.css">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -52,9 +65,15 @@ try{
     <form method="post">
         <div class="container borderSubscription">
 
-            <input class="form-control">
-            <input class="form-control">
-            <input class="form-control">
+            <?php
+                foreach ($req->fetchAll() as $caracteristique) {
+
+                    echo '<label for="'.$caracteristique["nom"].'" class="lab area">'.$caracteristique["nom"].'</label>';
+                    echo '<input name="'.$caracteristique["nom"].'" type="'.$caracteristique["type"].'" id="'.$caracteristique["nom"].'" class="form-control inputRegister" required="">';
+                }
+            ?>
+
+            <input type="submit" class="btn btn-success area" value="Payer">
 
         </div>
     </form>
