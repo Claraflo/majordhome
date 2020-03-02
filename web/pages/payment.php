@@ -34,7 +34,7 @@ $intent = \Stripe\PaymentIntent::create([
 ]);
 
 
-echo $price = $price/100;
+$price = $price/100;
 
 
 ?>
