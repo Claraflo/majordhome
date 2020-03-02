@@ -2,16 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/web.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/displaySubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/displaySubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/modificationSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/modificationSubscription.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/saveSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/saveSubscription.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/updateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/updateSubscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/stripe-php-master/composer.json</pharConfigPath>
+  <component name="ComposerSettings">
     <execution>
       <executable />
     </execution>
@@ -59,7 +65,6 @@
       </branch-storage>
     </favorite-branches>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1XWaOUey6F8LWXbGAcmmKKkV0sx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -73,7 +78,6 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../bob" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
@@ -101,25 +105,8 @@
       <updated>1581164272263</updated>
       <workItem from="1581164274171" duration="19079000" />
       <workItem from="1581251144085" duration="2230000" />
-      <workItem from="1581268413150" duration="3315000" />
-      <workItem from="1581615088025" duration="4604000" />
-      <workItem from="1581669880080" duration="978000" />
-      <workItem from="1581692859441" duration="147000" />
-      <workItem from="1581707949190" duration="3247000" />
-      <workItem from="1581765533558" duration="480000" />
-      <workItem from="1581766261075" duration="8786000" />
-      <workItem from="1581775671100" duration="6763000" />
-      <workItem from="1581794677862" duration="2228000" />
-      <workItem from="1581878316988" duration="4751000" />
-      <workItem from="1581936686549" duration="7255000" />
-      <workItem from="1581946141803" duration="46000" />
-      <workItem from="1581955560556" duration="7465000" />
-      <workItem from="1581966304150" duration="73000" />
-      <workItem from="1582383208762" duration="77000" />
-      <workItem from="1582635923513" duration="22000" />
-      <workItem from="1582743518753" duration="162000" />
-      <workItem from="1582743725960" duration="17000" />
-      <workItem from="1582823632539" duration="455000" />
+      <workItem from="1583072157475" duration="1076000" />
+      <workItem from="1583161697701" duration="6832000" />
     </task>
     <servers />
   </component>
@@ -127,30 +114,29 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1582743741471">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1581164785619">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581878314194" />
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1582743741471" />
-    <state x="794" y="444" key="NewPhpFileDialog" timestamp="1581942507858">
+    <state x="740" y="275" key="FileChooserDialogImpl/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581164785619" />
+    <state x="733" y="334" key="NewPhpClassDialog" timestamp="1583166823292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="444" key="NewPhpFileDialog/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581942507858" />
+    <state x="733" y="334" key="NewPhpClassDialog/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1583166823292" />
+    <state x="794" y="444" key="NewPhpFileDialog" timestamp="1583166832010">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="794" y="444" key="NewPhpFileDialog/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1583166832010" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1581164791379">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581164791379" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1581964781984">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1583167190558">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="498" height="446" key="SwitcherDM/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581964781984" />
-    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581769348254">
+    <state width="498" height="446" key="SwitcherDM/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1583167190558" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581181904225">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581769348254" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1581965674137">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581965674137" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581181904225" />
   </component>
 </project>

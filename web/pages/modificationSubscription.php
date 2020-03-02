@@ -25,7 +25,7 @@ if ($count == 0){
 
 $_SESSION["id"] = $id;
 if ($subscription['price']%100 == 0){
-    $price[0] = $subscription['price'];
+    $price[0] = $subscription['price']/100;
     $price[1] = 0;
 }else{
     $price = explode(".", $subscription['price']/100);

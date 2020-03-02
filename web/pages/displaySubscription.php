@@ -11,9 +11,9 @@ $data = $bdd->query("SELECT id, name, description, price, week, time, timeStart,
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($rows as $row) {
-    if ($row['price']%100 != 00){
-        $row['price'] = $row['price']/100;
-    }
+
+    $row['price'] = $row['price']/100;
+
     echo '<div class="col-md-4">';
         echo '<div class="card shadow-sm">';
             echo '<div class="card-header">';

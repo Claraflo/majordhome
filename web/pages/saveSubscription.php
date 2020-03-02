@@ -89,11 +89,8 @@ if(count($_POST) == 11
         $errors['timeStartEnd'] = "L'heure de début ne peut pas être supérieur ou la même que l'heure de fin.";
     }
 
-    if ($priceCent!= 0){
-        $price = $priceEur.$priceCent;
-    }else{
-        $price = $priceEur;
-    }
+    $price = $priceEur.$priceCent;
+
 
 
     if(empty($errors)) {
