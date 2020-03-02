@@ -19,6 +19,11 @@ $count = $req->rowCount();
 if ($count == 0){
     header('Location: error.php');
 }
+$_SESSION["id"] = $id;
+
+$data= $connect->query("SELECT nom, prix FROM service WHERE idService = $id");
+
+
 
 ?>
 <!DOCTYPE html>
@@ -59,10 +64,15 @@ if ($count == 0){
 
 <section >
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-        <h1 class="display-4">Réservation</h1>
+        <?php
+            foreach ($data->fetchAll() as $service){
+                echo '<h1 class="display-4">'.$service["nom"].'</h1>';
+                echo '<h5>'.$service["prix"].' €</h5>';
+            }
+        ?>
         <hr class="hr">
     </div>
-    <form method="post">
+    <form method="post" action="payment.php">
         <div class="container borderSubscription">
 
             <?php
