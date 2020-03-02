@@ -1,12 +1,13 @@
 <?php
 session_start();
 require('functions.php');
+$connect = connectDb();
 
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Inscription</title>
+	<title>Services</title>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="../css/services.css">
 	<meta name="description" content="">
@@ -35,24 +36,24 @@ require('functions.php');
     	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         	<span class="navbar-toggler-icon"></span>
       </button>
-    	
+
     	<div class="collapse navbar-collapse" id="navbarNav">
       		<ul class="navbar-nav ml-auto">
         		<li class="nav-item ">
          			<a class="nav-link colorLink active" href="services.php" title="">Services
-                	
+
               		</a>
-        		
-        		
+
+
         		<li class="nav-item ">
          			<a class="nav-link colorLink" href="#" title="">Abonnements</a>
-        		
-        		
+
+
 
             <li class="nav-item">
               <a class="nav-link colorLink" href="#" title="">Boîte de réception</a>
-        		
-          		
+
+
           	<li class="nav-item">
 
           		 <a class="nav-link colorLink" href="#" title="">Mon compte</a>
@@ -60,8 +61,8 @@ require('functions.php');
 
           		<li class="nav-item">
 
-          		  <a href="nav-link"><button class="btn btnServices">Déconnexion</button></a> 
-          		
+          		  <a href="nav-link"><button class="btn btnServices">Déconnexion</button></a>
+
 
         	</ul>
     	</div>
@@ -70,7 +71,7 @@ require('functions.php');
 
 
     <div class="masthead">
-      
+
 
       <div class="containHeader">Découvrez nos services haut de gamme !</div>
     </div>
@@ -80,136 +81,69 @@ require('functions.php');
 
 <section class="pt-5 servicesSection">
 
-<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form">
+                    <div class="input-group">
+
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>Sélectionnez une catégorie de service ...</option>
 
 
-  <div class="row">
+                              <?php
 
 
-<div class="col-md-7">
-
-<div class="form">
-
-
-<div class="input-group">
-  <select class="custom-select" id="inputGroupSelect01">
-    <option selected>Sélectionnez une catégorie de service ...</option>
+                                $query = $connect->query('SELECT idCategorie,nom FROM Categorie;');
+                                $query->execute();
 
 
-  <?php
+                                foreach ($query->fetchAll() as $value) {
 
-    $connect = connectDb();
-    $query = $connect->query('SELECT idCategorie,nom FROM Categorie;');
-    $query->execute();
-   
+                                    echo "<option value='1'>".$value['nom']."</option>";
 
-    foreach ($query->fetchAll() as $value) {
-      
-        echo "<option value='1'>".$value['nom']."</option>";
+                              }
 
-  }
-
- ?>
-   
-   
-  </select>
+                             ?>
 
 
-</div>
-</div>
-
-</div>
-
-<div class="col-md-5">
-  
-  <a href="#"><button class="btn btnServices">Demande de service</button></a>
-</div>
-
-</div>
-
-<div class="row pt-5 ">
-  <div class="col-md-3">
-        
-    <div class="card servicesCard">
-      <div class="card-header cardHeader">
-        <h5 class="text-center">Serveur</h5>
-      </div>
-
-      <div class="card-body text-center">
-            
-        <h3 class="card-title">22 € <small>/h</small></h3>
-
-        <p>Lorem ipsum</p>
-
-        <a href="#" class="btn btnServices btn-block ">Réserver</a>
-
-      </div>
-   </div>
- </div>
-
-   <div class="col-md-3">
-        
-    <div class="card servicesCard">
-      <div class="card-header cardHeader">
-        <h5 class="text-center">Serveur</h5>
-      </div>
-
-      <div class="card-body text-center">
-            
-        <h3 class="card-title">22 € <small>/h</small></h3>
-
-        <p>Lorem ipsum</p>
-
-        <a href="#" class="btn btnServices btn-block ">Réserver</a>
-
-      </div>
-   </div>
- </div>
+                        </select>
 
 
-   <div class="col-md-3">
-        
-    <div class="card servicesCard">
-      <div class="card-header cardHeader">
-        <h5 class="text-center">Serveur</h5>
-      </div>
+                    </div>
+                </div>
 
-      <div class="card-body text-center">
-            
-        <h3 class="card-title">22 € <small>/h</small></h3>
+            </div>
 
-        <p>Lorem ipsum</p>
+            <div class="col-md-5">
 
-        <a href="#" class="btn btnServices btn-block ">Réserver</a>
+                <a href="#"><button class="btn btnServices">Demande de service</button></a>
+            </div>
 
-      </div>
-   </div>
- </div>
+        </div>
 
+        <div class="row pt-5 ">
 
+        <?php
+            $data = $connect->query("SELECT idService, nom, prix, description FROM service");
+            foreach ($data->fetchAll() as $key => $service) {
+                echo '<div class="col-md-3">';
+                    echo '<div class="card servicesCard">';
+                        echo '<div class="card-header cardHeader">';
+                            echo '<h5 class="text-center">'.$service["nom"].'</h5>';
+                        echo "</div>";
+                        echo '<div class="card-body text-center">';
+                            echo '<h3 class="card-title">'.$service["prix"].' € <small>/h</small></h3>';
+                            echo '<p>'.$service["description"].'</p>';
+                            echo '<a href="registerServices.php" class="btn btnServices btn-block ">Réserver</a>';
+                        echo '</div>';
+                    echo '</div>';
+                echo '</div>';
+            }
+        ?>
 
-   <div class="col-md-3">
-        
-    <div class="card servicesCard">
-      <div class="card-header cardHeader">
-        <h5 class="text-center">Serveur</h5>
-      </div>
-
-      <div class="card-body text-center">
-            
-        <h3 class="card-title">22 € <small>/h</small></h3>
-
-        <p>Lorem ipsum</p>
-
-        <a href="#" class="btn btnServices btn-block ">Réserver</a>
-
-      </div>
-   </div>
- </div>
-
-
-
-</div>
+        </div>
+    </div>
 
 </section>
 
@@ -229,11 +163,6 @@ require('functions.php');
     <div class="container">
         <p class="text-center pt-4">Copyright © Majord'home 2020</p>
     </div>
-
-
-
-
-
 </footer>
 
 
