@@ -66,6 +66,7 @@ $data= $connect->query("SELECT nom, prix FROM service WHERE idService = $id");
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
         <?php
             foreach ($data->fetchAll() as $service){
+                $service['prix'] = $service['prix']/100;
                 echo '<h1 class="display-4">'.$service["nom"].'</h1>';
                 echo '<h5>'.$service["prix"].' €</h5>';
             }

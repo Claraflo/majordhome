@@ -127,6 +127,7 @@ $connect = connectDb();
         <?php
             $data = $connect->query("SELECT idService, nom, prix, description FROM service WHERE statut = 1");
             foreach ($data->fetchAll() as $key => $service) {
+                $service['prix'] = $service['prix']/100;
                 echo '<div class="col-md-3">';
                     echo '<div class="card servicesCard">';
                         echo '<div class="card-header cardHeader">';

@@ -34,7 +34,7 @@ $intent = \Stripe\PaymentIntent::create([
 ]);
 
 
-
+echo $price = $price/100;
 
 
 ?>
@@ -76,7 +76,7 @@ $intent = \Stripe\PaymentIntent::create([
         <div class="form">
             <form id="form-payement">
                 <h3 class="text-center title"><?php echo $service['nom']?></h3>
-                <h2 class="card-title pricing-card-title"><?php echo $service['prix'] ?>€ </h2>
+                <h2 class="card-title pricing-card-title"><?php echo $price ?>€ </h2>
                 <hr class="hr">
 
                 <label for="cardholder-name">Nom du titulaire de la carte *</label>
