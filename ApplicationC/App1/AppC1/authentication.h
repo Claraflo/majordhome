@@ -15,6 +15,6 @@
 #include "addDataBase.h"
 
 void authentication(t_program* t_program);
-MYSQL* connection(MYSQL* sock);
+MYSQL* connection();
 
 #endif //APP1_AUTHENTICATION_H

@@ -3,10 +3,10 @@
 
 
 
-MYSQL* connection(MYSQL* sock)
+MYSQL* connection()
 {
 
-
+    MYSQL* sock;
     sock = mysql_init(0);
 
 
@@ -37,9 +37,9 @@ void authentication(t_program* t_program)
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
-    gchar* conversionUsernameUTF8  = allocateString(conversionUsernameUTF8,50,0);
-    gchar* conversionPasswordUTF8 = allocateString(conversionPasswordUTF8,50,0);
-    gchar* requestAuth = allocateString(requestAuth,150,0);
+    gchar* conversionUsernameUTF8  = allocateString(conversionUsernameUTF8,50,0,t_program);
+    gchar* conversionPasswordUTF8 = allocateString(conversionPasswordUTF8,50,0,t_program);
+    gchar* requestAuth = allocateString(requestAuth,150,0,t_program);
 
     printf("au1");
     conversionUsernameUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->username)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);

@@ -12,10 +12,10 @@
 
 
 
-GtkWidget* creatWindow(GtkWidget* pWindow);
+GtkWidget* creatWindow();
 void displayContainWelcomPage(t_program* t_program);
 void ValidationAuthentication(GtkWidget *button, t_program* t_program);
-t_pageAuth* creatStructPageAuth(t_pageAuth* t_pageAuth,t_program* program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
+t_pageAuth* creatStructPageAuth(t_program* program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
 t_program* initProgram();
 
 

@@ -7,9 +7,9 @@ void addInputInDB(t_program* t_program)
     int i,countEmpty=0;
     char** conv;
     char* idCode;
-    gchar* requestProvider = allocateString(requestProvider,1000,0);
-    gchar* requestJob =  allocateString(requestJob,100,0);
-    gchar* requestIdCode= allocateString(requestIdCode,100,0);
+    gchar* requestProvider = allocateString(requestProvider,1000,0,t_program);
+    gchar* requestJob =  allocateString(requestJob,100,0,t_program);
+    gchar* requestIdCode= allocateString(requestIdCode,100,0,t_program);
 
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
@@ -34,7 +34,8 @@ void addInputInDB(t_program* t_program)
         }
 
         if(!conv){
-            //Exit
+            errorMessage(t_program,"Le programme rencontre un probleme. ERREUR: Malloc conv ","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(t_program);
         }
 
         conv[0] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[0])));//name
@@ -88,7 +89,9 @@ void addInputInDB(t_program* t_program)
                 requestJob = g_strconcat(requestJob,"','",NULL);
                 requestJob = g_strconcat(requestJob,gtk_combo_box_text_get_active_text(GTK_COMBO_BOX(t_program->t_pageForm->combo)),NULL);
                 requestJob = g_strconcat(requestJob,"')",NULL);
+                mysql_free_result(res);
                 mysql_query(t_program->sock,requestJob);
+
 
             }
 
@@ -104,9 +107,12 @@ void addInputInDB(t_program* t_program)
             requestProvider = g_strconcat(requestProvider,idCode,NULL);
             requestProvider = g_strconcat(requestProvider,"','0000','1')",NULL);
 
+            mysql_free_result(res);
             mysql_query(t_program->sock,requestProvider);
 
             createQRC(t_program,idCode);
+            errorMessage(t_program,"Ajout reussi","AJOUT PRESTATAIRE",GTK_MESSAGE_INFO,GTK_BUTTONS_OK);
+
 
         }
 
@@ -137,7 +143,7 @@ int verificationMail(t_program* t_program,gchar* mail,int statut){
     int i,posArob=0,countArob= 0,countDot =0,len = strlen(mail);
     char forbiddenChar[15] = "()<>,;:\"[]|ç%&";
     char email[len];
-    gchar* requestMail = allocateString(requestMail,300,0);
+    gchar* requestMail = allocateString(requestMail,300,0,t_program);
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
@@ -556,21 +562,18 @@ char* createIdCode(t_program* t_program,char* idCode,gchar* conv[]){
     return idCode;
 }
 
-char* allocateString(char* string,int size,int count){
+char* allocateString(char* string,int size,int count,t_program* t_program){
 
     string=malloc(sizeof(char)*size);
 
     if(!string){
         free(string);
-        allocateString(string,size,++count);
+        allocateString(string,size,++count,t_program);
         if(count == 3){
-            //exit
+            errorMessage(t_program,"Le programme rencontre un probleme. ERREUR: Malloc string","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(t_program);
         }
     }
 }
 
-void returnForm(t_program* t_program){
 
-
-
-}

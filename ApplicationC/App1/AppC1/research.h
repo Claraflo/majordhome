@@ -12,7 +12,7 @@
 #include"error.h"
 
 void initResearch(t_program* t_program);
-t_pageResearch* creatStructPageResearch(t_program* t_program, t_pageResearch* t_pageResearch,GtkWidget* vboxResearch,GtkTreeSelection *selection,GtkWidget* view,GtkWidget* entry);
+t_pageResearch* creatStructPageResearch(t_program* t_program,GtkWidget* vboxResearch,GtkTreeSelection *selection,GtkWidget* view,GtkWidget* entry);
 GtkTreeModel * create_and_fill_model (t_program* t_program,gchar* request,int statut);
 GtkWidget * create_view_and_model (t_program* t_program);
 void appendItem(GtkWidget *pWidget, t_program* t_program);

@@ -13,7 +13,7 @@ t_program* initProgram()
     }
 
     //Creation of Window
-    GtkWidget* pWindow = creatWindow(pWindow);
+    GtkWidget* pWindow = creatWindow();
     printf(" i2");
     t_program->pWindow= pWindow;
     t_program->t_pageAuth = NULL;
@@ -23,7 +23,7 @@ t_program* initProgram()
 
     MYSQL* sock;
 
-    sock = connection(sock);
+    sock = connection();
 
     if(!sock)
     {
@@ -39,10 +39,10 @@ t_program* initProgram()
     return t_program;
 }
 
-GtkWidget* creatWindow(GtkWidget* pWindow)
+GtkWidget* creatWindow()
 {
 
-    pWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    GtkWidget* pWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
 
     gtk_window_set_position(GTK_WINDOW(pWindow),GTK_WIN_POS_CENTER_ALWAYS);
@@ -109,15 +109,15 @@ void displayContainWelcomPage(t_program* t_program)
     gtk_widget_show_all(t_program->pWindow);
     printf(" i4");
     t_program->pbox = pbox;
-    t_pageAuth* t_pageAuth = creatStructPageAuth(t_pageAuth,t_program, usernameEntry,passwordEntry,vbox);
+    t_pageAuth* t_pageAuth = creatStructPageAuth(t_program, usernameEntry,passwordEntry,vbox);
     g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),t_program);
     printf(" i5");
 }
 
-t_pageAuth* creatStructPageAuth(t_pageAuth* t_pageAuth,t_program* t_program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox)
+t_pageAuth* creatStructPageAuth(t_program* t_program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox)
 {
 
-    t_pageAuth = malloc(sizeof(t_pageAuth));
+    t_pageAuth* t_pageAuth = malloc(sizeof(t_pageAuth));
 
     if(!t_pageAuth)
     {

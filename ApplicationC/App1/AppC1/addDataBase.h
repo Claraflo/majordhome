@@ -15,7 +15,6 @@
 
 
 void addInputInDB(t_program* t_program);
-void returnForm(t_program* t_program);
 char *str_replace(char *orig, char *rep, char *with);
 gchar* verificationString(t_program* t_program,gchar* text);
 int verificationBirthday(t_program* t_program,gchar* dateBirthday);
@@ -24,7 +23,7 @@ int verificationMail(t_program* t_program,gchar* mail,int statut);
 gchar* verificationJob(t_program* t_program,gchar * job);
 int verificationPC(t_program* t_program,gchar * postCode);
 char* createIdCode(t_program* t_program,char* idCode,gchar* conv[]);
-char* allocateString(char* string,int size,int count);
+char* allocateString(char* string,int size,int count,t_program* t_program);
 
 #endif //APP1_ADDDATABASE_H
 

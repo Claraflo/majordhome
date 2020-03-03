@@ -86,7 +86,7 @@ void displayForm(t_program* t_program)
         }
     }
 
-    combo = creatCombo(t_program,combo);
+    combo = creatCombo(t_program);
 
     boxJob = gtk_box_new(GTK_ORIENTATION_HORIZONTAL,2);
     gtk_box_pack_start(GTK_BOX(boxJob), entry[8], TRUE, TRUE, 2);
@@ -102,7 +102,7 @@ void displayForm(t_program* t_program)
     //Display Window
     gtk_widget_show_all(vBoxForm);
 
-    t_pageForm* t_pageForm = creatStructPageForm(t_pageForm,vBoxForm,entry,combo);
+    t_pageForm* t_pageForm = creatStructPageForm(vBoxForm,entry,combo);
     t_program->t_pageForm = t_pageForm;
 
 
@@ -112,10 +112,10 @@ void displayForm(t_program* t_program)
 }
 
 
-t_pageForm* creatStructPageForm(t_pageForm* t_pageForm,GtkWidget* vBoxForm,GtkWidget** entry,GtkWidget* combo)
+t_pageForm* creatStructPageForm(GtkWidget* vBoxForm,GtkWidget** entry,GtkWidget* combo)
 {
 
-    t_pageForm = malloc(sizeof(t_pageForm));
+    t_pageForm* t_pageForm = malloc(sizeof(t_pageForm));
 
     if(!t_pageForm)
     {
@@ -157,10 +157,10 @@ void ValidationReturnMenu(GtkWidget *buttonExit, t_program* t_program)
 
 
 
-GtkWidget* creatCombo(t_program* t_program,GtkWidget* combo)
+GtkWidget* creatCombo(t_program* t_program)
 {
 
-
+    GtkWidget* combo;
     MYSQL_RES* result = NULL;
 
     gchar* requestCombo = "SELECT nom from type";

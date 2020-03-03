@@ -36,6 +36,7 @@ typedef struct
     GtkWidget **entry;
     GtkWidget *view;
     GtkWidget* combo;
+    GtkWidget* entrySearch;
     GtkTreeSelection* selection;
 
 }t_pageResearch;

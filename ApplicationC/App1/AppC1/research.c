@@ -25,65 +25,70 @@ GtkTreeModel * create_and_fill_model (t_program* t_program,gchar* request, int s
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
-
+    printf("r1");
     mysql_query(t_program->sock,request);
-    // Test connexion
 
     res = mysql_use_result(t_program->sock);
-    //test res
 
-    if(statut == 0)
-    {
-        store = gtk_list_store_new (NUM_COLS,G_TYPE_STRING, G_TYPE_STRING,G_TYPE_STRING, G_TYPE_STRING,G_TYPE_STRING, G_TYPE_STRING,G_TYPE_STRING, G_TYPE_STRING,G_TYPE_STRING, G_TYPE_STRING);
+    if(res){
 
-        while ((row = mysql_fetch_row(res)))
+        if(statut == 0)
         {
-            /* Append a row and fill in some data */
-            gtk_list_store_append (store, &iter);
-            gtk_list_store_set (store, &iter,
-                                ID_COLUMN,row[0],
-                                JOB_COLUMN,row[1],
-                                NAME_COLUMN,row[2],
-                                FIRSTNAME_COLUMN,row[3],
-                                BIRTHDAY_COLUMN,row[4],
-                                PHONE_COLUMN,row[5],
-                                MAIL_COLUMN,row[6],
-                                ADRESS_COLUMN,row[7],
-                                CITY_COLUMN,row[8],
-                                PC_COLUMN,row[9],-1);
+            store = gtk_list_store_new (NUM_COLS,G_TYPE_STRING, G_TYPE_STRING,G_TYPE_STRING, G_TYPE_STRING,G_TYPE_STRING, G_TYPE_STRING,G_TYPE_STRING, G_TYPE_STRING,G_TYPE_STRING, G_TYPE_STRING);
+
+            while ((row = mysql_fetch_row(res)))
+            {
+                /* Append a row and fill in some data */
+                gtk_list_store_append (store, &iter);
+                gtk_list_store_set (store, &iter,
+                                    ID_COLUMN,g_convert(row[0],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    JOB_COLUMN,g_convert(row[1],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    NAME_COLUMN,g_convert(row[2],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    FIRSTNAME_COLUMN,g_convert(row[3],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    BIRTHDAY_COLUMN,g_convert(row[4],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    PHONE_COLUMN,g_convert(row[5],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    MAIL_COLUMN,g_convert(row[6],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    ADRESS_COLUMN,g_convert(row[7],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    CITY_COLUMN,g_convert(row[8],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    PC_COLUMN,g_convert(row[9],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),-1);
+            }
         }
-    }
-    else if(statut == 1)
-    {
-
-        GtkTreeModel *model;
-        store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view)));
-        model = gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view));
-
-        if (gtk_tree_model_get_iter_first(model, &iter) == FALSE)
+        else if(statut == 1)
         {
-            return;
+
+            GtkTreeModel *model;
+            store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view)));
+            model = gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view));
+
+            if (gtk_tree_model_get_iter_first(model, &iter) == FALSE)
+            {
+                return;
+            }
+
+            gtk_list_store_clear(store);
+
+            while ((row = mysql_fetch_row(res)))
+            {
+                /* Append a row and fill in some data */
+                gtk_list_store_append (store, &iter);
+                gtk_list_store_set (store, &iter,
+                                    ID_COLUMN,g_convert(row[1],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    JOB_COLUMN,g_convert(row[12],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    NAME_COLUMN,g_convert(row[2],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    FIRSTNAME_COLUMN,g_convert(row[3],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    BIRTHDAY_COLUMN,g_convert(row[5],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    PHONE_COLUMN,g_convert(row[6],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    MAIL_COLUMN,g_convert(row[4],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    ADRESS_COLUMN,g_convert(row[7],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    CITY_COLUMN,g_convert(row[8],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),
+                                    PC_COLUMN,g_convert(row[9],-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL),-1);
+            }
+
         }
 
-        gtk_list_store_clear(store);
-
-        while ((row = mysql_fetch_row(res)))
-        {
-            /* Append a row and fill in some data */
-            gtk_list_store_append (store, &iter);
-            gtk_list_store_set (store, &iter,
-                                ID_COLUMN,row[1],
-                                JOB_COLUMN,row[12],
-                                NAME_COLUMN,row[2],
-                                FIRSTNAME_COLUMN,row[3],
-                                BIRTHDAY_COLUMN,row[5],
-                                PHONE_COLUMN,row[6],
-                                MAIL_COLUMN,row[4],
-                                ADRESS_COLUMN,row[7],
-                                CITY_COLUMN,row[8],
-                                PC_COLUMN,row[9],-1);
-        }
-
+    }else{
+        errorMessage(t_program,"Le programme ne peut afficher les informations.","Erreur resultat BDD",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
     }
 
     mysql_free_result(res);
@@ -97,6 +102,8 @@ GtkWidget * create_view_and_model (t_program* t_program)
     GtkTreeModel        *model;
     GtkWidget           *view;
 
+
+    printf("r2");
     view = gtk_tree_view_new ();
 
     /* --- Column #1 --- */
@@ -230,6 +237,7 @@ void initResearch(t_program* t_program)
 
     GtkTreeSelection *selection;
 
+    printf("r3");
     sw = gtk_scrolled_window_new(NULL, NULL);
     view = create_view_and_model (t_program);
 
@@ -268,8 +276,9 @@ void initResearch(t_program* t_program)
 
     gtk_container_add(GTK_CONTAINER(t_program->pbox), vbox);
 
+    printf("r4");
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(view));
-    t_pageResearch* t_pageResearch = creatStructPageResearch(t_program,t_pageResearch, vbox,selection,view,entry);
+    t_pageResearch* t_pageResearch = creatStructPageResearch(t_program, vbox,selection,view,entry);
 
     g_signal_connect(G_OBJECT(add), "clicked",G_CALLBACK(appendItem),t_program);
     g_signal_connect(G_OBJECT(research), "clicked",G_CALLBACK(researchItem), t_program);
@@ -278,18 +287,21 @@ void initResearch(t_program* t_program)
     g_signal_connect(G_OBJECT(remove), "clicked",G_CALLBACK(removeItem), t_program);
     g_signal_connect(G_OBJECT(all), "clicked",G_CALLBACK(displayAll), t_program);
 
+
+    printf("r5");
     gtk_widget_show_all(vbox);
 
 }
 
-t_pageResearch* creatStructPageResearch(t_program* t_program, t_pageResearch* t_pageResearch,GtkWidget* vboxResearch,GtkTreeSelection *selection,GtkWidget* view,GtkWidget* entry)
+t_pageResearch* creatStructPageResearch(t_program* t_program,GtkWidget* vboxResearch,GtkTreeSelection *selection,GtkWidget* view,GtkWidget* entry)
 {
 
-    t_pageResearch = malloc(sizeof(t_pageResearch));
+    t_pageResearch* t_pageResearch = malloc(sizeof(t_pageResearch));
 
     if(!t_pageResearch)
     {
-        printf("erreur malloc pageResarch");
+        errorMessage(t_program,"Le programme ne parvient pas a etablir de connexion avec la BDD.  Fermez la fenetre d'accueil et verrifiez la connexion avant d'ouvrir a nouveau le programme.","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
         return NULL;
     }
 
@@ -308,6 +320,7 @@ t_pageResearch* creatStructPageResearch(t_program* t_program, t_pageResearch* t_
     t_pageResearch->idCode = malloc(sizeof(char)*12);
     t_pageResearch->selection= selection;
     t_pageResearch->view= view;
+    t_pageResearch->entrySearch=entry;
     t_program->t_pageResearch = t_pageResearch;
 
 
@@ -347,16 +360,16 @@ void researchItem(GtkWidget *pWidget, t_program* t_program)
     GtkTreeModel *model;
     GtkTreeIter  iter;
 
-    gchar* conversionEntry = allocateString(conversionEntry,255,0);
+    gchar* conversionEntry = allocateString(conversionEntry,255,0,t_program);
 
 
-    conversionEntry = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
+    conversionEntry = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entrySearch)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     conversionEntry = str_replace(conversionEntry, "\'", "\\\'");
 
     if(strlen(conversionEntry)!=0)
     {
 
-        gchar* requestResearch = allocateString(conversionEntry,3000,0);
+        gchar* requestResearch = allocateString(conversionEntry,3000,0,t_program);
         requestResearch = "SELECT * FROM `personne` WHERE idCode = '";
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
         requestResearch = g_strconcat(requestResearch,"' || nom = '",NULL);
@@ -422,20 +435,18 @@ void modifyItem(GtkWidget *pWidget, t_program* t_program)
 
 
 
-        gchar *idCode = allocateString(idCode,12,0);
+        gchar *idCode = allocateString(idCode,12,0,t_program);
         gtk_tree_model_get (model, &iter, ID_COLUMN, &idCode, -1);
 
-        gchar* requestRemove = allocateString(requestRemove,60,0);
+        gchar* requestRemove = allocateString(requestRemove,60,0,t_program);
 
         requestRemove = "SELECT * FROM personne WHERE idCode ='";
         requestRemove = g_strconcat(requestRemove,idCode,NULL);
         requestRemove = g_strconcat(requestRemove,"'",NULL);
 
         mysql_query(t_program->sock,requestRemove);
-        // Test connexion
 
         res = mysql_use_result(t_program->sock);
-        //test res
 
         if(res)
         {
@@ -551,7 +562,7 @@ void modifyItem(GtkWidget *pWidget, t_program* t_program)
         buttonValidForm = gtk_button_new_from_stock(GTK_STOCK_ADD);
         buttonExit = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
         boxButton=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
-        combo = creatCombo(t_program,combo);
+        combo = creatCombo(t_program);
         gtk_box_pack_start(GTK_BOX(boxButton), combo, FALSE, FALSE, 2);
         gtk_box_pack_start(GTK_BOX(boxButton), buttonValidForm, FALSE, FALSE, 2);
         gtk_box_pack_start(GTK_BOX(boxButton), buttonExit, FALSE, FALSE, 2);
@@ -576,6 +587,7 @@ void modifyItem(GtkWidget *pWidget, t_program* t_program)
         free(idCode);
         free(requestRemove);
     }
+
 }
 
 
@@ -585,8 +597,8 @@ void modification(GtkWidget *pWidget,t_program*t_program)
     int i,countEmpty=0;
     char** conv;
     char** label;
-    gchar* requestProvider = allocateString(requestProvider,1200,0);
-    gchar* requestJob =  allocateString(requestJob,100,0);
+    gchar* requestProvider = allocateString(requestProvider,1200,0,t_program);
+    gchar* requestJob =  allocateString(requestJob,100,0,t_program);
 
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
@@ -619,7 +631,8 @@ void modification(GtkWidget *pWidget,t_program*t_program)
 
         if(!conv)
         {
-            //Exit
+            errorMessage(t_program,"Le programme rencontre un probleme. ERREUR: Malloc conv ","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(t_program);
         }
 
         conv[0] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[0])));//name
@@ -640,7 +653,8 @@ void modification(GtkWidget *pWidget,t_program*t_program)
 
         if(!label)
         {
-            //Exit
+            errorMessage(t_program,"Le programme rencontre un probleme. ERREUR: Malloc Label ","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(t_program);
         }
 
 
@@ -669,7 +683,6 @@ void modification(GtkWidget *pWidget,t_program*t_program)
             res = mysql_use_result(t_program->sock);
             row = mysql_fetch_row(res);
 
-            printf("%s\n", mysql_error(t_program->sock));
 
             if(!row)
             {
@@ -699,9 +712,9 @@ void modification(GtkWidget *pWidget,t_program*t_program)
             requestProvider = g_strconcat(requestProvider,t_program->t_pageResearch->idCode,NULL);
             requestProvider = g_strconcat(requestProvider,"'",NULL);
 
-            printf("%s",requestProvider);
+
             mysql_query(t_program->sock,requestProvider);
-            printf("%s\n", mysql_error(t_program->sock));
+
 
         }
 
@@ -752,10 +765,10 @@ void removeItem(GtkWidget *pWidget, t_program* t_program)
                                         &model, &iter))
     {
 
-        gchar *idCode = allocateString(idCode,12,0);
+        gchar *idCode = allocateString(idCode,12,0,t_program);
         gtk_tree_model_get (model, &iter, ID_COLUMN, &idCode, -1);
 
-        gchar* requestRemove = allocateString(requestRemove,60,0);
+        gchar* requestRemove = allocateString(requestRemove,60,0,t_program);
 
         requestRemove = "DELETE FROM personne WHERE idCode ='";
         requestRemove = g_strconcat(requestRemove,idCode,NULL);
