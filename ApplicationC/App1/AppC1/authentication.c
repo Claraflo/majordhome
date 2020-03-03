@@ -32,10 +32,13 @@ void authentication(t_program* t_program){
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
+    gchar* conversionUsernameUTF8  = allocateString(conversionUsernameUTF8,50,0);
+    gchar* conversionPasswordUTF8 = allocateString(conversionPasswordUTF8,50,0);
+    gchar* requestAuth = allocateString(requestAuth,150,0);
 
-    gchar* conversionUsernameUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->username)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
-    gchar* conversionPasswordUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->password)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
-    gchar* requestAuth = g_strconcat("SELECT prenom from personne WHERE prenom = '",conversionUsernameUTF8,NULL);
+    conversionUsernameUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->username)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
+    conversionPasswordUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->password)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
+    requestAuth = g_strconcat("SELECT prenom from personne WHERE prenom = '",conversionUsernameUTF8,NULL);
     requestAuth = g_strconcat(requestAuth,"' AND pwd = '",NULL);
     requestAuth = g_strconcat(requestAuth,conversionPasswordUTF8,NULL);
     requestAuth = g_strconcat(requestAuth,"'",NULL);

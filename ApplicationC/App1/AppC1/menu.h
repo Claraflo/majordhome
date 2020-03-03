@@ -8,8 +8,9 @@
 
 #include "structures.h"
 #include "authentication.h"
+#include "form.h"
 #include "research.h"
-#include"error.h"
+#include "error.h"
 
 void displayMenu(t_program* t_program);
 t_pageMenu* creatStructPageMenu(t_pageMenu* t_pageMenu,GtkWidget* vbox);
