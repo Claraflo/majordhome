@@ -20,7 +20,7 @@ char *str_replace(char *orig, char *rep, char *with);
 gchar* verificationString(t_program* t_program,gchar* text);
 int verificationBirthday(t_program* t_program,gchar* dateBirthday);
 int verificationPhone(t_program* t_program,gchar* phone);
-int verificationMail(t_program* t_program,gchar* mail);
+int verificationMail(t_program* t_program,gchar* mail,int statut);
 gchar* verificationJob(t_program* t_program,gchar * job);
 int verificationPC(t_program* t_program,gchar * postCode);
 char* createIdCode(t_program* t_program,char* idCode,gchar* conv[]);

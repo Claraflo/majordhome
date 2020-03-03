@@ -1,17 +1,18 @@
 #include "menu.h"
 
 
-void displayMenu(t_program* t_program){
+void displayMenu(t_program* t_program)
+{
 
-
-  //Initialization of Widgets
+    printf(" me1");
+    //Initialization of Widgets
 
     GtkWidget *vBoxMenu;
     GtkWidget *labelBox,*labelMenu;
     GtkWidget *buttonForm,*buttonSelect,*buttonExit;
     GtkWidget *buttonFormBox,*buttonSelectBox,*buttonExitBox;
 
-  //Creation of Widgets
+    //Creation of Widgets
 
     labelMenu = gtk_label_new("Menu");
 
@@ -41,11 +42,12 @@ void displayMenu(t_program* t_program){
 
     //Display Window
     gtk_widget_show_all(vBoxMenu);
+    printf(" me2");
 
-
-    t_pageMenu* t_pageMenu = creatStructPageMenu(t_pageMenu,vBoxMenu);
+    t_pageMenu* t_pageMenu = creatStructPageMenu(t_program,vBoxMenu);
+    printf(" me3");
     t_program->t_pageMenu = t_pageMenu;
-
+    printf(" me4");
 
     g_signal_connect(G_OBJECT(buttonForm), "clicked", G_CALLBACK(ValidationForm),t_program);
     g_signal_connect(G_OBJECT(buttonSelect), "clicked", G_CALLBACK(ValidationSelect),t_program);
@@ -54,41 +56,50 @@ void displayMenu(t_program* t_program){
 }
 
 
-t_pageMenu* creatStructPageMenu(t_pageMenu* t_pageMenu,GtkWidget* vbox){
+t_pageMenu* creatStructPageMenu(t_program* t_program,GtkWidget* vbox)
+{
 
-    t_pageMenu = malloc(sizeof(t_pageMenu));
+    t_pageMenu* t_pageMenu = malloc(sizeof(t_pageMenu));
 
-        if(!t_pageMenu){
-            printf("erreur malloc pageMenu");
-            return NULL;
-        }
+    if(!t_pageMenu)
+    {
+        errorMessage(t_program,"Le programme rencontre un probleme et doit fermer. (ERREUR : malloc menu)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
+        return NULL;
+    }
 
     t_pageMenu->vbox = vbox ;
 
-return t_pageMenu;
+    printf(" me5");
+
+    return t_pageMenu;
 
 }
 
-void ValidationForm(GtkWidget *buttonForm, t_program* t_program){
+void ValidationForm(GtkWidget *buttonForm, t_program* t_program)
+{
 
     gtk_widget_hide(t_program->t_pageMenu->vbox);
     displayForm(t_program);
 
 }
 
-void ValidationSelect(GtkWidget *buttonSelect, t_program* t_program){
+void ValidationSelect(GtkWidget *buttonSelect, t_program* t_program)
+{
 
     gtk_widget_hide(t_program->t_pageMenu->vbox);
     initResearch(t_program);
 
 }
 
-void ValidationExit(GtkWidget *buttonExit, t_program* t_program){
+void ValidationExit(GtkWidget *buttonExit, t_program* t_program)
+{
 
     returnAuth(t_program);
 }
 
-void returnAuth(t_program* t_program){
+void returnAuth(t_program* t_program)
+{
 
     gtk_widget_hide(t_program->t_pageMenu->vbox);
     gtk_entry_set_text (t_program->t_pageAuth->username,"");

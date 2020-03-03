@@ -1,18 +1,20 @@
 #include "init.h"
 
 
-t_program* initProgram(t_program* t_program){
+t_program* initProgram()
+{
+    printf(" i1");
+    t_program* t_program  = malloc(sizeof(t_program));
 
-    t_program  = malloc(sizeof(t_program));
-
-        if(!t_program){
-            printf("erreur malloc program");
-            return NULL;
-        }
+    if(!t_program)
+    {
+        errorMessage(t_program,"Le programme rencontre un probleme et doit etre ferme. Fermez la fenetre d'accueil. (ERREUR : malloc program)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
+    }
 
     //Creation of Window
     GtkWidget* pWindow = creatWindow(pWindow);
-
+    printf(" i2");
     t_program->pWindow= pWindow;
     t_program->t_pageAuth = NULL;
     t_program->t_pageMenu = NULL;
@@ -23,9 +25,10 @@ t_program* initProgram(t_program* t_program){
 
     sock = connection(sock);
 
-    if(!sock){
-        printf("erreur sock");
-        return NULL;
+    if(!sock)
+    {
+        errorMessage(t_program,"Le programme ne parvient pas a etablir de connexion avec la BDD.  Fermez la fenetre d'accueil et verrifiez la connexion avant d'ouvrir a nouveau le programme.","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
     }
 
     t_program->sock = sock;
@@ -33,10 +36,11 @@ t_program* initProgram(t_program* t_program){
 
     displayContainWelcomPage(t_program);
 
-return t_program;
+    return t_program;
 }
 
-GtkWidget* creatWindow(GtkWidget* pWindow){
+GtkWidget* creatWindow(GtkWidget* pWindow)
+{
 
     pWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
@@ -50,9 +54,10 @@ GtkWidget* creatWindow(GtkWidget* pWindow){
 }
 
 
-void displayContainWelcomPage(t_program* t_program){
-
-  //Initialization of Widgets
+void displayContainWelcomPage(t_program* t_program)
+{
+    printf(" i3");
+    //Initialization of Widgets
 
     GtkWidget *usernameLabel, *passwordLabel, *helloLabel;
     GtkWidget *usernameEntry, *passwordEntry;
@@ -61,7 +66,7 @@ void displayContainWelcomPage(t_program* t_program){
     GtkWidget *hbox0,*hbox1, *hbox2, *hboxIcon;
     GtkWidget *vbox, *pbox;
 
-  //Creation of Widgets
+    //Creation of Widgets
 
     helloLabel = gtk_frame_new("Bonjour !");
     gtk_frame_set_label_align(helloLabel, 0.5, 0.0);
@@ -102,35 +107,39 @@ void displayContainWelcomPage(t_program* t_program){
 
     //Display Window
     gtk_widget_show_all(t_program->pWindow);
-
+    printf(" i4");
     t_program->pbox = pbox;
     t_pageAuth* t_pageAuth = creatStructPageAuth(t_pageAuth,t_program, usernameEntry,passwordEntry,vbox);
     g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),t_program);
+    printf(" i5");
+}
 
-   }
-
-t_pageAuth* creatStructPageAuth(t_pageAuth* t_pageAuth,t_program* t_program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox){
+t_pageAuth* creatStructPageAuth(t_pageAuth* t_pageAuth,t_program* t_program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox)
+{
 
     t_pageAuth = malloc(sizeof(t_pageAuth));
 
-        if(!t_pageAuth){
-            printf("erreur malloc pageAuth");
-            return NULL;
-        }
+    if(!t_pageAuth)
+    {
+        errorMessage(t_program,"Le programme rencontre un probleme et doit etre ferme. Fermez la fenetre d'accueil. (ERREUR : malloc program)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
+        return NULL;
+    }
 
-
+    printf(" i6");
     t_pageAuth->username = usernameEntry;
     t_pageAuth->password = passwordEntry;
     t_pageAuth->vbox = vbox;
 
     t_program->t_pageAuth = t_pageAuth;
-
-return t_pageAuth;
+    printf(" i7");
+    return t_pageAuth;
 }
 
-void ValidationAuthentication(GtkWidget *button, t_program* t_program){
+void ValidationAuthentication(GtkWidget *button, t_program* t_program)
+{
 
-
+    printf(" i8");
     authentication(t_program);
 
 

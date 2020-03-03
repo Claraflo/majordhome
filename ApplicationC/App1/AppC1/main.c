@@ -8,28 +8,27 @@
 
 
 // The main application program.
-int main(int argc, char** argv) {
-
+int main(int argc, char** argv)
+{
+    printf("m1");
     //Initialization
     gtk_init(&argc,&argv);
-    t_program* t_program = initProgram(t_program);
-
+    printf("m2");
+    t_program* t_program = initProgram();
+    printf("m3");
     //Event Close
     g_signal_connect(G_OBJECT(t_program->pWindow), "destroy", G_CALLBACK(OnDestroy), t_program);
 
-
+    printf("m4");
     // Loop GTK
     gtk_main();
-
+    printf("m5");
     return EXIT_SUCCESS;
 }
 
 
 void OnDestroy(GtkWidget *pWidget, t_program* t_program)
 {
-    /* Arret de la boucle evenementielle */
-    gtk_main_quit();
-    gtk_widget_destroy(pWidget);
 
     endProgram(t_program);
 }

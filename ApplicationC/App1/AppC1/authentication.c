@@ -3,7 +3,8 @@
 
 
 
-MYSQL* connection(MYSQL* sock){
+MYSQL* connection(MYSQL* sock)
+{
 
 
     sock = mysql_init(0);
@@ -15,18 +16,22 @@ MYSQL* connection(MYSQL* sock){
     char* db = "majord'home";
     int port = 3306;
 
-    if(mysql_real_connect(sock,host,user,pass,db,port,NULL,0)){
+    if(mysql_real_connect(sock,host,user,pass,db,port,NULL,0))
+    {
 
         return sock;
 
-    }else{
+    }
+    else
+    {
 
-        return NULL; // Message d'erreur
+        return NULL;
     }
 
 }
 
-void authentication(t_program* t_program){
+void authentication(t_program* t_program)
+{
 
 
     MYSQL_ROW row = NULL;
@@ -36,6 +41,7 @@ void authentication(t_program* t_program){
     gchar* conversionPasswordUTF8 = allocateString(conversionPasswordUTF8,50,0);
     gchar* requestAuth = allocateString(requestAuth,150,0);
 
+    printf("au1");
     conversionUsernameUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->username)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     conversionPasswordUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->password)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     requestAuth = g_strconcat("SELECT prenom from personne WHERE prenom = '",conversionUsernameUTF8,NULL);
@@ -43,18 +49,21 @@ void authentication(t_program* t_program){
     requestAuth = g_strconcat(requestAuth,conversionPasswordUTF8,NULL);
     requestAuth = g_strconcat(requestAuth,"'",NULL);
 
-
+    printf(" au2");
     mysql_query(t_program->sock,requestAuth);
 
     res = mysql_use_result(t_program->sock);
     row = mysql_fetch_row(res);
 
-    if(row){
-
+    if(row)
+    {
+        printf("au3");
         gtk_widget_hide(t_program->t_pageAuth->vbox);
         displayMenu(t_program);
 
-    }else if(!row){
+    }
+    else if(!row)
+    {
         errorMessage(t_program,"Erreur dans l'id ou le mot de passe.","Fenetre d'erreur",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
     }
 

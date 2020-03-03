@@ -7,7 +7,8 @@ void createQRC(t_program* t_program,char* idCode)
 
 
 // Creates a single QR Code, then prints it to the console.
-void doBasicQrCode(char* input) {
+void doBasicQrCode(char* input)
+{
     const char *text = input;                // User-supplied text
     enum qrcodegen_Ecc errCorLvl = qrcodegen_Ecc_LOW;  // Error correction level
 
@@ -24,14 +25,17 @@ void doBasicQrCode(char* input) {
 /*---- Utilities ----*/
 
 // Prints the given QR Code to the console.
-void printQr(const uint8_t qrcode[],char* input) {
+void printQr(const uint8_t qrcode[],char* input)
+{
     int size = qrcodegen_getSize(qrcode);
     int border = 4;
 
     FILE* pf = openFile(input);
 
-    for (int y = -border; y < size + border; y++) {
-        for (int x = -border; x < size + border; x++) {
+    for (int y = -border; y < size + border; y++)
+    {
+        for (int x = -border; x < size + border; x++)
+        {
             fputs((qrcodegen_getModule(qrcode, x, y) ? "██" : "  "), pf);
 
         }
@@ -41,7 +45,8 @@ void printQr(const uint8_t qrcode[],char* input) {
     fclose(pf);
 }
 
-FILE* openFile(char* input){
+FILE* openFile(char* input)
+{
 
     char path[30] = ".\\qrCode\\"; //12
     char ext[5] = ".txt";
@@ -52,7 +57,8 @@ FILE* openFile(char* input){
     FILE* pf;
     pf = fopen(path,"r+");
 
-    if (pf==NULL){
+    if (pf==NULL)
+    {
         pf = fopen(path,"a+");
     }
 

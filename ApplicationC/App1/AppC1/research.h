@@ -7,6 +7,7 @@
 #include <gtk/gtk.h>
 
 #include "structures.h"
+#include "addDataBase.h"
 #include "form.h"
 #include"error.h"
 
@@ -20,6 +21,8 @@ void modifyItem(GtkWidget *pWidget, t_program* t_program);
 void GoBackMenu(GtkWidget *pWidget, t_program* t_program);
 void removeItem(GtkWidget *pWidget, t_program* t_program);
 void displayAll(GtkWidget *pWidget, t_program* t_program);
+void modification(GtkWidget *pWidget,t_program*t_program);
+void cancelModification(GtkWidget *pWidget,t_program*t_program);
 
 
 #endif //APP1_RESEARCH_H

@@ -13,7 +13,7 @@
 #include "error.h"
 
 void displayMenu(t_program* t_program);
-t_pageMenu* creatStructPageMenu(t_pageMenu* t_pageMenu,GtkWidget* vbox);
+t_pageMenu* creatStructPageMenu(t_program* t_program,GtkWidget* vbox);
 void ValidationForm(GtkWidget *buttonForm, t_program* t_program);
 void ValidationSelect(GtkWidget *buttonSelect, t_program* t_program);
 void ValidationExit(GtkWidget *buttonExit, t_program* t_program);

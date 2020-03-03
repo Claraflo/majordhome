@@ -16,7 +16,7 @@ GtkWidget* creatWindow(GtkWidget* pWindow);
 void displayContainWelcomPage(t_program* t_program);
 void ValidationAuthentication(GtkWidget *button, t_program* t_program);
 t_pageAuth* creatStructPageAuth(t_pageAuth* t_pageAuth,t_program* program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
-t_program* initProgram(t_program* t_program);
+t_program* initProgram();
 
 
 #endif //APP1_INIT_H

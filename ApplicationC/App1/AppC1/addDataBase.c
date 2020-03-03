@@ -48,7 +48,7 @@ void addInputInDB(t_program* t_program)
         conv[8] = verificationJob(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[8])));//Job
 
 
-        if(verificationBirthday(t_program,conv[3]) && verificationPhone(t_program,conv[4]) && verificationMail(t_program,conv[2])&& verificationPC(t_program,conv[7])){
+        if(verificationBirthday(t_program,conv[3]) && verificationPhone(t_program,conv[4]) && verificationMail(t_program,conv[2],0)&& verificationPC(t_program,conv[7])){
 
 
             //CREATE idCode for QRCode
@@ -132,7 +132,7 @@ return text;
 }
 
 
-int verificationMail(t_program* t_program,gchar* mail){
+int verificationMail(t_program* t_program,gchar* mail,int statut){
 
     int i,posArob=0,countArob= 0,countDot =0,len = strlen(mail);
     char forbiddenChar[15] = "()<>,;:\"[]|ç%&";
@@ -209,7 +209,7 @@ int verificationMail(t_program* t_program,gchar* mail){
     res = mysql_use_result(t_program->sock);
     row = mysql_fetch_row(res);
 
-    if(row){
+    if(row && statut == 0){
         errorMessage(t_program,"ERREUR : Le prestataire existe deja. S'il est necessaire de l'inscrire 2 fois renseignez 2 mails differents.","ERREUR",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
         mysql_free_result(res);
         free(requestMail);

@@ -30,8 +30,12 @@ typedef struct
 typedef struct
 {
     GtkWidget* vbox;
+    GtkWidget* modifyBox;
+    GtkWidget* buttonBox;
+    char* idCode;
+    GtkWidget **entry;
     GtkWidget *view;
-    GtkWidget* entry;
+    GtkWidget* combo;
     GtkTreeSelection* selection;
 
 }t_pageResearch;
