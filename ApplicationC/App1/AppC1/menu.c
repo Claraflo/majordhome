@@ -4,13 +4,13 @@
 void displayMenu(t_program* t_program)
 {
 
-    printf(" me1");
+
     //Initialization of Widgets
 
-    GtkWidget *vBoxMenu;
-    GtkWidget *labelBox,*labelMenu;
-    GtkWidget *buttonForm,*buttonSelect,*buttonExit;
-    GtkWidget *buttonFormBox,*buttonSelectBox,*buttonExitBox;
+    GtkWidget *vBoxMenu = NULL;
+    GtkWidget *labelBox,*labelMenu = NULL;
+    GtkWidget *buttonForm= NULL,*buttonSelect= NULL,*buttonExit= NULL;
+    GtkWidget *buttonFormBox= NULL,*buttonSelectBox= NULL,*buttonExitBox= NULL;
 
     //Creation of Widgets
 
@@ -42,12 +42,12 @@ void displayMenu(t_program* t_program)
 
     //Display Window
     gtk_widget_show_all(vBoxMenu);
-    printf(" me2");
+
 
     t_pageMenu* t_pageMenu = creatStructPageMenu(t_program,vBoxMenu);
-    printf(" me3");
+
     t_program->t_pageMenu = t_pageMenu;
-    printf(" me4");
+
 
     g_signal_connect(G_OBJECT(buttonForm), "clicked", G_CALLBACK(ValidationForm),t_program);
     g_signal_connect(G_OBJECT(buttonSelect), "clicked", G_CALLBACK(ValidationSelect),t_program);
@@ -70,7 +70,7 @@ t_pageMenu* creatStructPageMenu(t_program* t_program,GtkWidget* vbox)
 
     t_pageMenu->vbox = vbox ;
 
-    printf(" me5");
+
 
     return t_pageMenu;
 
@@ -102,8 +102,8 @@ void returnAuth(t_program* t_program)
 {
 
     gtk_widget_hide(t_program->t_pageMenu->vbox);
-    gtk_entry_set_text (t_program->t_pageAuth->username,"");
-    gtk_entry_set_text (t_program->t_pageAuth->password,"");
+    gtk_entry_set_text (GTK_ENTRY(t_program->t_pageAuth->username),"");
+    gtk_entry_set_text (GTK_ENTRY(t_program->t_pageAuth->password),"");
     gtk_widget_show_all(t_program->t_pageAuth->vbox);
 
 }

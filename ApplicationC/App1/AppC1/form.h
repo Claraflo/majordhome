@@ -8,10 +8,11 @@
 
 #include "structures.h"
 #include "error.h"
+#include "endProgram.h"
 #include "addDataBase.h"
 
 void displayForm(t_program* t_program);
-t_pageForm* creatStructPageForm(GtkWidget* vBoxForm,GtkWidget** entry,GtkWidget* combo);
+t_pageForm* creatStructPageForm(t_program* t_program,GtkWidget* vBoxForm,GtkWidget** entry,GtkWidget* combo);
 void ValidationFormProviders(GtkWidget *buttonValidForm, t_program* t_program);
 void ValidationReturnMenu(GtkWidget *buttonExit, t_program* t_program);
 GtkWidget* creatCombo(t_program* t_program);

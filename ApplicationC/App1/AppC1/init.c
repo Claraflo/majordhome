@@ -3,7 +3,7 @@
 
 t_program* initProgram()
 {
-    printf(" i1");
+
     t_program* t_program  = malloc(sizeof(t_program));
 
     if(!t_program)
@@ -14,7 +14,7 @@ t_program* initProgram()
 
     //Creation of Window
     GtkWidget* pWindow = creatWindow();
-    printf(" i2");
+
     t_program->pWindow= pWindow;
     t_program->t_pageAuth = NULL;
     t_program->t_pageMenu = NULL;
@@ -42,8 +42,8 @@ t_program* initProgram()
 GtkWidget* creatWindow()
 {
 
-    GtkWidget* pWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-
+    GtkWidget* pWindow = NULL;
+    pWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
     gtk_window_set_position(GTK_WINDOW(pWindow),GTK_WIN_POS_CENTER_ALWAYS);
     gtk_window_set_default_size(GTK_WINDOW(pWindow), 400, 300);
@@ -56,27 +56,29 @@ GtkWidget* creatWindow()
 
 void displayContainWelcomPage(t_program* t_program)
 {
-    printf(" i3");
+
     //Initialization of Widgets
 
-    GtkWidget *usernameLabel, *passwordLabel, *helloLabel;
-    GtkWidget *usernameEntry, *passwordEntry;
-    GtkWidget *icon;
-    GtkWidget *okButton;
-    GtkWidget *hbox0,*hbox1, *hbox2, *hboxIcon;
-    GtkWidget *vbox, *pbox;
+    GtkWidget *usernameLabel = NULL, *passwordLabel= NULL, *helloLabel=NULL;
+    GtkWidget *usernameEntry=NULL, *passwordEntry=NULL;
+    GtkWidget *icon=NULL;
+    GtkWidget *okButton=NULL;
+    GtkWidget *hbox0=NULL,*hbox1=NULL, *hbox2=NULL, *hboxIcon=NULL;
+    GtkWidget *vbox=NULL, *pbox=NULL;
+
+    t_pageAuth* t_pageAuth = NULL;
 
     //Creation of Widgets
 
     helloLabel = gtk_frame_new("Bonjour !");
-    gtk_frame_set_label_align(helloLabel, 0.5, 0.0);
-    gtk_frame_set_shadow_type(helloLabel,GTK_SHADOW_OUT);
+    gtk_frame_set_label_align(GTK_FRAME(helloLabel), 0.5, 0.0);
+    gtk_frame_set_shadow_type(GTK_FRAME(helloLabel),GTK_SHADOW_OUT);
     usernameLabel = gtk_label_new("Identifiant:  ");
     passwordLabel = gtk_label_new("Mot de passe: ");
     usernameEntry = gtk_entry_new();
     passwordEntry = gtk_entry_new();
-    gtk_entry_set_max_length(usernameEntry,50);
-    gtk_entry_set_max_length(passwordEntry,50);
+    gtk_entry_set_max_length(GTK_ENTRY(usernameEntry),50);
+    gtk_entry_set_max_length(GTK_ENTRY(passwordEntry),50);
     gtk_entry_set_visibility(GTK_ENTRY(passwordEntry), FALSE);// Password is not display, instead, dots replace characters
     okButton = gtk_button_new_with_label("Valider");
 
@@ -107,11 +109,11 @@ void displayContainWelcomPage(t_program* t_program)
 
     //Display Window
     gtk_widget_show_all(t_program->pWindow);
-    printf(" i4");
+
     t_program->pbox = pbox;
-    t_pageAuth* t_pageAuth = creatStructPageAuth(t_program, usernameEntry,passwordEntry,vbox);
+    t_pageAuth = creatStructPageAuth(t_program, usernameEntry,passwordEntry,vbox);
     g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),t_program);
-    printf(" i5");
+
 }
 
 t_pageAuth* creatStructPageAuth(t_program* t_program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox)
@@ -126,20 +128,19 @@ t_pageAuth* creatStructPageAuth(t_program* t_program, GtkWidget* usernameEntry, 
         return NULL;
     }
 
-    printf(" i6");
     t_pageAuth->username = usernameEntry;
     t_pageAuth->password = passwordEntry;
     t_pageAuth->vbox = vbox;
 
     t_program->t_pageAuth = t_pageAuth;
-    printf(" i7");
+
     return t_pageAuth;
 }
 
 void ValidationAuthentication(GtkWidget *button, t_program* t_program)
 {
 
-    printf(" i8");
+
     authentication(t_program);
 
 

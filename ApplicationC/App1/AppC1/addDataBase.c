@@ -5,21 +5,25 @@
 void addInputInDB(t_program* t_program)
 {
     int i,countEmpty=0;
-    char** conv;
-    char* idCode;
-    gchar* requestProvider = allocateString(requestProvider,1000,0,t_program);
-    gchar* requestJob =  allocateString(requestJob,100,0,t_program);
-    gchar* requestIdCode= allocateString(requestIdCode,100,0,t_program);
+    char** conv= NULL;
+    char* idCode= NULL;
+    gchar* requestProvider = NULL;
+    gchar* requestJob =   NULL;
+    gchar* requestIdCode=  NULL;
 
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
+
+    requestProvider = allocateString(requestProvider,1000,0,t_program);
+    requestJob =  allocateString(requestJob,100,0,t_program);
+    requestIdCode= allocateString(requestIdCode,100,0,t_program);
 
     //Check if inputs are not empty
     for(i=0;i<9;i++){
         if(strlen(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[i])))== 0){
              countEmpty ++;
         }
-        if(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX(t_program->t_pageForm->combo)) == NULL){
+        if(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(t_program->t_pageForm->combo)) == NULL){
             countEmpty ++;
         }
     }
@@ -41,11 +45,11 @@ void addInputInDB(t_program* t_program)
         conv[0] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[0])));//name
         conv[1] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[1])));//firstname
         conv[2] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[2])));//mail
-        conv[3] = gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[3]));//Birthday
-        conv[4] = gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[4]));//Phone
+        conv[3] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[3])));//Birthday
+        conv[4] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[4])));//Phone
         conv[5] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[5])));//Adress
         conv[6] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[6])));//Town
-        conv[7] = gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[7]));//Post Code
+        conv[7] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[7])));//Post Code
         conv[8] = verificationJob(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageForm->entry[8])));//Job
 
 
@@ -87,9 +91,9 @@ void addInputInDB(t_program* t_program)
                 requestJob = "INSERT INTO metier (nom,FK_type) VALUES ('";
                 requestJob = g_strconcat(requestJob,conv[8],NULL);
                 requestJob = g_strconcat(requestJob,"','",NULL);
-                requestJob = g_strconcat(requestJob,gtk_combo_box_text_get_active_text(GTK_COMBO_BOX(t_program->t_pageForm->combo)),NULL);
+                requestJob = g_strconcat(requestJob,str_replace(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(t_program->t_pageForm->combo)),"\'", "\\\'"),NULL);
                 requestJob = g_strconcat(requestJob,"')",NULL);
-                mysql_free_result(res);
+
                 mysql_query(t_program->sock,requestJob);
 
 
@@ -109,10 +113,13 @@ void addInputInDB(t_program* t_program)
 
             mysql_free_result(res);
             mysql_query(t_program->sock,requestProvider);
-
             createQRC(t_program,idCode);
-            errorMessage(t_program,"Ajout reussi","AJOUT PRESTATAIRE",GTK_MESSAGE_INFO,GTK_BUTTONS_OK);
 
+            if(!mysql_error(t_program->sock)){
+                errorMessage(t_program,"Prestataire non ajoute. Erreur logiciel.","AJOUT PRESTATAIRE",GTK_MESSAGE_INFO,GTK_BUTTONS_OK);
+            }else{
+                errorMessage(t_program,"Ajout reussi","AJOUT PRESTATAIRE",GTK_MESSAGE_INFO,GTK_BUTTONS_OK);
+            }
 
         }
 
@@ -129,7 +136,7 @@ void addInputInDB(t_program* t_program)
 }
 
 
-gchar* verificationString(t_program* t_program,gchar* text){
+gchar* verificationString(t_program* t_program, const gchar* text){
 
     text = g_convert(text,-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     text = str_replace(text, "\'", "\\\'");
@@ -143,10 +150,12 @@ int verificationMail(t_program* t_program,gchar* mail,int statut){
     int i,posArob=0,countArob= 0,countDot =0,len = strlen(mail);
     char forbiddenChar[15] = "()<>,;:\"[]|ç%&";
     char email[len];
-    gchar* requestMail = allocateString(requestMail,300,0,t_program);
+    gchar* requestMail = NULL;
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
+
+    requestMail =allocateString(requestMail,300,0,t_program);
     strcpy(email,mail);
 
 
@@ -574,6 +583,8 @@ char* allocateString(char* string,int size,int count,t_program* t_program){
             endProgram(t_program);
         }
     }
+return string;
+
 }
 
 

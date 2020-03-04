@@ -10,6 +10,7 @@
 #include "addDataBase.h"
 #include "form.h"
 #include"error.h"
+#include"endProgram.h"
 
 void initResearch(t_program* t_program);
 t_pageResearch* creatStructPageResearch(t_program* t_program,GtkWidget* vboxResearch,GtkTreeSelection *selection,GtkWidget* view,GtkWidget* entry);

@@ -4,7 +4,7 @@
 void errorMessage(t_program* t_program, char* message,char* title,GtkMessageType messageType, GtkButtonsType buttons)
 {
 
-    GtkWidget *dialog;
+    GtkWidget *dialog=NULL;
     dialog = gtk_message_dialog_new(GTK_WINDOW(t_program->pWindow),
                                     GTK_DIALOG_DESTROY_WITH_PARENT,
                                     messageType,

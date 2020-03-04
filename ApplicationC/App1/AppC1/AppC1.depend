@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1583261387 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
+1583319196 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.c
 	"main.h"
 
 1582658273 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\main.h
@@ -1806,7 +1806,7 @@
 	<gtk/gtkcombobox.h>
 	<gio/gio.h>
 
-1580766490 c:\gkt\include\gtk-3.0\gtk\gtkcombobox.h
+1583316796 c:\gkt\include\gtk-3.0\gtk\gtkcombobox.h
 	<gtk/gtkbin.h>
 	<gtk/gtktreemodel.h>
 	<gtk/gtktreeview.h>
@@ -2504,7 +2504,7 @@
 1580766493 c:\gkt\include\gtk-3.0\gtk\deprecated\gtkvseparator.h
 	<gtk/gtkseparator.h>
 
-1583271122 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.c
+1583319644 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.c
 	"init.h"
 
 1583270994 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\init.h
@@ -2539,7 +2539,7 @@
 
 1130013324 c:\api_mysql\mysql\my_alloc.h
 
-1583272703 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
+1583321942 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\structures.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2547,7 +2547,7 @@
 	<windows.h>
 	<mysql.h>
 
-1583258061 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.c
+1583316084 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.c
 	"error.h"
 
 1583271144 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.h
@@ -2562,7 +2562,7 @@
 	"menu.h"
 	"addDataBase.h"
 
-1583275001 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
+1583320435 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\authentication.c
 	"authentication.h"
 
 1582392656 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\error.h
@@ -2574,7 +2574,7 @@
 	<mysql.h>
 	"structures.h"
 
-1583261678 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.c
+1583318669 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.c
 	"menu.h"
 
 1583261689 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\menu.h
@@ -2588,7 +2588,7 @@
 	"research.h"
 	"error.h"
 
-1583261841 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\endprogram.c
+1583319167 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\endprogram.c
 	"endProgram.h"
 
 1582396544 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\endprogram.h
@@ -2600,23 +2600,24 @@
 	"authentication.h"
 	"error.h"
 
-1583271354 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\form.c
+1583319589 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\form.c
 	"form.h"
 
-1583271455 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\form.h
+1583319576 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\form.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<gtk/gtk.h>
 	"structures.h"
 	"error.h"
+	"endProgram.h"
 	"addDataBase.h"
 
-1583275403 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\research.c
+1583321923 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\research.c
 	"research.h"
 	<gtk/gtk.h>
 
-1583272494 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\research.h
+1583315079 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\research.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2625,8 +2626,9 @@
 	"addDataBase.h"
 	"form.h"
 	"error.h"
+	"endProgram.h"
 
-1583274990 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\adddatabase.h
+1583317493 c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\adddatabase.h
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -2634,10 +2636,12 @@
 	<windows.h>
 	<mysql.h>
 	<time.h>
+	<ctype.h>
 	"structures.h"
 	"error.h"
+	"endProgram.h"
 	"qrCode.h"
 
-1583274983 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\adddatabase.c
+1583317534 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\app1\appc1\adddatabase.c
 	"addDataBase.h"
 

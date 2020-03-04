@@ -7,22 +7,40 @@ void displayForm(t_program* t_program)
     int i=0;
     //Initialization of Widgets
 
-    GtkWidget *vBoxForm,*boxButton, *boxJob;
+    GtkWidget *vBoxForm=NULL,*boxButton=NULL, *boxJob=NULL;
     GtkWidget **label;
     GtkWidget **entry;
-    GtkWidget *buttonValidForm,*buttonExit;
-    GtkWidget *combo;
+    GtkWidget *buttonValidForm=NULL,*buttonExit=NULL;
+    GtkWidget *combo=NULL;
 
     label = malloc(sizeof(GtkWidget *)*9);
+    if(!label){
+
+        errorMessage(t_program,"Le programme rencontre un probleme et doit fermer. (ERREUR : malloc label form)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
+    }
+
     for(i=0; i<9; i++)
     {
         label[i]= malloc(sizeof(GtkWidget));
+        if(!label[i]){
+            errorMessage(t_program,"Le programme rencontre un probleme et doit fermer. (ERREUR : malloc label form)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(t_program);
+        }
     }
 
     entry = malloc(sizeof(GtkWidget *)*9);
+    if(!entry){
+        errorMessage(t_program,"Le programme rencontre un probleme et doit fermer. (ERREUR : malloc entry form)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
+    }
     for(i=0; i<9; i++)
     {
         entry[i]= malloc(sizeof(GtkWidget));
+            if(!entry[i]){
+                errorMessage(t_program,"Le programme rencontre un probleme et doit fermer. (ERREUR : malloc entry form)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+                endProgram(t_program);
+    }
     }
 
     //Creation of Widgets
@@ -102,7 +120,7 @@ void displayForm(t_program* t_program)
     //Display Window
     gtk_widget_show_all(vBoxForm);
 
-    t_pageForm* t_pageForm = creatStructPageForm(vBoxForm,entry,combo);
+    t_pageForm* t_pageForm = creatStructPageForm(t_program,vBoxForm,entry,combo);
     t_program->t_pageForm = t_pageForm;
 
 
@@ -112,14 +130,15 @@ void displayForm(t_program* t_program)
 }
 
 
-t_pageForm* creatStructPageForm(GtkWidget* vBoxForm,GtkWidget** entry,GtkWidget* combo)
+t_pageForm* creatStructPageForm(t_program* t_program,GtkWidget* vBoxForm,GtkWidget** entry,GtkWidget* combo)
 {
 
     t_pageForm* t_pageForm = malloc(sizeof(t_pageForm));
 
     if(!t_pageForm)
     {
-        printf("erreur malloc pageForm");
+        errorMessage(t_program,"Le programme rencontre un probleme et doit fermer. (ERREUR : malloc pageForm)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
         return NULL;
     }
 
@@ -127,10 +146,18 @@ t_pageForm* creatStructPageForm(GtkWidget* vBoxForm,GtkWidget** entry,GtkWidget*
 
 
     t_pageForm->entry = malloc(sizeof(GtkWidget*)*9);
+    if(!t_pageForm->entry){
+        errorMessage(t_program,"Le programme rencontre un probleme et doit fermer. (ERREUR : malloc pageForm entry form)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(t_program);
+    }
 
     for(int i =0; i<9; i++)
     {
         t_pageForm->entry[i] = malloc(sizeof(GtkWidget));
+        if(!t_pageForm->entry[i]){
+            errorMessage(t_program,"Le programme rencontre un probleme et doit fermer. (ERREUR : malloc pageForm entry form)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(t_program);
+        }
         t_pageForm->entry[i] = entry[i];
     }
 
@@ -160,7 +187,7 @@ void ValidationReturnMenu(GtkWidget *buttonExit, t_program* t_program)
 GtkWidget* creatCombo(t_program* t_program)
 {
 
-    GtkWidget* combo;
+    GtkWidget* combo=NULL;
     MYSQL_RES* result = NULL;
 
     gchar* requestCombo = "SELECT nom from type";
@@ -169,7 +196,7 @@ GtkWidget* creatCombo(t_program* t_program)
 
     if(mysql_query(t_program->sock,requestCombo))
     {
-        gtk_combo_box_text_append_text(GTK_COMBO_BOX(combo),"");
+        gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo),"");
         free(requestCombo);
         printf("Erreur envoie requete");
         return combo;
@@ -194,16 +221,14 @@ GtkWidget* creatCombo(t_program* t_program)
                 }
                 else
                 {
-                    printf("Erreur avec row");
+                    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo),"");
                 }
             }
         }
     }
     else
     {
-        printf("Erreur dans l'init de result");
-        gtk_combo_box_text_append_text(GTK_COMBO_BOX(combo),"");
-
+        gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo),"");
     }
 
     free(requestCombo);

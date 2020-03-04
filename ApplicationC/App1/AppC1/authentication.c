@@ -37,11 +37,15 @@ void authentication(t_program* t_program)
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
-    gchar* conversionUsernameUTF8  = allocateString(conversionUsernameUTF8,50,0,t_program);
-    gchar* conversionPasswordUTF8 = allocateString(conversionPasswordUTF8,50,0,t_program);
-    gchar* requestAuth = allocateString(requestAuth,150,0,t_program);
+    gchar* conversionUsernameUTF8 = NULL;
+    gchar* conversionPasswordUTF8 = NULL;
+    gchar* requestAuth = NULL;
 
-    printf("au1");
+    conversionUsernameUTF8 = allocateString(conversionUsernameUTF8,50,0,t_program);
+    conversionPasswordUTF8 = allocateString(conversionPasswordUTF8,50,0,t_program);
+    requestAuth = allocateString(requestAuth,150,0,t_program);
+
+
     conversionUsernameUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->username)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     conversionPasswordUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageAuth->password)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     requestAuth = g_strconcat("SELECT prenom from personne WHERE prenom = '",conversionUsernameUTF8,NULL);
@@ -49,7 +53,6 @@ void authentication(t_program* t_program)
     requestAuth = g_strconcat(requestAuth,conversionPasswordUTF8,NULL);
     requestAuth = g_strconcat(requestAuth,"'",NULL);
 
-    printf(" au2");
     mysql_query(t_program->sock,requestAuth);
 
     res = mysql_use_result(t_program->sock);
@@ -57,7 +60,7 @@ void authentication(t_program* t_program)
 
     if(row)
     {
-        printf("au3");
+
         gtk_widget_hide(t_program->t_pageAuth->vbox);
         displayMenu(t_program);
 
