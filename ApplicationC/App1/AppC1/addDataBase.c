@@ -352,7 +352,7 @@ int verificationBirthday(t_program* t_program,gchar* dateBirthday){
     }
 
     if(yearInt == currentYear &&  monthInt>t->tm_mon){
-        errorMessage(t_program,"ERREUR : Date invalide (MOIS SUPERIEUR AU MOIS EN COURS). Format : AAAA-MM-JJ","ERREUR DATE NAISSANCE",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        errorMessage(t_program,"ERREUR : Date invalide (MOIS SAISI SUPERIEUR AU MOIS EN COURS). Format : AAAA-MM-JJ","ERREUR DATE NAISSANCE",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
         free(t);
         return 0;
     }
@@ -403,8 +403,8 @@ int verificationBirthday(t_program* t_program,gchar* dateBirthday){
         return 0;
     }
 
-    if(yearInt == currentYear &&  dayInt>t->tm_mday){
-        errorMessage(t_program,"ERREUR : Date invalide (JOUR SUPERIEUR AU MOIS EN COURS). Format : AAAA-MM-JJ","ERREUR DATE NAISSANCE",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+    if(yearInt == currentYear && monthInt == t->tm_mon && dayInt>t->tm_mday){
+        errorMessage(t_program,"ERREUR : Date invalide (JOUR SAISI SUPERIEUR A LA DATE DU JOURS). Format : AAAA-MM-JJ","ERREUR DATE NAISSANCE",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
         free(t);
         return 0;
     }
