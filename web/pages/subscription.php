@@ -53,7 +53,7 @@ try{
     <div class="container borderSubscription">
         <div class="row text-center">
             <?php
-            $data = $bdd->query("SELECT id, name, price, description FROM subscription");
+            $data = $bdd->query("SELECT id, name, price, description, week, time, timeStart, timeEnd FROM subscription");
             foreach ($data->fetchAll() as $key => $subscription) {
 
                     $subscription['price'] = $subscription['price']/100;
@@ -66,7 +66,9 @@ try{
                             echo '<div class="card-body">';
                                 echo '<h2 class="card-title pricing-card-title">'.$subscription['price'].'€ TTC <small class="text-muted">/ an</small></h2>';
                                 echo '<ul class="list-unstyled mt-3 mb-4">';
+                                    echo "<li class='liSubscription'>Bénéficiez d'un accès privilégié en illimité ".$subscription['week']."j/7, ".$subscription['timeStart']."h/h".$subscription['timeEnd'];
                                     echo '<li class="liSubscription">'.$subscription['description'];
+                                    echo '<li class="liSubscription">'.$subscription['time'].'h de services/mois';
                                 echo '</ul>';
                                 echo '<a class="btnSubscription" href="payment.php?id='.$subscription['id'].'">Payer</a>';
                             echo '</div>';
