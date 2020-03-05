@@ -373,7 +373,7 @@ void researchItem(GtkWidget *pWidget, t_program* t_program)
     {
 
         gchar* requestResearch = allocateString(conversionEntry,3000,0,t_program);
-        requestResearch = "SELECT * FROM `personne` WHERE idCode = '";
+        requestResearch = "SELECT * FROM `personne` WHERE statut = 1 && (idCode = '";
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
         requestResearch = g_strconcat(requestResearch,"' || nom = '",NULL);
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
@@ -393,7 +393,7 @@ void researchItem(GtkWidget *pWidget, t_program* t_program)
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
         requestResearch = g_strconcat(requestResearch,"' || FK_metier = '",NULL);
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
-        requestResearch = g_strconcat(requestResearch,"'",NULL);
+        requestResearch = g_strconcat(requestResearch,"')",NULL);
 
         model = create_and_fill_model (t_program,requestResearch,1);
 
