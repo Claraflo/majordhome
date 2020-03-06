@@ -12,10 +12,10 @@ int main(int argc, char** argv)
 
     //Initialization
     gtk_init(&argc,&argv);
-    t_program* t_program = initProgram();
+    t_program* program = initProgram();
 
     //Event Close
-    g_signal_connect(G_OBJECT(t_program->pWindow), "destroy", G_CALLBACK(OnDestroy), t_program);
+    g_signal_connect(G_OBJECT(program->pWindow), "destroy", G_CALLBACK(OnDestroy), program);
 
 
     // Loop GTK
@@ -25,10 +25,10 @@ int main(int argc, char** argv)
 }
 
 
-void OnDestroy(GtkWidget *pWidget, t_program* t_program)
+void OnDestroy(GtkWidget *pWidget, t_program* program)
 {
 
-    endProgram(t_program);
+    endProgram(program);
 }
 
 

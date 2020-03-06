@@ -17,7 +17,7 @@ enum
 };
 
 
-GtkTreeModel * create_and_fill_model (t_program* t_program,gchar* request, int statut)
+GtkTreeModel * create_and_fill_model (t_program* program,gchar* request, int statut)
 {
     GtkListStore  *store= NULL;
     GtkTreeIter    iter;
@@ -25,9 +25,9 @@ GtkTreeModel * create_and_fill_model (t_program* t_program,gchar* request, int s
     MYSQL_RES* res = NULL;
 
 
-    mysql_query(t_program->sock,request);
+    mysql_query(program->sock,request);
 
-        res = mysql_use_result(t_program->sock);
+        res = mysql_use_result(program->sock);
 
         if(res){
 
@@ -57,8 +57,8 @@ GtkTreeModel * create_and_fill_model (t_program* t_program,gchar* request, int s
             {
 
                 GtkTreeModel *model = NULL;
-                store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view)));
-                model = gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view));
+                store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view)));
+                model = gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view));
 
                 if (gtk_tree_model_get_iter_first(model, &iter) == FALSE)
                 {
@@ -87,8 +87,8 @@ GtkTreeModel * create_and_fill_model (t_program* t_program,gchar* request, int s
             }
 
         }else{
-            errorMessage(t_program,"Le programme ne peut afficher les informations.","Erreur resultat BDD",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
-            endProgram(t_program);
+            errorMessage(program,"Le programme ne peut afficher les informations.","Erreur resultat BDD",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(program);
         }
 
     mysql_free_result(res);
@@ -96,7 +96,7 @@ GtkTreeModel * create_and_fill_model (t_program* t_program,gchar* request, int s
     return GTK_TREE_MODEL (store);
 }
 
-GtkWidget * create_view_and_model (t_program* t_program)
+GtkWidget * create_view_and_model (t_program* program)
 {
     GtkCellRenderer     *renderer= NULL;
     GtkTreeModel        *model= NULL;
@@ -210,7 +210,7 @@ GtkWidget * create_view_and_model (t_program* t_program)
 
 
 
-    model = create_and_fill_model (t_program,"SELECT idCode,FK_metier,nom,prenom,dateNaissance,tel,mail,adresse,ville,codePostal FROM personne WHERE statut = 1",0);
+    model = create_and_fill_model (program,"SELECT idCode,FK_metier,nom,prenom,dateNaissance,tel,mail,adresse,ville,codePostal FROM personne WHERE statut = 1",0);
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (view), model);
 
@@ -218,7 +218,7 @@ GtkWidget * create_view_and_model (t_program* t_program)
     return view;
 }
 
-void initResearch(t_program* t_program)
+void initResearch(t_program* program)
 {
 
     GtkWidget *sw= NULL;
@@ -236,11 +236,11 @@ void initResearch(t_program* t_program)
     GtkWidget *hbox= NULL;
 
     GtkTreeSelection *selection= NULL;
-    t_pageResearch* t_pageResearch = NULL;
+    t_pageResearch* pageResearch = NULL;
 
 
     sw = gtk_scrolled_window_new(NULL, NULL);
-    view = create_view_and_model (t_program);
+    view = create_view_and_model (program);
 
     gtk_container_add(GTK_CONTAINER(sw), view);
 
@@ -274,18 +274,18 @@ void initResearch(t_program* t_program)
     gtk_box_pack_start(GTK_BOX(hbox), menu, FALSE, TRUE, 3);
 
     gtk_box_pack_start(GTK_BOX(vbox), hbox, FALSE, TRUE, 3);
-    gtk_container_add(GTK_CONTAINER(t_program->pbox), vbox);
+    gtk_container_add(GTK_CONTAINER(program->pbox), vbox);
 
 
     selection = gtk_tree_view_get_selection(GTK_TREE_VIEW(view));
-    t_pageResearch = creatStructPageResearch(t_program, vbox,selection,view,entry);
+    pageResearch = creatStructPageResearch(program, vbox,selection,view,entry);
 
-    g_signal_connect(G_OBJECT(add), "clicked",G_CALLBACK(appendItem),t_program);
-    g_signal_connect(G_OBJECT(research), "clicked",G_CALLBACK(researchItem), t_program);
-    g_signal_connect(G_OBJECT(modify), "clicked",G_CALLBACK(modifyItem), t_program);
-    g_signal_connect(G_OBJECT(menu), "clicked",G_CALLBACK(GoBackMenu), t_program);
-    g_signal_connect(G_OBJECT(remove), "clicked",G_CALLBACK(removeItem), t_program);
-    g_signal_connect(G_OBJECT(all), "clicked",G_CALLBACK(displayAll), t_program);
+    g_signal_connect(G_OBJECT(add), "clicked",G_CALLBACK(appendItem),program);
+    g_signal_connect(G_OBJECT(research), "clicked",G_CALLBACK(researchItem), program);
+    g_signal_connect(G_OBJECT(modify), "clicked",G_CALLBACK(modifyItem), program);
+    g_signal_connect(G_OBJECT(menu), "clicked",G_CALLBACK(GoBackMenu), program);
+    g_signal_connect(G_OBJECT(remove), "clicked",G_CALLBACK(removeItem), program);
+    g_signal_connect(G_OBJECT(all), "clicked",G_CALLBACK(displayAll), program);
 
 
 
@@ -293,69 +293,69 @@ void initResearch(t_program* t_program)
 
 }
 
-t_pageResearch* creatStructPageResearch(t_program* t_program,GtkWidget* vboxResearch,GtkTreeSelection *selection,GtkWidget* view,GtkWidget* entry)
+t_pageResearch* creatStructPageResearch(t_program* program,GtkWidget* vboxResearch,GtkTreeSelection *selection,GtkWidget* view,GtkWidget* entry)
 {
 
-    t_pageResearch* t_pageResearch = malloc(sizeof(t_pageResearch));
+    t_pageResearch* pageResearch = malloc(sizeof(t_pageResearch));
 
-    if(!t_pageResearch)
+    if(!pageResearch)
     {
-        errorMessage(t_program,"Le programme ne parvient pas a etablir de connexion avec la BDD.  Fermez la fenetre d'accueil et verrifiez la connexion avant d'ouvrir a nouveau le programme.","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
-        endProgram(t_program);
+        errorMessage(program,"Le programme ne parvient pas a etablir de connexion avec la BDD.  Fermez la fenetre d'accueil et verrifiez la connexion avant d'ouvrir a nouveau le programme.","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(program);
         return NULL;
     }
 
-    t_pageResearch->entry = malloc(sizeof(GtkWidget*)*9);
+    pageResearch->entry = malloc(sizeof(GtkWidget*)*9);
 
     for(int i =0; i<9; i++)
     {
-        t_pageResearch->entry[i] = malloc(sizeof(GtkWidget));
-        t_pageResearch->entry[i] = NULL;
+        pageResearch->entry[i] = malloc(sizeof(GtkWidget));
+        pageResearch->entry[i] = NULL;
     }
 
-    t_pageResearch->vbox =  vboxResearch;
-    t_pageResearch->modifyBox =  NULL;
-    t_pageResearch->buttonBox =  NULL;
-    t_pageResearch->combo =  NULL;
-    t_pageResearch->idCode = malloc(sizeof(char)*12);
-    t_pageResearch->selection= selection;
-    t_pageResearch->view= view;
-    t_pageResearch->entrySearch=entry;
-    t_program->t_pageResearch = t_pageResearch;
+    pageResearch->vbox =  vboxResearch;
+    pageResearch->modifyBox =  NULL;
+    pageResearch->buttonBox =  NULL;
+    pageResearch->combo =  NULL;
+    pageResearch->idCode = malloc(sizeof(char)*12);
+    pageResearch->selection= selection;
+    pageResearch->view= view;
+    pageResearch->entrySearch=entry;
+    program->pageResearch = pageResearch;
 
 
-    return t_pageResearch;
+    return pageResearch;
 }
 
-void displayAll(GtkWidget *pWidget, t_program* t_program)
+void displayAll(GtkWidget *pWidget, t_program* program)
 {
 
     GtkTreeModel *model;
-    model = create_and_fill_model (t_program,"SELECT idCode,FK_metier,nom,prenom,dateNaissance,tel,mail,adresse,ville,codePostal FROM personne WHERE statut = 1",0);
+    model = create_and_fill_model (program,"SELECT idCode,FK_metier,nom,prenom,dateNaissance,tel,mail,adresse,ville,codePostal FROM personne WHERE statut = 1",0);
 
-    gtk_tree_view_set_model (GTK_TREE_VIEW (t_program->t_pageResearch->view), model);
+    gtk_tree_view_set_model (GTK_TREE_VIEW (program->pageResearch->view), model);
 
     g_object_unref (model);
 }
 
 
-void appendItem(GtkWidget *pWidget, t_program* t_program)
+void appendItem(GtkWidget *pWidget, t_program* program)
 {
-    gtk_widget_hide(t_program->t_pageResearch->vbox);
+    gtk_widget_hide(program->pageResearch->vbox);
 
-    gtk_widget_hide(t_program->t_pageResearch->vbox);
-    if(t_program->t_pageForm)
+    gtk_widget_hide(program->pageResearch->vbox);
+    if(program->pageForm)
     {
-        gtk_widget_show_all(t_program->t_pageForm->vbox);
+        gtk_widget_show_all(program->pageForm->vbox);
     }
     else
     {
-        displayForm(t_program);
+        displayForm(program);
     }
 
 }
 
-void researchItem(GtkWidget *pWidget, t_program* t_program)
+void researchItem(GtkWidget *pWidget, t_program* program)
 {
 
     GtkListStore *store=NULL;
@@ -363,16 +363,16 @@ void researchItem(GtkWidget *pWidget, t_program* t_program)
     GtkTreeIter  iter;
 
     gchar* conversionEntry = NULL;
-    conversionEntry = allocateString(conversionEntry,255,0,t_program);
+    conversionEntry = allocateString(conversionEntry,255,0,program);
 
 
-    conversionEntry = g_convert(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entrySearch)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
+    conversionEntry = g_convert(gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entrySearch)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     conversionEntry = str_replace(conversionEntry, "\'", "\\\'");
 
     if(strlen(conversionEntry)!=0)
     {
 
-        gchar* requestResearch = allocateString(conversionEntry,3000,0,t_program);
+        gchar* requestResearch = allocateString(conversionEntry,3000,0,program);
         requestResearch = "SELECT * FROM `personne` WHERE statut = 1 && (idCode = '";
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
         requestResearch = g_strconcat(requestResearch,"' || nom = '",NULL);
@@ -395,7 +395,7 @@ void researchItem(GtkWidget *pWidget, t_program* t_program)
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
         requestResearch = g_strconcat(requestResearch,"')",NULL);
 
-        model = create_and_fill_model (t_program,requestResearch,1);
+        model = create_and_fill_model (program,requestResearch,1);
 
         free(requestResearch);
 
@@ -404,15 +404,15 @@ void researchItem(GtkWidget *pWidget, t_program* t_program)
     free(conversionEntry);
 }
 
-void modifyItem(GtkWidget *pWidget, t_program* t_program)
+void modifyItem(GtkWidget *pWidget, t_program* program)
 {
     int i = 0;
     GtkListStore *store=NULL;
     GtkTreeModel *model=NULL;
     GtkTreeIter  iter;
 
-    store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view)));
-    model = gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view));
+    store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view)));
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view));
 
 
     if (gtk_tree_model_get_iter_first(model, &iter) == FALSE)
@@ -420,7 +420,7 @@ void modifyItem(GtkWidget *pWidget, t_program* t_program)
         return;
     }
 
-    if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(t_program->t_pageResearch->selection),
+    if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(program->pageResearch->selection),
                                         &model, &iter))
     {
 
@@ -438,23 +438,23 @@ void modifyItem(GtkWidget *pWidget, t_program* t_program)
 
 
         gchar *idCode = NULL;
-        idCode =allocateString(idCode,12,0,t_program);
+        idCode =allocateString(idCode,12,0,program);
         if(!idCode){
-            endProgram(t_program);
+            endProgram(program);
         }
         gtk_tree_model_get (model, &iter, ID_COLUMN, &idCode, -1);
 
         gchar* requestRemove =NULL;
 
-        requestRemove =allocateString(requestRemove,60,0,t_program);
+        requestRemove =allocateString(requestRemove,60,0,program);
 
         requestRemove = "SELECT * FROM personne WHERE idCode ='";
         requestRemove = g_strconcat(requestRemove,idCode,NULL);
         requestRemove = g_strconcat(requestRemove,"'",NULL);
 
-        mysql_query(t_program->sock,requestRemove);
+        mysql_query(program->sock,requestRemove);
 
-        res = mysql_use_result(t_program->sock);
+        res = mysql_use_result(program->sock);
 
         if(res)
         {
@@ -565,31 +565,31 @@ void modifyItem(GtkWidget *pWidget, t_program* t_program)
             gtk_box_pack_start(GTK_BOX(hbox), vbox[i], FALSE, FALSE, 2);
         }
 
-        gtk_box_pack_start(GTK_BOX(t_program->t_pageResearch->vbox), hbox, TRUE, FALSE, 2);
+        gtk_box_pack_start(GTK_BOX(program->pageResearch->vbox), hbox, TRUE, FALSE, 2);
 
         buttonValidForm = gtk_button_new_from_stock(GTK_STOCK_ADD);
         buttonExit = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
         boxButton=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
-        combo = creatCombo(t_program);
+        combo = creatCombo(program);
         gtk_box_pack_start(GTK_BOX(boxButton), combo, FALSE, FALSE, 2);
         gtk_box_pack_start(GTK_BOX(boxButton), buttonValidForm, FALSE, FALSE, 2);
         gtk_box_pack_start(GTK_BOX(boxButton), buttonExit, FALSE, FALSE, 2);
-        gtk_box_pack_start(GTK_BOX(t_program->t_pageResearch->vbox), boxButton, FALSE, FALSE, 2);
+        gtk_box_pack_start(GTK_BOX(program->pageResearch->vbox), boxButton, FALSE, FALSE, 2);
 
-        gtk_widget_show_all(t_program->t_pageResearch->vbox);
+        gtk_widget_show_all(program->pageResearch->vbox);
 
-        t_program->t_pageResearch->modifyBox = hbox;
-        t_program->t_pageResearch->buttonBox = boxButton;
-        t_program->t_pageResearch->combo = combo;
-         strcpy(t_program->t_pageResearch->idCode,idCode);
+        program->pageResearch->modifyBox = hbox;
+        program->pageResearch->buttonBox = boxButton;
+        program->pageResearch->combo = combo;
+         strcpy(program->pageResearch->idCode,idCode);
 
         for(int i =0; i<9; i++)
         {
-            t_program->t_pageResearch->entry[i] = entry[i];
+            program->pageResearch->entry[i] = entry[i];
         }
 
-        g_signal_connect(G_OBJECT(buttonValidForm), "clicked",G_CALLBACK(modification), t_program);
-        g_signal_connect(G_OBJECT(buttonExit), "clicked",G_CALLBACK(cancelModification), t_program);
+        g_signal_connect(G_OBJECT(buttonValidForm), "clicked",G_CALLBACK(modification), program);
+        g_signal_connect(G_OBJECT(buttonExit), "clicked",G_CALLBACK(cancelModification), program);
 
         mysql_free_result(res);
         free(idCode);
@@ -599,7 +599,7 @@ void modifyItem(GtkWidget *pWidget, t_program* t_program)
 }
 
 
-void modification(GtkWidget *pWidget,t_program*t_program)
+void modification(GtkWidget *pWidget,t_program* program)
 {
 
     int i,countEmpty=0;
@@ -611,18 +611,18 @@ void modification(GtkWidget *pWidget,t_program*t_program)
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
-    requestProvider = allocateString(requestProvider,1200,0,t_program);
-    requestJob = allocateString(requestJob,100,0,t_program);
+    requestProvider = allocateString(requestProvider,1200,0,program);
+    requestJob = allocateString(requestJob,100,0,program);
 
 
     //Check if inputs are not empty
     for(i=0; i<9; i++)
     {
-        if(strlen(gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[i])))== 0)
+        if(strlen(gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[i])))== 0)
         {
             countEmpty ++;
         }
-        if(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(t_program->t_pageResearch->combo)) == NULL)
+        if(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(program->pageResearch->combo)) == NULL)
         {
             countEmpty ++;
         }
@@ -630,7 +630,7 @@ void modification(GtkWidget *pWidget,t_program*t_program)
 
     if(countEmpty != 0)
     {
-        errorMessage(t_program,"ERREUR : Champ(s) vide(s)","ERREUR FORMULAIRE",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        errorMessage(program,"ERREUR : Champ(s) vide(s)","ERREUR FORMULAIRE",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
     }
     else
     {
@@ -643,19 +643,19 @@ void modification(GtkWidget *pWidget,t_program*t_program)
 
         if(!conv)
         {
-            errorMessage(t_program,"Le programme rencontre un probleme. ERREUR: Malloc conv ","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
-            endProgram(t_program);
+            errorMessage(program,"Le programme rencontre un probleme. ERREUR: Malloc conv ","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(program);
         }
 
-        conv[0] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[0])));//name
-        conv[1] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[1])));//firstname
-        conv[2] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[2])));//mail
-        conv[3] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[3])));//Birthday
-        conv[4] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[4])));//Phone
-        conv[5] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[5])));//Adress
-        conv[6] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[6])));//Town
-        conv[7] = verificationString(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[7])));//Post Code
-        conv[8] = verificationJob(t_program,gtk_entry_get_text(GTK_ENTRY(t_program->t_pageResearch->entry[8])));//Job
+        conv[0] = verificationString(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[0])));//name
+        conv[1] = verificationString(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[1])));//firstname
+        conv[2] = verificationString(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[2])));//mail
+        conv[3] = verificationString(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[3])));//Birthday
+        conv[4] = verificationString(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[4])));//Phone
+        conv[5] = verificationString(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[5])));//Adress
+        conv[6] = verificationString(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[6])));//Town
+        conv[7] = verificationString(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[7])));//Post Code
+        conv[8] = verificationJob(program,gtk_entry_get_text(GTK_ENTRY(program->pageResearch->entry[8])));//Job
 
         label=malloc(sizeof(char*)*9);
         for(i=0; i<9; i++)
@@ -665,8 +665,8 @@ void modification(GtkWidget *pWidget,t_program*t_program)
 
         if(!label)
         {
-            errorMessage(t_program,"Le programme rencontre un probleme. ERREUR: Malloc Label ","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
-            endProgram(t_program);
+            errorMessage(program,"Le programme rencontre un probleme. ERREUR: Malloc Label ","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+            endProgram(program);
         }
 
 
@@ -681,7 +681,7 @@ void modification(GtkWidget *pWidget,t_program*t_program)
         label[8] = "FK_metier";
 
 
-        if(verificationBirthday(t_program,conv[3]) && verificationPhone(t_program,conv[4]) && verificationMail(t_program,conv[2],1)&& verificationPC(t_program,conv[7]))
+        if(verificationBirthday(program,conv[3]) && verificationPhone(program,conv[4]) && verificationMail(program,conv[2],1)&& verificationPC(program,conv[7]))
         {
 
 
@@ -690,9 +690,9 @@ void modification(GtkWidget *pWidget,t_program*t_program)
             requestJob= g_strconcat("SELECT nom from metier WHERE nom = '",conv[8],NULL);
             requestJob = g_strconcat(requestJob,"'",NULL);
 
-            mysql_query(t_program->sock,requestJob);
+            mysql_query(program->sock,requestJob);
 
-            res = mysql_use_result(t_program->sock);
+            res = mysql_use_result(program->sock);
             row = mysql_fetch_row(res);
 
 
@@ -701,9 +701,9 @@ void modification(GtkWidget *pWidget,t_program*t_program)
                 requestJob = "INSERT INTO metier (nom,FK_type) VALUES ('";
                 requestJob = g_strconcat(requestJob,conv[8],NULL);
                 requestJob = g_strconcat(requestJob,"','",NULL);
-                requestJob = g_strconcat(requestJob,str_replace(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(t_program->t_pageResearch->combo)),"\'","\\\'"),NULL);
+                requestJob = g_strconcat(requestJob,str_replace(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(program->pageResearch->combo)),"\'","\\\'"),NULL);
                 requestJob = g_strconcat(requestJob,"')",NULL);
-                mysql_query(t_program->sock,requestJob);
+                mysql_query(program->sock,requestJob);
 
 
             }
@@ -723,11 +723,11 @@ void modification(GtkWidget *pWidget,t_program*t_program)
             requestProvider = g_strconcat(requestProvider,"'",NULL);
 
             requestProvider = g_strconcat(requestProvider," WHERE idCode = '",NULL);
-            requestProvider = g_strconcat(requestProvider,t_program->t_pageResearch->idCode,NULL);
+            requestProvider = g_strconcat(requestProvider,program->pageResearch->idCode,NULL);
             requestProvider = g_strconcat(requestProvider,"'",NULL);
 
 
-            mysql_query(t_program->sock,requestProvider);
+            mysql_query(program->sock,requestProvider);
 
         }
 
@@ -743,53 +743,53 @@ void modification(GtkWidget *pWidget,t_program*t_program)
 
 }
 
-void cancelModification(GtkWidget *pWidget,t_program*t_program)
+void cancelModification(GtkWidget *pWidget,t_program*program)
 {
 
-    gtk_widget_destroy(t_program->t_pageResearch->modifyBox);
-    gtk_widget_destroy(t_program->t_pageResearch->buttonBox);
+    gtk_widget_destroy(program->pageResearch->modifyBox);
+    gtk_widget_destroy(program->pageResearch->buttonBox);
 
 }
 
-void GoBackMenu(GtkWidget *pWidget, t_program* t_program)
+void GoBackMenu(GtkWidget *pWidget, t_program* program)
 {
 
-    gtk_widget_hide(t_program->t_pageResearch->vbox);
-    gtk_widget_show_all(t_program->t_pageMenu->vbox);
+    gtk_widget_hide(program->pageResearch->vbox);
+    gtk_widget_show_all(program->pageMenu->vbox);
 
 }
 
-void removeItem(GtkWidget *pWidget, t_program* t_program)
+void removeItem(GtkWidget *pWidget, t_program* program)
 {
 
     GtkListStore *store;
     GtkTreeModel *model;
     GtkTreeIter  iter;
 
-    store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view)));
-    model = gtk_tree_view_get_model(GTK_TREE_VIEW(t_program->t_pageResearch->view));
+    store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view)));
+    model = gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view));
 
     if (gtk_tree_model_get_iter_first(model, &iter) == FALSE)
     {
         return;
     }
 
-    if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(t_program->t_pageResearch->selection),
+    if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(program->pageResearch->selection),
                                         &model, &iter))
     {
 
-        gchar *idCode = allocateString(idCode,12,0,t_program);
+        gchar *idCode = allocateString(idCode,12,0,program);
         gtk_tree_model_get (model, &iter, ID_COLUMN, &idCode, -1);
 
         gchar* requestRemove = NULL;
-        requestRemove = allocateString(requestRemove,60,0,t_program);
+        requestRemove = allocateString(requestRemove,60,0,program);
 
         requestRemove = "DELETE FROM personne WHERE idCode ='";
         requestRemove = g_strconcat(requestRemove,idCode,NULL);
         requestRemove = g_strconcat(requestRemove,"'",NULL);
 
 
-        mysql_query(t_program->sock,requestRemove);
+        mysql_query(program->sock,requestRemove);
         // Test connexion
 
 

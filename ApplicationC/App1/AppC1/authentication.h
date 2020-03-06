@@ -14,7 +14,7 @@
 #include "menu.h"
 #include "addDataBase.h"
 
-void authentication(t_program* t_program);
+void authentication(t_program* program);
 MYSQL* connection();
 
 #endif //APP1_AUTHENTICATION_H

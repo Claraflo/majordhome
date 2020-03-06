@@ -1,6 +1,6 @@
 #include "qrCode.h"
 
-void createQRC(t_program* t_program,char* idCode)
+void createQRC(t_program* program,char* idCode)
 {
     doBasicQrCode(idCode);
 }

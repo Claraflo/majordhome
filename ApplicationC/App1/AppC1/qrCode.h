@@ -17,7 +17,7 @@
 void doBasicQrCode(char* input);
 void printQr(const uint8_t qrcode[],char* input);
 FILE* openFile(char* input);
-void createQRC(t_program* t_program,char* idCode);
+void createQRC(t_program* program,char* idCode);
 
 
 #endif //APP1_QRCODE_H

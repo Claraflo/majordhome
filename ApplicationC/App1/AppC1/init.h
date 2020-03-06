@@ -13,8 +13,8 @@
 
 
 GtkWidget* creatWindow();
-void displayContainWelcomPage(t_program* t_program);
-void ValidationAuthentication(GtkWidget *button, t_program* t_program);
+void displayContainWelcomPage(t_program* program);
+void ValidationAuthentication(GtkWidget *button, t_program* program);
 t_pageAuth* creatStructPageAuth(t_program* program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox);
 t_program* initProgram();
 

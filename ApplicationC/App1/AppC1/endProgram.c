@@ -1,53 +1,53 @@
 #include"endProgram.h"
 
-void endProgram(t_program* t_program)
+void endProgram(t_program* program)
 {
 
     gtk_main_quit();
 
-    if(t_program->t_pageAuth)
+    if(program->pageAuth)
     {
 
-        gtk_widget_destroy(t_program->t_pageAuth->password);
-        gtk_widget_destroy(t_program->t_pageAuth->username);
-        gtk_widget_destroy(t_program->t_pageAuth->vbox);
-        free(t_program->t_pageAuth);
+        gtk_widget_destroy(program->pageAuth->password);
+        gtk_widget_destroy(program->pageAuth->username);
+        gtk_widget_destroy(program->pageAuth->vbox);
+        free(program->pageAuth);
     }
 
-    if(t_program->t_pageMenu)
+    if(program->pageMenu)
     {
-        gtk_widget_destroy(t_program->t_pageMenu->vbox);
-        free(t_program->t_pageMenu);
+        gtk_widget_destroy(program->pageMenu->vbox);
+        free(program->pageMenu);
     }
 
-    if(t_program->t_pageForm)
+    if(program->pageForm)
     {
 
-        gtk_widget_destroy(t_program->t_pageForm->combo);
-        free(t_program->t_pageForm->entry);
-        gtk_widget_destroy(t_program->t_pageForm->vbox);
-        free(t_program->t_pageForm);
+        gtk_widget_destroy(program->pageForm->combo);
+        free(program->pageForm->entry);
+        gtk_widget_destroy(program->pageForm->vbox);
+        free(program->pageForm);
     }
 
-    if(t_program->t_pageResearch)
+    if(program->pageResearch)
     {
 
-        gtk_widget_destroy(t_program->t_pageResearch->selection);
-        gtk_widget_destroy(t_program->t_pageResearch->view);
-        gtk_widget_destroy(t_program->t_pageResearch->vbox);
-        free(t_program->t_pageResearch->idCode);
-        free(t_program->t_pageResearch);
+        gtk_widget_destroy(program->pageResearch->selection);
+        gtk_widget_destroy(program->pageResearch->view);
+        gtk_widget_destroy(program->pageResearch->vbox);
+        free(program->pageResearch->idCode);
+        free(program->pageResearch);
     }
 
-    if(t_program)
+    if(program)
     {
 
-        gtk_widget_destroy(t_program->pWindow);
-        if(t_program->sock)
+        gtk_widget_destroy(program->pWindow);
+        if(program->sock)
         {
-            mysql_close(t_program->sock);
+            mysql_close(program->sock);
         }
-        free(t_program);
+        free(program);
     }
 
 }

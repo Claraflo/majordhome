@@ -54,10 +54,10 @@ typedef struct
     GtkWidget* pWindow; // main window
     GtkWidget* pbox;    // main box
     MYSQL* sock;
-    t_pageAuth* t_pageAuth;
-    t_pageMenu* t_pageMenu;
-    t_pageForm* t_pageForm;
-    t_pageResearch* t_pageResearch;
+    t_pageAuth* pageAuth;
+    t_pageMenu* pageMenu;
+    t_pageForm* pageForm;
+    t_pageResearch* pageResearch;
 
 } t_program;
 

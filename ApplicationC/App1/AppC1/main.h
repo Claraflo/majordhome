@@ -15,6 +15,6 @@
 #include "endProgram.h"
 
 
-void OnDestroy(GtkWidget *pWidget, t_program* t_program);
+void OnDestroy(GtkWidget *pWidget, t_program* program);
 
 #endif //APP1_MAIN_H

@@ -1,11 +1,11 @@
 
 #include"error.h"
 
-void errorMessage(t_program* t_program, char* message,char* title,GtkMessageType messageType, GtkButtonsType buttons)
+void errorMessage(t_program* program, char* message,char* title,GtkMessageType messageType, GtkButtonsType buttons)
 {
 
     GtkWidget *dialog=NULL;
-    dialog = gtk_message_dialog_new(GTK_WINDOW(t_program->pWindow),
+    dialog = gtk_message_dialog_new(GTK_WINDOW(program->pWindow),
                                     GTK_DIALOG_DESTROY_WITH_PARENT,
                                     messageType,
                                     buttons,

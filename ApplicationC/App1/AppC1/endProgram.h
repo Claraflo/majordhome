@@ -11,7 +11,7 @@
 #include "authentication.h"
 #include"error.h"
 
-void endProgram(t_program* t_program);
+void endProgram(t_program* program);
 
 #endif //APP1_ENDPROGRAM_H
 

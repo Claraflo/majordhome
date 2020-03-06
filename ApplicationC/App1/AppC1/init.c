@@ -4,22 +4,22 @@
 t_program* initProgram()
 {
 
-    t_program* t_program  = malloc(sizeof(t_program));
+    t_program* program  = malloc(sizeof(t_program));
 
-    if(!t_program)
+    if(!program)
     {
-        errorMessage(t_program,"Le programme rencontre un probleme et doit etre ferme. Fermez la fenetre d'accueil. (ERREUR : malloc program)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
-        endProgram(t_program);
+        errorMessage(program,"Le programme rencontre un probleme et doit etre ferme. Fermez la fenetre d'accueil. (ERREUR : malloc program)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(program);
     }
 
     //Creation of Window
     GtkWidget* pWindow = creatWindow();
 
-    t_program->pWindow= pWindow;
-    t_program->t_pageAuth = NULL;
-    t_program->t_pageMenu = NULL;
-    t_program->t_pageForm = NULL;
-    t_program->t_pageResearch = NULL;
+    program->pWindow= pWindow;
+    program->pageAuth = NULL;
+    program->pageMenu = NULL;
+    program->pageForm = NULL;
+    program->pageResearch = NULL;
 
     MYSQL* sock;
 
@@ -27,16 +27,16 @@ t_program* initProgram()
 
     if(!sock)
     {
-        errorMessage(t_program,"Le programme ne parvient pas a etablir de connexion avec la BDD.  Fermez la fenetre d'accueil et verrifiez la connexion avant d'ouvrir a nouveau le programme.","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
-        endProgram(t_program);
+        errorMessage(program,"Le programme ne parvient pas a etablir de connexion avec la BDD.  Fermez la fenetre d'accueil et verrifiez la connexion avant d'ouvrir a nouveau le programme.","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(program);
     }
 
-    t_program->sock = sock;
+    program->sock = sock;
 
 
-    displayContainWelcomPage(t_program);
+    displayContainWelcomPage(program);
 
-    return t_program;
+    return program;
 }
 
 GtkWidget* creatWindow()
@@ -54,7 +54,7 @@ GtkWidget* creatWindow()
 }
 
 
-void displayContainWelcomPage(t_program* t_program)
+void displayContainWelcomPage(t_program* program)
 {
 
     //Initialization of Widgets
@@ -66,7 +66,7 @@ void displayContainWelcomPage(t_program* t_program)
     GtkWidget *hbox0=NULL,*hbox1=NULL, *hbox2=NULL, *hboxIcon=NULL;
     GtkWidget *vbox=NULL, *pbox=NULL;
 
-    t_pageAuth* t_pageAuth = NULL;
+    t_pageAuth* pageAuth = NULL;
 
     //Creation of Widgets
 
@@ -105,43 +105,43 @@ void displayContainWelcomPage(t_program* t_program)
     gtk_box_pack_start(GTK_BOX(vbox), okButton, FALSE, FALSE, 2);
     gtk_box_pack_start(GTK_BOX(pbox), vbox, FALSE, FALSE, 0);
 
-    gtk_container_add(GTK_CONTAINER(t_program->pWindow), pbox);
+    gtk_container_add(GTK_CONTAINER(program->pWindow), pbox);
 
     //Display Window
-    gtk_widget_show_all(t_program->pWindow);
+    gtk_widget_show_all(program->pWindow);
 
-    t_program->pbox = pbox;
-    t_pageAuth = creatStructPageAuth(t_program, usernameEntry,passwordEntry,vbox);
-    g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),t_program);
+    program->pbox = pbox;
+    pageAuth = creatStructPageAuth(program, usernameEntry,passwordEntry,vbox);
+    g_signal_connect(G_OBJECT(okButton), "clicked", G_CALLBACK(ValidationAuthentication),program);
 
 }
 
-t_pageAuth* creatStructPageAuth(t_program* t_program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox)
+t_pageAuth* creatStructPageAuth(t_program* program, GtkWidget* usernameEntry, GtkWidget* passwordEntry,GtkWidget* vbox)
 {
 
-    t_pageAuth* t_pageAuth = malloc(sizeof(t_pageAuth));
+    t_pageAuth* pageAuth = malloc(sizeof(t_pageAuth));
 
-    if(!t_pageAuth)
+    if(!pageAuth)
     {
-        errorMessage(t_program,"Le programme rencontre un probleme et doit etre ferme. Fermez la fenetre d'accueil. (ERREUR : malloc program)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
-        endProgram(t_program);
+        errorMessage(program,"Le programme rencontre un probleme et doit etre ferme. Fermez la fenetre d'accueil. (ERREUR : malloc program)","Erreur fatale",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
+        endProgram(program);
         return NULL;
     }
 
-    t_pageAuth->username = usernameEntry;
-    t_pageAuth->password = passwordEntry;
-    t_pageAuth->vbox = vbox;
+    pageAuth->username = usernameEntry;
+    pageAuth->password = passwordEntry;
+    pageAuth->vbox = vbox;
 
-    t_program->t_pageAuth = t_pageAuth;
+    program->pageAuth = pageAuth;
 
-    return t_pageAuth;
+    return pageAuth;
 }
 
-void ValidationAuthentication(GtkWidget *button, t_program* t_program)
+void ValidationAuthentication(GtkWidget *button, t_program* program)
 {
 
 
-    authentication(t_program);
+    authentication(program);
 
 
 }
