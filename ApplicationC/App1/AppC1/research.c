@@ -406,196 +406,201 @@ void researchItem(GtkWidget *pWidget, t_program* program)
 
 void modifyItem(GtkWidget *pWidget, t_program* program)
 {
+
+if (program->pageResearch->modifyBox ==  NULL && program->pageResearch->buttonBox == NULL){
+
     int i = 0;
-    GtkListStore *store=NULL;
-    GtkTreeModel *model=NULL;
-    GtkTreeIter  iter;
+        GtkListStore *store=NULL;
+        GtkTreeModel *model=NULL;
+        GtkTreeIter  iter;
 
-    store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view)));
-    model = gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view));
-
-
-    if (gtk_tree_model_get_iter_first(model, &iter) == FALSE)
-    {
-        return;
-    }
-
-    if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(program->pageResearch->selection),
-                                        &model, &iter))
-    {
+        store = GTK_LIST_STORE(gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view)));
+        model = gtk_tree_view_get_model(GTK_TREE_VIEW(program->pageResearch->view));
 
 
-        MYSQL_ROW row = NULL;
-        MYSQL_RES* res = NULL;
-        GtkWidget* hbox;
-        GtkWidget **vbox;
-        GtkWidget **label;
-        GtkWidget **entry;
-        GtkWidget *combo;
-        GtkWidget* buttonValidForm;
-        GtkWidget* buttonExit;
-        GtkWidget* boxButton;
-
-
-        gchar *idCode = NULL;
-        idCode =allocateString(idCode,12,0,program);
-        if(!idCode){
-            endProgram(program);
+        if (gtk_tree_model_get_iter_first(model, &iter) == FALSE)
+        {
+            return;
         }
-        gtk_tree_model_get (model, &iter, ID_COLUMN, &idCode, -1);
 
-        gchar* requestRemove =NULL;
-
-        requestRemove =allocateString(requestRemove,60,0,program);
-
-        requestRemove = "SELECT * FROM personne WHERE idCode ='";
-        requestRemove = g_strconcat(requestRemove,idCode,NULL);
-        requestRemove = g_strconcat(requestRemove,"'",NULL);
-
-        mysql_query(program->sock,requestRemove);
-
-        res = mysql_use_result(program->sock);
-
-        if(res)
+        if (gtk_tree_selection_get_selected(GTK_TREE_SELECTION(program->pageResearch->selection),
+                                            &model, &iter))
         {
 
-            label = malloc(sizeof(GtkWidget *)*9);
-            for(i=0; i<9; i++)
+
+            MYSQL_ROW row = NULL;
+            MYSQL_RES* res = NULL;
+            GtkWidget* hbox;
+            GtkWidget **vbox;
+            GtkWidget **label;
+            GtkWidget **entry;
+            GtkWidget *combo;
+            GtkWidget* buttonValidForm;
+            GtkWidget* buttonExit;
+            GtkWidget* boxButton;
+
+
+            gchar *idCode = NULL;
+            idCode =allocateString(idCode,12,0,program);
+            if(!idCode){
+                endProgram(program);
+            }
+            gtk_tree_model_get (model, &iter, ID_COLUMN, &idCode, -1);
+
+            gchar* requestRemove =NULL;
+
+            requestRemove =allocateString(requestRemove,60,0,program);
+
+            requestRemove = "SELECT * FROM personne WHERE idCode ='";
+            requestRemove = g_strconcat(requestRemove,idCode,NULL);
+            requestRemove = g_strconcat(requestRemove,"'",NULL);
+
+            mysql_query(program->sock,requestRemove);
+
+            res = mysql_use_result(program->sock);
+
+            if(res)
             {
-                label[i]= malloc(sizeof(GtkWidget));
+
+                label = malloc(sizeof(GtkWidget *)*9);
+                for(i=0; i<9; i++)
+                {
+                    label[i]= malloc(sizeof(GtkWidget));
+                }
+
+                entry = malloc(sizeof(GtkWidget *)*9);
+                for(i=0; i<9; i++)
+                {
+                    entry[i]= malloc(sizeof(GtkWidget));
+                }
+
+                vbox = malloc(sizeof(GtkWidget *)*9);
+                for(i=0; i<9; i++)
+                {
+                    vbox[i]= malloc(sizeof(GtkWidget));
+                }
+
+
+
+                //Creation of Widgets
+
+                label[0] = gtk_label_new("Nom :");
+                label[1] = gtk_label_new("Prenom :");
+                label[2] = gtk_label_new("Email :");
+                label[3] = gtk_label_new("Date de naissance (AAAA-MM-JJ) :");
+                label[4] = gtk_label_new("Telephone :");
+                label[5] = gtk_label_new("Adresse :");
+                label[6] = gtk_label_new("Ville :");
+                label[7] = gtk_label_new("Code Postal :");
+                label[8] = gtk_label_new("Metier :");
+
+                for(i =0; i<9; i++)
+                {
+
+                    entry[i]=gtk_entry_new();
+
+                    if(i== 0)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),80);
+                    }
+                    else if(i == 1)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),80);
+                    }
+                    else if(i == 2)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),255);
+                    }
+                    else if(i == 5)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),255);
+                    }
+                    else if(i==3)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),10);
+                    }
+                    else if(i== 4)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),10);
+                    }
+                    else if(i == 6)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),100);
+                    }
+                    else if(i == 7)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),5);
+                    }
+                    else if(i == 8)
+                    {
+                        gtk_entry_set_max_length(GTK_ENTRY(entry[i]),50);
+                    }
+                }
+
+                while ((row = mysql_fetch_row(res)))
+                {
+                    gtk_entry_set_text(GTK_ENTRY(entry[0]),row[2]);
+                    gtk_entry_set_text(GTK_ENTRY(entry[1]),row[3]);
+                    gtk_entry_set_text(GTK_ENTRY(entry[2]),row[4]);
+                    gtk_entry_set_text(GTK_ENTRY(entry[5]),row[7]);
+                    gtk_entry_set_text(GTK_ENTRY(entry[3]),row[5]);
+                    gtk_entry_set_text(GTK_ENTRY(entry[4]),row[6]);
+                    gtk_entry_set_text(GTK_ENTRY(entry[6]),row[8]);
+                    gtk_entry_set_text(GTK_ENTRY(entry[7]),row[9]);
+                    gtk_entry_set_text(GTK_ENTRY(entry[8]),row[12]);
+                }
             }
 
-            entry = malloc(sizeof(GtkWidget *)*9);
-            for(i=0; i<9; i++)
-            {
-                entry[i]= malloc(sizeof(GtkWidget));
-            }
-
-            vbox = malloc(sizeof(GtkWidget *)*9);
-            for(i=0; i<9; i++)
-            {
-                vbox[i]= malloc(sizeof(GtkWidget));
-            }
-
-
-
-            //Creation of Widgets
-
-            label[0] = gtk_label_new("Nom :");
-            label[1] = gtk_label_new("Prenom :");
-            label[2] = gtk_label_new("Email :");
-            label[3] = gtk_label_new("Date de naissance (AAAA-MM-JJ) :");
-            label[4] = gtk_label_new("Telephone :");
-            label[5] = gtk_label_new("Adresse :");
-            label[6] = gtk_label_new("Ville :");
-            label[7] = gtk_label_new("Code Postal :");
-            label[8] = gtk_label_new("Metier :");
 
             for(i =0; i<9; i++)
             {
 
-                entry[i]=gtk_entry_new();
-
-                if(i== 0)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),80);
-                }
-                else if(i == 1)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),80);
-                }
-                else if(i == 2)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),255);
-                }
-                else if(i == 5)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),255);
-                }
-                else if(i==3)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),10);
-                }
-                else if(i== 4)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),10);
-                }
-                else if(i == 6)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),100);
-                }
-                else if(i == 7)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),5);
-                }
-                else if(i == 8)
-                {
-                    gtk_entry_set_max_length(GTK_ENTRY(entry[i]),50);
-                }
+                vbox[i]=gtk_box_new(GTK_ORIENTATION_VERTICAL,5);
             }
 
-            while ((row = mysql_fetch_row(res)))
+            hbox=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
+
+            //Add Widgets in the page
+            for(i =0; i<9; i++)
             {
-                gtk_entry_set_text(GTK_ENTRY(entry[0]),row[2]);
-                gtk_entry_set_text(GTK_ENTRY(entry[1]),row[3]);
-                gtk_entry_set_text(GTK_ENTRY(entry[2]),row[4]);
-                gtk_entry_set_text(GTK_ENTRY(entry[5]),row[7]);
-                gtk_entry_set_text(GTK_ENTRY(entry[3]),row[5]);
-                gtk_entry_set_text(GTK_ENTRY(entry[4]),row[6]);
-                gtk_entry_set_text(GTK_ENTRY(entry[6]),row[8]);
-                gtk_entry_set_text(GTK_ENTRY(entry[7]),row[9]);
-                gtk_entry_set_text(GTK_ENTRY(entry[8]),row[12]);
+                gtk_box_pack_start(GTK_BOX(vbox[i]), label[i], TRUE, FALSE, 2);
+                gtk_box_pack_start(GTK_BOX(vbox[i]), entry[i], TRUE, FALSE, 2);
+                gtk_box_pack_start(GTK_BOX(hbox), vbox[i], FALSE, FALSE, 2);
             }
+
+            gtk_box_pack_start(GTK_BOX(program->pageResearch->vbox), hbox, TRUE, FALSE, 2);
+
+            buttonValidForm = gtk_button_new_from_stock(GTK_STOCK_ADD);
+            buttonExit = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
+            boxButton=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
+            combo = creatCombo(program);
+            gtk_box_pack_start(GTK_BOX(boxButton), combo, FALSE, FALSE, 2);
+            gtk_box_pack_start(GTK_BOX(boxButton), buttonValidForm, FALSE, FALSE, 2);
+            gtk_box_pack_start(GTK_BOX(boxButton), buttonExit, FALSE, FALSE, 2);
+            gtk_box_pack_start(GTK_BOX(program->pageResearch->vbox), boxButton, FALSE, FALSE, 2);
+
+            gtk_widget_show_all(program->pageResearch->vbox);
+
+            program->pageResearch->modifyBox = hbox;
+            program->pageResearch->buttonBox = boxButton;
+            program->pageResearch->combo = combo;
+             strcpy(program->pageResearch->idCode,idCode);
+
+            for(int i =0; i<9; i++)
+            {
+                program->pageResearch->entry[i] = entry[i];
+            }
+
+            g_signal_connect(G_OBJECT(buttonValidForm), "clicked",G_CALLBACK(modification), program);
+            g_signal_connect(G_OBJECT(buttonExit), "clicked",G_CALLBACK(cancelModification), program);
+
+            mysql_free_result(res);
+            free(idCode);
+            free(requestRemove);
         }
-
-
-        for(i =0; i<9; i++)
-        {
-
-            vbox[i]=gtk_box_new(GTK_ORIENTATION_VERTICAL,5);
-        }
-
-        hbox=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
-
-        //Add Widgets in the page
-        for(i =0; i<9; i++)
-        {
-            gtk_box_pack_start(GTK_BOX(vbox[i]), label[i], TRUE, FALSE, 2);
-            gtk_box_pack_start(GTK_BOX(vbox[i]), entry[i], TRUE, FALSE, 2);
-            gtk_box_pack_start(GTK_BOX(hbox), vbox[i], FALSE, FALSE, 2);
-        }
-
-        gtk_box_pack_start(GTK_BOX(program->pageResearch->vbox), hbox, TRUE, FALSE, 2);
-
-        buttonValidForm = gtk_button_new_from_stock(GTK_STOCK_ADD);
-        buttonExit = gtk_button_new_from_stock(GTK_STOCK_CANCEL);
-        boxButton=gtk_box_new(GTK_ORIENTATION_HORIZONTAL,5);
-        combo = creatCombo(program);
-        gtk_box_pack_start(GTK_BOX(boxButton), combo, FALSE, FALSE, 2);
-        gtk_box_pack_start(GTK_BOX(boxButton), buttonValidForm, FALSE, FALSE, 2);
-        gtk_box_pack_start(GTK_BOX(boxButton), buttonExit, FALSE, FALSE, 2);
-        gtk_box_pack_start(GTK_BOX(program->pageResearch->vbox), boxButton, FALSE, FALSE, 2);
-
-        gtk_widget_show_all(program->pageResearch->vbox);
-
-        program->pageResearch->modifyBox = hbox;
-        program->pageResearch->buttonBox = boxButton;
-        program->pageResearch->combo = combo;
-         strcpy(program->pageResearch->idCode,idCode);
-
-        for(int i =0; i<9; i++)
-        {
-            program->pageResearch->entry[i] = entry[i];
-        }
-
-        g_signal_connect(G_OBJECT(buttonValidForm), "clicked",G_CALLBACK(modification), program);
-        g_signal_connect(G_OBJECT(buttonExit), "clicked",G_CALLBACK(cancelModification), program);
-
-        mysql_free_result(res);
-        free(idCode);
-        free(requestRemove);
+    }else{
+         errorMessage(program,"Fermez la precedente recherche.","Fermeture modification",GTK_MESSAGE_WARNING,GTK_BUTTONS_OK);
     }
-
 }
 
 
@@ -748,7 +753,8 @@ void cancelModification(GtkWidget *pWidget,t_program*program)
 
     gtk_widget_destroy(program->pageResearch->modifyBox);
     gtk_widget_destroy(program->pageResearch->buttonBox);
-
+    program->pageResearch->modifyBox=NULL;
+    program->pageResearch->buttonBox=NULL;
 }
 
 void GoBackMenu(GtkWidget *pWidget, t_program* program)
