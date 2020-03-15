@@ -2,16 +2,18 @@
 require('functions.php');
 
 if (isset($_POST['name']) && !empty($_POST['name']) 
-	&& isset($_POST['price']) && !empty($_POST['price']) 
+	&& isset($_POST['priceEur']) && !empty($_POST['priceEur']) 
+	&& isset($_POST['priceCent']) && !empty($_POST['priceCent']) 
 	&& isset($_POST['selectValue']) && !empty($_POST['selectValue'])
 	&& isset($_POST['id']) && !empty($_POST['id'])
 	&& isset($_POST['description'])
 ){
 
 	$name = trim($_POST['name']);
-	$price = $_POST['price'];
 	$description = trim($_POST['description']);
 	$selectValue = $_POST['selectValue'];
+	$priceEur = trim($_POST['priceEur']);
+  	$priceCent = trim($_POST['priceCent']);
 
 	$errors = [];
 
@@ -27,6 +29,9 @@ if (isset($_POST['name']) && !empty($_POST['name'])
 
 	}
 
+
+
+
 	$connect = connectDb();
 
 
@@ -39,6 +44,17 @@ if (isset($_POST['name']) && !empty($_POST['name'])
    		$errors[]= "La catégorie n'existe pas ";
    		
    	}
+
+
+   	 if(!preg_match('/^[0-9]+$/', $priceEur)) {
+        $errors[] = "Les euros indiqués ne sont pas valides.";
+    }
+
+    if(!preg_match('/^[0-9][0-9]$/', $priceCent)) {
+        $errors[] = "Les centimes indiqués ne sont pas valides. Il est obligatoire d'y insérer 2 chiffres.";
+    }
+
+    $price = $priceEur.$priceCent;
 
 
    	if (empty($errors)) {

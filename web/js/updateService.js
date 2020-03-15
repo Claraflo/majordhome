@@ -102,7 +102,8 @@ function getData(id){
 
   updtName = document.getElementById('updateName');
   updtDescription = document.getElementById('updateDescription');
-  updtPrice = document.getElementById('updatePrice');
+  priceEur = document.getElementById('priceEur');
+  priceCent = document.getElementById('priceCent');
   
 
   const updt = document.getElementById('tableService');
@@ -112,7 +113,12 @@ function getData(id){
 
   updtName.value = updt.childNodes[1].innerHTML;
   updtDescription.value =  updt.childNodes[2].innerHTML;
-  updtPrice.value =  updt.childNodes[3].innerHTML;
+  price = updt.childNodes[3].innerHTML.split(',');
+  priceEur.value =  price[0];
+  priceCent.value =  price[1];
+
+
+
 
 
 }
@@ -123,7 +129,8 @@ function updateService(id){
 
 const name = document.getElementById('updateName').value;
 const description = document.getElementById('updateDescription').value;
-const price = document.getElementById('updatePrice').value;
+const priceEur = document.getElementById('priceEur').value;
+const priceCent = document.getElementById('priceCent').value;
 const select = document.getElementById('select');
 const selectValue = select.options[select.selectedIndex].innerHTML;
 
@@ -146,7 +153,7 @@ req.onreadystatechange = function(){
 
 req.open("POST","../pages/modifiedService.php");
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-req.send(`id=${id}&name=${name}&description=${description}&price=${price}&selectValue=${selectValue}`);
+req.send(`id=${id}&name=${name}&description=${description}&priceEur=${priceEur}&priceCent=${priceCent}&selectValue=${selectValue}`);
 
 }
 

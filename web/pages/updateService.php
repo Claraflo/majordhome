@@ -158,12 +158,30 @@ $queryPrepared = $connect->prepare('SELECT c.nom,c.type FROM Caracteristique c, 
 
        </div>
 
-        <div class="form-group">
-       	
-       	<label>Prix du service</label>
-       	<input type="number" id="updatePrice" class="form-control" placeholder="12">
+        <p>Prix du service /h*</p>
 
-       </div>
+
+              <div class="row">
+              <div class="col-md-6">
+
+                <div class="form-group">
+        
+              <label>Euros</label>
+              <input type="number" id="priceEur" class="form-control" required="required" placeholder="12">
+              </div>
+          </div>
+          
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+        
+              <label>Centimes</label>
+              <input type="number" id="priceCent" class="form-control" required="required" placeholder="50">
+              </div>
+            </div>
+          </div>
+
 
           <div class="form-group">
        	

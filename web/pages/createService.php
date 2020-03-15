@@ -74,29 +74,41 @@ $query->execute();
 				</div>
 
 			 
-  				<div class="row">   
+  			
 
-  					<div class="col-md-6">
+  				
   					 <div class="form-group">
        	
 	       			<label>Nom du service *</label>
 	       			<input type="text" id="name"  class="form-control" required="required" placeholder="Plombier">
       				</div>
 
+              <p>Prix du service /h*</p>
 
-      				</div>
+
+      				<div class="row">
       				<div class="col-md-6">
 
       					<div class="form-group">
        	
-       				<label>Prix du service /h *</label>
-       				<input type="number" id="price" class="form-control" required="required" placeholder="12">
+       				<label>Euros</label>
+       				<input type="number" id="priceEur" class="form-control" required="required" placeholder="12">
       				</div>
 					</div>
+          
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+        
+              <label>Centimes</label>
+              <input type="number" id="priceCent" class="form-control" required="required" placeholder="50">
+              </div>
+            </div>
+          </div>
 
 
-
-  				</div>
+  			
     			
 		
 

@@ -9,6 +9,10 @@ $queryPrepared = $connect->prepare('SELECT s.idService,s.nom,s.prix,s.descriptio
 $queryPrepared->execute();
 $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
+
+
+
+
 echo "<table class='table table-striped table-hover table-bordered'>";
   	echo "<thead>";
    		echo "<tr>";
@@ -24,11 +28,19 @@ echo "<table class='table table-striped table-hover table-bordered'>";
   
   	foreach ($dataService as $value) {
 		
+      if ($value['prix']%100 == 0){
+          $price[0] = $value['prix']/100;
+          $price[1] = '00';
+      }else{
+          $price = explode(".", $value['prix']/100);
+      }
+
+
 		echo '<tr id="service-' . $value['idService'] .'">';
       		echo "<th scope='row'>".$value['idService']."</th>";
       		echo "<td>".$value['nom']."</td>";
           echo "<td>".$value['description']."</td>";    
-          echo "<td>".$value['prix']." €</td>";    
+          echo "<td>". $price[0] . "," .$price[1] .  "</td>";    
       		echo "<td>".$value['nomCateg']."</td>";		
       		echo "<td>";
       			echo "<a href='updateService.php?id=".$value['idService']."'><button data-toggle='modal' data-target='#myModal' class='btn btn-primary m-1'><i class='fas fa-edit'></i></button></a>";
