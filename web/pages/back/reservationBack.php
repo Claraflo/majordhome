@@ -2,27 +2,6 @@
 require "headerBack.php";
 ?>
 
-<?php if(!empty($_SESSION["confirmFormAuth"])){
-    echo "<div class='alert alert-success'>";
-    foreach ($_SESSION["confirmFormAuth"] as $confirm) {
-        echo "<li>".$confirm;
-    }
-    echo "</div>";
-    unset($_SESSION["confirmFormAuth"]);
-}
-
-
-if (!empty($_SESSION["delete"])) {
-    echo "<div class='alert alert-danger'>";
-    foreach ($_SESSION["delete"] as $delete) {
-        echo "<li>" . $delete;
-    }
-    echo "</div>";
-    unset($_SESSION["delete"]);
-}
-
-
-?>
 
 
     <section >
@@ -31,7 +10,7 @@ if (!empty($_SESSION["delete"])) {
             <hr class="hr">
         </div>
         <div class="container borderCustomer">
-            <a class="btn btn-success" id="add" href="createCustomer.php">Ajouter une réservation</a>
+            <a class="btn btn-success" id="add" href="addReservation.php">Ajouter une réservation</a>
             <div class="container">
 
                 <div id="tab">
