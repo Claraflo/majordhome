@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98398c27-1784-46ce-85c5-154422570061" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/web.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/displaySubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/displaySubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/modificationSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/modificationSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/saveSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/saveSubscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/updateSubscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/pages/updateSubscription.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +99,16 @@
       <workItem from="1581251144085" duration="2230000" />
       <workItem from="1583072157475" duration="1076000" />
       <workItem from="1583161697701" duration="6832000" />
+      <workItem from="1584012357961" duration="385000" />
+      <workItem from="1584105798146" duration="537000" />
+      <workItem from="1584125270494" duration="4620000" />
+      <workItem from="1584138810640" duration="1318000" />
+      <workItem from="1584140849872" duration="1048000" />
+      <workItem from="1584299711733" duration="166000" />
+      <workItem from="1584355889829" duration="3302000" />
+      <workItem from="1584365114674" duration="2262000" />
+      <workItem from="1584367551388" duration="261000" />
+      <workItem from="1584368759870" duration="111000" />
     </task>
     <servers />
   </component>
@@ -130,13 +132,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="163" key="SettingsEditor/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581164791379" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1583167190558">
+    <state width="498" height="446" key="SwitcherDM" timestamp="1584128081177">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1583167190558" />
-    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581181904225">
+    <state width="498" height="446" key="SwitcherDM/1920.93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1584128081177" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584365788597">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/-1440.-93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1581181904225" />
+    <state x="769" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.93.1440.860/0.0.1920.1040@0.0.1920.1040" timestamp="1584365788597" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1584008468202">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1584008468202" />
   </component>
 </project>
