@@ -34,7 +34,7 @@ if(count($_POST) == 11
     $errors = [];
 
 
-    $data = $connect->query("SELECT nom FROM subscription WHERE nom = '$title' && statut = 0");
+    $data = $connect->query("SELECT nom FROM abonnement WHERE nom = '$title' && statut = 0");
 
     foreach ($data->fetchAll() as $key => $subscription) {
         $count = $data->rowCount();
@@ -96,7 +96,7 @@ if(count($_POST) == 11
 
     if(empty($errors)) {
 
-        $req = $connect->prepare('INSERT INTO subscription(nom, prix, description, annee, mois, jours, semaine, temps, debutTemps, finTemps, statut) VALUES(:title, :price, :description, :years, :months, :days, :week, :time, :timeStart, :timeEnd, :status)');
+        $req = $connect->prepare('INSERT INTO abonnement(nom, prix, description, annee, mois, jours, semaine, temps, debutTemps, finTemps, statut) VALUES(:title, :price, :description, :years, :months, :days, :week, :time, :timeStart, :timeEnd, :status)');
         $req->execute([':title'=>$title,
             ':price'=>$price,
             ':description'=>$description,

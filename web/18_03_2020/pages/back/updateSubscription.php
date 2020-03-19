@@ -39,7 +39,7 @@ if(count($_POST) == 11
     $errors = [];
 
 
-    $data = $connect->query("SELECT nom FROM subscription WHERE nom = '$title' && id !='$id' && statut = 0");
+    $data = $connect->query("SELECT nom FROM abonnement WHERE nom = '$title' && idAbonnement !='$id' && statut = 0");
 
     foreach ($data->fetchAll() as $key => $subscription) {
         $count = $data->rowCount();
@@ -100,7 +100,7 @@ if(count($_POST) == 11
 
     if(empty($errors)) {
 
-        $req = $connect->prepare("UPDATE subscription set nom =:title, prix =:price, description =:description, annee =:years, mois =:months, jours =:days, semaine =:week, temps =:time, debutTemps =:timeStart, finTemps =:timeEnd WHERE id =:id;");
+        $req = $connect->prepare("UPDATE abonnement set nom =:title, prix =:price, description =:description, annee =:years, mois =:months, jours =:days, semaine =:week, temps =:time, debutTemps =:timeStart, finTemps =:timeEnd WHERE idAbonnement =:id;");
         $req->execute([':title'=>$title,
             ':price'=>$price,
             ':description'=>$description,

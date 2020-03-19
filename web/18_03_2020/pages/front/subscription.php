@@ -15,7 +15,7 @@ if (!empty($_SESSION['success'])){
     <div class="container borderSubscription">
         <div class="row text-center">
             <?php
-            $data = $connect->query("SELECT id, nom, prix, description, semaine, temps, debutTemps, finTemps FROM subscription WHERE statut=0");
+            $data = $connect->query("SELECT idAbonnement, nom, prix, description, semaine, temps, debutTemps, finTemps FROM abonnement WHERE statut=0");
             foreach ($data->fetchAll() as $key => $subscription) {
 
                     $subscription['prix'] = $subscription['prix']/100;
@@ -32,7 +32,7 @@ if (!empty($_SESSION['success'])){
                                     echo '<li class="liSubscription">'.$subscription['description'];
                                     echo '<li class="liSubscription">'.$subscription['temps'].'h de services/mois';
                                 echo '</ul>';
-                                echo '<a class="btnSubscription" href="paymentSubscription.php?id='.$subscription['id'].'">Payer</a>';
+                                echo '<a class="btnSubscription" href="paymentSubscription.php?id='.$subscription['idAbonnement'].'">Payer</a>';
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';

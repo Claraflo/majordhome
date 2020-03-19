@@ -8,7 +8,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 2) {
 require("../functions.php");
 $connect = connectDb();
 
-$data = $connect->query("SELECT id, nom, description, prix, semaine, temps, debutTemps, finTemps FROM subscription WHERE statut=0");
+$data = $connect->query("SELECT idAbonnement, nom, description, prix, semaine, temps, debutTemps, finTemps FROM abonnement WHERE statut=0");
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($rows as $row) {
@@ -27,8 +27,8 @@ foreach ($rows as $row) {
                     echo '<li class="liSubscription">'.$row['description'];
                     echo '<li class="liSubscription">'.$row['temps'].'h de services/mois';
                 echo '</ul>';
-                echo '<a class="btn btn-primary" href="modificationSubscription.php?id='.$row['id'].'">Modifier</a>';
-                echo '<button class="btn btn-danger" onclick="show('.$row['id'].')">Supprimer</button>';
+                echo '<a class="btn btn-primary" href="modificationSubscription.php?id='.$row['idAbonnement'].'">Modifier</a>';
+                echo '<button class="btn btn-danger" onclick="show('.$row['idAbonnement'].')">Supprimer</button>';
             echo '</div>';
         echo '</div>';
     echo '</div>';

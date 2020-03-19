@@ -8,7 +8,7 @@ if(!empty($_GET)){
 }
 
 
-$req = $connect->prepare("SELECT nom, prix FROM subscription WHERE id = $id");
+$req = $connect->prepare("SELECT nom, prix FROM abonnement WHERE idAbonnement = $id");
 $req->execute(array());
 $subscription = $req->fetch();
 
