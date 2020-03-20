@@ -16,7 +16,7 @@ if(!empty($_POST['name'])
 	$found = 0;
 	$errors = [];
 
-	$values = ['text','Date','number'];
+	$values = ['text','date','number'];
 
 
 	foreach ($values as  $value) {

@@ -6,7 +6,7 @@
 	</div>
     <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
         <div class="container-fluid">
-            <a class="navbar-brand active" href="index.php" title="">
+            <a class="navbar-brand" href="index.php" title="">
                 <img class="logo" src="../img/majordhome.png" title="logo" alt="Logo Majord'home">
             </a>
 
