@@ -8,6 +8,27 @@ if(!empty($_GET)){
 }
 
 
+$days = date('d');
+$months = date('m');
+$years = date('Y');
+$time = date('H:i:s');
+
+$dateTime = $years.'-'.$months.'-'.$days.' '.$time;
+
+$data = $connect->prepare("SELECT dateFin FROM souscription_abonnement");
+$data->execute(array());
+foreach ($data->fetchAll() as $key => $endTime){
+    if ($dateTime < $endTime){
+        $_SESSION["subscription"] = 'Vous possédez déjà un abonnement';
+        header('Location: subscription.php');
+    }
+}
+
+
+
+
+
+
 $req = $connect->prepare("SELECT nom, prix, annee, mois, jours FROM abonnement WHERE idAbonnement = $id");
 $req->execute(array());
 $subscription = $req->fetch();

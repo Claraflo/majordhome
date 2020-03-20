@@ -2,7 +2,11 @@
 session_start();
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
-header('../Location: login.php');
+    header('Location: ../login.php');
+}
+
+if (!isset($_SESSION['dateTime']) || !isset($_SESSION['idSubscription'])){
+    header('Location: subscription.php');
 }
 
 require("../functions.php");

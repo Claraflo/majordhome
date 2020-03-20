@@ -4,6 +4,15 @@ require "header.php";
 if (!empty($_SESSION['success'])){
     echo $_SESSION["success"];
 }
+
+
+if (!empty($_SESSION["subscription"])) {
+    echo "<div class='alert alert-danger'>";
+    echo "<li>" . $_SESSION['subscription'];
+    echo "</div>";
+    unset($_SESSION["subscription"]);
+}
+
 ?>
 
 <section >
@@ -11,7 +20,6 @@ if (!empty($_SESSION['success'])){
         <h1 class="display-4">Abonnements</h1>
         <hr class="hr">
     </div>
-    <form method="post">
     <div class="container borderSubscription">
         <div class="row text-center">
             <?php
@@ -40,7 +48,6 @@ if (!empty($_SESSION['success'])){
             ?>
         </div>
     </div>
-    </form>
 </section>
 
 

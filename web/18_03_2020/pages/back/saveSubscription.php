@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 2) {
-    header('../Location: login.php');
+    header('Location: ../login.php');
 }
 
 require("../functions.php");
