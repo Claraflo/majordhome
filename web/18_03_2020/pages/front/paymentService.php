@@ -54,7 +54,7 @@ $price = $price/100;
 
 
 <script src="https://js.stripe.com/v3/"></script>
-<script src="../../js/payment.js"></script>
+<script src="../../js/paymentSubscription.js"></script>
 
 <?php
 require "../footer.php";

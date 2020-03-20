@@ -45,7 +45,7 @@ cardButton.addEventListener('click', function (ev) {
             }
 
         }else{
-            window.location.href = "success.php";
+            window.location.href = "saveSubscription.php";
         }
     });
 });

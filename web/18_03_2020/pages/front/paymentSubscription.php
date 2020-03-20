@@ -8,15 +8,23 @@ if(!empty($_GET)){
 }
 
 
-$req = $connect->prepare("SELECT nom, prix FROM abonnement WHERE idAbonnement = $id");
+$req = $connect->prepare("SELECT nom, prix, annee, mois, jours FROM abonnement WHERE idAbonnement = $id");
 $req->execute(array());
 $subscription = $req->fetch();
 
 $count = $req->rowCount();
 
 if ($count == 0){
-    header('Location: 404.php');
+    header('Location: ../../404.php');
 }
+
+$days = date('d') + $subscription['jours'];
+$months = date('m') + $subscription['mois'];
+$years = date('Y') + $subscription['annee'];
+$time = date('H:i:s');
+
+$endTime = $years.'-'.$months.'-'.$days.' '.$time;
+$_SESSION['endTime'] = $endTime;
 
 $price = $subscription['prix'];
 require ('../../stripe-php-master/init.php');
@@ -62,7 +70,7 @@ $subscription['prix'] = $subscription['prix']/100;
 
 
 <script src="https://js.stripe.com/v3/"></script>
-<script src="../../js/payment.js"></script>
+<script src="../../js/paymentSubscription.js"></script>
 
 <?php
 require "../footer.php";
