@@ -25,6 +25,7 @@ $time = date('H:i:s');
 
 $endTime = $years.'-'.$months.'-'.$days.' '.$time;
 $_SESSION['endTime'] = $endTime;
+$_SESSION['idSubscription'] = $id;
 
 $price = $subscription['prix'];
 require ('../../stripe-php-master/init.php');
