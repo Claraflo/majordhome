@@ -8,10 +8,20 @@ header('../Location: login.php');
 require("../functions.php");
 $connect = connectDb();
 
-$endTime = $_SESSION['endTime'];
+$dateTime = $_SESSION['dateTime'];
 $idSubscription = $_SESSION['idSubscription'];
-unset($_SESSION['endTime']);
+unset($_SESSION['dateTime']);
 unset($_SESSION['idSubscription']);
+
+
+$date = explode(":", $dateTime);
+
+$days = date('d') + $date[2];
+$months = date('m') + $date[1];
+$years = date('Y') + $date[0];
+$time = date('H:i:s');
+
+$endTime = $years.'-'.$months.'-'.$days.' '.$time;
 
 $format = 'Y-m-d H:i:s';
 $date = DateTime::createFromFormat($format, $endTime);

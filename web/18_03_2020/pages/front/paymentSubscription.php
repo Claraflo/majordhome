@@ -18,13 +18,8 @@ if ($count == 0){
     header('Location: ../../404.php');
 }
 
-$days = date('d') + $subscription['jours'];
-$months = date('m') + $subscription['mois'];
-$years = date('Y') + $subscription['annee'];
-$time = date('H:i:s');
 
-$endTime = $years.'-'.$months.'-'.$days.' '.$time;
-$_SESSION['endTime'] = $endTime;
+$_SESSION['dateTime'] = $subscription['annee'].':'.$subscription['mois'].':'.$subscription['jours'];
 $_SESSION['idSubscription'] = $id;
 
 $price = $subscription['prix'];
