@@ -2,7 +2,6 @@
 require "headerBack.php";
 
 $_SESSION['idCustomer'] = $_GET['id'];
-
 ?>
 
 
@@ -22,6 +21,7 @@ $_SESSION['idCustomer'] = $_GET['id'];
                         <th scope="col">Nom</th>
                         <th scope="col">Date de la réservation</th>
                         <th scope="col">Date de l'intervention</th>
+                        <th scope="col">Statut</th>
                         <th scope="col">Actions</th>
                         </thead>
                         <tbody id="reservation">

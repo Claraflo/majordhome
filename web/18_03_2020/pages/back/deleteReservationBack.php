@@ -12,10 +12,7 @@ if(!empty($_POST['id'])) {
 
     $id = $_POST['id'];
 
-
-
-
-    $req = $connect->prepare("UPDATE souscription_service set statutReservation =:statut WHERE idPersonne =:id;");
+    $req = $connect->prepare("UPDATE souscription_service set statutReservation =:statut WHERE idSouscriptionService =:id;");
     $req->execute([
         ':statut'=>-1,
         ':id'=>$id
