@@ -15,13 +15,15 @@ $time = date('H:i:s');
 
 $dateTime = $years.'-'.$months.'-'.$days.' '.$time;
 
-$data = $connect->prepare("SELECT dateFin FROM souscription_abonnement");
+$data = $connect->prepare("SELECT dateFin FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne = ".$_SESSION['user']['idPersonne']);
 $data->execute(array());
 foreach ($data->fetchAll() as $key => $endTime){
-    if ($dateTime < $endTime){
+
+    if ($endTime['dateFin'] > $dateTime){
         $_SESSION["subscription"] = 'Vous possédez déjà un abonnement';
         header('Location: subscription.php');
     }
+
 }
 
 
