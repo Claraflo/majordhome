@@ -9,7 +9,7 @@ require("../functions.php");
 $connect = connectDb();
 
 
-$data = $connect->query("SELECT idSouscriptionService, dateReservation, dateIntervention,  nom FROM souscription_service, service WHERE statutReservation = 0 AND service.idService = souscription_service.FK_idService");
+$data = $connect->query("SELECT idSouscriptionService, dateReservation, dateIntervention,  nom FROM souscription_service, service WHERE statutReservation = 0 AND service.idService = souscription_service.FK_idService AND FK_idPersonne =".$_SESSION['idCustomer']);
 
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 

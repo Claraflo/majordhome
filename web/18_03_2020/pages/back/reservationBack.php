@@ -1,5 +1,8 @@
 <?php
 require "headerBack.php";
+
+$_SESSION['idCustomer'] = $_GET['id'];
+
 ?>
 
 
