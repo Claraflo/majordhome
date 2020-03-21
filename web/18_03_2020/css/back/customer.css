@@ -14,11 +14,20 @@
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 15px;
-    width: 100px;
+    width: 130px;
 }
 
 .btn-danger {
-    width: 100px;
+    width: 130px;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+
+
+.btn-warning {
+    width: 130px;
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 15px;
