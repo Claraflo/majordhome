@@ -1,7 +1,7 @@
 <?php
 require "header.php";
 
-if (!isset($_SESSION['idService']) || !isset($_SESSION['idCaracteristique']) || !isset($_SESSION['valueService'])){
+if (!isset($_SESSION['idService']) || !isset($_SESSION['idCaracteristique'])){
     header('Location: services.php');
 }
 

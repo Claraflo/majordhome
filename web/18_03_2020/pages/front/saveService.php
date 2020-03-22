@@ -20,13 +20,6 @@ unset($_SESSION['idCaracteristique']);
 unset($_SESSION['valueService']);
 
 
-for ($i = 0; $i < count($idCaracteristique); $i++){
-    print_r($idCaracteristique[$i]);
-    echo "=>";
-    print_r($valueService[$i+2]);
-}
-
-
 function pwdGenerator($numberCaracteres, $string = 'abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789')
 {
     $numberLetters = strlen($string) - 1;
@@ -51,13 +44,16 @@ function checkId($idSouscriptionService, $connect)
     $query->execute();
     foreach ($query->fetchAll() as $value) {
 
-        if ($idSouscriptionService == $value['$idSouscriptionService']) {
+        if ($idSouscriptionService == $value['idSouscriptionService']) {
             $idSouscriptionService = pwdGenerator(10);
             checkId($idSouscriptionService, $connect);
         }
 
     }
 }
+
+
+
 
 
 $req = $connect->prepare('INSERT INTO souscription_service(FK_idPersonne, FK_idService, dateIntervention, duree, idSouscriptionService, statutReservation) VALUES(:FK_idPersonne, :FK_idService, :dateIntervention, :duree, :idSouscriptionService, :statutReservation)');
@@ -69,5 +65,14 @@ $req->execute([':FK_idPersonne'=>  $_SESSION['user']['idPersonne'],
     'statutReservation'=> 0
 ]);
 
-//header('Location: success.php');
+
+for ($i = 0; $i < count($idCaracteristique); $i++){
+$req = $connect->prepare('INSERT INTO donnees_service(information, FK_idSouscriptionService, FK_idCaracteristique) VALUES(:information, :FK_idSouscriptionService, :FK_idCaracteristique)');
+$req->execute([':information'=> $valueService[$i+2],
+    ':FK_idSouscriptionService'=> $idSouscriptionService,
+    ':FK_idCaracteristique'=> $idCaracteristique[0]
+]);
+}
+
+header('Location: success.php');
 ?>
