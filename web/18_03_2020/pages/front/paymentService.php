@@ -2,13 +2,14 @@
 require "header.php";
 
 $id = $_SESSION['idService'];
-unset($_SESSION['idService']);
 
+$valueService = [];
 
 foreach ($_POST as $key => $value) {
-    echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
+    $valueService[] = $value;
 }
-
+print_r($valueService);
+$_SESSION['valueService'] = $valueService;
 
 $req = $connect->prepare("SELECT nom, prix FROM service WHERE idService = $id");
 $req->execute(array());
@@ -60,7 +61,7 @@ $price = $price/100;
 
 
 <script src="https://js.stripe.com/v3/"></script>
-<script src="../../js/paymentSubscription.js"></script>
+<script src="../../js/paymentService.js"></script>
 
 <?php
 require "../footer.php";
