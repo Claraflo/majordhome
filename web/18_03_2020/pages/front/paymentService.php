@@ -1,6 +1,10 @@
 <?php
 require "header.php";
 
+if (!isset($_SESSION['idService']) || !isset($_SESSION['idCaracteristique']) || !isset($_SESSION['valueService'])){
+    header('Location: services.php');
+}
+
 $id = $_SESSION['idService'];
 
 $valueService = [];
@@ -8,7 +12,7 @@ $valueService = [];
 foreach ($_POST as $key => $value) {
     $valueService[] = $value;
 }
-print_r($valueService);
+
 $_SESSION['valueService'] = $valueService;
 
 $req = $connect->prepare("SELECT nom, prix FROM service WHERE idService = $id");

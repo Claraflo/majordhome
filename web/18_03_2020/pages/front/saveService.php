@@ -5,6 +5,10 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
     header('Location: ../login.php');
 }
 
+if (!isset($_SESSION['idService']) || !isset($_SESSION['idCaracteristique']) || !isset($_SESSION['valueService'])){
+    header('Location: services.php');
+}
+
 require("../functions.php");
 $connect = connectDb();
 
