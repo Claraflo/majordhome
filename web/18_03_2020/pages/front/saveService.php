@@ -36,7 +36,24 @@ function pwdGenerator($numberCaracteres, $string = 'abcdefghigklmnopqrstuvwxyzAB
     return $generation;
 }
 
-echo pwdGenerator(10);
+$idSouscriptionService = pwdGenerator(10);
+
+
+checkId($idSouscriptionService, $connect);
+
+function checkId($idSouscriptionService, $connect)
+{
+    $query = $connect->query('SELECT idSouscriptionService FROM souscription_service;');
+    $query->execute();
+    foreach ($query->fetchAll() as $value) {
+
+        if ($idSouscriptionService == $value['$idSouscriptionService']) {
+            $idSouscriptionService = pwdGenerator(10);
+            checkId($idSouscriptionService, $connect);
+        }
+
+    }
+}
 
 
 $req = $connect->prepare('INSERT INTO souscription_service(FK_idPersonne, FK_idService, dateIntervention, duree, idSouscriptionService, statutReservation) VALUES(:FK_idPersonne, :FK_idService, :dateIntervention, :duree, :idSouscriptionService, :statutReservation)');
@@ -44,7 +61,7 @@ $req->execute([':FK_idPersonne'=>  $_SESSION['user']['idPersonne'],
     ':FK_idService'=>  $idService,
     'dateIntervention'=>  $valueService[0],
     'duree'=>  $valueService[1],
-    'idSouscriptionService'=> pwdGenerator(10),
+    'idSouscriptionService'=> $idSouscriptionService,
     'statutReservation'=> 0
 ]);
 
