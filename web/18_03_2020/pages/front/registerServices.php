@@ -8,7 +8,7 @@ if(!empty($_GET)){
     $id = 0;
 }
 
-$req = $connect->prepare("SELECT nom, type FROM caracteristique WHERE idService = $id");
+$req = $connect->prepare("SELECT idCaracteristique, nom, type FROM caracteristique WHERE idService = $id");
 $req->execute(array());
 
 $count = $req->rowCount();
@@ -16,16 +16,13 @@ $count = $req->rowCount();
 if ($count == 0){
     header('Location: 404.php');
 }
-$_SESSION["id"] = $id;
+$_SESSION["idService"] = $id;
 
 $data= $connect->query("SELECT nom, prix FROM service WHERE idService = $id");
 
+$idCaracteristique = [];
 
-
-?>
-
-
-<?php if (!empty($_SESSION['success'])){
+if (!empty($_SESSION['success'])){
     echo $_SESSION["success"];
 }
 ?>
@@ -41,15 +38,16 @@ $data= $connect->query("SELECT nom, prix FROM service WHERE idService = $id");
         ?>
         <hr class="hr">
     </div>
-    <form method="post" action="payment.php">
+    <form method="post" action="paymentService.php">
         <div class="container borderSubscription">
 
             <?php
                 foreach ($req->fetchAll() as $caracteristique) {
-
+                    $idCaracteristique[] = $caracteristique['idCaracteristique'];
                     echo '<label for="'.$caracteristique["nom"].'" class="lab area">'.$caracteristique["nom"].'</label>';
                     echo '<input name="'.$caracteristique["nom"].'" type="'.$caracteristique["type"].'" id="'.$caracteristique["nom"].'" class="form-control inputRegister" required="">';
                 }
+                $_SESSION['idCaracteristique'] = $idCaracteristique;
             ?>
 
             <input type="submit" class="btn btn-success area" value="Payer">
@@ -61,5 +59,5 @@ $data= $connect->query("SELECT nom, prix FROM service WHERE idService = $id");
 
 
 <?php
-require "footer.php";
+require "../footer.php";
 ?>

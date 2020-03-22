@@ -1,8 +1,14 @@
 <?php
 require "header.php";
 
-$id = $_SESSION['id'];
-unset($_SESSION['id']);
+$id = $_SESSION['idService'];
+unset($_SESSION['idService']);
+
+
+foreach ($_POST as $key => $value) {
+    echo "Field ".htmlspecialchars($key)." is ".htmlspecialchars($value)."<br>";
+}
+
 
 $req = $connect->prepare("SELECT nom, prix FROM service WHERE idService = $id");
 $req->execute(array());
