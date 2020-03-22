@@ -13,6 +13,12 @@ foreach ($_POST as $key => $value) {
     $valueService[] = $value;
 }
 
+
+if ($valueService[0] < date('Y-m-d')){
+    $_SESSION["dateService"] = 'Vous ne pouvez pas choisir une date ultérieure';
+    header('Location: registerServices.php?id='.$id);
+}
+
 $_SESSION['valueService'] = $valueService;
 
 $req = $connect->prepare("SELECT nom, prix FROM service WHERE idService = $id");

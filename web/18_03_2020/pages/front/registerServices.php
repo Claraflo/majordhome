@@ -22,8 +22,11 @@ $data= $connect->query("SELECT nom, prix FROM service WHERE idService = $id");
 
 $idCaracteristique = [];
 
-if (!empty($_SESSION['success'])){
-    echo $_SESSION["success"];
+if (!empty($_SESSION["dateService"])) {
+    echo "<div class='alert alert-danger'>";
+    echo "<li>" . $_SESSION['dateService'];
+    echo "</div>";
+    unset($_SESSION["dateService"]);
 }
 ?>
 
