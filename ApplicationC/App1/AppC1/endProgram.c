@@ -31,8 +31,6 @@ void endProgram(t_program* program)
 
     if(program->pageResearch)
     {
-
-        gtk_widget_destroy(program->pageResearch->selection);
         gtk_widget_destroy(program->pageResearch->view);
         gtk_widget_destroy(program->pageResearch->vbox);
         free(program->pageResearch->idCode);

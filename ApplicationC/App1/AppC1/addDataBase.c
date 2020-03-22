@@ -101,7 +101,7 @@ void addInputInDB(t_program* program)
 
 
             //Request of insert new provider
-            requestProvider = g_strconcat("INSERT INTO personne (nom, prenom,mail,dateNaissance,tel,adresse,ville,codePostal,FK_metier,idCode,pwd,statut) VALUES ('",conv[0],NULL);
+            requestProvider = g_strconcat("INSERT INTO personne (nom, prenom,mail,dateNaissance,telephone,adresse,ville,codePostal,FK_metier,idCode,mdp,statut) VALUES ('",conv[0],NULL);
             for(i =1; i<9;i++){
                 requestProvider = g_strconcat(requestProvider,"','",NULL);
                 requestProvider = g_strconcat(requestProvider,conv[i],NULL);

@@ -210,7 +210,7 @@ GtkWidget * create_view_and_model (t_program* program)
 
 
 
-    model = create_and_fill_model (program,"SELECT idCode,FK_metier,nom,prenom,dateNaissance,tel,mail,adresse,ville,codePostal FROM personne WHERE statut = 1",0);
+    model = create_and_fill_model (program,"SELECT idCode,FK_metier,nom,prenom,dateNaissance,telephone,mail,adresse,ville,codePostal FROM personne WHERE statut = 1",0);
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (view), model);
 
@@ -331,7 +331,7 @@ void displayAll(GtkWidget *pWidget, t_program* program)
 {
 
     GtkTreeModel *model;
-    model = create_and_fill_model (program,"SELECT idCode,FK_metier,nom,prenom,dateNaissance,tel,mail,adresse,ville,codePostal FROM personne WHERE statut = 1",0);
+    model = create_and_fill_model (program,"SELECT idCode,FK_metier,nom,prenom,dateNaissance,telephone,mail,adresse,ville,codePostal FROM personne WHERE statut = 1",0);
 
     gtk_tree_view_set_model (GTK_TREE_VIEW (program->pageResearch->view), model);
 
@@ -381,7 +381,7 @@ void researchItem(GtkWidget *pWidget, t_program* program)
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
         requestResearch = g_strconcat(requestResearch,"' || mail = '",NULL);
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
-        requestResearch = g_strconcat(requestResearch,"' || tel = '",NULL);
+        requestResearch = g_strconcat(requestResearch,"' || telephone = '",NULL);
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
         requestResearch = g_strconcat(requestResearch,"' || dateNaissance = '",NULL);
         requestResearch = g_strconcat(requestResearch,conversionEntry,NULL);
@@ -679,7 +679,7 @@ void modification(GtkWidget *pWidget,t_program* program)
         label[1] = "prenom";
         label[2] = "mail";
         label[3] = "dateNaissance";
-        label[4] = "tel";
+        label[4] = "telephone";
         label[5] = "adresse";
         label[6] = "ville";
         label[7] = "codePostal";

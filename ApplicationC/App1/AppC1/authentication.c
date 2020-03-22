@@ -49,7 +49,7 @@ void authentication(t_program* program)
     conversionUsernameUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(program->pageAuth->username)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     conversionPasswordUTF8 = g_convert(gtk_entry_get_text(GTK_ENTRY(program->pageAuth->password)),-1,"ISO-8859-1","UTF-8", NULL, NULL, NULL);
     requestAuth = g_strconcat("SELECT prenom from personne WHERE prenom = '",conversionUsernameUTF8,NULL);
-    requestAuth = g_strconcat(requestAuth,"' AND pwd = '",NULL);
+    requestAuth = g_strconcat(requestAuth,"' AND mdp = '",NULL);
     requestAuth = g_strconcat(requestAuth,conversionPasswordUTF8,NULL);
     requestAuth = g_strconcat(requestAuth,"'",NULL);
 
