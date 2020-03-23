@@ -57,6 +57,15 @@ if (!empty($_SESSION["dateService"])) {
                 $_SESSION['idCaracteristique'] = $idCaracteristique;
             ?>
 
+            <div class="form-group">
+                <label for="number">Payer en:</label>
+                <select name="number" class="form-control" id="number">
+                    <option value="1">1 fois</option>
+                    <option value="2">2 fois</option>
+                    <option value="4">4 fois</option>
+                </select>
+            </div>
+
             <input type="submit" class="btn btn-success area" value="Payer">
 
         </div>

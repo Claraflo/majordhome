@@ -13,6 +13,11 @@ foreach ($_POST as $key => $value) {
     $valueService[] = $value;
 }
 
+$number = $_POST['number'];
+
+if ($number != 1 && $number != 2 && $number != 4){
+    header('Location: registerServices.php?id='.$id);
+}
 
 if ($valueService[0] < date('Y-m-d')){
     $_SESSION["dateService"] = 'Vous ne pouvez pas choisir une date ultérieure';
@@ -32,6 +37,11 @@ if ($count == 0){
 }
 
 $price = $service['prix'];
+
+if($number != 1){
+    $_SESSION['priceService'] = $price;
+    $price = $price/$number;
+}
 require ('../../stripe-php-master/init.php');
 
 \Stripe\Stripe::setApiKey('sk_test_KIoaPZUhWtezXMfycCQWaVP300pmT5edj0');

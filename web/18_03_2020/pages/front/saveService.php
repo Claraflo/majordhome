@@ -5,7 +5,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
     header('Location: ../login.php');
 }
 
-if (!isset($_SESSION['idService']) || !isset($_SESSION['idCaracteristique']) || !isset($_SESSION['valueService'])){
+if (!isset($_SESSION['idService']) || !isset($_SESSION['idCaracteristique']) || !isset($_SESSION['valueService']) || !isset($_SESSION['priceService'])){
     header('Location: services.php');
 }
 
@@ -15,10 +15,13 @@ $connect = connectDb();
 $idService = $_SESSION['idService'];
 $idCaracteristique = $_SESSION['idCaracteristique'];
 $valueService = $_SESSION['valueService'];
+$priceService = $_SESSION['priceService'];
 unset($_SESSION['idService']);
 unset($_SESSION['idCaracteristique']);
 unset($_SESSION['valueService']);
 
+
+$number = $valueService[count($valueService)-1];
 
 function pwdGenerator($numberCaracteres, $string = 'abcdefghigklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ123456789')
 {
@@ -74,5 +77,5 @@ $req->execute([':information'=> $valueService[$i+2],
 ]);
 }
 
-header('Location: success.php');
+//header('Location: success.php');
 ?>
