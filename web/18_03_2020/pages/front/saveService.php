@@ -88,5 +88,5 @@ $req->execute([':prixTotal' => $priceService,
 ]);
 
 
-//header('Location: success.php');
+header('Location: success.php');
 ?>
