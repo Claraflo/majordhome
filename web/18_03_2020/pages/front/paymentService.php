@@ -37,9 +37,8 @@ if ($count == 0){
 }
 
 $price = $service['prix'];
-
+$_SESSION['priceService'] = $price;
 if($number != 1){
-    $_SESSION['priceService'] = $price;
     $price = $price/$number;
 }
 require ('../../stripe-php-master/init.php');
