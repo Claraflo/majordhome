@@ -1,19 +1,13 @@
 <?php
 require "header.php";
 
-if(!empty($_GET)){
-    $id = $_GET['id'];
+if(!empty($_SESSION['idSubscription'])){
+    $id = $_SESSION['idSubscription'];
 }else{
     $id = 0;
 }
 
-
-$days = date('d');
-$months = date('m');
-$years = date('Y');
-$time = date('H:i:s');
-
-$dateTime = $years.'-'.$months.'-'.$days.' '.$time;
+$number = $_POST['number'];
 
 $data = $connect->prepare("SELECT dateFin FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne = ".$_SESSION['user']['idPersonne']);
 $data->execute(array());
@@ -28,9 +22,6 @@ foreach ($data->fetchAll() as $key => $endTime){
 
 
 
-
-
-
 $req = $connect->prepare("SELECT nom, prix, annee, mois, jours FROM abonnement WHERE idAbonnement = $id");
 $req->execute(array());
 $subscription = $req->fetch();
@@ -41,11 +32,12 @@ if ($count == 0){
     header('Location: ../../404.php');
 }
 
-
-$_SESSION['dateTime'] = $subscription['annee'].':'.$subscription['mois'].':'.$subscription['jours'];
-$_SESSION['idSubscription'] = $id;
-
 $price = $subscription['prix'];
+$_SESSION['priceSubscription'] = $price;
+
+if($number != 1){
+    $price = $price/$number;
+}
 require ('../../stripe-php-master/init.php');
 
 \Stripe\Stripe::setApiKey('sk_test_KIoaPZUhWtezXMfycCQWaVP300pmT5edj0');
@@ -60,7 +52,7 @@ $intent = \Stripe\PaymentIntent::create([
 ]);
 
 
-$subscription['prix'] = $subscription['prix']/100;
+$price = $price/100;
 
 
 
@@ -74,7 +66,13 @@ $subscription['prix'] = $subscription['prix']/100;
         <div class="form">
             <form id="form-payement">
                 <h3 class="text-center title"><?php echo $subscription['nom']?></h3>
-                <h2 class="card-title pricing-card-title"><?php echo $subscription['prix'] ?>€ TTC <small class="text-muted">/ an</small></h2>
+                <h2 class="card-title pricing-card-title"><?php echo $price ?>€ TTC
+                    <small class="text-muted">
+                        <?php if($number == 2){ echo "/mois pendant 2 mois à compter d'aujourd'hui";}
+                        else if ($number == 4){ echo "/mois pendant 4 mois à compter d'aujourd'hui";}
+                        ?>
+                    </small>
+                </h2>
                 <hr class="hr">
 
                 <label for="cardholder-name">Nom du titulaire de la carte *</label>

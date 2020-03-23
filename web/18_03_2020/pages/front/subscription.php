@@ -34,13 +34,13 @@ if (!empty($_SESSION["subscription"])) {
                                 echo '<h4 class="my-0 font-weight-normal">'.$subscription['nom'].'</h4>';
                             echo "</div>";
                             echo '<div class="card-body">';
-                                echo '<h2 class="card-title pricing-card-title">'.$subscription['prix'].'€ TTC <small class="text-muted">/ an</small></h2>';
+                                echo '<h2 class="card-title pricing-card-title">'.$subscription['prix'].'€ TTC</h2>';
                                 echo '<ul class="list-unstyled mt-3 mb-4">';
                                     echo "<li class='liSubscription'>Bénéficiez d'un accès privilégié en illimité ".$subscription['semaine']."j/7, ".$subscription['debutTemps']."h/h".$subscription['finTemps'];
                                     echo '<li class="liSubscription">'.$subscription['description'];
                                     echo '<li class="liSubscription">'.$subscription['temps'].'h de services/mois';
                                 echo '</ul>';
-                                echo '<a class="btnSubscription" href="paymentSubscription.php?id='.$subscription['idAbonnement'].'">Payer</a>';
+                                echo '<a class="btnSubscription" href="checkSubscription.php?id='.$subscription['idAbonnement'].'">Payer</a>';
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';

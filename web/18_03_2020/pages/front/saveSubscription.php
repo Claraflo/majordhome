@@ -30,10 +30,11 @@ $endTime = $years.'-'.$months.'-'.$days.' '.$time;
 $format = 'Y-m-d H:i:s';
 $date = DateTime::createFromFormat($format, $endTime);
 
-$req = $connect->prepare('INSERT INTO souscription_abonnement(dateFin, FK_idPersonne, FK_idAbonnement) VALUES(:date, :FK_idPersonne, :FK_idSubscription)');
+$req = $connect->prepare('INSERT INTO souscription_abonnement(dateFin, FK_idPersonne, FK_idAbonnement, statut) VALUES(:date, :FK_idPersonne, :FK_idSubscription, :statut)');
 $req->execute([':date'=>$endTime,
     ':FK_idPersonne'=>  $_SESSION['user']['idPersonne'],
-    ':FK_idSubscription'=>  $idSubscription
+    ':FK_idSubscription'=>  $idSubscription,
+    ':statut'=> 0
 ]);
 
 header('Location: success.php');
