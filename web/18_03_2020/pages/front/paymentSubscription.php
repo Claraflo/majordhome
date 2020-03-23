@@ -8,7 +8,7 @@ if(!empty($_SESSION['idSubscription'])){
 }
 
 $number = $_POST['number'];
-
+$_SESSION['numberSubscription'] = $number;
 $data = $connect->prepare("SELECT dateFin FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne = ".$_SESSION['user']['idPersonne']);
 $data->execute(array());
 foreach ($data->fetchAll() as $key => $endTime){

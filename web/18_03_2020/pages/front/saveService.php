@@ -58,7 +58,6 @@ function checkId($idSouscriptionService, $connect)
 
 
 
-
 $req = $connect->prepare('INSERT INTO souscription_service(FK_idPersonne, FK_idService, dateIntervention, duree, idSouscriptionService, statutReservation) VALUES(:FK_idPersonne, :FK_idService, :dateIntervention, :duree, :idSouscriptionService, :statutReservation)');
 $req->execute([':FK_idPersonne'=>  $_SESSION['user']['idPersonne'],
     ':FK_idService'=>  $idService,
@@ -78,14 +77,14 @@ $req->execute([':information'=> $valueService[$i+2],
 }
 
 
-$req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idService) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idService)');
-$req->execute([':prixTotal' => $priceService,
-    ':sommeVersee'=> $priceService/$number,
-    'sommeRestante'=> $priceService-($priceService/$number),
-    'statut'=> 0,
-    'FK_idPersonne'=> $_SESSION['user']['idPersonne'],
-    'FK_idService'=> $idService
-]);
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idService) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idService)');
+    $req->execute([':prixTotal' => $priceService,
+        ':sommeVersee' => $priceService / $number,
+        ':sommeRestante' => $priceService - ($priceService / $number),
+        ':statut' => 0,
+        ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
+        ':FK_idService' => $idService
+    ]);
 
 
 header('Location: success.php');

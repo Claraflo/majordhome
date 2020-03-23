@@ -12,8 +12,10 @@ if (!isset($_SESSION['dateTime']) || !isset($_SESSION['idSubscription'])){
 require("../functions.php");
 $connect = connectDb();
 
+$priceSubscription = $_SESSION['priceSubscription'];
 $dateTime = $_SESSION['dateTime'];
 $idSubscription = $_SESSION['idSubscription'];
+$number = $_SESSION['numberSubscription'];
 unset($_SESSION['dateTime']);
 unset($_SESSION['idSubscription']);
 
@@ -35,6 +37,16 @@ $req->execute([':date'=>$endTime,
     ':FK_idPersonne'=>  $_SESSION['user']['idPersonne'],
     ':FK_idSubscription'=>  $idSubscription,
     ':statut'=> 0
+]);
+
+
+$req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idAbonnement) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idAbonnement)');
+$req->execute([':prixTotal' => $priceSubscription,
+    ':sommeVersee'=> $priceSubscription/$number,
+    ':sommeRestante'=> $priceSubscription-($priceSubscription/$number),
+    ':statut'=> 0,
+    ':FK_idPersonne'=> $_SESSION['user']['idPersonne'],
+    ':FK_idAbonnement'=> $idSubscription
 ]);
 
 header('Location: success.php');
