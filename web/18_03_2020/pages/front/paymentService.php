@@ -65,7 +65,12 @@ $price = $price/100;
         <div class="form">
             <form id="form-payement">
                 <h3 class="text-center title"><?php echo $service['nom']?></h3>
-                <h2 class="card-title pricing-card-title"><?php echo $price ?>€ </h2>
+                <h2 class="card-title pricing-card-title"><?php echo $price ?>€</h2>
+                <h4>
+                    <?php if($number == 2){ echo "/mois pendant 2 mois à compter d'aujourd'hui";}
+                        else if ($number == 4){ echo "/mois pendant 4 mois à compter d'aujourd'hui";}
+                    ?>
+                </h4>
                 <hr class="hr">
 
                 <label for="cardholder-name">Nom du titulaire de la carte *</label>
