@@ -1,5 +1,9 @@
 <?php
 require "headerBack.php";
+
+if (!isset($_SESSION['idCustomer'])){
+    header('Location: customer.php');
+}
 ?>
 
 
@@ -66,7 +70,7 @@ require "headerBack.php";
                     echo '<div class="card-body text-center">';
                     echo '<h3 class="card-title">'.$service["prix"].' € <small>/h</small></h3>';
                     echo '<p>'.$service["description"].'</p>';
-                    echo '<a href="registerServices.php?id='.$service["idService"].'" class="btn btnServices btn-block ">Réserver</a>';
+                    echo '<a href="registerServicesBack.php?id='.$service["idService"].'" class="btn btnServices btn-block ">Réserver</a>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
