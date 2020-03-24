@@ -39,15 +39,26 @@ $req->execute([':date'=>$endTime,
     ':statut'=> 0
 ]);
 
-
-$req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idAbonnement) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idAbonnement)');
-$req->execute([':prixTotal' => $priceSubscription,
-    ':sommeVersee'=> $priceSubscription/$number,
-    ':sommeRestante'=> $priceSubscription-($priceSubscription/$number),
-    ':statut'=> 0,
-    ':FK_idPersonne'=> $_SESSION['user']['idPersonne'],
-    ':FK_idAbonnement'=> $idSubscription
-]);
+if ($number != 1) {
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idAbonnement) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idAbonnement)');
+    $req->execute([':prixTotal' => $priceSubscription,
+        ':sommeVersee' => $priceSubscription / $number,
+        ':sommeRestante' => $priceSubscription - ($priceSubscription / $number),
+        ':statut' => 0,
+        ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
+        ':FK_idAbonnement' => $idSubscription
+    ]);
+}else{
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idAbonnement, dateFinFacturation) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idAbonnement, :dateFinFacturation)');
+    $req->execute([':prixTotal' => $priceSubscription,
+        ':sommeVersee' => $priceSubscription / $number,
+        ':sommeRestante' => $priceSubscription - ($priceSubscription / $number),
+        ':statut' => 0,
+        ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
+        ':FK_idAbonnement' => $idSubscription,
+        ':dateFinFacturation'=> date('Y-m-d H:i:s')
+    ]);
+}
 
 header('Location: success.php');
 ?>
