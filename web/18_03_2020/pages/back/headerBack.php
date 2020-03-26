@@ -2,8 +2,7 @@
 session_start();
 require('../functions.php');
 $connect = connectDb();
-
-if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
+if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION['user']['statut'] != 3)) {
     header('Location: ../login.php');
 }
 ?>
@@ -33,7 +32,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
         <div class="container-fluid">
-            <a class="navbar-brand active" href="services.php" title="">
+            <a class="navbar-brand active" href="subscriptionBack.php" title="Majord'home">
                 <img class="logo" src="../../img/majordhome.png" title="logo" alt="Logo Majord'home">
             </a>
 
@@ -44,13 +43,16 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
 
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
+
                     <li class="nav-item ">
                         <a class="nav-link colorLink" href="services.php" title="">Services</a>
 
 
                     <li class="nav-item ">
-                        <a class="nav-link colorLink" href="subscription.php" title="">Abonnements</a>
+                        <a class="nav-link colorLink" href="subscriptionBack.php" title="Abonnements">Abonnements</a>
 
+                    <li class="nav-item ">
+                        <a class="nav-link colorLink" href="customer.php" title="Clients">Clients</a>
 
 
                     <li class="nav-item">
@@ -64,13 +66,6 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
 
                     <li class="nav-item">
 
-<<<<<<< HEAD
-                        <a class="nav-link colorLink" href="#" title="">Historique</a>
-
-                    <li class="nav-item">
-
-=======
->>>>>>> c3c38c452f7e9c95755f8d2d758328d8467e13a5
                         <a class="nav-link btnServices" href="../logout.php" title="">Déconnexion</a>
 
 
