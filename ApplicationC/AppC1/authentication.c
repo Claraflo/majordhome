@@ -13,7 +13,7 @@ MYSQL* connection()
     char* host = "localhost";
     char* user = "root";
     char* pass = "root";
-    char* db = "majord'home";
+    char* db = "majordhome";
     int port = 3306;
 
     if(mysql_real_connect(sock,host,user,pass,db,port,NULL,0))
