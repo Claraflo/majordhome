@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/MAMP/htdocs/projetAnnuel/majordhome/ApplicationC/App1/qrCode.c
+qrCode.h
+C:/MAMP/htdocs/projetAnnuel/majordhome/ApplicationC/App1/qrCode.h
+
+C:/MAMP/htdocs/projetAnnuel/majordhome/ApplicationC/App1/qrCode.h
+stdbool.h
+-
+stddef.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+qrcodegen.h
+C:/MAMP/htdocs/projetAnnuel/majordhome/ApplicationC/App1/qrcodegen.h
+
+C:/MAMP/htdocs/projetAnnuel/majordhome/ApplicationC/App1/qrcodegen.h
+stdbool.h
+-
+stddef.h
+-
+stdint.h
+-
+

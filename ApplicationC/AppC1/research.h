@@ -1,0 +1,29 @@
+#ifndef APP1_RESEARCH_H
+#define APP1_RESEARCH_H
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <gtk/gtk.h>
+
+#include "structures.h"
+#include "addDataBase.h"
+#include "form.h"
+#include"error.h"
+#include"endProgram.h"
+
+void initResearch(t_program* program);
+t_pageResearch* creatStructPageResearch(t_program* program,GtkWidget* vboxResearch,GtkTreeSelection *selection,GtkWidget* view,GtkWidget* entry);
+GtkTreeModel * create_and_fill_model (t_program* program,gchar* request,int statut);
+GtkWidget * create_view_and_model (t_program* program);
+void appendItem(GtkWidget *pWidget, t_program* program);
+void researchItem(GtkWidget *pWidget, t_program* program);
+void modifyItem(GtkWidget *pWidget, t_program* program);
+void GoBackMenu(GtkWidget *pWidget, t_program* program);
+void removeItem(GtkWidget *pWidget, t_program* program);
+void displayAll(GtkWidget *pWidget, t_program* program);
+void modification(GtkWidget *pWidget,t_program*program);
+void cancelModification(GtkWidget *pWidget,t_program*program);
+
+
+#endif //APP1_RESEARCH_H

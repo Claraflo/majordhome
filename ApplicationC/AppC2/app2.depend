@@ -1,0 +1,60 @@
+# depslib dependency file v1.0
+1583271200 source:c:\users\wasee\documents\c\app2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"main.h"
+	<windows.h>
+	<mysql.h>
+	<dirent.h>
+
+1583176440 c:\users\wasee\documents\c\app2\main.h
+
+1583183366 c:\users\wasee\documents\c\app2\recovery.h
+	<stdio.h>
+
+1581364054 c:\users\wasee\documents\mysql\mysql.h
+	<sys/types.h>
+	<winsock.h>
+	"mysql_com.h"
+	"mysql_time.h"
+	"mysql_version.h"
+	"typelib.h"
+	"my_list.h"
+	"my_alloc.h"
+
+1581364054 c:\users\wasee\documents\mysql\mysql_com.h
+
+1581364054 c:\users\wasee\documents\mysql\mysql_time.h
+
+1581364054 c:\users\wasee\documents\mysql\mysql_version.h
+	<custom_conf.h>
+
+1581364054 c:\users\wasee\documents\mysql\typelib.h
+
+1581364054 c:\users\wasee\documents\mysql\my_list.h
+
+1581364054 c:\users\wasee\documents\mysql\my_alloc.h
+
+1583268491 source:c:\users\wasee\documents\c\app2\recovery.c
+	"recovery.h"
+	<dirent.h>
+	<stdlib.h>
+	<string.h>
+
+1583269092 source:c:\users\wasee\documents\c\app2\authentification.c
+	"authentification.h"
+
+1583269177 c:\users\wasee\documents\c\app2\authentification.h
+	<windows.h>
+	<mysql.h>
+
+1583270737 source:c:\users\wasee\documents\c\app2\adddatabase.c
+	"addDatabase.h"
+
+1583270711 c:\users\wasee\documents\c\app2\adddatabase.h
+	<windows.h>
+	<mysql.h>
+	<stdlib.h>
+	<stdio.h>
+
