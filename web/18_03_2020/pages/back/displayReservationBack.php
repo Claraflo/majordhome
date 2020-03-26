@@ -9,7 +9,7 @@ require("../functions.php");
 $connect = connectDb();
 
 
-$data = $connect->query("SELECT idSouscriptionService, dateReservation, dateIntervention, statutReservation, nom FROM souscription_service, service WHERE service.idService = souscription_service.FK_idService AND FK_idPersonne =".$_SESSION['idCustomer']);
+$data = $connect->query("SELECT idSouscriptionService, dateReservation, dateIntervention, statutReservation, nom, idFacture FROM souscription_service, service, facture WHERE service.idService = souscription_service.FK_idService AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idPersonne =".$_SESSION['idCustomer']);
 
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
@@ -27,7 +27,7 @@ foreach ($rows as $row) {
     }
     echo '<td>';
     echo '<a class="btn btn-primary" href="modificationCustomer.php?id='.$row['idSouscriptionService'].'">Modifier</a>';
-    echo '<button class="btn btn-danger" onclick="show('.$row['idSouscriptionService'].')">Supprimer</button>';
+    echo '<button class="btn btn-danger" onclick="show(\''.$row["idSouscriptionService"].'\','.$row['idFacture'].')">Supprimer</button>';
     echo '</td>';
     echo '</tr>';
 }

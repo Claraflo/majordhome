@@ -89,23 +89,25 @@ if ($valueService[0] < date('Y-m-d')) {
     }
 
     if ($number != 1) {
-        $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idService) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idService)');
+        $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService, :nombreEcheance)');
         $req->execute([':prixTotal' => $priceService,
-            ':sommeVersee' => $priceService / $number,
-            ':sommeRestante' => $priceService - ($priceService / $number),
+            ':sommeVersee' => 0,
+            ':sommeRestante' => $priceService,
             ':statut' => 0,
             ':FK_idPersonne' => $_SESSION['idCustomer'],
-            ':FK_idService' => $idService
+            ':FK_idSouscriptionService' => $idSouscriptionService,
+            ':nombreEcheance'=> $number
         ]);
     } else {
-        $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idService, dateFinFacturation) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idService, :dateFinFacturation)');
+        $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService, dateFinFacturation, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService, :dateFinFacturation, :nombreEcheance)');
         $req->execute([':prixTotal' => $priceService,
-            ':sommeVersee' => $priceService / $number,
-            ':sommeRestante' => $priceService - ($priceService / $number),
+            ':sommeVersee' => 0,
+            ':sommeRestante' => $priceService,
             ':statut' => 1,
             ':FK_idPersonne' => $_SESSION['idCustomer'],
-            ':FK_idService' => $idService,
-            ':dateFinFacturation' => date('Y-m-d H:i:s')
+            ':FK_idSouscriptionService' => $idSouscriptionService,
+            ':dateFinFacturation' => date('Y-m-d H:i:s'),
+            ':nombreEcheance'=> $number
         ]);
     }
 
