@@ -7,7 +7,7 @@ function show(idSouscriptionService, idFacture) {
     var no = document.getElementById("no");
     var yes = document.getElementById('yes');
 
-    yes.setAttribute('onclick', 'validation('+idSouscriptionService+','+idFacture+')');
+    yes.setAttribute('onclick', 'validation(\''+idSouscriptionService+'\','+idFacture+')');
 
     content.style.display = "block";
 
@@ -40,8 +40,7 @@ function validation(idSouscriptionService, idFacture) {
     }
     request.open("POST", "deleteReservationBack.php");
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send(`id=${idSouscriptionService}`);
-
+    request.send(`idSouscriptionService=${idSouscriptionService}&idFacture=${idFacture}`);
     content.style.display = "none";
     display();
 }
