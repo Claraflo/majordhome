@@ -1,13 +1,13 @@
 display();
 
-function show(idSouscriptionService, idFacture) {
+function show(idSouscriptionService) {
 
     var content = document.getElementById("content-delete");
     var span = document.getElementsByClassName("cross")[0];
     var no = document.getElementById("no");
     var yes = document.getElementById('yes');
 
-    yes.setAttribute('onclick', 'validation(\''+idSouscriptionService+'\','+idFacture+')');
+    yes.setAttribute('onclick', 'validation(\''+idSouscriptionService+'\')');
 
     content.style.display = "block";
 
@@ -28,7 +28,7 @@ function show(idSouscriptionService, idFacture) {
 
 
 
-function validation(idSouscriptionService, idFacture) {
+function validation(idSouscriptionService) {
 
     var content = document.getElementById("content-delete");
 
@@ -40,7 +40,7 @@ function validation(idSouscriptionService, idFacture) {
     }
     request.open("POST", "deleteReservationBack.php");
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send(`idSouscriptionService=${idSouscriptionService}&idFacture=${idFacture}`);
+    request.send(`idSouscriptionService=${idSouscriptionService}`);
     content.style.display = "none";
     display();
 }

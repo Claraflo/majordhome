@@ -8,10 +8,10 @@ if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION[
 require("../functions.php");
 $connect = connectDb();
 
-if(!empty($_POST['idSouscriptionService']) || !empty($_POST['idFacture'])) {
+if(!empty($_POST['idSouscriptionService'])) {
 
     $idSouscriptionService = $_POST['idSouscriptionService'];
-    $idFacture = $_POST['idFacture'];
+
 
     $req = $connect->prepare("UPDATE souscription_service set statutReservation =:statut WHERE idSouscriptionService =:id;");
     $req->execute([
@@ -19,10 +19,10 @@ if(!empty($_POST['idSouscriptionService']) || !empty($_POST['idFacture'])) {
         ':id'=>$idSouscriptionService
     ]);
 
-    $req = $connect->prepare("UPDATE facture set statut =:statut WHERE idFacture =:id;");
+    $req = $connect->prepare("UPDATE facture set statut =:statut WHERE FK_idSouscriptionService =:id;");
     $req->execute([
         ':statut'=>-1,
-        ':id'=>$idFacture
+        ':id'=>$idSouscriptionService
     ]);
 
 }
