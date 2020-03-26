@@ -77,22 +77,22 @@ $req->execute([':information'=> $valueService[$i+2],
 }
 
 if ($number != 1) {
-    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idService) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idService)');
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService)');
     $req->execute([':prixTotal' => $priceService,
         ':sommeVersee' => $priceService / $number,
         ':sommeRestante' => $priceService - ($priceService / $number),
         ':statut' => 0,
         ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
-        ':FK_idService' => $idService
+        ':FK_idSouscriptionService' => $idSouscriptionService
     ]);
 }else{
-    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idService, dateFinFacturation) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idService, :dateFinFacturation)');
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService, dateFinFacturation) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService, :dateFinFacturation)');
     $req->execute([':prixTotal' => $priceService,
         ':sommeVersee' => $priceService / $number,
         ':sommeRestante' => $priceService - ($priceService / $number),
         ':statut' => 1,
         ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
-        ':FK_idService' => $idService,
+        ':FK_idSouscriptionService' => $idSouscriptionService,
         ':dateFinFacturation' => date('Y-m-d H:i:s')
     ]);
 }
