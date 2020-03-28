@@ -15,4 +15,23 @@ function connectDb(){
 
 }
 
+
+
+
+
+function deleteAutomatic(){
+
+
+	$connect = connectDb();
+	$date = date('Y-m-d H:i:s');
+	$date = strtotime(date("Y-m-d H:i:s", strtotime($date)) . " -1 week"); 
+	$date = date('Y-m-d H:i:s', $date);
+
+	$query = $connect->prepare('UPDATE Messagerie SET statutSource = -1 WHERE dateEnvoie < ? ');
+	$res = $query->execute([$date]);
+
+
+}
+
+
 ?>

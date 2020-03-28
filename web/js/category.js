@@ -79,8 +79,6 @@ function getData(id){
   updtDescription.value =  updt.childNodes[2].innerHTML;
 
 
-
-
 }
 
 

@@ -44,9 +44,9 @@ section{
 
 }
 
-#table{
+#tab{
 
 	overflow: scroll !important;
-	height: 300px !important;
+	height: 100px !important;
 	
 }
