@@ -64,13 +64,12 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
 
                     <li class="nav-item">
 
-<<<<<<< HEAD
                         <a class="nav-link colorLink" href="#" title="">Historique</a>
 
+                    
                     <li class="nav-item">
 
-=======
->>>>>>> c3c38c452f7e9c95755f8d2d758328d8467e13a5
+
                         <a class="nav-link btnServices" href="../logout.php" title="">Déconnexion</a>
 
 
