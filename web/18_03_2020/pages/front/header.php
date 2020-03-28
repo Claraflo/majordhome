@@ -64,9 +64,9 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
 
                     <li class="nav-item">
 
-                        <a class="nav-link colorLink" href="#" title="">Historique</a>
+                        <a class="nav-link colorLink" href="history.php" title="">Historique</a>
 
-                    
+
                     <li class="nav-item">
 
 
