@@ -26,8 +26,10 @@ foreach ($rows as $row) {
         echo '<td id="red"><b>Supprimer</b></td>';
     }
     echo '<td>';
-    echo '<a class="btn btn-primary" href="modificationCustomer.php?id='.$row['idSouscriptionService'].'">Modifier</a>';
-    echo '<button class="btn btn-danger" onclick="show(\''.$row["idSouscriptionService"].'\','.$row['idFacture'].')">Supprimer</button>';
+    if($row['statutReservation'] == 0) {
+        echo '<a class="btn btn-primary" href="modificationCustomer.php?id=' . $row['idSouscriptionService'] . '">Modifier</a>';
+        echo '<button class="btn btn-danger" onclick="show(\'' . $row["idSouscriptionService"] . '\',' . $row['idFacture'] . ')">Supprimer</button>';
+    }
     echo '</td>';
     echo '</tr>';
 }
