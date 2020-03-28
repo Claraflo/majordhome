@@ -4,7 +4,7 @@ function connectDb(){
 
 	try{
 
-		$connect = new PDO("mysql:host=localhost;dbname=majord'home;port=3306","root","root");
+		$connect = new PDO("mysql:host=localhost;dbname=majordhome;port=3306","root","root");
 
 	}catch(Exception $e){
 					
