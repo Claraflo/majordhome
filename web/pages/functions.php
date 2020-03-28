@@ -16,10 +16,7 @@ function connectDb(){
 }
 
 
-
-
-
-function deleteAutomatic(){
+function updateMsgAutomatic(){
 
 
 	$connect = connectDb();
@@ -29,7 +26,6 @@ function deleteAutomatic(){
 
 	$query = $connect->prepare('UPDATE Messagerie SET statutSource = -1 WHERE dateEnvoie < ? ');
 	$res = $query->execute([$date]);
-
 
 }
 
