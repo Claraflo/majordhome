@@ -84,7 +84,7 @@ if ($valueService[0] < date('Y-m-d')) {
         $req = $connect->prepare('INSERT INTO donnees_service(information, FK_idSouscriptionService, FK_idCaracteristique) VALUES(:information, :FK_idSouscriptionService, :FK_idCaracteristique)');
         $req->execute([':information' => $valueService[$i + 2],
             ':FK_idSouscriptionService' => $idSouscriptionService,
-            ':FK_idCaracteristique' => $idCaracteristique[0]
+            ':FK_idCaracteristique' => $idCaracteristique[$i]
         ]);
     }
 

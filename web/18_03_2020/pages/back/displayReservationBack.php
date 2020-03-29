@@ -27,7 +27,7 @@ foreach ($rows as $row) {
     }
     echo '<td>';
     if($row['statutReservation'] == 0) {
-        echo '<a class="btn btn-primary" href="modificationCustomer.php?id=' . $row['idSouscriptionService'] . '">Modifier</a>';
+        echo '<a class="btn btn-primary" href="modificationReservationBack.php?id=' . $row['idSouscriptionService'] . '">Modifier</a>';
         echo '<button class="btn btn-danger" onclick="show(\'' . $row["idSouscriptionService"] . '\',' . $row['idFacture'] . ')">Supprimer</button>';
     }
     echo '</td>';
