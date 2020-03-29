@@ -58,7 +58,7 @@ require('header.php');
 					</div>
 
 
-					<form method="POST" action="createMessage.php">
+					<form method="POST" action="saveMessage.php">
 					  	<div class="modal-body">
 
 	                        <div class="form-group">
@@ -90,7 +90,7 @@ require('header.php');
 
 
 			
-				<a href="messagesBack.php"><li class="liMessage bg"><i class="fas fa-inbox"></i> Boîte de réception</li></a>
+				<a href="inbox.php"><li class="liMessage bg"><i class="fas fa-inbox"></i> Boîte de réception</li></a>
 				<a href="sendMessage.php"><li class="liMessage "><i class="fas fa-paper-plane"></i> Messages envoyés</li></a>
 				<a href="pageArchiveMessage.php"><li class="liMessage"><i class="fas fa-archive"></i> Messages archivés</li></a>
 				<a href="pageDeleteMessage.php"><li class="liMessage"><i class="fas fa-trash"></i> Corbeille</li></a>
