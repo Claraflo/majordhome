@@ -37,12 +37,12 @@ require('header.php');
 	<hr class="hr">
 </div>
 
-<div class="row block">
+<div class="row">
 	<aside class="col-md-3">
 		<div class="headerAside">
 				
-			<h6>W.NASSURALLY</h6>
-			<p>waseem11@hotmail.fr</p>
+			<h6><?php echo $_SESSION['user']['nom']; ?></h6>
+			<p><?php echo $_SESSION['user']['mail']; ?></p>
 		</div>
 
 		<div class="p-4">
@@ -60,11 +60,6 @@ require('header.php');
 
 					<form method="POST" action="createMessage.php">
 					  	<div class="modal-body">
-					      	
-						    <div class="form-group">
-	                                <label>Destinataire *</label>
-	                                <input type="email" placeholder="" name="to" class="form-control" required="required"> 
-	                        </div>
 
 	                        <div class="form-group">
 	                                <label>Titre *</label>

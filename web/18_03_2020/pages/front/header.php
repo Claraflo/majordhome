@@ -27,6 +27,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
 
     <link rel="stylesheet" type="text/css" href="../../css/import.css">
 
+
 </head>
 <body>
 
