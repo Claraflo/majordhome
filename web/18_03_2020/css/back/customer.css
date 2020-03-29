@@ -10,14 +10,14 @@
     margin-bottom: 20px;
     color: white;
 }
-.btn-primary {
+.my-primary {
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 15px;
     width: 130px;
 }
 
-.btn-danger {
+.my-danger {
     width: 130px;
     margin-right: 20px;
     margin-left: 20px;
@@ -26,7 +26,7 @@
 
 
 
-.btn-warning {
+.my-warning {
     width: 130px;
     margin-right: 20px;
     margin-left: 20px;
