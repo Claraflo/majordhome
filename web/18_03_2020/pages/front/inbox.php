@@ -91,7 +91,7 @@ require('header.php');
 
 			
 				<a href="inbox.php"><li class="liMessage bg"><i class="fas fa-inbox"></i> Boîte de réception</li></a>
-				<a href="sendMessage.php"><li class="liMessage "><i class="fas fa-paper-plane"></i> Messages envoyés</li></a>
+				<a href="pageSendMessage.php"><li class="liMessage "><i class="fas fa-paper-plane"></i> Messages envoyés</li></a>
 				<a href="pageArchiveMessage.php"><li class="liMessage"><i class="fas fa-archive"></i> Messages archivés</li></a>
 				<a href="pageDeleteMessage.php"><li class="liMessage"><i class="fas fa-trash"></i> Corbeille</li></a>
 		</ul>
@@ -106,10 +106,10 @@ require('header.php');
 
 		<div class="p-3">
 
-				<i id="btn1" onclick="test()" class="fas fa-tasks btn btn-primary m-2"></i>
+				<i id="btn1" onclick="displayBtn()" class="fas fa-tasks btn btn-primary m-2"></i>
 
 				<i hidden="true" id="btn2" class="btn btn-danger fas fa-times m-2" onclick="window.location.reload()"></i>
-				<i hidden="true" id="btn" class="btn btn-danger fas fa-trash m-2" onclick="deleteAllArchiveMessage()"></i>
+				<i hidden="true" id="btn" class="btn btn-danger fas fa-trash m-2" onclick="deleteMultipleMessage()"></i>
 	
 				<div id="tab"></div>
 				
@@ -125,7 +125,7 @@ require('header.php');
 
 
 
-
+<script src="../../js/inbox.js"></script>
 <?php
 require "../footer.php";
 ?>
