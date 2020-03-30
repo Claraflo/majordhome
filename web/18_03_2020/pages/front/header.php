@@ -27,6 +27,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
 
     <link rel="stylesheet" type="text/css" href="../../css/import.css">
 
+
 </head>
 <body>
 
@@ -54,7 +55,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 0) {
 
 
                     <li class="nav-item">
-                        <a class="nav-link colorLink" href="#" title="">Boîte de réception</a>
+                        <a class="nav-link colorLink" href="inbox.php" title="">Boîte de réception</a>
 
 
                     <li class="nav-item">
