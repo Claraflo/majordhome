@@ -1,5 +1,5 @@
 <?php
-require "../headerBack.php";
+require "headerBack.php";
 
 
 if(!empty($_GET)){
