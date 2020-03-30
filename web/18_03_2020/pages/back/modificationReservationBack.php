@@ -27,7 +27,7 @@ if ($count == 0){
 $req = $connect->prepare("SELECT idCaracteristique, nom, type FROM caracteristique WHERE idService = ".$souscription['FK_idService']);
 $req->execute(array());
 
-
+$_SESSION['idUpdateReservationBack'] = $id;
 
 $idCaracteristique = [];
 
@@ -35,7 +35,7 @@ $idCaracteristique = [];
 ?>
 
 <section >
-    <form method="post" action="saveServiceBack.php">
+    <form method="post" action="updateReservationBack.php">
         <div class="container borderSubscription">
             <label for="intervention" class="lab area">Date de l'intervention</label>
             <input name="intervention" type="date" id="intervention" class="form-control inputRegister" value="<?php echo $souscription['dateIntervention']?>" required="">
@@ -53,15 +53,6 @@ $idCaracteristique = [];
             }
             $_SESSION['idCaracteristique'] = $idCaracteristique;
             ?>
-
-            <div class="form-group">
-                <label for="number">Payer en:</label>
-                <select name="number" class="form-control" id="number">
-                    <option value="1">1 fois</option>
-                    <option value="2">2 fois</option>
-                    <option value="4">4 fois</option>
-                </select>
-            </div>
 
             <input type="submit" class="btn btn-success area" value="Valider la modification">
 

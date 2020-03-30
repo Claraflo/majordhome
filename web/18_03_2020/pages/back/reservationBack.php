@@ -2,6 +2,15 @@
 require "headerBack.php";
 
 $_SESSION['idCustomer'] = $_GET['id'];
+
+if(!empty($_SESSION["confirmFormAuth"])){
+    echo "<div class='alert alert-success'>";
+    foreach ($_SESSION["confirmFormAuth"] as $confirm) {
+        echo "<li>".$confirm;
+    }
+    echo "</div>";
+    unset($_SESSION["confirmFormAuth"]);
+}
 ?>
 
 
@@ -21,6 +30,7 @@ $_SESSION['idCustomer'] = $_GET['id'];
                         <th scope="col">Nom</th>
                         <th scope="col">Date de la réservation</th>
                         <th scope="col">Date de l'intervention</th>
+                        <th scope="col">Durée</th>
                         <th scope="col">Statut</th>
                         <th scope="col">Actions</th>
                         </thead>
