@@ -2,6 +2,7 @@
     padding: 15px;
     margin: auto;
     margin-bottom: 10%;
+    margin-top: 10%;
     border: 1px solid #aa956f;
     border-radius: 10px;
 }
@@ -20,14 +21,14 @@
     margin-bottom: 20px;
     color: white;
 }
-.btn-primary {
+.my-primary {
     margin-right: 20px;
     margin-left: 20px;
     margin-bottom: 15px;
     width: 100px;
 }
 
-.btn-danger {
+.my-danger {
     width: 100px;
     margin-right: 20px;
     margin-left: 20px;

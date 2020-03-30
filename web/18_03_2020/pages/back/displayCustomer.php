@@ -34,9 +34,9 @@ foreach ($rows as $row) {
         echo '<td>'.$row["codePostal"].'</td>';
         echo '<td>'.$row["telephone"].'</td>';
         echo '<td>';
-            echo '<a class="btn btn-primary" href="modificationCustomer.php?id='.$row['idPersonne'].'">Modifier</a>';
-            echo '<button class="btn btn-danger" onclick="show('.$row['idPersonne'].')">Supprimer</button>';
-            echo '<a class="btn btn-warning" href="reservationBack.php?id='.$row['idPersonne'].'">Réservations</a>';
+            echo '<a class="btn btn-primary my-primary" href="modificationCustomer.php?id='.$row['idPersonne'].'">Modifier</a>';
+            echo '<button class="btn btn-danger my-danger" onclick="show('.$row['idPersonne'].')">Supprimer</button>';
+            echo '<a class="btn btn-warning my-warning" href="reservationBack.php?id='.$row['idPersonne'].'">Réservations</a>';
         echo '</td>';
     echo '</tr>';
 }
