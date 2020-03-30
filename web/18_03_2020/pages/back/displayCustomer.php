@@ -37,6 +37,7 @@ foreach ($rows as $row) {
             echo '<a class="btn btn-primary my-primary" href="modificationCustomer.php?id='.$row['idPersonne'].'">Modifier</a>';
             echo '<button class="btn btn-danger my-danger" onclick="show('.$row['idPersonne'].')">Supprimer</button>';
             echo '<a class="btn btn-warning my-warning" href="reservationBack.php?id='.$row['idPersonne'].'">Réservations</a>';
+            echo '<a class="btn btn-info my-info" href="subscriptionCustomer.php?id='.$row['idPersonne'].'">Abonnements</a>';
         echo '</td>';
     echo '</tr>';
 }
