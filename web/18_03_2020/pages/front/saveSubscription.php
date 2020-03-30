@@ -75,23 +75,25 @@ $req->execute([':idSouscriptionAbonnement'=> $idSouscriptionAbonnement,
 ]);
 
 if ($number != 1) {
-    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionAbonnement) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionAbonnement)');
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionAbonnement, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionAbonnement, :nombreEcheance)');
     $req->execute([':prixTotal' => $priceSubscription,
         ':sommeVersee' => $priceSubscription / $number,
         ':sommeRestante' => $priceSubscription - ($priceSubscription / $number),
         ':statut' => 0,
         ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
-        ':FK_idSouscriptionAbonnement' => $idSouscriptionAbonnement
+        ':FK_idSouscriptionAbonnement' => $idSouscriptionAbonnement,
+        ':nombreEcheance'=> $number
     ]);
 }else{
-    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionAbonnement, dateFinFacturation) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionAbonnement, :dateFinFacturation)');
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionAbonnement, dateFinFacturation, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionAbonnement, :dateFinFacturation, :nombreEcheance)');
     $req->execute([':prixTotal' => $priceSubscription,
         ':sommeVersee' => $priceSubscription / $number,
         ':sommeRestante' => $priceSubscription - ($priceSubscription / $number),
         ':statut' => 1,
         ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
         ':FK_idSouscriptionAbonnement' => $idSouscriptionAbonnement,
-        ':dateFinFacturation'=> date('Y-m-d H:i:s')
+        ':dateFinFacturation'=> date('Y-m-d H:i:s'),
+        ':nombreEcheance'=> $number
     ]);
 }
 

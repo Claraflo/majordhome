@@ -49,8 +49,7 @@ $price = $subscription['prix'];
 $subscription['prix'] = $subscription['prix']/100;
 
 
-
-
+$_SESSION['priceSubscription'] = $price;
 ?>
 
 
@@ -58,7 +57,7 @@ $subscription['prix'] = $subscription['prix']/100;
 <section>
     <div class="container">
         <div class="form">
-            <form id="form-payement" method="post" action="paymentSubscription.php">
+            <form id="form-payement" method="post" action="saveSubscriptionRegister.php">
                 <h3 class="text-center title"><?php echo $subscription['nom']?></h3>
                 <h2 class="card-title pricing-card-title"><?php echo $subscription['prix'] ?>€ TTC</h2>
                 <hr class="hr">
