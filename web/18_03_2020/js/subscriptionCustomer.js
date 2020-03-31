@@ -1,12 +1,12 @@
 display();
-function show(id) {
+function show(idSouscriptionService) {
 
     var content = document.getElementById("content-delete");
     var span = document.getElementsByClassName("cross")[0];
     var no = document.getElementById("no");
     var yes = document.getElementById('yes');
 
-    yes.setAttribute('onclick', 'validation('+id+')');
+    yes.setAttribute('onclick', 'validation(\''+idSouscriptionService+'\')');
 
     content.style.display = "block";
 
@@ -27,7 +27,7 @@ function show(id) {
 
 
 
-function validation(id) {
+function validation(idSubscriptionCustomer) {
 
     var content = document.getElementById("content-delete");
 
@@ -37,10 +37,9 @@ function validation(id) {
             console.log(request.status);
         }
     }
-    request.open("POST", "deleteSubscription.php");
+    request.open("POST", "deleteSubscriptionCustomer.php");
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    request.send(`id=${id}`);
-
+    request.send(`idSubscriptionCustomer=${idSubscriptionCustomer}`);
     content.style.display = "none";
     display();
 }
@@ -58,4 +57,3 @@ function display() {
     request.send();
 }
 
-setInterval(display, 500);

@@ -29,7 +29,7 @@ foreach ($rows as $row) {
     echo '<td>';
     if($row['statutReservation'] == 0) {
         echo '<a class="btn btn-primary my-primary" href="modificationReservationBack.php?id=' . $row['idSouscriptionService'] . '">Modifier</a>';
-        echo '<button class="btn btn-danger my-danger" onclick="show(\'' . $row["idSouscriptionService"] . '\',' . $row['idFacture'] . ')">Supprimer</button>';
+        echo '<button class="btn btn-danger my-danger" onclick="show(\'' . $row["idSouscriptionService"] . '\')">Supprimer</button>';
     }
     echo '</td>';
     echo '</tr>';

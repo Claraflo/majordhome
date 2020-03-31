@@ -8,7 +8,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 2) {
 require("../functions.php");
 $connect = connectDb();
 
-$data = $connect->query("SELECT idAbonnement, nom, description, prix, semaine, temps, debutTemps, finTemps FROM abonnement, souscription_abonnement WHERE abonnement.idAbonnement = souscription_abonnement.FK_idAbonnement AND souscription_abonnement.statut = 0 AND souscription_abonnement.FK_idPersonne = ".$_SESSION['idCustomer']);
+$data = $connect->query("SELECT idAbonnement, nom, description, prix, semaine, temps, debutTemps, finTemps, idSouscriptionAbonnement FROM abonnement, souscription_abonnement WHERE abonnement.idAbonnement = souscription_abonnement.FK_idAbonnement AND souscription_abonnement.statut = 0 AND souscription_abonnement.FK_idPersonne = ".$_SESSION['idCustomer']);
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
 foreach ($rows as $row) {
@@ -27,7 +27,7 @@ foreach ($rows as $row) {
                     echo '<li class="liSubscription">'.$row['description'];
                     echo '<li class="liSubscription">'.$row['temps'].'h de services/mois';
                 echo '</ul>';
-                echo '<button class="btn btn-danger my-danger" onclick="show('.$row['idAbonnement'].')">Supprimer</button>';
+                echo '<button class="btn btn-danger my-danger" onclick="show(\'' . $row["idSouscriptionAbonnement"] . '\')">Supprimer</button>';
             echo '</div>';
         echo '</div>';
     echo '</div>';

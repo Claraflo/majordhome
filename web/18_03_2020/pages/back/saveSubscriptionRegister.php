@@ -74,7 +74,6 @@ $req->execute([':idSouscriptionAbonnement' => $idSouscriptionAbonnement,
     ':statut' => 0
 ]);
 
-echo $number;
 $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionAbonnement, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionAbonnement, :nombreEcheance)');
 $req->execute([':prixTotal' => $priceSubscription,
     ':sommeVersee' => $priceSubscription / $number,
@@ -86,5 +85,5 @@ $req->execute([':prixTotal' => $priceSubscription,
 ]);
 
 
-//header('Location: customer.php');
+header('Location: customer.php');
 ?>
