@@ -27,6 +27,13 @@
 
 
 .my-warning {
+     width: 130px;
+     margin-right: 20px;
+     margin-left: 20px;
+     margin-bottom: 15px;
+}
+
+.my-info {
     width: 130px;
     margin-right: 20px;
     margin-left: 20px;
