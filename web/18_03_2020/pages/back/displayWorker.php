@@ -1,7 +1,7 @@
 <?php
 session_start ();
 
-if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION['user']['statut'] != 3)) {
+if (!isset($_SESSION['user']) ||  $_SESSION['user']['statut'] != 3) {
     header('Location: ../login.php');
 }
 
@@ -34,7 +34,7 @@ foreach ($rows as $row) {
         echo '<td>'.$row["codePostal"].'</td>';
         echo '<td>'.$row["telephone"].'</td>';
         echo '<td>';
-            echo '<a class="btn btn-primary my-primary" href="modificationCustomer.php?id='.$row['idPersonne'].'">Modifier</a>';
+            echo '<a class="btn btn-primary my-primary" href="modificationWorker.php?id='.$row['idPersonne'].'">Modifier</a>';
             echo '<button class="btn btn-danger my-danger" onclick="show('.$row['idPersonne'].')">Supprimer</button>';
         echo '</td>';
     echo '</tr>';

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION['user']['statut'] != 3)) {
+if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 3) {
     header('Location: ../login.php');
 }
 
@@ -125,7 +125,7 @@ if(count($_POST) == 9
 
 
     if(empty($errors)) {
-        $confirm[] = "Le client a bien été modifié";
+        $confirm[] = "L'employé a bien été modifié";
         $_SESSION["confirmFormAuth"] = $confirm;
 
 
@@ -166,7 +166,7 @@ if(count($_POST) == 9
 
 
 
-        header("Location: customer.php");
+        header("Location: worker.php");
     }
 
     if (!empty($errors)){
@@ -174,7 +174,7 @@ if(count($_POST) == 9
         unset($_POST["pwd"]);
         unset($_POST["pwdConfirm"]);
         $_SESSION["dataFormAuth"] = $_POST;
-        header("Location: modificationCustomer.php?id=$id");
+        header("Location: modificationWorker.php?id=$id");
     }
 }else{
     $Hack[] = "Tentative de hack detectée";
@@ -182,5 +182,5 @@ if(count($_POST) == 9
     unset($_POST["pwd"]);
     unset($_POST["pwdConfirm"]);
     $_SESSION["dataFormAuth"] = $_POST;
-    header("Location: modificationCustomer.php?id=$id");
+    header("Location: modificationWorker.php?id=$id");
 }
