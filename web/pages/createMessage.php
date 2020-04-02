@@ -64,7 +64,9 @@ if(count($_POST) == 3
     if (empty($errors)) {
 
 
-    	$queryPrepared = $connect->prepare("INSERT INTO Messagerie(titre,texte,statut,idSource,idDestinataire,statutSource,statutDestinataire) VALUES(:titre,:texte,1,:idSource,:idDestinataire,0,0)");
+    	$queryPrepared = $connect->prepare("INSERT INTO messagerie(statut,titre,texte,idSource,idDestinataire,statutSource,statutDestinataire) VALUES(1,:titre,:texte,:idSource,:idDestinataire,0,0)");
+
+
 
         $queryPrepared->execute([
 

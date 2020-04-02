@@ -3,9 +3,10 @@ require('functions.php');
 
 $connect = connectDb();
 
-$query = $connect->prepare('SELECT m.statut,m.idMessage,m.titre,m.texte,m.dateEnvoie,p1.nom FROM Messagerie m INNER JOIN Personne p ON p.idPersonne = m.idDestinataire INNER JOIN Personne p1 ON p1.idPersonne = m.idSource WHERE p.statut = 2 AND m.statutSource = 0 ORDER BY m.dateEnvoie desc;');
+$query = $connect->prepare('SELECT m.idMessage,m.titre,m.texte,m.statut,m.dateEnvoie,p.nom FROM messagerie m, personne p WHERE m.idSource = p.idPersonne AND serviceMessagerie = "majordhome" AND m.statutSource = 0 ORDER BY m.dateEnvoie desc;');
 $query->execute();
 $data = $query->fetchAll();
+
 
 if (empty($data)) {
     echo "<span class='emptyInbox'>Boîte de réception vide</span>";
@@ -15,7 +16,7 @@ echo "<table class='table table-inbox table-hover'>";
 
   echo "<tbody>";     
   
-    foreach ($query->fetchAll() as $value) {
+    foreach ($data as $value) {
 
     $date = $value['dateEnvoie'];
     $dateToday = date('d/m/Y');

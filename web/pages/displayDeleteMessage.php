@@ -4,13 +4,17 @@ require('functions.php');
 
 $connect = connectDb();
 
-$queryPrepared = $connect->prepare('SELECT m.idMessage,m.titre,m.texte,m.dateEnvoie,p.nom FROM Messagerie m INNER JOIN Personne p ON p.idPersonne = m.idDestinataire INNER JOIN Personne p1 ON p1.idPersonne = m.idSource WHERE p1.statut = 2 AND m.statutSource = 1 ORDER BY m.dateEnvoie desc;');
+$queryPrepared = $connect->prepare('SELECT m.idMessage,m.titre,m.texte,m.dateEnvoie,p1.nom FROM messagerie m INNER JOIN personne p1 ON p1.idPersonne = m.idSource WHERE m.serviceMessagerie = "majordhome" AND m.statutSource = 1 ORDER BY m.dateEnvoie desc;');
  $queryPrepared->execute();
  $array = $queryPrepared->fetchAll();
 
 
-$queryPrepared = $connect->prepare('SELECT m.idMessage,m.titre,m.texte,m.dateEnvoie,p.nom FROM Messagerie m INNER JOIN Personne p1 ON p1.idPersonne = m.idDestinataire INNER JOIN Personne p ON p.idPersonne = m.idSource WHERE p1.statut = 2 AND m.statutSource = 1 ORDER BY m.dateEnvoie desc;');
-$queryPrepared->execute();
+$queryPrepared = $connect->prepare('SELECT m.idMessage,m.titre,m.texte,m.dateEnvoie,p1.nom FROM messagerie m INNER JOIN personne p1 ON p1.idPersonne = m.idDestinataire WHERE m.serviceMessagerie IS NULL AND m.statutSource = 1 ORDER BY m.dateEnvoie desc;');
+ $queryPrepared->execute();
+
+$array = array_merge($array,$queryPrepared->fetchAll());
+
+
 
 
 $array = array_merge($array,$queryPrepared->fetchAll());
@@ -37,7 +41,9 @@ echo "<table class='table table-inbox table-hover'>";
        echo "<input type='checkbox' class='check' class='mail-checkbox'>";
     echo "</td>";
       
-      echo "<td>".$value['nom']."</td>";
+    
+        echo "<td>".$value['nom']."</td>";
+     
       echo "<td><p class='view-message'>".$value['texte']."</p></td>";
       echo "<td class='text-right'>
       <i onclick='deleteMessage(".$value['idMessage'].")' class=' fas fa-trash'></i>

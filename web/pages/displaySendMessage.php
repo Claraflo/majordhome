@@ -4,7 +4,7 @@ require('functions.php');
 
 $connect = connectDb();
 
-$query = $connect->prepare('SELECT m.idMessage,m.titre,m.texte,m.dateEnvoie,p.nom FROM Messagerie m INNER JOIN Personne p ON p.idPersonne = m.idDestinataire INNER JOIN Personne p1 ON p1.idPersonne = m.idSource WHERE p1.statut = 2 AND m.statutSource = 0 ORDER BY m.dateEnvoie desc;');
+$query = $connect->prepare('SELECT m.idMessage,m.titre,m.texte,m.dateEnvoie,p.nom AS destinataire,p1.nom AS source FROM Messagerie m INNER JOIN Personne p ON p.idPersonne = m.idDestinataire INNER JOIN Personne p1 ON p1.idPersonne = m.idSource WHERE m.serviceMessagerie IS NULL AND m.statutSource = 0 ORDER BY m.dateEnvoie desc;');
 $query->execute();
 
 echo "<table class='table table-inbox table-hover'>";
@@ -30,7 +30,7 @@ echo "<table class='table table-inbox table-hover'>";
 
 
       
-      echo "<td>".$value['nom']."</td>";
+      echo "<td>".$value['destinataire']."</td>";
       echo "<td><p class='view-message'>".$value['texte']."</p></td>";
       echo "<td class='text-right'>
       <i onclick='deleteMessage(".$value['idMessage'].")' class=' fas fa-trash'></i>

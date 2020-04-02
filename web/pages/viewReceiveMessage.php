@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
 	$query = $connect->prepare('UPDATE Messagerie SET statut = 0 WHERE idMessage = ?');
 	$query->execute([$_GET['id']]);
 
-	$query = $connect->prepare('SELECT m.idMessage,m.titre,m.texte,m.dateEnvoie,p.mail,p1.nom,p1.mail AS mailSource FROM Messagerie m INNER JOIN Personne p ON p.idPersonne = m.idDestinataire INNER JOIN Personne p1 ON p1.idPersonne = m.idSource WHERE idMessage = ?');
+	$query = $connect->prepare('SELECT m.idMessage,m.serviceMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail,p.nom FROM messagerie m INNER JOIN Personne p ON p.idPersonne = m.idSource WHERE idMessage = ?');
  	
  	$query->execute([$_GET['id']]);
 
@@ -37,7 +37,7 @@ if (isset($_GET['id'])) {
 
 
 
-		<p class='contains'>De : <?php echo $data['mail']; ?> </p>
+		<p class='contains'>De :  Centre de messagerie majord'home. </p>
 		<p class='contains'>À : <span id='to'><?php echo $data['mail']; ?></span> </p>
 
 		<h5 id='titleMess' class="titleMessage"> Re : <?php echo $data['titre'];?></h5>
@@ -56,9 +56,9 @@ if (isset($_GET['id'])) {
 
 	<h5 class="titleMessage"> Objet : <?php echo $data['titre'];?></h5>
 
-	<p class='contains'><?php echo $data['nom'] . ". < " . $data['mailSource'] . " >" . "<br>" . $dateExplode[0] . " " . $dateExplode[1]; ?> </p>
+	<p class='contains'><?php echo $data['nom'] . ". < " . $data['mail'] . " >" . "<br>" . $dateExplode[0] . " " . $dateExplode[1]; ?> </p>
 	
-	<p class="contains" "> À :  <?php echo $data['mail'];?> </p>
+	<p class="contains" "> À : Centre de messagerie majord'home.</p>
 	<hr>
 	<p class="contains"> <?php echo $data['texte']; ?></p>
 
