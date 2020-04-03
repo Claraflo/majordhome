@@ -71,7 +71,7 @@ if(count($_POST) == 3
 
             ":titre"=>$title, 
             ":texte"=>$message, 
-            ":idSource"=>$_SESSION['id'], 
+            ":idSource"=>$_SESSION['user']['idPersonne'], 
             ":idDestinataire"=>$data[0]['idPersonne']
 
         ]);

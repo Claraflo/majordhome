@@ -55,10 +55,8 @@ echo "<table class='table table-inbox table-hover'>";
 
         
 
-        echo "<td class='text-right'><i onclick='viewMessage(".$value['idMessagerie'].")' class='fas fa-envelope'></i></td>";
-        echo "<td>";
-        echo "<span class='status'></span>";
-        echo "</td>";
+        echo "<td class='text-right'><i onclick='viewMessage(".$value['idMessagerie'].")' class='fas fa-envelope'></i><span class='status'></span></td>";
+      
       }else{
 
         echo "<td class='text-right'><i onclick='viewMessage(".$value['idMessagerie'].")' class='fas fa-envelope-open'></i></td>";
