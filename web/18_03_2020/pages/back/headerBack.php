@@ -65,7 +65,7 @@ if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION[
                     ?>
 
                     <li class="nav-item">
-                        <a class="nav-link colorLink" href="#" title="">Boîte de réception</a>
+                        <a class="nav-link colorLink" href="messagesBack.php" title="">Boîte de réception</a>
 
 
                     <li class="nav-item">
