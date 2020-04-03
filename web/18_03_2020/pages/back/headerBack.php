@@ -27,7 +27,7 @@ if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION[
     <link rel="stylesheet" type="text/css" href="../../css/import.css">
 
 </head>
-<body>
+<body onload="init(<?php echo $_GET['id'] ?>);">
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
@@ -45,7 +45,10 @@ if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION[
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item ">
-                        <a class="nav-link colorLink" href="services.php" title="">Services</a>
+                        <a class="nav-link colorLink" href="category.php" title="">Catégories</a>
+
+                    <li class="nav-item ">
+                        <a class="nav-link colorLink" href="servicesBack.php" title="">Services</a>
 
 
                     <li class="nav-item ">
