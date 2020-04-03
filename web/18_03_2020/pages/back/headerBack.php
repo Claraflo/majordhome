@@ -57,6 +57,12 @@ if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION[
                     <li class="nav-item ">
                         <a class="nav-link colorLink" href="customer.php" title="Clients">Clients</a>
 
+                    <?php
+                        if ($_SESSION['user']['statut'] == 3){
+                            echo  '<li class="nav-item">';
+                            echo '<a class="nav-link colorLink" href="worker.php" title="Clients">Employés</a>';
+                        }
+                    ?>
 
                     <li class="nav-item">
                         <a class="nav-link colorLink" href="#" title="">Boîte de réception</a>

@@ -1,22 +1,14 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION['user']['statut'] != 3)) {
+if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 3) {
     header('Location: ../login.php');
 }
 
 require("../functions.php");
 $connect = connectDb();
 
-
-$id = $_SESSION['id'];
-unset($_SESSION["id"]);
-
-
-
-
-
-if(count($_POST) == 9
+if(count($_POST) == 8
     && !empty($_POST['firstName'])
     && !empty($_POST['lastName'])
     && !empty($_POST['email'])
@@ -25,8 +17,6 @@ if(count($_POST) == 9
     && !empty($_POST['address'])
     && !empty($_POST['city'])
     && !empty($_POST['code'])
-    && !empty($_POST['pwd'])
-    && ($_POST['pwd'] == 'no' || $_POST['pwd'] == 'yes')
 ){
 
 
@@ -36,7 +26,6 @@ if(count($_POST) == 9
     $phone = trim($_POST['phone']);
     $code = trim($_POST['code']);
     $birthday = trim($_POST['date']);
-    $pwdSelect = trim($_POST['pwd']);
 
     $address = $_POST['address'];
     $city = $_POST['city'];
@@ -59,7 +48,7 @@ if(count($_POST) == 9
     } else {
 
 
-        $req = $connect->prepare("SELECT id FROM personne WHERE mail = :mail");
+        $req = $connect->prepare("SELECT idPersonne FROM personne WHERE mail = :mail");
         $req->execute([":mail" => $email]);
 
         if (!empty($req->fetchAll())) {
@@ -74,7 +63,7 @@ if(count($_POST) == 9
         || !preg_match('/^[0-9_]+$/', $phone)) {
         $errors['phone'] = "Le numéro de téléphone que vous avez indiqué n'est pas valide.";
     } else {
-        $req = $connect->prepare('SELECT id FROM personne WHERE telephone = :tel');
+        $req = $connect->prepare('SELECT idPersonnes FROM personne WHERE telephone = :tel');
         $req->execute([":tel"=>$phone]);
 
         if (!empty($req->fetchAll())) {
@@ -123,50 +112,31 @@ if(count($_POST) == 9
         return $generation;
     }
 
-
     if(empty($errors)) {
-        $confirm[] = "Le client a bien été modifié";
+        $confirm[] = "L'employé a bien été enregistré";
         $_SESSION["confirmFormAuth"] = $confirm;
 
 
-
-
-        if ($pwdSelect == 'no') {
-
-            $req = $connect->prepare("UPDATE personne set prenom =:prenom, nom =:nom, mail =:mail, dateNaissance =:dateNaissance, adresse =:adresse, ville =:ville, codePostal =:codePostal, telephone =:telephone WHERE idPersonne =:id;");
-            $req->execute([':nom' => $lastName,
-                ':prenom' => $firstName,
-                ':mail' => $email,
-                ':dateNaissance' => $birthday,
-                ':adresse' => $address,
-                ':ville' => $city,
-                ':codePostal' => $code,
-                ':telephone' => $phone,
-                ':id' => $id
-            ]);
-
-        }else if ($pwdSelect == 'yes') {
-
-            $pwd = password_hash(pwdGenerator(15), PASSWORD_DEFAULT);
-
-
-            $req = $connect->prepare("UPDATE personne set prenom =:prenom, nom =:nom, mail =:mail, dateNaissance =:dateNaissance, adresse =:adresse, ville =:ville, codePostal =:codePostal, telephone =:telephone, mdp =:mdp WHERE idPersonne =:id;");
-            $req->execute([':nom' => $lastName,
-                ':prenom' => $firstName,
-                ':mail' => $email,
-                ':dateNaissance' => $birthday,
-                ':adresse' => $address,
-                ':ville' => $city,
-                ':codePostal' => $code,
-                ':telephone' => $phone,
-                ':id' => $id,
-                ':mdp'=> $pwd
-            ]);
-        }
+        $pwd = password_hash(pwdGenerator(15), PASSWORD_DEFAULT);
 
 
 
-        header("Location: customer.php");
+        $req = $connect->prepare('INSERT INTO personne(nom, prenom, mail, statut, dateNaissance, adresse, ville, codePostal, telephone, mdp) VALUES(:nom, :prenom, :mail, :statut, :dateNaissance, :adresse, :ville, :codePostal, :telephone, :mdp)');
+        $req->execute([':nom'=>$lastName,
+            ':prenom'=>$firstName,
+            ':mail'=>$email,
+            ':statut'=>2,
+            ':dateNaissance'=>$birthday,
+            ':adresse'=>$address,
+            ':ville'=>$city,
+            ':codePostal'=>$code,
+            ':telephone'=>$phone,
+            ':mdp'=>$pwd,
+        ]);
+
+
+
+        header("Location: worker.php");
     }
 
     if (!empty($errors)){
@@ -174,7 +144,7 @@ if(count($_POST) == 9
         unset($_POST["pwd"]);
         unset($_POST["pwdConfirm"]);
         $_SESSION["dataFormAuth"] = $_POST;
-        header("Location: modificationCustomer.php?id=$id");
+        header("Location: createWorker.php");
     }
 }else{
     $Hack[] = "Tentative de hack detectée";
@@ -182,5 +152,5 @@ if(count($_POST) == 9
     unset($_POST["pwd"]);
     unset($_POST["pwdConfirm"]);
     $_SESSION["dataFormAuth"] = $_POST;
-    header("Location: modificationCustomer.php?id=$id");
+    header("Location: createWorker.php");
 }
