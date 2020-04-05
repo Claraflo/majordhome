@@ -1,0 +1,16 @@
+#navHistory{
+    background-color: #23272d;
+    border-bottom: 1px solid #aa956f;
+    min-height: 100%;
+    padding-top: 40px;
+}
+#HistorySection{
+    padding: 0px !important;
+}
+
+#tabSection{
+    min-height: 100%;
+}
+#tableHistory{
+    width: 70%;
+}
