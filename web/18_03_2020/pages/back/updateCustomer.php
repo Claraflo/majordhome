@@ -59,7 +59,7 @@ if(count($_POST) == 9
     } else {
 
 
-        $req = $connect->prepare("SELECT id FROM customer WHERE mail = :mail");
+        $req = $connect->prepare("SELECT id FROM personne WHERE mail = :mail");
         $req->execute([":mail" => $email]);
 
         if (!empty($req->fetchAll())) {
@@ -74,7 +74,7 @@ if(count($_POST) == 9
         || !preg_match('/^[0-9_]+$/', $phone)) {
         $errors['phone'] = "Le numéro de téléphone que vous avez indiqué n'est pas valide.";
     } else {
-        $req = $connect->prepare('SELECT id FROM customer WHERE telephone = :tel');
+        $req = $connect->prepare('SELECT id FROM personne WHERE telephone = :tel');
         $req->execute([":tel"=>$phone]);
 
         if (!empty($req->fetchAll())) {

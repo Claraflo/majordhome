@@ -1,7 +1,7 @@
 <?php
 session_start ();
 
-if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 2) {
+if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION['user']['statut'] != 3)) {
     header('Location: ../login.php');
 }
 
@@ -27,8 +27,8 @@ foreach ($rows as $row) {
                     echo '<li class="liSubscription">'.$row['description'];
                     echo '<li class="liSubscription">'.$row['temps'].'h de services/mois';
                 echo '</ul>';
-                echo '<a class="btn btn-primary" href="modificationSubscription.php?id='.$row['idAbonnement'].'">Modifier</a>';
-                echo '<button class="btn btn-danger" onclick="show('.$row['idAbonnement'].')">Supprimer</button>';
+                echo '<a class="btn btn-primary my-primary" href="modificationSubscription.php?id='.$row['idAbonnement'].'">Modifier</a>';
+                echo '<button class="btn btn-danger my-danger" onclick="show('.$row['idAbonnement'].')">Supprimer</button>';
             echo '</div>';
         echo '</div>';
     echo '</div>';

@@ -3,7 +3,7 @@ session_start();
 
 if (isset($_SESSION['user']) && $_SESSION['user']['statut'] == 0) {
     header('Location: front/services.php');
-}else if (isset($_SESSION['user']) && $_SESSION['user']['statut'] == 2){
+}else if (isset($_SESSION['user']) && ($_SESSION['user']['statut'] == 2 || $_SESSION['user']['statut'] == 3)){
     header('Location: back/subscriptionBack.php');
 }
 ?>

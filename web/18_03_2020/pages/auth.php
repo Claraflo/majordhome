@@ -24,7 +24,7 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 				$_SESSION['user'] = $user;
 				header('Location: front/services.php');
 				
-			} else if (password_verify($pwd,$user['mdp']) &&  $user['statut'] == 2){
+			} else if (password_verify($pwd,$user['mdp']) &&  ($user['statut'] == 2 || $user['statut'])){
                 $_SESSION['user'] = $user;
                 header('Location: back/subscriptionBack.php');
 			}else{
