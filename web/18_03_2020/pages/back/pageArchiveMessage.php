@@ -22,8 +22,8 @@ require('headerBack.php');
 
 			<div class="headerAside">
 				
-				<h6>W.NASSURALLY</h6>
-				<p>waseem11@hotmail.fr</p>
+			<h6 class="h6"><?php echo $_SESSION['user']['nom']; ?></h6>
+			<p class="p"><?php echo $_SESSION['user']['mail']; ?></p>
 			</div>
 
 			<div class="p-4">
@@ -88,7 +88,7 @@ require('headerBack.php');
 
 			<div class="headInbox">
 				
-				<h6>Messages archivés</h6>
+				<h6 class="h6">Messages archivés</h6>
 			</div>
 
 

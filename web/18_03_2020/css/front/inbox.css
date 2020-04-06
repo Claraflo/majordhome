@@ -3,15 +3,15 @@ body{
     font-family: 'Raleway';
 }
 
-h6{
+.h6{
 
     color: #FFFFFF !important;
     padding-top: 10px;
     padding-left: 10px;
 }
 
-p{
-    color: #aa956f !important;
+.p{
+    color: #FFFFFF !important;
     padding-left: 10px;
     font-size: 14px;
 
