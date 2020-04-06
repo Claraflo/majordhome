@@ -77,23 +77,25 @@ $req->execute([':information'=> $valueService[$i+2],
 }
 
 if ($number != 1) {
-    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService)');
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService, :nombreEcheance)');
     $req->execute([':prixTotal' => $priceService,
         ':sommeVersee' => $priceService / $number,
         ':sommeRestante' => $priceService - ($priceService / $number),
         ':statut' => 0,
         ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
-        ':FK_idSouscriptionService' => $idSouscriptionService
+        ':FK_idSouscriptionService' => $idSouscriptionService,
+        ':nombreEcheance'=> $number
     ]);
 }else{
-    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService, dateFinFacturation) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService, :dateFinFacturation)');
+    $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService, dateFinFacturation, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService, :dateFinFacturation, :nombreEcheance)');
     $req->execute([':prixTotal' => $priceService,
         ':sommeVersee' => $priceService / $number,
         ':sommeRestante' => $priceService - ($priceService / $number),
         ':statut' => 1,
         ':FK_idPersonne' => $_SESSION['user']['idPersonne'],
         ':FK_idSouscriptionService' => $idSouscriptionService,
-        ':dateFinFacturation' => date('Y-m-d H:i:s')
+        ':dateFinFacturation' => date('Y-m-d H:i:s'),
+        ':nombreEcheance'=> $number
     ]);
 }
 

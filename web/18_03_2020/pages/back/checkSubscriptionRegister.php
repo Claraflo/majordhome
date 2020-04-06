@@ -71,7 +71,7 @@ $_SESSION['priceSubscription'] = $price;
                     </select>
                 </div>
 
-                <input type="submit" class="btn btn-success area" value="Payer">
+                <input type="submit" class="btn btn-success area" value="Valider">
             </form>
 
         </div>
