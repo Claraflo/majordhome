@@ -76,7 +76,7 @@ require('header.php');
 
 			<div class="headInbox">
 				
-				<h6>Messages archivés</h6>
+				<h6>Messages supprimés</h6>
 			</div>
 
 			<div class="p-3">
