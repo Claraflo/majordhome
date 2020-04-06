@@ -4,7 +4,8 @@ displayUnpublishedService();
 function createService(){
 
 const name = document.getElementById('name').value;
-const price = document.getElementById('price').value;
+const priceEur = document.getElementById('priceEur').value;
+const priceCent = document.getElementById('priceCent').value;
 
 const select = document.getElementById('select');
 const selectValue = select.options[select.selectedIndex].innerHTML;
@@ -17,7 +18,8 @@ req.onreadystatechange = function(){
 		
 		document.getElementById('name').value = "";
 		document.getElementById('description').value = "";
-		document.getElementById('price').value = "";
+		document.getElementById('priceEur').value = "";
+        document.getElementById('priceCent').value = "";
 
 
 
@@ -32,7 +34,7 @@ req.onreadystatechange = function(){
 
 req.open("POST","saveService.php");
 req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-req.send(`name=${name}&description=${description}&price=${price}&selectValue=${selectValue}`);
+req.send(`name=${name}&description=${description}&priceEur=${priceEur}&priceCent=${priceCent}&selectValue=${selectValue}`);
 
 
 
