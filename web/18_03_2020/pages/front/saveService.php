@@ -139,5 +139,5 @@ if ($number != 1) {
     ]);
 }
 
-//header('Location: success.php');
+header('Location: success.php');
 ?>
