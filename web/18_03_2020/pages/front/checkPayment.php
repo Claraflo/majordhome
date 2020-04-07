@@ -29,11 +29,15 @@ if($countEnd == 0 && $count == 0) {
    header('Location: ../../404.php');
 }
 
-$data = $connect->prepare("SELECT nombreEcheance FROM facture WHERE FK_idSouscriptionService = $id");
-$data->execute(array());
-$invoice = $data->fetch();
+if($count != 0) {
+    $data = $connect->prepare("SELECT versement.statut FROM versement, facture WHERE facture.FK_idSouscriptionService = ".$id." AND versement.FK_idFacture = facture.idFacture");
+    $data->execute(array());
+    $payment = $data->fetchAll(PDO::FETCH_ASSOC);
 
-if ($invoice['nombreEcheance'] == 1){
+    $countPayment = $data->rowCount();
+}
+
+if ($countPayment == 0){
     header('Location: services.php');
 }
 
@@ -49,17 +53,21 @@ if ($invoice['nombreEcheance'] == 1){
                 <hr class="hr">
 
                 <div class="form-group">
-                    <label for="number">Remboursement:</label>
+                    <label for="number">Payer le:</label>
                     <select name="number" class="form-control" id="number">
                         <?php
-                            for ($i = 2; $i < $invoice['nombreEcheance']+1; $i++ ) {
-                                if ($i == 2) {
+                            $i = 1;
+                            $countFirst = 0;
+                            foreach ($payment as  $value) {
+                                echo $i;
+                                if ($value['statut'] == 0 && $countFirst == 0){
                                     echo '<option value="' . $i . '">' . $i . ' ème remboursement</option>';
-                                }else if ($i == $invoice['nombreEcheance']){
-                                    echo '<option value="' . $i . '">Tout rembourser</option>';
-                                }else{
-                                    echo '<option value="' . $i . '">Payer jusqu\'au ' . $i . ' ème remboursement</option>';
+                                    $countFirst = 1;
+                                }else if($value['statut'] == 0 && $countFirst == 1){
+                                    echo '<option value="' . $i . '">' . $i . ' ème remboursement et les précèdents</option>';
                                 }
+
+{}                              $i++;
                             }
                         ?>
                     </select>
