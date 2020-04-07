@@ -225,7 +225,7 @@ require "header.php";
                                 echo '<td>' . $row["dateEmission"] . '</td>';
                                 echo '<td>' . $row["prixTotal"]/100 . '€</td>';
                                 echo '<td>' . $row["sommeRestante"]/100 . '€</td>';
-                                echo '<td class ="buttonCase" ><button type="button" class="btn btn-dark">PDF</button></td>';
+                                echo '<td class ="buttonCase" ><a href="bill.php?id=\''.$row["idSouscription"].'\'" class="btn btn-dark">PDF</a></td>';
                                 echo '<td class ="buttonCase"><a type="button" class="btn btn-warning" href="checkPayment.php?id=\''.$row["idSouscription"].'\'">Regler</a></td>';
                                 echo '</tr>';
                             }
@@ -263,7 +263,7 @@ require "header.php";
                                 echo '<td>' . $row["nom"] . '</td>';
                                 echo '<td>' . $row["dateEmission"] . '</td>';
                                 echo '<td>' . $row["prixTotal"]/100 . '€</td>';
-                                echo '<td class ="buttonCase"><button type="button" class="btn btn-dark" onclick="">PDF</button></td>';
+                                echo '<td class ="buttonCase" ><a href="bill.php?id=\''.$row["idSouscription"].'\'" class="btn btn-dark">PDF</a></td>';
                                 echo '</tr>';
                             }
                         }
@@ -328,9 +328,7 @@ require "header.php";
                                 echo '<td>' . $row["dateEmission"] . '</td>';
                                 echo '<td>' . $row["prixTotal"]/100 . '€</td>';
                                 echo '<td>' . $row["sommeRestante"]/100 . '€</td>';
-                                echo '<form enctype="multipart/form-data" method="post">';
-                                echo '<td class ="buttonCase" ><a type="submit" class="btn btn-dark" >PDF</a></td>';
-                                echo '</form>';
+                                echo '<td class ="buttonCase" ><a href="bill.php?id=\''.$row["idSouscription"].'\'" class="btn btn-dark">PDF</a></td>';
                                 echo '<td class ="buttonCase"><a type="button" class="btn btn-warning" href="checkPayment.php?id=\''.$row["idSouscription"].'\'">Regler</a></td>';
                                 echo '</tr>';
                             }
@@ -368,9 +366,7 @@ require "header.php";
                                 echo '<td>' . $row["nom"] . '</td>';
                                 echo '<td>' . $row["dateEmission"] . '</td>';
                                 echo '<td>' . $row["prixTotal"]/100 . '€</td>';
-                                echo '<form action="bill.php"method="POST">';
-                                echo '<td class ="buttonCase" ><button type="button" class="btn btn-dark">PDF</button></td>';
-                                echo '</form>';
+                                echo '<td class ="buttonCase" ><a href="bill.php?id=\''.$row["idSouscription"].'\'" class="btn btn-dark">PDF</a></td>';
                                 echo '</tr>';
                             }
                         }
