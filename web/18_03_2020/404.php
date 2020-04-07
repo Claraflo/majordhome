@@ -15,7 +15,7 @@
     <!-- Lien Icon -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="css/404.css">
+    <link rel="stylesheet" type="text/css" href="/css/404.css">
 
 </head>
 <body>
@@ -24,7 +24,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
         <div class="container-fluid">
             <a class="navbar-brand active" href="/index.php" title="">
-                <img class="logo" src="img/majordhome.png" title="logo" alt="Logo Majord'home">
+                <img class="logo" src="/img/majordhome.png" title="logo" alt="Logo Majord'home">
             </a>
 
 
@@ -37,7 +37,7 @@
 
                     <li class="nav-item">
 
-                        <a class="nav-link"  id="dashboard" href="pages/login.php">Retourner sur le site</a>
+                        <a class="nav-link"  id="dashboard" href="/pages/login.php">Retourner sur le site</a>
 
 
                 </ul>
@@ -50,8 +50,8 @@
 <section>
     <div class="container">
         <div id="container">
-                <img id="error" src="img/404.jpg">
-                <h2 id="textError">Oups ! Cette page n'existe pas</h2>
+            <img id="error" src="/img/404.jpg">
+            <h2 id="textError">Oups ! Cette page n'existe pas</h2>
         </div>
     </div>
 </section>
