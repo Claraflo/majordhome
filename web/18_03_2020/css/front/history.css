@@ -10,7 +10,37 @@
 
 #tabSection{
     min-height: 100%;
+    width: 99%;
 }
 #tableHistory{
     width: 70%;
+    margin-top: 10%;
+    margin-left: 10%;
 }
+
+#titleTable{
+    padding-left: 40%;
+    width:100%;
+}
+
+.SubtitleTable{
+    background-color: cadetblue;
+}
+
+#tableHisSubscription{
+    width: 100%;
+    display: block;
+}
+
+
+#tableHisServices{
+    display:none;
+}
+
+
+#tableHisBill{
+    display:none;
+}
+
+
+

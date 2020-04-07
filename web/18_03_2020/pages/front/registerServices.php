@@ -14,7 +14,7 @@ $req->execute(array());
 $count = $req->rowCount();
 
 if ($count == 0){
-    header('Location: 404.php');
+    header('Location: ../../404.php');
 }
 $_SESSION["idService"] = $id;
 
