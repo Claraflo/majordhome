@@ -15,6 +15,16 @@ $queryPrepared = $connect->prepare('SELECT s.idService, s.nom,s.prix,s.descripti
 $queryPrepared->execute([":id" => $_GET["id"]]);
 $value = $queryPrepared->fetch(PDO::FETCH_ASSOC);
 
+
+
+
+if ($value['prix']%100 == 0){
+    $price[0] = $value['prix']/100;
+    $price[1] = '00';
+}else{
+    $price = explode(".", $value['prix']/100);
+}
+
 echo "<table class='table table-striped table-hover table-bordered'>";
     echo "<thead>";
       echo "<tr>";
@@ -34,7 +44,7 @@ echo "<table class='table table-striped table-hover table-bordered'>";
           echo "<th scope='row'>".$value['idService']."</th>";
           echo "<td>".$value['nom']."</td>";
           echo "<td>".$value['description']."</td>";    
-          echo "<td>".$value['prix']. "</td>";    
+          echo "<td>". $price[0] . "," .$price[1] . "</td>";    
           echo "<td>".$value['nomCateg']."</td>";   
           echo "<td>";
                 echo "<button data-toggle='modal' data-target='#myModal' class='btn btn-primary' onclick='getData(".$value['idService'].")'><i class='fas fa-pen'></i></button>";

@@ -28,88 +28,101 @@ $query->execute();
 
 
 
+
 <div class="container-fluid pt-3">
-	<div class="row">
-		<div class="col-md-8">
-			<div>
-				<h4>Liste des services non publié</h4>
-				<hr>
-			</div>
+  <div class="row">
+    <div class="col-md-8">
+      <div>
+        <h4>Liste des services non publié</h4>
+        <hr>
+      </div>
 
-			<div id="table"></div>
+      <div id="table"></div>
 
-		</div>
-
-
-		<div class="col-md-4">
-			<div class="form">
-				<div class="title pb-3">
-		
-					<h4>Créer un service</h4>
-				
-				</div>
-
-			 
-  				<div class="row">   
-
-  					<div class="col-md-6">
-  					 <div class="form-group">
-       	
-	       			<label>Nom du service *</label>
-	       			<input type="text" id="name"  class="form-control" required="required" placeholder="Plombier">
-      				</div>
+    </div>
 
 
-      				</div>
-      				<div class="col-md-6">
+    <div class="col-md-4">
+      <div class="form">
+        <div class="title pb-3">
+    
+          <h4>Créer un service</h4>
+        
+        </div>
 
-      					<div class="form-group">
-       	
-       				<label>Prix du service /h *</label>
-       				<input type="number" id="price" class="form-control" required="required" placeholder="12">
-      				</div>
-					</div>
-
-
-
-  				</div>
-    			
-		
-
-   				 <div class="form-group">
-					<label>Catégorie *</label>
-       				<select id="select" class="custom-select form-control" >
-
-       						<?php
-
-       					foreach ($query->fetchAll() as $value) {
-       						
-       						echo "<option>".$value['nom']."</option>";
-       					}
-	    				?>
        
-	 				</select>
-      			</div>
-	
+        
 
-				<div class="form-group">
-       	
-	       			<label>Description du service </label>
-	       			<textarea type="text" id="description"  class="form-control" placeholder="Théo le plombier.."></textarea>
-	      		</div>
-		
+          
+             <div class="form-group">
+        
+              <label>Nom du service *</label>
+              <input type="text" id="name"  class="form-control" required="required" placeholder="Plombier">
+              </div>
+
+              <p>Prix du service /h*</p>
 
 
-    			<i class="p-2">* Champs obligatoires</i>
+              <div class="row">
+              <div class="col-md-6">
+
+                <div class="form-group">
+        
+              <label>Euros</label>
+              <input type="number" id="priceEur" class="form-control" required="required" placeholder="12">
+              </div>
+          </div>
+          
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+        
+              <label>Centimes</label>
+              <input type="number" id="priceCent" class="form-control" required="required" placeholder="50">
+              </div>
+            </div>
+          </div>
+
+
+        
+          
+    
+
+           <div class="form-group">
+          <label>Catégorie *</label>
+              <select id="select" class="custom-select form-control" >
+
+                  <?php
+
+                foreach ($query->fetchAll() as $value) {
+                  
+                  echo "<option>".$value['nom']."</option>";
+                }
+              ?>
+       
+          </select>
+            </div>
+  
+
+        <div class="form-group">
+        
+              <label>Description du service </label>
+              <textarea type="text" id="description"  class="form-control" placeholder="Théo le plombier.."></textarea>
+            </div>
+    
+
+
+          <i class="p-2">* Champs obligatoires</i>
    
-       			<center><button onclick="createService();" class="btn mt-3 btnService btn-block">Créer un service</button></center>
+            <center><button onclick="createService();" class="btn mt-3 btnService btn-block">Créer un service</button></center>
 
-       	 	</div>
-		</div>
-			
-		</div>
+          </div>
+    </div>
+      
+    </div>
 
-	</div>
+  </div>
 
 
 </div>

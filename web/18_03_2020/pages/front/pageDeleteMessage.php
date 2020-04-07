@@ -15,8 +15,8 @@ require('header.php');
 		<aside class="col-md-3">
 
 			<div class="headerAside">
-			<h6><?php echo $_SESSION['user']['nom']; ?></h6>
-			<p><?php echo $_SESSION['user']['mail']; ?></p>
+			<h6 class="h6"><?php echo $_SESSION['user']['nom']; ?></h6>
+			<p class="p"><?php echo $_SESSION['user']['mail']; ?></p>
 			</div>
 
 			<div class="p-4">
@@ -76,7 +76,7 @@ require('header.php');
 
 			<div class="headInbox">
 				
-				<h6>Messages archivés</h6>
+				<h6 class="h6">Messages supprimés</h6>
 			</div>
 
 			<div class="p-3">

@@ -58,11 +58,17 @@ $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 		    		foreach ($dataService as $value) {
 
-		    		echo '<tr id="service-' . $value['idService'] .'">';
-      					echo "<th scope='row'>".$value['idService']."</th>";
+
+		    			if ($value['prix']%100 == 0){
+    					$price[0] = $value['prix']/100;
+   						$price[1] = '00';
+					}else{
+					    $price = explode(".", $value['prix']/100);
+					}
+	echo "<th scope='row'>".$value['idService']."</th>";
       					echo "<td>".$value['nom']."</td>";
       					echo "<td>".$value['description']."</td>";		
-      					echo "<td>".$value['prix']."</td>";		
+      					echo "<td>". $price[0] . "," .$price[1]. "€"."</td>";		
       					echo "<td>".$value['nomCateg']."</td>";		
       					echo "<td>";
 

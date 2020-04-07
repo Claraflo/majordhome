@@ -3,15 +3,17 @@ require('../functions.php');
 session_start();
 
 if(!empty($_POST['name'])
-    && !empty($_POST['price'])
     && !empty($_POST['selectValue'])
+    && !empty($_POST['priceEur'])
+    && !empty($_POST['priceCent'])
    
 ){
 
 	$name = trim($_POST['name']);
-	$description = trim($_POST['description']);
-	$price = $_POST['price'];
-	$selectValue = $_POST['selectValue'];
+  $description = trim($_POST['description']);
+  $selectValue = $_POST['selectValue'];
+  $priceEur = trim($_POST['priceEur']);
+  $priceCent = trim($_POST['priceCent']);
 
 	$errors = [];
 
@@ -41,13 +43,15 @@ if(!empty($_POST['name'])
    	}
 
 
-   	// if (!is_float($price)) {
+    if(!preg_match('/^[0-9]+$/', $priceEur)) {
+        $errors[] = "Les euros indiqués ne sont pas valides.";
+    }
 
+    if(!preg_match('/^[0-9][0-9]$/', $priceCent)) {
+        $errors[] = "Les centimes indiqués ne sont pas valides. Il est obligatoire d'y insérer 2 chiffres.";
+    }
 
-   	// 	$errors[]= "Le prix doit être en format FLOAT.";
-   	// 	echo $price;
-   	
-   	// }
+    $price = $priceEur.$priceCent;
 
 
 
