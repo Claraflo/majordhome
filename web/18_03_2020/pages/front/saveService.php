@@ -97,7 +97,20 @@ if ($number != 1) {
         ':dateFinFacturation' => date('Y-m-d H:i:s'),
         ':nombreEcheance'=> $number
     ]);
+
+    $req = $connect->prepare("SELECT idFacture FROM facture WHERE FK_idSouscriptionService = $idSouscriptionService");
+    $req->execute(array());
+    $invoice = $req->fetch();
+
+    echo $invoice['idFacture'];
+
+    $req = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture) VALUES(:date, :somme, :statut:, :FK_idFacture)');
+    $req->execute([':date' => date('Y-m-d H:i:s'),
+        ':somme'=>$priceService,
+        ':statut'=> 1,
+        ':FK_idFacture'=> $invoice['idFacture']
+    ]);
 }
 
-header('Location: success.php');
+//header('Location: success.php');
 ?>
