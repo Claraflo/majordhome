@@ -12,7 +12,7 @@ require "header.php";
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <div class="form">
+                <div class="pt-4">
                     <div class="input-group">
 
                         <select class="custom-select" id="inputGroupSelect01">
@@ -47,7 +47,7 @@ require "header.php";
 
             <div class="col-md-5">
 
-                <a href="#"><button class="btn btnServices">Demande de service</button></a>
+                <a href="requestService.php"><button class="btn btnServices">Demande de service</button></a>
             </div>
 
         </div>
