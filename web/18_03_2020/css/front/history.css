@@ -14,7 +14,7 @@
 }
 #tableHistory{
     width: 70%;
-    margin-top: 10%;
+    margin-top: 5%;
     margin-left: 10%;
 }
 
@@ -42,5 +42,16 @@
     display:none;
 }
 
+#tableHisBillSouscription{
+    display:none;
+}
 
 
+.buttonCase{
+    padding: 0% !important;
+    marging: 0% !important;
+}
+
+#RadioButton{
+    margin-bottom:2%;
+}
