@@ -7,13 +7,13 @@ if(!empty($_GET)){
     $id = 0;
 }
 
+$id = '\'9kc32oxdRi\'';
 
-$id = '1dxyzfOzg8';
-
+$_SESSION['idSubscriptionService'] = $id;
 
 $req = $connect->prepare("SELECT dateReservation FROM souscription_service WHERE idSouscriptionService = $id");
 $req->execute(array());
-$subscription = $req->fetch();
+$service = $req->fetch();
 
 $count = $req->rowCount();
 
@@ -22,14 +22,13 @@ if ($count == 0){
 }
 
 
-$_SESSION['dateTime'] = $subscription['annee'].':'.$subscription['mois'].':'.$subscription['jours'];
-$_SESSION['idSubscription'] = $id;
+$data = $connect->prepare("SELECT nombreEcheance FROM facture WHERE FK_idSouscriptionService = '9kc32oxdRi'");
+$data->execute(array());
+$invoice = $data->fetch();
 
-$price = $subscription['prix'];
-$subscription['prix'] = $subscription['prix']/100;
-
-
-
+if ($invoice['nombreEcheance'] == 1){
+    header('Location: services.php');
+}
 
 ?>
 
@@ -38,17 +37,24 @@ $subscription['prix'] = $subscription['prix']/100;
 <section>
     <div class="container">
         <div class="form">
-            <form id="form-payement" method="post" action="paymentSubscription.php">
-                <h3 class="text-center title"><?php echo $subscription['nom']?></h3>
-                <h2 class="card-title pricing-card-title"><?php echo $subscription['prix'] ?>€ TTC</h2>
+            <form id="form-payement" method="post" action="payment.php">
+                <h3 class="text-center title">Choix du remboursement</h3>
                 <hr class="hr">
 
                 <div class="form-group">
-                    <label for="number">Payer en:</label>
+                    <label for="number">Remboursement:</label>
                     <select name="number" class="form-control" id="number">
-                        <option value="1">1 fois</option>
-                        <option value="2">2 fois</option>
-                        <option value="4">4 fois</option>
+                        <?php
+                            for ($i = 2; $i < $invoice['nombreEcheance']+1; $i++ ) {
+                                if ($i == 2) {
+                                    echo '<option value="' . $i . '">' . $i . ' ème remboursement</option>';
+                                }else if ($i == $invoice['nombreEcheance']){
+                                    echo '<option value="' . $i . '">Tout rembourser</option>';
+                                }else{
+                                    echo '<option value="' . $i . '">Payer jusqu\'au ' . $i . ' ème remboursement</option>';
+                                }
+                            }
+                        ?>
                     </select>
                 </div>
 
