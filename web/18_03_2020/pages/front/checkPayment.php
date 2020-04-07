@@ -6,10 +6,10 @@ if(!empty($_GET)){
 }else{
     $id = 0;
 }
-echo $_GET['id'];
-$id = '\'9kc32oxdRi\'';
+$id = $_GET['id'];
 
-$_SESSION['idSubscriptionService'] = $id;
+
+$countEnd = 0;
 
 $req = $connect->prepare("SELECT dateReservation FROM souscription_service WHERE idSouscriptionService = $id");
 $req->execute(array());
@@ -18,18 +18,18 @@ $service = $req->fetch();
 $count = $req->rowCount();
 
 if ($count == 0){
-    $req = $connect->prepare("SELECT dateAchat FROM souscription_abonnement WHERE idAbonnement = $id");
+    $req = $connect->prepare("SELECT dateAchat FROM souscription_abonnement WHERE idSouscriptionAbonnement = $id");
     $req->execute(array());
     $service = $req->fetch();
 
     $countEnd = $req->rowCount();
 }
 
-if($countEnd == 0) {
+if($countEnd == 0 && $count == 0) {
    header('Location: ../../404.php');
 }
 
-$data = $connect->prepare("SELECT nombreEcheance FROM facture WHERE FK_idSouscriptionService = '9kc32oxdRi'");
+$data = $connect->prepare("SELECT nombreEcheance FROM facture WHERE FK_idSouscriptionService = $id");
 $data->execute(array());
 $invoice = $data->fetch();
 
