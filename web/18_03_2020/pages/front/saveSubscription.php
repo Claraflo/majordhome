@@ -97,17 +97,12 @@ if ($number != 1) {
     ]);
 
     for ($i = 1; $i < $number; $i++){
-        if(date('m') + $i < 12){
-            $month = date('m') + $i;
-            $year = date('Y');
-        }else{
-            $month = date('m') % 12;
-            $year = intdiv(date('m'),12);
-        }
-        $date = date($year.'-'.$month.'-d H:i:s');
+
+        $date = new DateTime();
+        $date->add(new DateInterval('P'.$i.'M'));
 
         $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture) VALUES(:date, :somme, :statut, :FK_idFacture)');
-        $data->execute([':date' => $date,
+        $data->execute([':date' => $date->format('Y-m-d H:i:s'),
             ':somme'=> 0,
             ':statut'=> 0,
             ':FK_idFacture'=> $invoice['idFacture']

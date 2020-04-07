@@ -6,7 +6,7 @@ if(!empty($_GET)){
 }else{
     $id = 0;
 }
-
+echo $_GET['id'];
 $id = '\'9kc32oxdRi\'';
 
 $_SESSION['idSubscriptionService'] = $id;
@@ -22,11 +22,11 @@ if ($count == 0){
     $req->execute(array());
     $service = $req->fetch();
 
-    $count = $req->rowCount();
+    $countEnd = $req->rowCount();
 }
 
-if($count == 0) {
-    header('Location: ../../404.php');
+if($countEnd == 0) {
+   header('Location: ../../404.php');
 }
 
 $data = $connect->prepare("SELECT nombreEcheance FROM facture WHERE FK_idSouscriptionService = '9kc32oxdRi'");
