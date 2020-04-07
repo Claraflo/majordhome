@@ -84,6 +84,35 @@ if ($number != 1) {
         ':FK_idSouscriptionAbonnement' => $idSouscriptionAbonnement,
         ':nombreEcheance'=> $number
     ]);
+
+    $req = $connect->prepare("SELECT idFacture FROM facture WHERE FK_idSouscriptionAbonnement = '".$idSouscriptionAbonnement."'");
+    $req->execute(array());
+    $invoice = $req->fetch();
+
+    $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture) VALUES(:date, :somme, :statut, :FK_idFacture)');
+    $data->execute([':date' => date('Y-m-d H:i:s'),
+        ':somme'=> $priceSubscription / $number,
+        ':statut'=> 1,
+        ':FK_idFacture'=> $invoice['idFacture']
+    ]);
+
+    for ($i = 1; $i < $number; $i++){
+        if(date('m') + $i < 12){
+            $month = date('m') + $i;
+            $year = date('Y');
+        }else{
+            $month = date('m') % 12;
+            $year = intdiv(date('m'),12);
+        }
+        $date = date($year.'-'.$month.'-d H:i:s');
+
+        $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture) VALUES(:date, :somme, :statut, :FK_idFacture)');
+        $data->execute([':date' => $date,
+            ':somme'=> 0,
+            ':statut'=> 0,
+            ':FK_idFacture'=> $invoice['idFacture']
+        ]);
+    }
 }else{
     $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionAbonnement, dateFinFacturation, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionAbonnement, :dateFinFacturation, :nombreEcheance)');
     $req->execute([':prixTotal' => $priceSubscription,
@@ -94,6 +123,17 @@ if ($number != 1) {
         ':FK_idSouscriptionAbonnement' => $idSouscriptionAbonnement,
         ':dateFinFacturation'=> date('Y-m-d H:i:s'),
         ':nombreEcheance'=> $number
+    ]);
+
+    $req = $connect->prepare("SELECT idFacture FROM facture WHERE FK_idSouscriptionAbonnement = '".$idSouscriptionAbonnement."'");
+    $req->execute(array());
+    $invoice = $req->fetch();
+
+    $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture) VALUES(:date, :somme, :statut, :FK_idFacture)');
+    $data->execute([':date' => date('Y-m-d H:i:s'),
+        ':somme'=> $priceSubscription,
+        ':statut'=> 1,
+        ':FK_idFacture'=> $invoice['idFacture']
     ]);
 }
 
