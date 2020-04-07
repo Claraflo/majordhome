@@ -18,6 +18,13 @@ if ($count == 0){
     header('Location: ../../404.php');
 }
 
+
+$req = $connect->prepare("SELECT sommeRestante FROM versement WHERE idAbonnement = $id");
+$req->execute(array());
+$subscription = $req->fetch();
+
+$count = $req->rowCount();
+
 $price = $subscription['prix'];
 $_SESSION['priceSubscription'] = $price;
 

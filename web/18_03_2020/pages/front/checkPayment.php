@@ -18,9 +18,16 @@ $service = $req->fetch();
 $count = $req->rowCount();
 
 if ($count == 0){
-    header('Location: ../../404.php');
+    $req = $connect->prepare("SELECT dateAchat FROM souscription_abonnement WHERE idAbonnement = $id");
+    $req->execute(array());
+    $service = $req->fetch();
+
+    $count = $req->rowCount();
 }
 
+if($count == 0) {
+    header('Location: ../../404.php');
+}
 
 $data = $connect->prepare("SELECT nombreEcheance FROM facture WHERE FK_idSouscriptionService = '9kc32oxdRi'");
 $data->execute(array());
