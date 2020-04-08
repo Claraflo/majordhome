@@ -1,44 +1,42 @@
 <?php
 require "header.php";
 
-if(!empty($_GET)){
+if (!empty($_GET)) {
     $id = $_GET['id'];
-}else{
+} else {
     $id = 0;
 }
+$id = $_GET['id'];
+$_SESSION['idPayment'] = $id;
 
-$id = '\'9kc32oxdRi\'';
+$countEnd = 0;
 
-$_SESSION['idSubscriptionService'] = $id;
-
-$req = $connect->prepare("SELECT dateReservation FROM souscription_service WHERE idSouscriptionService = $id");
+$req = $connect->prepare("SELECT dateReservation FROM souscription_service WHERE idSouscriptionService = ".$id." AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
 $req->execute(array());
 $service = $req->fetch();
 
 $count = $req->rowCount();
 
-if ($count == 0){
-    $req = $connect->prepare("SELECT dateAchat FROM souscription_abonnement WHERE idAbonnement = $id");
+if ($count == 0) {
+    $req = $connect->prepare("SELECT dateAchat FROM souscription_abonnement WHERE idSouscriptionAbonnement = ".$id." AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
     $req->execute(array());
     $service = $req->fetch();
 
-    $count = $req->rowCount();
+    $countEnd = $req->rowCount();
 }
 
-if($count == 0) {
+if ($countEnd == 0 && $count == 0) {
     header('Location: ../../404.php');
 }
 
-$data = $connect->prepare("SELECT nombreEcheance FROM facture WHERE FK_idSouscriptionService = '9kc32oxdRi'");
-$data->execute(array());
-$invoice = $data->fetch();
 
-if ($invoice['nombreEcheance'] == 1){
-    header('Location: services.php');
-}
+$data = $connect->prepare("SELECT versement.statut FROM versement, facture WHERE (facture.FK_idSouscriptionService = " . $id . " OR facture.FK_idSouscriptionAbonnement = " . $id . ") AND versement.FK_idFacture = facture.idFacture");
+$data->execute(array());
+$payment = $data->fetchAll(PDO::FETCH_ASSOC);
+
+$countPayment = $data->rowCount();
 
 ?>
-
 
 
 <section>
@@ -49,18 +47,23 @@ if ($invoice['nombreEcheance'] == 1){
                 <hr class="hr">
 
                 <div class="form-group">
-                    <label for="number">Remboursement:</label>
+                    <label for="number">Payer le:</label>
                     <select name="number" class="form-control" id="number">
                         <?php
-                            for ($i = 2; $i < $invoice['nombreEcheance']+1; $i++ ) {
-                                if ($i == 2) {
-                                    echo '<option value="' . $i . '">' . $i . ' ème remboursement</option>';
-                                }else if ($i == $invoice['nombreEcheance']){
-                                    echo '<option value="' . $i . '">Tout rembourser</option>';
-                                }else{
-                                    echo '<option value="' . $i . '">Payer jusqu\'au ' . $i . ' ème remboursement</option>';
-                                }
+                        $i = 1;
+                        $countFirst = 0;
+                        foreach ($payment as $value) {
+                            if ($value['statut'] == 0 && $countFirst == 0) {
+                                echo '<option value="' . $i . '">' . $i . ' ème remboursement</option>';
+                                $countFirst = 1;
+                            } else if ($value['statut'] == 0 && $countFirst == 1) {
+                                echo '<option value="' . $i . '">' . $i . ' ème remboursement et les précédents</option>';
                             }
+
+                            {
+                            }
+                            $i++;
+                        }
                         ?>
                     </select>
                 </div>
