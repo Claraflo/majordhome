@@ -50,8 +50,8 @@
 <section>
     <div class="container">
         <div id="container">
-                <img id="error" src="/img/404.jpg">
-                <h2 id="textError">Oups ! Cette page n'existe pas</h2>
+            <img id="error" src="/img/404.jpg">
+            <h2 id="textError">Oups ! Cette page n'existe pas</h2>
         </div>
     </div>
 </section>
