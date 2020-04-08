@@ -10,9 +10,7 @@ require "header.php";
 
 if(!empty($_SESSION["successForm"])){
         echo "<div class='alert alert-success'>";
-        foreach ($_SESSION["successForm"] as $success) {
-            echo "<li>".$success;
-        }
+          echo "<li>".$_SESSION["successForm"];
         echo "</div>";
         unset($_SESSION["successForm"]);
     }
