@@ -1,36 +1,30 @@
 <?php
 require "header.php";
 
-if (!empty($_POST['number']) || !empty($_SESSION['idSubscriptionService'])){
-    header('Location: services.php');
+if (!isset($_POST['number']) || !isset($_SESSION['idPayment'])){
+    header('Location: history.php');
+}
+$idPayment = $_SESSION['idPayment'];
+$number = $_POST['number'];
+
+if ($number < 1 || $number > 4){
+    header('Location: history.php');
 }
 
-$number = $_POST['number'];
-$id = $_SESSION['idSubscriptionService'];
 
-$req = $connect->prepare("SELECT sommeRestante FROM facture WHERE idAbonnement = $id");
+$countEnd = 0;
+
+$req = $connect->prepare("SELECT sommeRestante FROM facture WHERE (FK_idSouscriptionService = ".$idPayment." OR FK_idSouscriptionAbonnement =".$idPayment.") AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
 $req->execute(array());
-$subscription = $req->fetch();
-
+$service = $req->fetch();
+echo $service['sommeRestante'];
 $count = $req->rowCount();
 
-if ($count == 0){
+if($count == 0) {
     header('Location: ../../404.php');
 }
 
 
-$req = $connect->prepare("SELECT sommeRestante FROM versement WHERE idAbonnement = $id");
-$req->execute(array());
-$subscription = $req->fetch();
-
-$count = $req->rowCount();
-
-$price = $subscription['prix'];
-$_SESSION['priceSubscription'] = $price;
-
-if($number != 1){
-    $price = $price/$number;
-}
 require ('../../stripe-php-master/init.php');
 
 \Stripe\Stripe::setApiKey('sk_test_KIoaPZUhWtezXMfycCQWaVP300pmT5edj0');
@@ -45,7 +39,7 @@ $intent = \Stripe\PaymentIntent::create([
 ]);
 
 
-$price = $price/100;
+
 
 
 
