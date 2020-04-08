@@ -1,7 +1,10 @@
 <?php
 session_start();
+
 require('../../lib/fpdf.php');
 require ('../functions.php');
+
+// Check permission of the client
 $connect=  connectDb();
 
 $query = $connect->query("SELECT count(idSouscriptionService) as count FROM souscription_service WHERE souscription_service.FK_idPersonne =".$_SESSION['user']['idPersonne']." AND idSouscriptionService =".$_GET['id']);
@@ -21,6 +24,7 @@ foreach ( $results as $result) {
 }
 
 
+
 if($countService==0 && $countSouscription==0 ){
 
     header('Location: ../../404.php');
@@ -32,10 +36,10 @@ if($countService==0 && $countSouscription==0 ){
         $nameDelivery = "abonnement";
     }
 
+
     class PDF extends FPDF
     {
 
-        // En-tête
         function Header()
         {
             // Logo
@@ -52,7 +56,6 @@ if($countService==0 && $countSouscription==0 ){
         }
 
 
-        // Pied de page
         function Footer()
         {
             $this->SetFont('Arial', 'I', 8);
@@ -68,7 +71,6 @@ if($countService==0 && $countSouscription==0 ){
             $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'C');
         }
 
-        // Chargement des données
         function LoadData($file)
         {
             // Lecture des lignes du fichier
@@ -79,7 +81,6 @@ if($countService==0 && $countSouscription==0 ){
             return $data;
         }
 
-        // Tableau coloré
         function FancyTable($header, $data)
         {
             // Couleurs, épaisseur du trait et police grasse
@@ -112,13 +113,13 @@ if($countService==0 && $countSouscription==0 ){
                 $this->Ln();
 
             }
-            // Trait de terminaison
+            // Line of the end
             $this->Cell(185, 0, '', 'T');
         }
 
     }
 
-
+    //Load of data
     $query = $connect->query("SELECT DATE_FORMAT(dateEmission,\"%d/%m/%Y\") as date,prixTotal FROM facture WHERE FK_idSouscriptionService=" . $_GET["id"] . " OR FK_idSouscriptionAbonnement=" . $_GET["id"]);
     $query->execute();
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -127,13 +128,8 @@ if($countService==0 && $countSouscription==0 ){
         $date = $result["date"];
         $price = $result["prixTotal"] / 100;
     }
-
     $stringDevice = " euros";
-    $pdf = new pdf();
-    $pdf->AddPage();
-
     $header = array('Details');
-    // Chargement des données
 
     if ($nameDelivery == "service")
         $query = $connect->query("SELECT service.nom,prixTotal,sommeVersee,sommeRestante FROM facture, souscription_service, service WHERE FK_idSouscriptionService=" . $_GET["id"] . " AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService");
@@ -141,8 +137,13 @@ if($countService==0 && $countSouscription==0 ){
         $query = $connect->query("SELECT abonnement.nom,prixTotal,sommeVersee,sommeRestante FROM facture, souscription_abonnement,abonnement WHERE FK_idSouscriptionAbonnement= " . $_GET["id"] . " AND facture.FK_idSouscriptionAbonnement = souscription_abonnement.idSouscriptionAbonnement AND souscription_abonnement.FK_idAbonnement = abonnement.idAbonnement");
 
     $query->execute();
-
     $data = $query->fetchAll(PDO::FETCH_BOTH);
+
+
+
+    //Creation of pdf
+    $pdf = new pdf();
+    $pdf->AddPage();
     $pdf->SetFont('Arial', '', 14);
     $pdf->ln(20);
     $pdf->SetDrawColor(170, 149, 111);
@@ -156,10 +157,10 @@ if($countService==0 && $countSouscription==0 ){
     $pdf->SetX(-100);
     $pdf->Cell(80, 20, 'Prix Total : ' . $price . $stringDevice, 1, 0, 'C');
 
-    // Nom du fichier
+    // file name
     $nom = 'Facture-' . $_GET['id'] . '.pdf';
 
-    // Création du PDF
+    // Download of pdf (parameter D, diplay = I)
     $pdf->Output($nom, 'D');
 
 }
