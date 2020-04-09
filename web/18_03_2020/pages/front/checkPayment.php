@@ -30,7 +30,7 @@ if ($countEnd == 0 && $count == 0) {
 }
 
 
-$data = $connect->prepare("SELECT versement.statut, versement.idVersement FROM versement, facture WHERE (facture.FK_idSouscriptionService = " . $id . " OR facture.FK_idSouscriptionAbonnement = " . $id . ") AND versement.FK_idFacture = facture.idFacture AND facture.FK_idPersonne =".$_SESSION['user']['idPersonne']);
+$data = $connect->prepare("SELECT versement.statut, versement.idVersement, versement.FK_idFacture FROM versement, facture WHERE (facture.FK_idSouscriptionService = " . $id . " OR facture.FK_idSouscriptionAbonnement = " . $id . ") AND versement.FK_idFacture = facture.idFacture AND facture.FK_idPersonne =".$_SESSION['user']['idPersonne']);
 $data->execute(array());
 $payment = $data->fetchAll(PDO::FETCH_ASSOC);
 
@@ -53,6 +53,9 @@ $countPayment = $data->rowCount();
                         $i = 1;
                         $countFirst = 0;
                         foreach ($payment as $value) {
+                            if (!isset($_SESSION['idFacturePayment'])){
+                                $_SESSION['idFacturePayment'] = $value['FK_idFacture'];
+                            }
                             if ($value['statut'] == 0 && $countFirst == 0) {
                                 echo '<option value="' . $value['idVersement'] . '">' . $i . ' ème remboursement</option>';
                                 $idVersement = $value['idVersement'];

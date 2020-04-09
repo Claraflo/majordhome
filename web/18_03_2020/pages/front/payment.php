@@ -1,11 +1,15 @@
 <?php
 require "header.php";
 
-if (!isset($_POST['number']) || !isset($_SESSION['idPayment'])){
+if (!isset($_POST['number']) || !isset($_SESSION['idPayment']) || !isset($_SESSION['idFacturePayment'])){
     header('Location: history.php');
 }
 $idPayment = $_SESSION['idPayment'];
+$idFacturePayment = $_SESSION['idFacturePayment'];
 $number = $_POST['number'];
+
+unset($_SESSION['idPayment']);
+unset($_SESSION['idFacturePayment']);
 
 
 $numberPayment = explode('.', $number);
@@ -21,26 +25,20 @@ for ($i = 0; $i < count($numberPayment); $i++) {
 
 
 
-
-
-
-$req = $connect->prepare("SELECT sommeRestante FROM facture WHERE (FK_idSouscriptionService = ".$idPayment." OR FK_idSouscriptionAbonnement =".$idPayment.") AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
+$req = $connect->prepare("SELECT somme FROM versement WHERE FK_idFacture = ".$idFacturePayment." AND statut = 1");
 $req->execute(array());
-$service = $req->fetch();
-//echo $service['sommeRestante'];
+$somme = $req->fetch();
 $count = $req->rowCount();
 
-if($count == 0) {
-    header('Location: ../../404.php');
+if ($count == 1){
+    echo $somme['somme'];
+}else if ($count == 0){
+    header('Location: history.php');
 }
 
-$data = $connect->prepare("SELECT versement.statut FROM versement, facture WHERE (facture.FK_idSouscriptionService = " . $id . " OR facture.FK_idSouscriptionAbonnement = " . $id . ") AND versement.FK_idFacture = facture.idFacture AND facture.FK_idPersonne =".$_SESSION['user']['idPersonne']);
-$data->execute(array());
-$payment = $data->fetchAll(PDO::FETCH_ASSOC);
 
-foreach ($payment as $value) {
-  // echo $value['statut'];
-}
+
+
 
 
 require ('../../stripe-php-master/init.php');
