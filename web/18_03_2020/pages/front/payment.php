@@ -7,21 +7,34 @@ if (!isset($_POST['number']) || !isset($_SESSION['idPayment'])){
 $idPayment = $_SESSION['idPayment'];
 $number = $_POST['number'];
 
-if ($number < 1 || $number > 4){
-    header('Location: history.php');
-}
+//if ($number < 1 || $number > 4){
+//    header('Location: history.php');
+//}
 
+echo 'number = '.$number;
+echo '<br>';
 
-$countEnd = 0;
+$test = explode('.', $number);
+
+echo count($test);
+//echo $test[0];
 
 $req = $connect->prepare("SELECT sommeRestante FROM facture WHERE (FK_idSouscriptionService = ".$idPayment." OR FK_idSouscriptionAbonnement =".$idPayment.") AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
 $req->execute(array());
 $service = $req->fetch();
-echo $service['sommeRestante'];
+//echo $service['sommeRestante'];
 $count = $req->rowCount();
 
 if($count == 0) {
     header('Location: ../../404.php');
+}
+
+$data = $connect->prepare("SELECT versement.statut FROM versement, facture WHERE (facture.FK_idSouscriptionService = " . $id . " OR facture.FK_idSouscriptionAbonnement = " . $id . ") AND versement.FK_idFacture = facture.idFacture AND facture.FK_idPersonne =".$_SESSION['user']['idPersonne']);
+$data->execute(array());
+$payment = $data->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($payment as $value) {
+  // echo $value['statut'];
 }
 
 
