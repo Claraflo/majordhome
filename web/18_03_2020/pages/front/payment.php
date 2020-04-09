@@ -25,19 +25,14 @@ for ($i = 0; $i < count($numberPayment); $i++) {
 
 
 
-$req = $connect->prepare("SELECT somme FROM versement WHERE FK_idFacture = ".$idFacturePayment." AND statut = 1");
-$req->execute(array());
-$somme = $req->fetch();
-$count = $req->rowCount();
 
-if ($count == 1){
-    echo $somme['somme'];
-}else if ($count == 0){
-    header('Location: history.php');
-}
+$data = $connect->prepare("SELECT prixTotal, nombreEcheance FROM facture WHERE (FK_idSouscriptionService = " . $idPayment . " OR FK_idSouscriptionAbonnement = " . $idPayment . ") AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
+$data->execute(array());
+$payment = $data->fetch();
 
+$price = $payment['prixTotal'] / $payment['nombreEcheance'];
 
-
+$price *= count($numberPayment);
 
 
 
@@ -49,15 +44,10 @@ $intent = \Stripe\PaymentIntent::create([
     'amount'=> $price,
     'currency' => 'eur',
     'statement_descriptor' => 'Majordhome',
-    'description' => $subscription['nom'],
+    'description' => 'Remboursement',
     'payment_method_types' => ['card'],
     'setup_future_usage' => 'off_session',
 ]);
-
-
-
-
-
 
 
 ?>
@@ -69,13 +59,7 @@ $intent = \Stripe\PaymentIntent::create([
         <div class="form">
             <form id="form-payement">
                 <h3 class="text-center title">Remboursement</h3>
-                <h2 class="card-title pricing-card-title"><?php echo $price ?>€ TTC
-                    <small class="text-muted">
-                        <?php if($number == 2){ echo "/mois pendant 2 mois à compter d'aujourd'hui";}
-                        else if ($number == 4){ echo "/mois pendant 4 mois à compter d'aujourd'hui";}
-                        ?>
-                    </small>
-                </h2>
+                <h2 class="card-title pricing-card-title"><?php echo $price ?>€ TTC</h2>
                 <hr class="hr">
 
                 <label for="cardholder-name">Nom du titulaire de la carte *</label>
