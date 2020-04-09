@@ -7,17 +7,22 @@ if (!isset($_POST['number']) || !isset($_SESSION['idPayment'])){
 $idPayment = $_SESSION['idPayment'];
 $number = $_POST['number'];
 
-//if ($number < 1 || $number > 4){
-//    header('Location: history.php');
-//}
 
-echo 'number = '.$number;
-echo '<br>';
+$numberPayment = explode('.', $number);
 
-$test = explode('.', $number);
+for ($i = 0; $i < count($numberPayment); $i++) {
+    $req = $connect->prepare("SELECT somme, facture.FK_idPersonne FROM versement, facture WHERE idVersement = ".$numberPayment[$i]);
+    $req->execute(array());
+    $versement = $req->fetch();
+    if (empty($versement) || $versement['FK_idPersonne'] != $_SESSION['user']['idPersonne'] || $versement['somme'] != 0){
+        header('Location: history.php');
+    }
+}
 
-echo count($test);
-//echo $test[0];
+
+
+
+
 
 $req = $connect->prepare("SELECT sommeRestante FROM facture WHERE (FK_idSouscriptionService = ".$idPayment." OR FK_idSouscriptionAbonnement =".$idPayment.") AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
 $req->execute(array());
