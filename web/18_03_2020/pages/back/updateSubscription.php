@@ -104,14 +104,14 @@ if(count($_POST) == 11
         $req->execute([':title'=>$title,
             ':price'=>$price,
             ':description'=>$description,
-            'years'=>$years,
-            'months'=>$months,
-            'days'=>$days,
-            'week'=>$week,
-            'time'=>$time,
-            'timeStart'=>$timeStart,
-            'timeEnd'=>$timeEnd,
-            'id'=>$id
+            ':years'=>$years,
+            ':months'=>$months,
+            ':days'=>$days,
+            ':week'=>$week,
+            ':time'=>$time,
+            ':timeStart'=>$timeStart,
+            ':timeEnd'=>$timeEnd,
+            ':id'=>$id
         ]);
 
 

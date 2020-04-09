@@ -34,7 +34,8 @@ $price = $payment['prixTotal'] / $payment['nombreEcheance'];
 
 $price *= count($numberPayment);
 
-
+$_SESSION['pricePayment'] = $price;
+$_SESSION['numberPayment'] = $numberPayment;
 
 require ('../../stripe-php-master/init.php');
 
@@ -74,7 +75,7 @@ $intent = \Stripe\PaymentIntent::create([
 
 
 <script src="https://js.stripe.com/v3/"></script>
-<script src="../../js/paymentSubscription.js"></script>
+<script src="../../js/payment.js"></script>
 
 <?php
 require "../footer.php";
