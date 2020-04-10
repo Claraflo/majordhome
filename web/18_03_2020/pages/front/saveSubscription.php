@@ -89,11 +89,12 @@ if ($number != 1) {
     $req->execute(array());
     $invoice = $req->fetch();
 
-    $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture) VALUES(:date, :somme, :statut, :FK_idFacture)');
+    $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture, datePaiement) VALUES(:date, :somme, :statut, :FK_idFacture, :datePaiement)');
     $data->execute([':date' => date('Y-m-d H:i:s'),
         ':somme'=> $priceSubscription / $number,
         ':statut'=> 1,
-        ':FK_idFacture'=> $invoice['idFacture']
+        ':FK_idFacture'=> $invoice['idFacture'],
+        ':datePaiement'=> date('Y-m-d H:i:s')
     ]);
 
     for ($i = 1; $i < $number; $i++){
@@ -124,11 +125,12 @@ if ($number != 1) {
     $req->execute(array());
     $invoice = $req->fetch();
 
-    $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture) VALUES(:date, :somme, :statut, :FK_idFacture)');
+    $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture, datePaiement) VALUES(:date, :somme, :statut, :FK_idFacture, :datePaiement)');
     $data->execute([':date' => date('Y-m-d H:i:s'),
         ':somme'=> $priceSubscription,
         ':statut'=> 1,
-        ':FK_idFacture'=> $invoice['idFacture']
+        ':FK_idFacture'=> $invoice['idFacture'],
+        ':datePaiement'=> date('Y-m-d H:i:s')
     ]);
 }
 
