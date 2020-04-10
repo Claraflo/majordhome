@@ -9,6 +9,23 @@ if (!empty($_GET)) {
 $id = $_GET['id'];
 $_SESSION['idPayment'] = $id;
 
+$data = $connect->prepare("SELECT versement.statut, versement.idVersement, versement.FK_idFacture FROM versement, facture WHERE (facture.FK_idSouscriptionService = " . $id . " OR facture.FK_idSouscriptionAbonnement = " . $id . ") AND versement.FK_idFacture = facture.idFacture AND facture.FK_idPersonne =".$_SESSION['user']['idPersonne']);
+$data->execute(array());
+$payment = $data->fetchAll(PDO::FETCH_ASSOC);
+
+
+$countCheck = 0;
+
+foreach ($payment as $value) {
+    if ($value['statut'] == 0){
+        $countCheck++;
+    }
+}
+
+if ($countCheck == 0){
+    header('Location: history.php');
+}
+
 $countEnd = 0;
 
 $req = $connect->prepare("SELECT dateReservation FROM souscription_service WHERE idSouscriptionService = ".$id." AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
@@ -28,14 +45,6 @@ if ($count == 0) {
 if ($countEnd == 0 && $count == 0) {
     header('Location: ../../404.php');
 }
-
-
-$data = $connect->prepare("SELECT versement.statut, versement.idVersement, versement.FK_idFacture FROM versement, facture WHERE (facture.FK_idSouscriptionService = " . $id . " OR facture.FK_idSouscriptionAbonnement = " . $id . ") AND versement.FK_idFacture = facture.idFacture AND facture.FK_idPersonne =".$_SESSION['user']['idPersonne']);
-$data->execute(array());
-$payment = $data->fetchAll(PDO::FETCH_ASSOC);
-
-$countPayment = $data->rowCount();
-
 
 ?>
 

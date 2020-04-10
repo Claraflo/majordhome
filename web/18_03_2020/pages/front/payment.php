@@ -9,7 +9,7 @@ $idFacturePayment = $_SESSION['idFacturePayment'];
 $number = $_POST['number'];
 
 unset($_SESSION['idPayment']);
-unset($_SESSION['idFacturePayment']);
+
 
 
 $numberPayment = explode('.', $number);
@@ -37,6 +37,8 @@ $price *= count($numberPayment);
 $_SESSION['pricePayment'] = $price;
 $_SESSION['numberPayment'] = $numberPayment;
 
+
+
 require ('../../stripe-php-master/init.php');
 
 \Stripe\Stripe::setApiKey('sk_test_KIoaPZUhWtezXMfycCQWaVP300pmT5edj0');
@@ -50,6 +52,7 @@ $intent = \Stripe\PaymentIntent::create([
     'setup_future_usage' => 'off_session',
 ]);
 
+$price = $price/100;
 
 ?>
 
