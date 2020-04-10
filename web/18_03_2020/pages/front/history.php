@@ -185,7 +185,7 @@ require "header.php";
                         <?php
                         $connect=  connectDb();
 
-                        $query = $connect->query('SELECT facture.idFacture,service.nom,DATE_FORMAT(facture.dateEmission,"%d/%m/%Y") as dateEmission,facture.prixTotal,facture.sommeRestante,souscription_service.idSouscriptionService as idSouscription FROM service, facture, souscription_service WHERE facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService AND facture.FK_idPersonne ='.$_SESSION['user']['idPersonne']);
+                        $query = $connect->query('SELECT facture.statut,facture.idFacture,service.nom,DATE_FORMAT(facture.dateEmission,"%d/%m/%Y") as dateEmission,facture.prixTotal,facture.sommeRestante,souscription_service.idSouscriptionService as idSouscription FROM service, facture, souscription_service WHERE facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService AND facture.FK_idPersonne ='.$_SESSION['user']['idPersonne']);
                         $query->execute();
 
                         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -217,7 +217,7 @@ require "header.php";
 
                         foreach ($rows as $row) {
 
-                            if($row["sommeRestante"] !=0) {
+                            if($row["statut"] ==0) {
 
                                 echo '<tr>';
                                 echo '<td>' . $row["idFacture"] . '</td>';
@@ -257,7 +257,7 @@ require "header.php";
 
                         foreach ($rows as $row) {
 
-                            if ($row["sommeRestante"] == 0) {
+                            if ($row["statut"] = 1) {
                                 echo '<tr>';
                                 echo '<td>' . $row["idFacture"] . '</td>';
                                 echo '<td>' . $row["nom"] . '</td>';
@@ -288,7 +288,7 @@ require "header.php";
                         <?php
                         $connect=  connectDb();
 
-                        $query = $connect->query('SELECT facture.idFacture,abonnement.nom,DATE_FORMAT(facture.dateEmission,"%d/%m/%Y") as dateEmission,facture.prixTotal,facture.sommeRestante,souscription_abonnement.idSouscriptionAbonnement as idSouscription FROM abonnement, facture, souscription_abonnement WHERE facture.FK_idSouscriptionAbonnement = souscription_abonnement.idSouscriptionAbonnement AND souscription_abonnement.FK_idAbonnement = abonnement.idAbonnement AND facture.FK_idPersonne ='.$_SESSION['user']['idPersonne']);
+                        $query = $connect->query('SELECT facture.statut,facture.idFacture,abonnement.nom,DATE_FORMAT(facture.dateEmission,"%d/%m/%Y") as dateEmission,facture.prixTotal,facture.sommeRestante,souscription_abonnement.idSouscriptionAbonnement as idSouscription FROM abonnement, facture, souscription_abonnement WHERE facture.FK_idSouscriptionAbonnement = souscription_abonnement.idSouscriptionAbonnement AND souscription_abonnement.FK_idAbonnement = abonnement.idAbonnement AND facture.FK_idPersonne ='.$_SESSION['user']['idPersonne']);
                         $query->execute();
 
                         $rows = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -320,7 +320,7 @@ require "header.php";
 
                         foreach ($rows as $row) {
 
-                            if($row["sommeRestante"] !=0) {
+                            if($row["statut"] ==0) {
 
                                 echo '<tr>';
                                 echo '<td>' . $row["idFacture"] . '</td>';
@@ -360,7 +360,7 @@ require "header.php";
 
                         foreach ($rows as $row) {
 
-                            if ($row["sommeRestante"] == 0) {
+                            if ($row["statut"] == 1) {
                                 echo '<tr>';
                                 echo '<td>' . $row["idFacture"] . '</td>';
                                 echo '<td>' . $row["nom"] . '</td>';
