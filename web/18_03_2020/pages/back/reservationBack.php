@@ -31,7 +31,8 @@ if(!empty($_SESSION["confirmFormAuth"])){
                         <th scope="col">Date de la réservation</th>
                         <th scope="col">Date de l'intervention</th>
                         <th scope="col">Durée</th>
-                        <th scope="col">Statut</th>
+                        <th scope="col">Statut de la réservation</th>
+                        <th scope="col">Statut du paiement</th>
                         <th scope="col">Actions</th>
                         </thead>
                         <tbody id="reservation">

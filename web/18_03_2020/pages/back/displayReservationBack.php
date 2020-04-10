@@ -9,7 +9,7 @@ require("../functions.php");
 $connect = connectDb();
 
 
-$data = $connect->query("SELECT idSouscriptionService, dateReservation, dateIntervention, duree, statutReservation, nom, idFacture FROM souscription_service, service, facture WHERE service.idService = souscription_service.FK_idService AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idPersonne =".$_SESSION['idCustomer']);
+$data = $connect->query("SELECT idSouscriptionService, dateReservation, dateIntervention, duree, statutReservation, nom, idFacture, facture.statut FROM souscription_service, service, facture WHERE service.idService = souscription_service.FK_idService AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idPersonne =".$_SESSION['idCustomer']." ORDER BY dateReservation DESC");
 
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,6 +25,13 @@ foreach ($rows as $row) {
         echo '<td id="green"><b>En cours</b></td>';
     }else if($row['statutReservation'] == -1){
         echo '<td id="red"><b>Supprimer</b></td>';
+    }
+    if ($row['statut'] == 0){
+        echo '<td id="red"><b>Pas Payer</b></td>';
+    }else if($row['statut'] == -1){
+        echo '<td id="red"><b>Supprimer</b></td>';
+    }else if ($row['statut'] == 1){
+        echo '<td id="green"><b>Payer</b></td>';
     }
     echo '<td>';
     if($row['statutReservation'] == 0) {
