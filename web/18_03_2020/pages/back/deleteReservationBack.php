@@ -25,6 +25,12 @@ if(!empty($_POST['idSouscriptionService'])) {
         ':id'=>$idSouscriptionService
     ]);
 
+    $req = $connect->prepare("UPDATE versement, facture set versement.statut =:statut WHERE facture.FK_idSouscriptionService =:id AND versement.FK_idFacture = facture.idFacture AND facture.FK_idPersonne = ".$_SESSION['idCustomer']." ;");
+    $req->execute([
+        ':statut'=>-1,
+        ':id'=>$idSouscriptionService
+    ]);
+
 }
 
 
