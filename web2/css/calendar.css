@@ -10,6 +10,7 @@ table {
 	margin-left: auto;
 	margin-right: auto;
 	border-collapse: collapse;
+	margin-bottom: 15%;
 }
 
 .case {
@@ -22,4 +23,22 @@ table {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+#prev {
+	float: left;
+	margin-left: 5%;
+}
+
+#next {
+	float: right;
+	margin-right: 5%;
+}
+
+#titleCalendar {
+	text-align: center;
+}
+
+#arrow {
+	margin-top: 5%;
 }

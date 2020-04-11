@@ -18,7 +18,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 2) {
 
     <!-- Lien Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Lien police d'écriture -->
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
