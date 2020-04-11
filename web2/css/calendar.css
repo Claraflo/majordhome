@@ -42,3 +42,7 @@ table {
 #arrow {
 	margin-top: 5%;
 }
+
+#today {
+	background-color: red;
+}

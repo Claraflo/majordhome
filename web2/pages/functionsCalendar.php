@@ -1,9 +1,13 @@
 <?php 
 
-function calendrier($mois, $annee) 
-{
 
-	$nombre_de_jour = cal_days_in_month(CAL_GREGORIAN, $mois, $annee);
+function calendrier($month, $year)
+{
+    $dayToday = date('d');
+    $monthToday = date('n');
+    $yearToday = date('Y');
+
+	$nombre_de_jour = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
 	echo "<table>";
 
@@ -12,7 +16,7 @@ function calendrier($mois, $annee)
 	for ($i=1; $i <= $nombre_de_jour ; $i++)
 	{ 
 	
-		$jour = cal_to_jd(CAL_GREGORIAN, $mois, $i, $annee);
+		$jour = cal_to_jd(CAL_GREGORIAN, $month, $i, $year);
 		$jour_semaine = JDDayOfWeek($jour);
 
 		if ($i == $nombre_de_jour)
@@ -23,8 +27,11 @@ function calendrier($mois, $annee)
 				echo "<tr>";
 			}
 
-			echo "<td class='case'>". $i ."</td></tr>";
-
+			if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
+                echo "<td class='case' id='today'>". $i ."</td></tr>";
+            }else {
+                echo "<td class='case'>" . $i . "</td></tr>";
+            }
 		}elseif ($i == 1)
 		{
 		
@@ -39,8 +46,12 @@ function calendrier($mois, $annee)
 			{ 
 				echo "<td></td>";
 			}
+            if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
+                echo "<td class='case' id='today'>". $i ."</td>";
+            }else{
+                echo "<td class='case'>". $i ."</td>";
+            }
 
-			echo "<td class='case'>". $i ."</td>";
 
 			if ($jour_semaine == 7)
 			{
@@ -55,7 +66,12 @@ function calendrier($mois, $annee)
 				echo "<tr>";
 			}
 
-			echo "<td class='case'>". $i ."</td>";
+            if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
+                echo "<td class='case' id='today'>". $i ."</td>";
+            }else{
+                echo "<td class='case'>". $i ."</td>";
+            }
+
 
 			if ($jour_semaine == 0) {
 				echo "</tr>";
