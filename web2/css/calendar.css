@@ -33,11 +33,23 @@ th {
 #prev {
 	float: left;
 	margin-left: 5%;
+	cursor: pointer;
+	color: #007bff;
 }
 
 #next {
 	float: right;
 	margin-right: 5%;
+	cursor: pointer;
+	color: #007bff;
+}
+
+#prev:hover{
+	color: #084c94;
+}
+
+#next:hover{
+	color: #084c94;
 }
 
 #titleCalendar {
@@ -50,4 +62,8 @@ th {
 
 #today {
 	background-color: #609beb85;
+}
+
+a {
+	text-decoration: none;
 }
