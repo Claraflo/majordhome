@@ -17,7 +17,7 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 				
 		if (password_verify($pwd,$user['mdp']) &&  ($user['statut'] == 2 || $user['statut'])){
                 $_SESSION['user'] = $user;
-                //header('Location: back/subscriptionBack.php');
+                header('Location: pages/dashboard.php');
 			}else{
 
 				$error =  "Identifiants incorrects";
