@@ -1,8 +1,11 @@
 <?php
 require("header.php");
 
-$mois = date('m');
-$annee = date('Y');
+$month = date('m');
+$year = date('Y');
+
+
+
 ?>
 
 <body>
@@ -19,8 +22,8 @@ $annee = date('Y');
 
     jQuery(function($){
 
-        var month = <?php echo $mois; ?>;
-        var year = <?php echo $annee; ?>;
+        var month = <?php echo $month; ?>;
+        var year = <?php echo $year; ?>;
 
         $(document).ready(function(){
 
@@ -55,8 +58,8 @@ $annee = date('Y');
         });
 
         $("#linkToday").click(function(){
-            var month = <?php echo $mois; ?>;
-            var year = <?php echo $annee; ?>;
+            var month = <?php echo $month; ?>;
+            var year = <?php echo $year; ?>;
             $("#content").load("calendar.php?month="+month+"&year="+year+"");
 
         });

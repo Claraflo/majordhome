@@ -15,4 +15,16 @@ function connectDb(){
 
 }
 
+function json($path){
+	// chemin d'accès à votre fichier JSON
+	$file = $path;
+	// mettre le contenu du fichier dans une variable
+	$data = file_get_contents($file);
+	// décoder le flux JSON
+	$obj = json_decode($data);
+
+	return $obj;
+
+}
+
 ?>
