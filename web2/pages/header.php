@@ -47,14 +47,14 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 2) {
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item ">
-                        <a class="nav-link colorLink" href="#" title="">Les réservations</a>
+                        <a class="nav-link colorLink active" href="dashboard.php" title="">Dashboard</a>
 
                     <li class="nav-item ">
-                        <a class="nav-link colorLink" href="#" title="">Facture</a>
+                        <a class="nav-link colorLink" href="#" title="">Factures</a>
 
 
                     <li class="nav-item ">
-                        <a class="nav-link colorLink" href="#" title="">Contrat</a>
+                        <a class="nav-link colorLink" href="contract.php" title="">Contrats</a>
     
 
 
