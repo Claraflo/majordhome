@@ -6,7 +6,6 @@ body {
 
 table {
 	width: 80%;
-	height: 500px;
 	margin-left: auto;
 	margin-right: auto;
 	border-collapse: collapse;
@@ -18,9 +17,16 @@ th {
 	width: 70px;
 }
 
+td {
+	height: 60px;
+}
+
+.numberCalendar {
+	text-align: center;
+}
+
 .case {
 	border: 1px solid black;
-	text-align: center;
 }
 
 #content {
