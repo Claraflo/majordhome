@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +28,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
         <div class="container">
             <a class="navbar-brand active" href="index.php" title="">
-                <img class="logo" src="../img/majordhome.png" title="logo" alt="Logo Majord'home">
+                <img class="logo" src="img/majordhome.png" title="logo" alt="Logo Majord'home">
             </a>
         </div>
     </nav>
@@ -32,16 +37,6 @@
 <section>
 
     <?php
-
-            if(!empty($_SESSION["confirmFormAuth"])){
-            echo "<div class='alert alert-success'>";
-                foreach ($_SESSION["confirmFormAuth"] as $confirm) {
-                echo "<li>".$confirm;
-                    }
-                    echo "</div>";
-            unset($_SESSION["confirmFormAuth"]);
-            }
-
 
           if(!empty($_SESSION["errorsAuth"])){
             echo "<div class='alert alert-danger'>";
@@ -56,6 +51,7 @@
 
 
  <div class="container">
+
     <div class="form">
     <form class="formLogin" action="auth.php" method="post">
 
