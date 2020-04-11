@@ -85,6 +85,7 @@ for ($day = 1; $day <= $day_count; $day++, $str++) {
 
 ?>
 <html>
+<link rel="stylesheet" type="text/css" href="agenda.css"/>
 <body>
 
 
