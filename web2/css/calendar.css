@@ -64,6 +64,8 @@ th {
 	background-color: #609beb85;
 }
 
-a {
-	text-decoration: none;
+#linkToday {
+	margin-left: 5%;
+	width: 150px;
+	color: white;
 }

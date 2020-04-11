@@ -1,7 +1,7 @@
 <?php 
 
 
-function calendrier($month, $year)
+function calendar($month, $year)
 {
     $dayToday = date('d');
     $monthToday = date('n');
@@ -86,7 +86,7 @@ function calendrier($month, $year)
 }
 
 
-function mois($p) {
+function month($p) {
 
 	$z = $p-1;
 
