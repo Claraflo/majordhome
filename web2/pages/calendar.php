@@ -1,14 +1,14 @@
 <?php 
 
-$mois = $_GET['mois'];
-$annee = $_GET['annee'];
+$month = $_GET['month'];
+$year = $_GET['year'];
 
 include 'functionsCalendar.php';
 
 ?>
 
-<h1 id="titleCalendar"><?php echo mois($mois)." ".$annee; ?></h1>
+<h1 id="titleCalendar"><?php echo month($month)." ".$year; ?></h1>
 
 <div>
-	<?php calendrier($mois, $annee); ?>
+	<?php calendar($month, $year); ?>
 </div>

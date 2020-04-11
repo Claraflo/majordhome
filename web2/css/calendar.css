@@ -10,6 +10,11 @@ table {
 	margin-bottom: 15%;
 }
 
+th {
+	text-align: center;
+	width: 70px;
+}
+
 .case {
 	border: 1px solid black;
 	text-align: center;
@@ -25,11 +30,23 @@ table {
 #prev {
 	float: left;
 	margin-left: 5%;
+	cursor: pointer;
+	color: #007bff;
 }
 
 #next {
 	float: right;
 	margin-right: 5%;
+	cursor: pointer;
+	color: #007bff;
+}
+
+#prev:hover{
+	color: #084c94;
+}
+
+#next:hover{
+	color: #084c94;
 }
 
 #titleCalendar {
@@ -38,4 +55,14 @@ table {
 
 #arrow {
 	margin-top: 5%;
+}
+
+#today {
+	background-color: #609beb85;
+}
+
+#linkToday {
+	margin-left: 5%;
+	width: 150px;
+	color: white;
 }

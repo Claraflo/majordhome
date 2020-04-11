@@ -1,8 +1,11 @@
 <?php
 require("header.php");
 
-$mois = date('m');
-$annee = date('Y');
+$month = date('m');
+$year = date('Y');
+
+
+
 ?>
 
 <body>
@@ -11,7 +14,7 @@ $annee = date('Y');
     <i class="fas fa-arrow-circle-left fa-3x" id="prev"></i>
     <i class="fas fa-arrow-circle-right fa-3x" id="next"></i>
 </div>
-
+<button id="linkToday" class="btn btn-success">Aujourd'hui</button>
 <div id="content">
 </div>
 
@@ -19,38 +22,45 @@ $annee = date('Y');
 
     jQuery(function($){
 
-        var mois = <?php echo $mois; ?>;
-        var annee = <?php echo $annee; ?>;
+        var month = <?php echo $month; ?>;
+        var year = <?php echo $year; ?>;
 
         $(document).ready(function(){
 
-            $("#content").load("calendar.php?mois="+mois+"&annee="+annee+"");
+            $("#content").load("calendar.php?month="+month+"&year="+year+"");
 
         });
 
         $("#prev").click(function(){
 
-            mois--;
+            month--;
 
-            if (mois < 1) {
-                annee--;
-                mois = 12;
+            if (month < 1) {
+                year--;
+                month = 12;
             }
 
-            $("#content").load("calendar.php?mois="+mois+"&annee="+annee+"");
+            $("#content").load("calendar.php?month="+month+"&year="+year+"");
 
         });
 
         $("#next").click(function(){
 
-            mois++;
+            month++;
 
-            if (mois > 12) {
-                annee++;
-                mois = 1;
+            if (month > 12) {
+                year++;
+                month = 1;
             }
 
-            $("#content").load("calendar.php?mois="+mois+"&annee="+annee+"");
+            $("#content").load("calendar.php?month="+month+"&year="+year+"");
+
+        });
+
+        $("#linkToday").click(function(){
+            var month = <?php echo $month; ?>;
+            var year = <?php echo $year; ?>;
+            $("#content").load("calendar.php?month="+month+"&year="+year+"");
 
         });
 
