@@ -13,6 +13,11 @@ table {
 	margin-bottom: 15%;
 }
 
+th {
+	text-align: center;
+	padding: 20px;
+}
+
 .case {
 	border: 1px solid black;
 	text-align: center;
@@ -44,5 +49,5 @@ table {
 }
 
 #today {
-	background-color: red;
+	background-color: #609beb85;
 }

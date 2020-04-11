@@ -11,7 +11,7 @@ function calendrier($month, $year)
 
 	echo "<table>";
 
-	echo "<tr><th>Lun</th><th>Mar</th><th>Mer</th><th>Jeu</th><th>Ven</th><th>Sam</th><th>Dim</th></tr>";
+	echo "<tr><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th><th>Dimanche</th></tr>";
 
 	for ($i=1; $i <= $nombre_de_jour ; $i++)
 	{ 
