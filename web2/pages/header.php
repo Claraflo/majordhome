@@ -50,7 +50,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['statut'] != 2) {
                         <a class="nav-link colorLink" href="dashboard.php" title="">Dashboard</a>
 
                     <li class="nav-item ">
-                        <a class="nav-link colorLink" href="#" title="">Factures</a>
+                        <a class="nav-link colorLink" href="bills.php" title="">Factures</a>
 
 
                     <li class="nav-item ">

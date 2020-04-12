@@ -42,10 +42,27 @@ require("header.php");
 			</div>
 		</div>
 
-		<div class="form-group">
-			<label>Métier</label>
-			<input type="text" name="profession" class="form-control" placeholder="Plombier">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					
+					<label>Date de naissance</label>
+					<input type="date" name="date" class="form-control" placeholder="">
+				</div>
+			</div>
+
+
+			<div class="col-md-6">
+				<div class="form-group">
+					
+					<label>Lieu de Naissance</label>
+					<input type="text" name="place" class="form-control" placeholder="Drancy">
+				</div>
+			</div>
 		</div>
+
+
+	
 
 		<div class="form-group">
 			<label>Adresse</label>
@@ -70,14 +87,26 @@ require("header.php");
 					<input type="number" name="code" class="form-control" placeholder="75016">
 				</div>
 			</div>
+
+
+
 		</div>
 
+		<div class="form-group">
+			<label>Métier</label>
+			<input type="text" name="profession" class="form-control" placeholder="Plombier">
+		</div>
 		<h5>Durée du contrat : </h5>
 		<hr>
 
 		<div class="form-group">
+	        <label for="days">Date de début</label>
+	        <input name="dateContract" type="date" class="form-control">
+	    </div>
+
+		<div class="form-group">
 	        <label for="days">Nombre d'année *</label>
-	        <input name="days" type="number" class="form-control" placeholder="2" required="" autocomplete="off">
+	        <input name="days" type="number" class="form-control" placeholder="2" >
 	    </div>
 
 	  
