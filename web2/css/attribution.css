@@ -10,7 +10,6 @@ body {
 
 #tableAttribution {
     width: 90%;
-    font-size: 25px;
     margin-left: auto;
     margin-right: auto;
     border-collapse: collapse;
@@ -19,7 +18,30 @@ body {
     background-color: #ced5dc;
 }
 
+.thAttribution {
+    font-size: 25px;
+}
+
 .overflow {
     height: 500px;
     overflow: auto;
+}
+
+.droptarget {
+    height: 70px;
+    border: 1px solid black;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    background-color: white;
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+.targetText {
+    padding: 20px;
+}
+
+.tdAttribution {
+    font-size: 22px;
 }

@@ -23,19 +23,19 @@ $date = explode('-', $date);
                 <table class="table table-borderless" id="tableAttribution">
                     <thead>
                     <tr>
-                        <th scope="col">Clients</th>
-                        <th scope="col">Last</th>
+                        <th scope="col" class="thAttribution">Clients</th>
+                        <th scope="col" class="thAttribution">Last</th>
 
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Mark</td>
-                        <td>Mark</td>
+                        <td class="tdAttribution">Mark</td>
+                        <td class="tdTarget"><div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
                     </tr>
                     <tr>
-                        <td>Jacob</td>
-                        <td>Mark</td>
+                        <td class="tdAttribution">Jacob</td>
+                        <td class="tdTarget"><div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div></td>
                     </tr>
                     </tbody>
                 </table>
@@ -46,42 +46,26 @@ $date = explode('-', $date);
                 <table class="table table-borderless" id="tableAttribution">
                     <thead>
                     <tr>
-                        <th scope="col">Prestataire</th>
-                        <th scope="col">Last</th>
+                        <th scope="col" class="thAttribution">Prestataire</th>
+                        <th scope="col" class="thAttribution">Last</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td>Mark</td>
-                        <td>Mark</td>
+                        <td class="tdAttribution">Mark</td>
+                        <td class="tdTarget">
+                            <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <p ondragstart="dragStart(event)" draggable="true" id="1" class="targetText">Mark Paul</p>
+                            </div>
+                        </td>
                     </tr>
                     <tr>
-                        <td>Jacob</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Mark</td>
-                    </tr>
-                    <tr>
-                        <td>Jacob</td>
-                        <td>Mark</td>
+                        <td class="tdAttribution">Jacob</td>
+                        <td class="tdTarget">
+                            <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <p ondragstart="dragStart(event)" draggable="true" id="2" class="targetText">Jacob Paul</p>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
@@ -90,20 +74,30 @@ $date = explode('-', $date);
 </div>
 
 
-<ul class="list-group" id="demo1">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-</ul>
-<ul class="list-group mt-4" id="demo2">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+
+
+
+<p style="clear:both;"><strong>Note:</strong> drag events are not supported in Internet Explorer 8 and earlier versions or Safari 5.1 and earlier versions.</p>
+
+<p id="demo"></p>
+
+<script>
+    function dragStart(event) {
+        event.dataTransfer.setData("Text", event.target.id);
+        document.getElementById("demo").innerHTML = "Started to drag the p element";
+    }
+
+    function allowDrop(event) {
+        event.preventDefault();
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        var data = event.dataTransfer.getData("Text");
+        event.target.appendChild(document.getElementById(data));
+        document.getElementById("demo").innerHTML = "The p element was dropped";
+    }
+</script>
 
 </body>
 </html
