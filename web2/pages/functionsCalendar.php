@@ -50,8 +50,10 @@ function calendar($month, $year)
                 }
             }
 
-			if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
+			if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count == 0){
                 echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td></tr>";
+            }else if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count != 0){
+                echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td></tr>";
             }else if ($count != 0){
                 echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td></tr>";
             }else{
@@ -81,8 +83,10 @@ function calendar($month, $year)
                 }
             }
 
-            if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
+            if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count == 0){
                 echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td>";
+            }else if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count != 0){
+                echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td>";
             }else if ($count != 0){
                 echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td>";
             }else{
@@ -111,8 +115,10 @@ function calendar($month, $year)
                 }
             }
 
-            if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
+            if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count == 0){
                 echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td>";
+            }else if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count != 0){
+                echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td>";
             }else if ($count != 0){
                 echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td>";
             }else{
