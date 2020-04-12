@@ -1,0 +1,25 @@
+body {
+    overflow-x: hidden;
+}
+
+#titleAttribution {
+    text-align: center;
+    margin-top: 5%;
+}
+
+
+#tableAttribution {
+    width: 90%;
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    margin-bottom: 15%;
+    margin-top: 5%;
+    background-color: #ced5dc;
+}
+
+.overflow {
+    height: 500px;
+    overflow: auto;
+}

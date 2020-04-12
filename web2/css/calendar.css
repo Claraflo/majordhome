@@ -1,7 +1,7 @@
 
 
 
-table {
+#tableCalendar {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
@@ -9,21 +9,27 @@ table {
 	margin-bottom: 15%;
 }
 
-th {
+.thCalendar {
 	text-align: center;
 	width: 70px;
 }
 
-td {
-	height: 100px;
-}
+
+
 
 .numberCalendar {
 	text-align: center;
+	color: black;
 }
 
 .case {
 	border: 1px solid black;
+	height: 100px;
+	cursor: pointer;
+}
+
+.case:hover {
+	background-color: #8080806e;
 }
 
 #content {
@@ -66,6 +72,10 @@ td {
 
 #today {
 	background-color: #609beb85;
+}
+
+#today:hover {
+	background-color: #609bebe6;
 }
 
 #linkToday {
