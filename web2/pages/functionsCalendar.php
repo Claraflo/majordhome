@@ -22,9 +22,9 @@ function calendar($month, $year)
 
 	$nombre_de_jour = cal_days_in_month(CAL_GREGORIAN, $month, $year);
 
-	echo "<table>";
+	echo "<table id='tableCalendar'>";
 
-	echo "<tr><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th><th>Dimanche</th></tr>";
+	echo "<tr><th class='thCalendar'>Lundi</th><th class='thCalendar'>Mardi</th><th class='thCalendar'>Mercredi</th><th class='thCalendar'>Jeudi</th><th class='thCalendar'>Vendredi</th><th class='thCalendar'>Samedi</th><th class='thCalendar'>Dimanche</th></tr>";
 
 	for ($i=1; $i <= $nombre_de_jour ; $i++)
 	{ 

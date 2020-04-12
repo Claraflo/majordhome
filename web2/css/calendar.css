@@ -1,7 +1,7 @@
 
 
 
-table {
+#tableCalendar {
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
@@ -9,19 +9,12 @@ table {
 	margin-bottom: 15%;
 }
 
-th {
+.thCalendar {
 	text-align: center;
 	width: 70px;
 }
 
-td {
-	height: 100px;
-	cursor: pointer;
-}
 
-td:hover {
-	background-color: #8080806e;
-}
 
 
 .numberCalendar {
@@ -31,6 +24,12 @@ td:hover {
 
 .case {
 	border: 1px solid black;
+	height: 100px;
+	cursor: pointer;
+}
+
+.case:hover {
+	background-color: #8080806e;
 }
 
 #content {
