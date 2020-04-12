@@ -16,10 +16,17 @@ th {
 
 td {
 	height: 100px;
+	cursor: pointer;
 }
+
+td:hover {
+	background-color: #8080806e;
+}
+
 
 .numberCalendar {
 	text-align: center;
+	color: black;
 }
 
 .case {
@@ -66,6 +73,10 @@ td {
 
 #today {
 	background-color: #609beb85;
+}
+
+#today:hover {
+	background-color: #609bebe6;
 }
 
 #linkToday {

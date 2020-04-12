@@ -51,11 +51,11 @@ function calendar($month, $year)
             }
 
 			if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
-                echo "<td class='case' id='today'><p class='numberCalendar'>" . $i . "</p></td></tr>";
+                echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td></tr>";
             }else if ($count != 0){
-                echo "<td class='case'><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td></tr>";
+                echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td></tr>";
             }else{
-                echo "<td class='case'><p class='numberCalendar'>" . $i . "</p></td></tr>";
+                echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td></tr>";
             }
 
 		}elseif ($i == 1)
@@ -82,11 +82,11 @@ function calendar($month, $year)
             }
 
             if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
-                echo "<td class='case' id='today'><p class='numberCalendar'>" . $i . "</p></td>";
+                echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td>";
             }else if ($count != 0){
-                echo "<td class='case'><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td>";
+                echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td>";
             }else{
-                echo "<td class='case'><p class='numberCalendar'>" . $i . "</p></td>";
+                echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td>";
             }
 
 
@@ -112,11 +112,11 @@ function calendar($month, $year)
             }
 
             if ($i == $dayToday && $month == $monthToday && $year == $yearToday){
-                echo "<td class='case' id='today'><p class='numberCalendar'>" . $i . "</p></td>";
+                echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td>";
             }else if ($count != 0){
-                echo "<td class='case'><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td>";
+                echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><span class='badge badge-primary'>".$count."</span><p class='numberCalendar'>".$i."</p></td>";
             }else{
-                echo "<td class='case'><p class='numberCalendar'>" . $i . "</p></td>";
+                echo "<td class='case' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td>";
             }
 
 
