@@ -76,12 +76,7 @@ $connect=  connectDb();
                 $fill = !$fill;
                 $this->Cell(185, 6, 'Prix total de la prestation : ' . ($row[1] / 100) . ' euros', 'LR', 0, 'L', $fill);
                 $this->Ln();
-                $fill = !$fill;
-                $this->Cell(185, 6, 'Somme deja versee  : ' . ($row[2] / 100) . ' euros', 'LR', 0, 'L', $fill);
-                $this->Ln();
-                $fill = !$fill;
-                $this->Cell(185, 6, 'Reste somme due : ' . ($row[3] / 100) . ' euros', 'LR', 0, 'L', $fill);
-                $this->Ln();
+               
 
             }
             // Line of the end
@@ -104,12 +99,12 @@ $connect=  connectDb();
     $header = array('Details');
 
 
-        $query = $connect->query("SELECT service.nom,prixTotal,sommeVersee,sommeRestante FROM facture, souscription_service, service WHERE FK_idSouscriptionService=" . $_GET["id"] . " AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService");
+        $query = $connect->query("SELECT service.nom,prixTotal,sommeVersee,sommeRestante,idFacture FROM facture, souscription_service, service WHERE FK_idSouscriptionService=" . $_GET["id"] . " AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService");
   
     $query->execute();
     $data = $query->fetchAll(PDO::FETCH_BOTH);
 
-
+    
 
     //Creation of pdf
     $pdf = new pdf();
@@ -119,7 +114,7 @@ $connect=  connectDb();
     $pdf->SetDrawColor(170, 149, 111);
     // $pdf->Cell(100, 20, 'Client : ' . $_SESSION['user']['nom'] . ' ' . $_SESSION['user']['prenom'], 1, 0, 'C');
     $pdf->ln(5);
-    $pdf->Cell(100, 20, 'Code souscription : ' . $_GET["id"], 0, 0, 'C');
+    $pdf->Cell(100, 20, 'Numero facture : ' . $data[0]['idFacture'], 0, 0, 'L');
     // $pdf->Cell(100, 20, 'Date Emission : ' . $date, 0, 0, 'C');
     $pdf->ln(30);
     $pdf->FancyTABLE($header, $data);
