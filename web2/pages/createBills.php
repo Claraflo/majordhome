@@ -58,8 +58,8 @@ $connect=  connectDb();
             $this->SetFillColor(35, 39, 45);
             $this->SetTextColor(170, 149, 111);
             $this->SetDrawColor(170, 149, 111);
-            $this->SetLineWidth(.3);
-            $this->SetFont('', 'B');
+            // $this->SetLineWidth(.3);
+           
             // En-tête
             for ($i = 0; $i < count($header); $i++)
                 $this->Cell(185, 7, $header[$i], 1, 0, 'C', true);
@@ -75,6 +75,9 @@ $connect=  connectDb();
                 $this->Ln();
                 $fill = !$fill;
                 $this->Cell(185, 6, 'Prix total de la prestation : ' . ($row[1] / 100) . ' euros', 'LR', 0, 'L', $fill);
+                $this->Ln();
+                $fill = !$fill;
+                $this->Cell(185, 6, '20 % de la prestation : ' . (($row[1] / 100) * (20 /100) ) . ' euros', 'LR', 0, 'L', $fill);
                 $this->Ln();
                
 
@@ -93,16 +96,25 @@ $connect=  connectDb();
 
     foreach ($results as $result) {
         $date = $result["date"];
-        $price = $result["prixTotal"] / 100;
+        $price = (($result["prixTotal"] / 100) * (20 /100));
     }
     $stringDevice = " euros";
-    $header = array('Details');
+    $header = array('DETAILS');
 
 
-        $query = $connect->query("SELECT service.nom,prixTotal,sommeVersee,sommeRestante,idFacture FROM facture, souscription_service, service WHERE FK_idSouscriptionService=" . $_GET["id"] . " AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService");
+        $query = $connect->query("SELECT service.nom,prixTotal,idFacture FROM facture, souscription_service, service WHERE FK_idSouscriptionService=" . $_GET["id"] . " AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService");
   
     $query->execute();
     $data = $query->fetchAll(PDO::FETCH_BOTH);
+
+
+     $ok = $connect->prepare("SELECT nom,prenom FROM personne , souscription_service  WHERE idSouscriptionService=" . $_GET["id"] . " AND FK_idPrestataire = idPersonne ");
+  
+    $ok->execute();
+    $workers = $ok->fetch(PDO::FETCH_ASSOC);
+
+
+   
 
     
 
@@ -112,15 +124,19 @@ $connect=  connectDb();
     $pdf->SetFont('Arial', '', 14);
     $pdf->ln(20);
     $pdf->SetDrawColor(170, 149, 111);
-    // $pdf->Cell(100, 20, 'Client : ' . $_SESSION['user']['nom'] . ' ' . $_SESSION['user']['prenom'], 1, 0, 'C');
-    $pdf->ln(5);
+
+
+    $pdf->Cell(100, 20, 'Prestataire : ' . $workers['nom'] . ' ' .$workers['prenom'], 0, 0, 'L');
+    $pdf->ln(15);
     $pdf->Cell(100, 20, 'Numero facture : ' . $data[0]['idFacture'], 0, 0, 'L');
-    // $pdf->Cell(100, 20, 'Date Emission : ' . $date, 0, 0, 'C');
+    $pdf->ln(15);
+    $pdf->setFillColor(0,0,0);
+    $pdf->Cell(0,0,'',0,1,'L',true);
     $pdf->ln(30);
     $pdf->FancyTABLE($header, $data);
     $pdf->ln(20);
     $pdf->SetX(-100);
-    // $pdf->Cell(80, 20, 'Prix Total : ' . $price . $stringDevice, 1, 0, 'C');
+    $pdf->Cell(80, 20, 'A PAYER : ' . $price . $stringDevice, 1, 0, 'C');
 
     // file name
     $nom = 'Facture-' . $_GET['id'] . '.pdf';
