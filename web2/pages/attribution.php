@@ -19,11 +19,12 @@ $date = explode('-', $date);
 
 
 
-<table class="table table-borderless" id="tableAttribution">
+<table class="table table-striped" id="tableAttribution">
     <thead>
     <tr>
         <th scope="col">Client</th>
         <th scope="col">Date Réservation</th>
+        <th scope="col">Date Intervention</th>
         <th scope="col">Attribution</th>
     </tr>
     </thead>
