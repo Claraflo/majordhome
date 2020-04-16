@@ -25,6 +25,7 @@ $date = explode('-', $date);
         <th scope="col">Client</th>
         <th scope="col">Date Réservation</th>
         <th scope="col">Date Intervention</th>
+        <th scope="col">Durée</th>
         <th scope="col">Attribution</th>
     </tr>
     </thead>
