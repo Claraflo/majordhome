@@ -44,10 +44,10 @@ if (!empty($_SESSION["dateService"])) {
     <form method="post" action="paymentService.php">
         <div class="container borderSubscription">
             <label for="intervention" class="lab area">Date et heure de l'intervention</label>
-            <input name="intervention" type="datetime-local"id="intervention" class="form-control inputRegister" required="">
+            <input name="intervention" type="datetime-local" id="intervention" class="form-control inputRegister" required="">
 
             <label for="time" class="lab area">Durée</label>
-            <input name="time" type="time"id="time" class="form-control inputRegister" required="">
+            <input name="time" type="time" id="time" class="form-control inputRegister" required="">
             <?php
                 foreach ($req->fetchAll() as $caracteristique) {
                     $idCaracteristique[] = $caracteristique['idCaracteristique'];
