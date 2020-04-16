@@ -10,11 +10,13 @@ function calendar($month, $year)
         $month = '0'.$month;
     }
 
-    $obj = json('souscription_service.json');
-    for ($i = 0; $i < count($obj); $i++){
-        $explode = explode(' ', $obj[$i]-> dateIntervention);
-        $dateService[$i] = $explode[0];
-    }
+
+    $connect = connectDb();
+
+    $data = $connect->query("SELECT dateIntervention FROM souscription_service WHERE statutReservation = 0");
+
+    $rows = $data->fetchAll(PDO::FETCH_ASSOC);
+
 
     $dayToday = date('d');
     $monthToday = date('m');
@@ -44,11 +46,14 @@ function calendar($month, $year)
 
             $count = 0;
 
-            for ($j = 0; $j < count($dateService); $j++){
-                if($date == $dateService[$j]){
+
+            foreach ($rows as $row) {
+                $dateExplode = explode(' ',$row['dateIntervention']);
+                if($date == $dateExplode[0]){
                     $count++;
                 }
             }
+
 
 			if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count == 0){
                 echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td></tr>";
@@ -77,11 +82,13 @@ function calendar($month, $year)
 
             $count = 0;
 
-            for ($j = 0; $j < count($dateService); $j++){
-                if($date == $dateService[$j]){
+            foreach ($rows as $row) {
+                $dateExplode = explode(' ',$row['dateIntervention']);
+                if($date == $dateExplode[0]){
                     $count++;
                 }
             }
+
 
             if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count == 0){
                 echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td>";
@@ -109,11 +116,13 @@ function calendar($month, $year)
 
             $count = 0;
 
-            for ($j = 0; $j < count($dateService); $j++){
-                if($date == $dateService[$j]){
+            foreach ($rows as $row) {
+                $dateExplode = explode(' ',$row['dateIntervention']);
+                if($date == $dateExplode[0]){
                     $count++;
                 }
             }
+
 
             if ($i == $dayToday && $month == $monthToday && $year == $yearToday && $count == 0){
                 echo "<td class='case' id='today' onclick=\"location.href='attribution.php?date=".$year."-".$month."-".$i."'\"><p class='numberCalendar'>" . $i . "</p></td>";
