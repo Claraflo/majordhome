@@ -46,11 +46,9 @@ foreach ($rows as $row) {
                 if (!empty($tabTime)){
                     for ($i = 0; $i < count($tabTime); $i++){
 
-                        $timePositif = strtotime('1:00:00');
-                        $timeNegatif = strtotime('23:00:00');
                         $resultSoustraction = date('H:i:s', strtotime($timeService[1]) - strtotime($tabTime[$i]));//Soustraction
-                        echo $resultSoustraction;
-                        if (date('H:i:s',$resultSoustraction) < date('H:i:s', $timePositif) || date('H:i:s',$resultSoustraction) >= date('H:i:s', $timeNegatif)){
+
+                        if ((strtotime($resultSoustraction) <= strtotime('1:00:00') && strtotime($resultSoustraction) >= strtotime('00:00:01')) || (strtotime($resultSoustraction) >= strtotime('23:00:00') && strtotime($resultSoustraction) <= strtotime('23:59:59')) || (strtotime($resultSoustraction) == strtotime('00:0:00'))){
                             $countSoustraction = 1;
                         }
                     }
