@@ -65,13 +65,18 @@ function checkId($idSouscriptionAbonnement, $connect)
     }
 }
 
+$data = $connect->prepare("SELECT temps FROM abonnement WHERE idAbonnement = ".$idSubscription);
+$data->execute(array());
+$numberServices = $data->fetch();
 
-$req = $connect->prepare('INSERT INTO souscription_abonnement(idSouscriptionAbonnement, dateFin, FK_idPersonne, FK_idAbonnement, statut) VALUES(:idSouscriptionAbonnement, :date, :FK_idPersonne, :FK_idSubscription, :statut)');
+
+$req = $connect->prepare('INSERT INTO souscription_abonnement(idSouscriptionAbonnement, dateFin, FK_idPersonne, FK_idAbonnement, statut, nombreServices) VALUES(:idSouscriptionAbonnement, :date, :FK_idPersonne, :FK_idSubscription, :statut, :nombreServices)');
 $req->execute([':idSouscriptionAbonnement' => $idSouscriptionAbonnement,
     ':date' => $endTime,
     ':FK_idPersonne' => $_SESSION['idCustomer'],
     ':FK_idSubscription' => $idSubscription,
-    ':statut' => 0
+    ':statut' => 0,
+    ':nombreServices'=> $numberServices['temps']
 ]);
 
 if ($number != 1) {
