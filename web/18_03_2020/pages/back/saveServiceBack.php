@@ -75,6 +75,26 @@ if ($valueService[0] < date('Y-m-d')) {
     $_SESSION["dateService"] = 'Vous ne pouvez pas choisir une date ultérieure';
     header('Location: registerServicesBack.php?id='.$idService);
 }else {
+
+    $req = $connect->prepare("SELECT nombreServices FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne =" . $_SESSION['idCustomer']);
+    $req->execute(array());
+    $numberService = $req->fetch();
+
+    if ($numberService['nombreServices'] == 0) {
+        $_SESSION["service"] = 'Le client a épuisé son abonnement';
+        header('Location: reservationBack.php?id='.$_SESSION['idCustomer']);
+    }
+
+    if ($numberService['nombreServices']>0) {
+        $numberService['nombreServices']--;
+    }
+
+    $req = $connect->prepare("UPDATE souscription_abonnement set nombreServices =:nombreServices WHERE FK_idPersonne =:id AND statut =:statut;");
+    $req->execute([':nombreServices' => $numberService['nombreServices'],
+        ':id' => $_SESSION['idCustomer'],
+        ':statut' => 0
+    ]);
+
     $req = $connect->prepare('INSERT INTO souscription_service(FK_idPersonne, FK_idService, dateIntervention, duree, idSouscriptionService, statutReservation) VALUES(:FK_idPersonne, :FK_idService, :dateIntervention, :duree, :idSouscriptionService, :statutReservation)');
     $req->execute([':FK_idPersonne' => $_SESSION['idCustomer'],
         ':FK_idService' => $idService,
@@ -130,10 +150,10 @@ if ($valueService[0] < date('Y-m-d')) {
             ]);
         }
     } else {
-        $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService,, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService, :dateFinFacturation, :nombreEcheance)');
+        $req = $connect->prepare('INSERT INTO facture(prixTotal, sommeVersee, sommeRestante, statut, FK_idPersonne, FK_idSouscriptionService, dateFinFacturation, nombreEcheance) VALUES(:prixTotal, :sommeVersee, :sommeRestante, :statut, :FK_idPersonne, :FK_idSouscriptionService, :dateFinFacturation, :nombreEcheance)');
         $req->execute([':prixTotal' => $priceService,
-            ':sommeVersee' => 0,
-            ':sommeRestante' => $priceService,
+            ':sommeVersee' => $priceService,
+            ':sommeRestante' => 0,
             ':statut' => 1,
             ':FK_idPersonne' => $_SESSION['idCustomer'],
             ':FK_idSouscriptionService' => $idSouscriptionService,
@@ -151,12 +171,12 @@ if ($valueService[0] < date('Y-m-d')) {
 
         $data = $connect->prepare('INSERT INTO versement(date, somme, statut, FK_idFacture) VALUES(:date, :somme, :statut, :FK_idFacture)');
         $data->execute([':date' => $date->format('Y-m-d H:i:s'),
-            ':somme'=> 0,
-            ':statut'=> 0,
+            ':somme'=> $priceService,
+            ':statut'=> 1,
             ':FK_idFacture'=> $invoice['idFacture']
         ]);
     }
 
-    header('Location: reservationBack.php?id=' . $_SESSION['idCustomer']);
+    //header('Location: reservationBack.php?id=' . $_SESSION['idCustomer']);
 }
 ?>

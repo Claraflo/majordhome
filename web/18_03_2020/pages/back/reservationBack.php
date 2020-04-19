@@ -18,6 +18,13 @@ if (!empty($_SESSION["service"])) {
     echo "</div>";
     unset($_SESSION["service"]);
 }
+
+if (!empty($_SESSION["numberService"])) {
+    echo "<div class='alert alert-danger'>";
+    echo "<li>" . $_SESSION['numberService'];
+    echo "</div>";
+    unset($_SESSION["numberService"]);
+}
 ?>
 
 

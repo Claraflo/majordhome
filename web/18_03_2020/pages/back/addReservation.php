@@ -5,7 +5,7 @@ if (!isset($_SESSION['idCustomer'])){
     header('Location: customer.php');
 }
 
-$req = $connect->prepare("SELECT idSouscriptionAbonnement type FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne =".$_SESSION['idCustomer']);
+$req = $connect->prepare("SELECT nombreServices FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne =".$_SESSION['idCustomer']);
 $req->execute(array());
 $count = $req->rowCount();
 
@@ -13,6 +13,14 @@ if ($count == 0){
     $_SESSION["service"] = 'Le client ne possède pas d\'abonnement';
     header('Location: reservationBack.php?id='.$_SESSION['idCustomer']);
 }
+
+foreach ($req->fetchAll() as $numberService) {
+    if ($numberService['nombreServices'] == 0){
+        $_SESSION["numberService"] = 'Le client a épuisé son abonnement';
+        header('Location: reservationBack.php?id='.$_SESSION['idCustomer']);
+    }
+}
+
 ?>
 
 

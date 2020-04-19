@@ -8,7 +8,7 @@ if(!empty($_GET)){
     $id = 0;
 }
 
-$req = $connect->prepare("SELECT idSouscriptionAbonnement type FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
+$req = $connect->prepare("SELECT nombreServices FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
 $req->execute(array());
 $count = $req->rowCount();
 
@@ -17,6 +17,12 @@ if ($count == 0){
     header('Location: services.php');
 }
 
+foreach ($req->fetchAll() as $numberService) {
+    if ($numberService['nombreServices'] == 0){
+        $_SESSION["numberService"] = 'Vous avez épuisé votre abonnement';
+        header('Location: services.php');
+    }
+}
 $req = $connect->prepare("SELECT idCaracteristique, nom, type FROM caracteristique WHERE idService = $id");
 $req->execute(array());
 
