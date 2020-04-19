@@ -16,7 +16,7 @@ if(count($_POST) >= 11 && count($_POST) <=12
     && !empty($_POST['timeStart'])
     && !empty($_POST['timeEnd'])
 ){
-
+    $errors = [];
 
     $title = trim($_POST['title']);
     $priceEur = trim($_POST['priceEur']);
@@ -27,14 +27,17 @@ if(count($_POST) >= 11 && count($_POST) <=12
     $description = trim($_POST['description']);
     $week = trim($_POST['week']);
     if(!empty($_POST['unlimited'])) {
-        $time = 730;
+        $time = -1;
     }else if (!empty($_POST['time'])){
-        $time = trim($_POST['time']);;
+        $time = trim($_POST['time']);
+        if(!empty($time) && !preg_match('/^[0-9]+$/', $time)) {
+            $errors['time'] = "Le nombre de services par mois n'est pas valide.";
+        }
     }
     $timeStart = trim($_POST['timeStart']);
     $timeEnd = trim($_POST['timeEnd']);
 
-    $errors = [];
+
 
     if (empty($_POST['unlimited']) && empty($_POST['time'])){
         $errors['unlimited'] = "Vous devez choisir un nombre d'heures";
@@ -80,9 +83,6 @@ if(count($_POST) >= 11 && count($_POST) <=12
         $errors['week'] = "Le nombre de jours par semaine n'est pas valide.";
     }
 
-    if(!empty($time) && !preg_match('/^[0-9]+$/', $time)) {
-        $errors['time'] = "Le nombre d'heures par mois n'est pas valide.";
-    }
 
     if(!empty($timeStart) && !preg_match('/^[0-9]{1,2}$/', $timeStart)) {
         $errors['timeStart'] = "L'heure de début n'est pas valide.";
@@ -134,7 +134,7 @@ if(count($_POST) >= 11 && count($_POST) <=12
 }else{
     $Hack[] = "Tentative de hack detectée";
     $_SESSION["hackFormAuth"] = $Hack;
-    //header("Location: createSubscription.php");
+    header("Location: createSubscription.php");
     exit;
 }
 

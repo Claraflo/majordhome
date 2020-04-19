@@ -76,7 +76,7 @@ if ($subscription['prix']%100 == 0){
 
 
                 <div class="col-md-6">
-                    <label for="time">Nombre d'heures autorisées par mois *</label>
+                    <label for="time">Nombre de services par mois</label>
                     <input id="time" type="number" class="form-control" required="required" name="time" placeholder="5" value="<?php echo isset($_SESSION["dataFormAuth"]["time"])?$_SESSION["dataFormAuth"]["time"]:$subscription['temps'] ?>">
                 </div>
 
@@ -95,7 +95,7 @@ if ($subscription['prix']%100 == 0){
 
             <div class="custom-control custom-checkbox">
                 <input name="unlimited" type="checkbox" class="custom-control-input" id="unlimited">
-                <label class="custom-control-label" for="unlimited">Nombre d'heures illimité</label>
+                <label class="custom-control-label" for="unlimited">Nombre de services illimités</label>
             </div>
 
             <div class="row pt-4">

@@ -38,7 +38,11 @@ if (!empty($_SESSION["subscription"])) {
                                 echo '<ul class="list-unstyled mt-3 mb-4">';
                                     echo "<li class='liSubscription'>Bénéficiez d'un accès privilégié en illimité ".$subscription['semaine']."j/7, ".$subscription['debutTemps']."h/h".$subscription['finTemps'];
                                     echo '<li class="liSubscription">'.$subscription['description'];
-                                    echo '<li class="liSubscription">'.$subscription['temps'].'h de services/mois';
+                                    if ($subscription['temps'] == -1){
+                                        echo '<li class="liSubscription">Nombre de services illimités';
+                                    }else{
+                                        echo '<li class="liSubscription">'.$subscription['temps'].' services/mois';
+                                    }
                                 echo '</ul>';
                                 echo '<a class="btnSubscription" href="checkSubscription.php?id='.$subscription['idAbonnement'].'">Payer</a>';
                             echo '</div>';

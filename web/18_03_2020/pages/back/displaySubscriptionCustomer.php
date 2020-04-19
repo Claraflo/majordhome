@@ -25,7 +25,11 @@ foreach ($rows as $row) {
                 echo '<ul class="list-unstyled mt-3 mb-4">';
                     echo "<li class='liSubscription'>Bénéficiez d'un accès privilégié en illimité ".$row['semaine']."j/7, ".$row['debutTemps']."h/h".$row['finTemps'];
                     echo '<li class="liSubscription">'.$row['description'];
-                    echo '<li class="liSubscription">'.$row['temps'].'h de services/mois';
+                    if ($row['temps'] == -1){
+                        echo '<li class="liSubscription">Nombre de services illimités';
+                    }else{
+                        echo '<li class="liSubscription">'.$row['temps'].' services/mois';
+                    }
                 echo '</ul>';
                 echo '<button class="btn btn-danger my-danger" onclick="show(\'' . $row["idSouscriptionAbonnement"] . '\')">Supprimer</button>';
             echo '</div>';
