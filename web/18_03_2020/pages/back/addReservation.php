@@ -4,6 +4,15 @@ require "headerBack.php";
 if (!isset($_SESSION['idCustomer'])){
     header('Location: customer.php');
 }
+
+$req = $connect->prepare("SELECT idSouscriptionAbonnement type FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne =".$_SESSION['idCustomer']);
+$req->execute(array());
+$count = $req->rowCount();
+
+if ($count == 0){
+    $_SESSION["service"] = 'Le client ne possède pas d\'abonnement';
+    header('Location: reservationBack.php?id='.$_SESSION['idCustomer']);
+}
 ?>
 
 

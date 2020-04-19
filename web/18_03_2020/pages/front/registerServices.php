@@ -8,6 +8,15 @@ if(!empty($_GET)){
     $id = 0;
 }
 
+$req = $connect->prepare("SELECT idSouscriptionAbonnement type FROM souscription_abonnement WHERE statut = 0 AND FK_idPersonne =".$_SESSION['user']['idPersonne']);
+$req->execute(array());
+$count = $req->rowCount();
+
+if ($count == 0){
+    $_SESSION["service"] = 'Vous ne possédez pas d\'abonnement';
+    header('Location: services.php');
+}
+
 $req = $connect->prepare("SELECT idCaracteristique, nom, type FROM caracteristique WHERE idService = $id");
 $req->execute(array());
 

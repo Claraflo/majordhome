@@ -11,6 +11,13 @@ if(!empty($_SESSION["confirmFormAuth"])){
     echo "</div>";
     unset($_SESSION["confirmFormAuth"]);
 }
+
+if (!empty($_SESSION["service"])) {
+    echo "<div class='alert alert-danger'>";
+    echo "<li>" . $_SESSION['service'];
+    echo "</div>";
+    unset($_SESSION["service"]);
+}
 ?>
 
 
