@@ -7,13 +7,12 @@ if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION[
 
 require("../functions.php");
 $connect = connectDb();
-
-if(count($_POST) == 11
+echo count($_POST);
+if(count($_POST) >= 11 && count($_POST) <=12
     && !empty($_POST['title'])
     && !empty($_POST['priceEur'])
     && !empty($_POST['description'])
     && !empty($_POST['week'])
-    && !empty($_POST['time'])
     && !empty($_POST['timeStart'])
     && !empty($_POST['timeEnd'])
 ){
@@ -27,11 +26,19 @@ if(count($_POST) == 11
     $days = trim($_POST['days']);
     $description = trim($_POST['description']);
     $week = trim($_POST['week']);
-    $time = trim($_POST['time']);
+    if(!empty($_POST['unlimited'])) {
+        $time = 730;
+    }else if (!empty($_POST['time'])){
+        $time = trim($_POST['time']);;
+    }
     $timeStart = trim($_POST['timeStart']);
     $timeEnd = trim($_POST['timeEnd']);
 
     $errors = [];
+
+    if (empty($_POST['unlimited']) && empty($_POST['time'])){
+        $errors['unlimited'] = "Vous devez choisir un nombre d'heures";
+    }
 
 
     $data = $connect->query("SELECT nom FROM abonnement WHERE nom = '$title' && statut = 0");
@@ -127,7 +134,7 @@ if(count($_POST) == 11
 }else{
     $Hack[] = "Tentative de hack detectée";
     $_SESSION["hackFormAuth"] = $Hack;
-    header("Location: createSubscription.php");
+    //header("Location: createSubscription.php");
     exit;
 }
 

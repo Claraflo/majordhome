@@ -10,12 +10,11 @@ $connect = connectDb();
 
 $id = $_SESSION['id'];
 
-if(count($_POST) == 11
+if(count($_POST) >= 11 && count($_POST) <=12
     && !empty($_POST['title'])
     && !empty($_POST['priceEur'])
     && !empty($_POST['description'])
     && !empty($_POST['week'])
-    && !empty($_POST['time'])
     && !empty($_POST['timeStart'])
     && !empty($_POST['timeEnd'])
 ){
@@ -31,7 +30,11 @@ if(count($_POST) == 11
     $days = trim($_POST['days']);
     $description = trim($_POST['description']);
     $week = trim($_POST['week']);
-    $time = trim($_POST['time']);
+    if(!empty($_POST['unlimited'])) {
+        $time = 730;
+    }else if (!empty($_POST['time'])){
+        $time = trim($_POST['time']);;
+    }
     $timeStart = trim($_POST['timeStart']);
     $timeEnd = trim($_POST['timeEnd']);
     $id = trim($id);

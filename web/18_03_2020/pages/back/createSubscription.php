@@ -51,6 +51,12 @@ require "headerBack.php";
 
             <div class="row pt-4">
 
+
+                <div class="col-md-6">
+                    <label for="time">Nombre d'heures autorisées par mois *</label>
+                    <input name="time" type="number" id="time" class="form-control inputRegister" placeholder="5" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["days"])?$_SESSION["dataFormAuth"]["days"]:"" ?>">
+                </div>
+
                 <div class="col-md-6">
                     <label for="week">Nombre de jours par semaine *</label>
                     <select name="week" id="week" class="custom-select d-block w-100">
@@ -62,11 +68,12 @@ require "headerBack.php";
                     </select>
                 </div>
 
-                <div class="col-md-6">
-                    <label for="time">Nombre d'heures autorisées par mois *</label>
-                    <input name="time" type="number" id="time" class="form-control inputRegister" placeholder="5" required="" autocomplete="off" value="<?php echo isset($_SESSION["dataFormAuth"]["days"])?$_SESSION["dataFormAuth"]["days"]:"" ?>">
-                </div>
 
+            </div>
+
+            <div class="custom-control custom-checkbox">
+                <input name="unlimited" type="checkbox" class="custom-control-input" id="unlimited">
+                <label class="custom-control-label" for="unlimited">Nombre d'heures illimité</label>
             </div>
 
             <div class="row pt-4">
