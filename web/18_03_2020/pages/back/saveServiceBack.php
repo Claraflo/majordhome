@@ -177,6 +177,6 @@ if ($valueService[0] < date('Y-m-d')) {
         ]);
     }
 
-    //header('Location: reservationBack.php?id=' . $_SESSION['idCustomer']);
+    header('Location: reservationBack.php?id=' . $_SESSION['idCustomer']);
 }
 ?>
