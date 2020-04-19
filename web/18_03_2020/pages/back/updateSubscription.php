@@ -34,7 +34,7 @@ if(count($_POST) >= 11 && count($_POST) <=12
         $time = -1;
     }else if (!empty($_POST['time'])){
         $time = trim($_POST['time']);
-        if(!empty($time) && !preg_match('/^-[0-9]+$/', $time)) {
+        if(!empty($time) && !preg_match('/^[0-9]+$/', $time)) {
             $errors['time'] = "Le nombre de services par mois n'est pas valide.";
         }
     }
