@@ -3,10 +3,15 @@ require("header.php");
 
 $connect = connectDb();
 
-$queryPrepared = $connect->prepare('SELECT s.idSouscriptionService , DATE_FORMAT(s.dateIntervention,"%d/%m/%Y %H:%m") AS dateIntervention ,p.nom ,p.prenom,serv.nom AS nomService FROM souscription_service s, personne p, service serv WHERE s.FK_idService = serv.idService AND  s.FK_idPersonne = p.idPersonne AND s.statutReservation = 2');
+ $queryPrepared = $connect->prepare('SELECT s.idSouscriptionService , DATE_FORMAT(s.dateIntervention,"%d/%m/%Y %H:%m") AS dateIntervention ,p.nom ,p.prenom,serv.nom AS nomService FROM souscription_service s, personne p, service serv WHERE s.FK_idService = serv.idService AND  s.FK_idPersonne = p.idPersonne AND s.dateIntervention < NOW()');
+
+
 $queryPrepared->execute();
 
 $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 
 
 ?>
