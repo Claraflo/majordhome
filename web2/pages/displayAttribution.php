@@ -23,20 +23,21 @@ foreach ($rows as $row) {
         echo '<td>' . $row['dateReservation'] . '</td>';
         echo '<td>' . $row['dateIntervention'] . '</td>';
         echo '<td>' . $row['duree'] . '</td>';
-        $timeService = explode(' ', $row['dateIntervention']);
+        $timeService = explode(' ', $row['dateIntervention']); //Client
 
         echo '<td>';
         if (empty($row['FK_idPrestataire'])) { //Si il n'y a pas de presta
             echo '<select id="' . $row["idPersonne"] . '" class="custom-select d-block w-100">';
 
             foreach ($rowsReq as $rowReq) {
-                $result = $connect->query("SELECT dateIntervention FROM  souscription_service WHERE statutReservation = 0 AND FK_idPrestataire =".$rowReq['idPersonne']); //Vérification de l'horaire
+                $result = $connect->query("SELECT dateIntervention, duree FROM  souscription_service WHERE statutReservation = 0 AND FK_idPrestataire =".$rowReq['idPersonne']); //Vérification de l'horaire
                 $resultData = $result->fetchAll(PDO::FETCH_ASSOC);
 
                 $tabTime = [];
 
                 foreach ($resultData as $resData) {
-                    $time = explode(' ', $resData['dateIntervention']); //Récup heures
+                    $time = explode(' ', $resData['dateIntervention']); //Récup heures Presta
+                    $timeIntervention = $resData['duree'];
                     if ($time[0] == $date){
                         $tabTime[] = $time[1];
                     }
@@ -46,11 +47,34 @@ foreach ($rows as $row) {
                 if (!empty($tabTime)){
                     for ($i = 0; $i < count($tabTime); $i++){
 
-                        $resultSoustraction = date('H:i:s', strtotime($timeService[1]) - strtotime($tabTime[$i]));//Soustraction
+                        if (!empty($timeIntervention)) {
+                            $dateTime = new DateTime($tabTime[$i]);//On ajoute la durée à l'heure
+                            $rowExplode = explode(':', $timeIntervention);
+                            $dateTime->add(new DateInterval('PT' . $rowExplode[0] . 'H'));
+                            $dateTime->add(new DateInterval('PT' . $rowExplode[1] . 'M'));
+                            $resultSoustraction = date('H:i:s', strtotime($timeService[1]) - strtotime($dateTime->format('H:i:s')));//Soustraction
 
-                        if ((strtotime($resultSoustraction) <= strtotime('1:00:00') && strtotime($resultSoustraction) >= strtotime('00:00:01')) || (strtotime($resultSoustraction) >= strtotime('23:00:00') && strtotime($resultSoustraction) <= strtotime('23:59:59')) || (strtotime($resultSoustraction) == strtotime('00:0:00'))){
-                            $countSoustraction = 1;
+
+                            $dateTimeInvers = new DateTime($timeService[1]);//On ajoute la durée à l'heure
+                            $rowExplodeInvers = explode(':', $row['duree']);
+                            $dateTimeInvers->add(new DateInterval('PT' . $rowExplodeInvers[0] . 'H'));
+                            $dateTimeInvers->add(new DateInterval('PT' . $rowExplodeInvers[1] . 'M'));
+                            $resultSoustractionInvers = date('H:i:s', strtotime($dateTimeInvers->format('H:i:s')) - strtotime($tabTime[$i]));//Soustraction
+
+                            if ((strtotime($resultSoustraction) <= strtotime('00:30:00') && strtotime($resultSoustraction) >= strtotime('00:00:01')) || (strtotime($resultSoustractionInvers) >= strtotime('23:30:00') && strtotime($resultSoustractionInvers) <= strtotime('23:59:59')) || (strtotime($resultSoustraction) == strtotime('00:00:00')) || (strtotime($resultSoustractionInvers) == strtotime('00:00:00'))){
+                                $countSoustraction = 1;
+                            }
+
+                        }else{
+                            $resultSoustraction = date('H:i:s', strtotime($timeService[1]) - strtotime($tabTime[$i]));//Soustraction
+
+                            if ((strtotime($resultSoustraction) <= strtotime('01:00:00') && strtotime($resultSoustraction) >= strtotime('00:00:01')) || (strtotime($resultSoustraction) >= strtotime('23:00:00') && strtotime($resultSoustraction) <= strtotime('23:59:59')) || (strtotime($resultSoustraction) == strtotime('00:00:00'))){
+                                $countSoustraction = 1;
+                            }
                         }
+
+
+
                     }
                 }
                 if ($countSoustraction != 1){
