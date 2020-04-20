@@ -16,6 +16,20 @@ $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 echo '<div class="container">';
 
 foreach ($rows as $row) {
+
+    $req = $connect->query("SELECT statut FROM versement WHERE FK_idFacture =".$row['idFacture']);
+    $result = $req->fetchAll(PDO::FETCH_ASSOC);
+    $countPayment = $req->rowCount();
+
+    $count = 0;
+
+    foreach ($result as $results) {
+        if ($results['statut'] == 1){
+            $count ++;
+        }
+    }
+
+
     echo '<tr>';
     echo'<td>'.$row["nom"].'</td>';
     echo '<td>'.$row["dateReservation"].'</td>';
@@ -33,6 +47,7 @@ foreach ($rows as $row) {
     }else if ($row['statut'] == 1){
         echo '<td id="green"><b>Payer</b></td>';
     }
+    echo '<td>'.$count.'/'.$countPayment.'</td>';
     echo '<td>';
     if($row['statutReservation'] == 0) {
         echo '<a class="btn btn-primary my-primary" href="modificationReservationBack.php?id=' . $row['idSouscriptionService'] . '">Modifier</a>';
