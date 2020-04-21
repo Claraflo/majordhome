@@ -2,7 +2,7 @@
 require('headerBack.php');
 $connect = connectDb();
 
-$queryPrepared = $connect->prepare('SELECT s.idSouscriptionService , DATE_FORMAT(s.dateReservation,"%d/%m/%Y %H:%m") AS dateReservation ,p.nom ,p.prenom FROM souscription_service s, personne p WHERE s.FK_idPersonne = p.idPersonne AND s.FK_idService = 0 AND s.statutReservation = 2');
+$queryPrepared = $connect->prepare('SELECT s.idSouscriptionService , DATE_FORMAT(s.dateReservation,"%d/%m/%Y %H:%m") AS dateReservation ,p.nom ,p.prenom, p.idPersonne FROM souscription_service s, personne p WHERE s.FK_idPersonne = p.idPersonne AND s.FK_idService = 0 AND s.statutReservation = 2');
 $queryPrepared->execute();
 
 $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
@@ -54,10 +54,10 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 				echo "<td>".$value['idSouscriptionService']."</td>";
 				echo "<td>".$value['dateReservation']."</td>";
 				echo "<td>".$value['prenom'] . " " . $value['nom']."</td>";
-				echo "<td>
+				echo '<td>
 
-						<button class='btn btn-success'>Devis</button>
-					</td>";
+						<a href="quote.php?idSouscription=\'' . $value["idSouscriptionService"] . '\'&idUser='.$value["idPersonne"].'" class="btn btn-success">Devis</a>
+					</td>';
 			
 				
 			echo "</tr>";

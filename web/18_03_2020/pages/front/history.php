@@ -6,7 +6,8 @@ require "header.php";
 
         <div class="row" id="tabSection">
 
-            <nav id="navHistory" class="col-2" >
+
+            <nav id="navHistory" class="col-md-3" >
 
                 <ul class="">
                     <li class="">
@@ -18,11 +19,15 @@ require "header.php";
                     <li class="">
                         <a class="nav-link colorLink" onclick="displayHisBill()">Historique paiements</a>
                     </li>
+
+                     <li class="">
+                        <a class="nav-link colorLink" onclick="displayHisQuote()">Mes devis</a>
+                    </li>
                 </ul>
 
             </nav>
 
-            <div class="col">
+            <div class="col-md-9">
                 <div id="tableHistory">
 
                     <div id="tableHisSubscription">
@@ -235,7 +240,7 @@ require "header.php";
 
                         echo '<br>';
 
-                        echo '<table class="table" >';
+                        echo '<table class="table table-hover" >';
                         echo '<thead>';
                         echo '<tr>';
                         echo '<th id = "titleTable" >Factures réglées</th>';
@@ -374,6 +379,33 @@ require "header.php";
                         echo '</table>';
                         echo '<br>';
 
+                        ?>
+
+                    </div>
+
+
+                    <div id="tableHisQuote">
+                        <?php
+
+                        echo '<table class="table" >';
+                        echo '<thead>';
+                        echo '<tr>';
+                        echo '<th id ="titleTable" >Devis</th>';
+                        echo '<th>';
+                        echo '<th>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th class="SubtitleTable">Numéro Devis</th>';
+                        echo '<th class="SubtitleTable">Date début</th>';
+                        echo '<th class="SubtitleTable">Date Fin</th>';
+                        echo '</tr>';
+                        echo '</thead>';
+
+                        echo '<tbody>';
+
+                           
+                        echo '</tbody>';
+                        echo '</table>';
                         ?>
 
                     </div>

@@ -2,6 +2,7 @@
 var tabSub = document.getElementById("tableHisSubscription");
 var tabSer = document.getElementById("tableHisServices");
 var tabBill = document.getElementById("tableHisBill");
+var tabQuote = document.getElementById("tableHisQuote");
 var tabBillSouscription = document.getElementById("tableHisBillSouscription");
 
 function displayHisSubscription(){
@@ -20,6 +21,10 @@ function displayHisSubscription(){
 
     if (tabSub.style.display == "none"){
         tabSub.style.display = "block";
+    }
+
+    if (tabQuote.style.display != "none"){
+        tabQuote.style.display = "none";
     }
 
 }
@@ -72,6 +77,34 @@ function displayHisBillSouscription() {
     if (tabBillSouscription.style.display != "block") {
         tabBillSouscription.style.display = "block";
     }
+
+}
+
+
+
+function displayHisQuote(){
+
+    if (tabSer.style.display != "none"){
+        tabSer.style.display ="none";
+    }
+
+    if (tabBill.style.display != "none"){
+        tabBill.style.display = "none";
+    }
+
+    if (tabBillSouscription.style.display == "block") {
+        tabBillSouscription.style.display = "none";
+    }
+   
+    if (tabSub.style.display != "none"){
+        tabSub.style.display = "none";
+    }
+
+    if (tabQuote.style.display != "block") {
+        tabQuote.style.display = "block";
+    }
+
+    
 
 }
 
