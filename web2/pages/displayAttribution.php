@@ -6,7 +6,7 @@ $connect = connectDb();
 $date = $_POST['date'];
 
 
-$data = $connect->query("SELECT personne.idPersonne, personne.nom, personne.prenom, souscription_service.dateReservation, souscription_service.idSouscriptionService, souscription_service.FK_idPrestataire, souscription_service.dateIntervention, souscription_service.duree FROM souscription_service, personne WHERE personne.idPersonne = souscription_service.FK_idPersonne AND souscription_service.statutReservation = 0 ORDER BY souscription_service.dateIntervention");
+$data = $connect->query("SELECT personne.idPersonne, personne.nom, personne.prenom, souscription_service.dateReservation, souscription_service.idSouscriptionService, service.nom AS nom_service, souscription_service.FK_idPrestataire, souscription_service.dateIntervention, souscription_service.duree FROM souscription_service, personne,service WHERE personne.idPersonne = souscription_service.FK_idPersonne AND souscription_service.statutReservation = 0 AND souscription_service.FK_idService=service.idService ORDER BY souscription_service.dateIntervention");
 
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
@@ -20,6 +20,7 @@ foreach ($rows as $row) {
     if ($date == $dateExplode[0]){  //On vérifie que la date correspond à la page
         echo '<tr>';
         echo '<td>' . $row["prenom"] . ' ' . $row['nom'] . '</td>';
+        echo '<td>' . $row['nom_service'] . '</td>';
         echo '<td>' . $row['dateReservation'] . '</td>';
         echo '<td>' . $row['dateIntervention'] . '</td>';
         echo '<td>' . $row['duree'] . '</td>';
