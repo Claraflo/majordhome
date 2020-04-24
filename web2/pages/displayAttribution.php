@@ -10,7 +10,7 @@ $data = $connect->query("SELECT personne.idPersonne, personne.nom, personne.pren
 
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
-$req = $connect->query("SELECT personne.idPersonne, personne.nom, personne.prenom, categorie.idCategorie FROM  personne, metier, categorie WHERE personne.statut = 1 AND personne.FK_metier = metier.nom AND metier.FK_categorie = categorie.idCategorie");
+$req = $connect->query("SELECT personne.idPersonne, personne.nom, personne.prenom, categorie.idCategorie, metier.nom AS nom_metier FROM  personne, metier, categorie WHERE personne.statut = 1 AND personne.FK_metier = metier.nom AND metier.FK_categorie = categorie.idCategorie");
 
 $rowsReq = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -79,7 +79,7 @@ foreach ($rows as $row) {
                     }
                 }
                 if ($countSoustraction != 1 && $rowReq['idCategorie'] == $row['idCategorie']){
-                    echo '<option value="' . $rowReq['idPersonne'] . '">' . $rowReq['prenom'] . ' ' . $rowReq['nom'] . '</option>';
+                    echo '<option value="' . $rowReq['idPersonne'] . '">' . $rowReq['prenom'] . ' ' . $rowReq['nom'] . ' (' .$rowReq['nom_metier'].')</option>';
                 }
                 unset($tabTime);
 
