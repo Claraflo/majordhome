@@ -6,11 +6,11 @@ $connect = connectDb();
 $date = $_POST['date'];
 
 
-$data = $connect->query("SELECT personne.idPersonne, personne.nom, personne.prenom, souscription_service.dateReservation, souscription_service.idSouscriptionService, service.nom AS nom_service, souscription_service.FK_idPrestataire, souscription_service.dateIntervention, souscription_service.duree FROM souscription_service, personne,service WHERE personne.idPersonne = souscription_service.FK_idPersonne AND souscription_service.statutReservation = 0 AND souscription_service.FK_idService=service.idService ORDER BY souscription_service.dateIntervention");
+$data = $connect->query("SELECT personne.idPersonne, personne.nom, personne.prenom, souscription_service.dateReservation, souscription_service.idSouscriptionService, service.nom AS nom_service, souscription_service.FK_idPrestataire, souscription_service.dateIntervention, souscription_service.duree, categorie.idCategorie, categorie.idCategorie FROM souscription_service, personne, service, categorie WHERE personne.idPersonne = souscription_service.FK_idPersonne AND souscription_service.statutReservation = 0 AND souscription_service.FK_idService = service.idService AND service.idCategorie = categorie.idCategorie ORDER BY souscription_service.dateIntervention");
 
 $rows = $data->fetchAll(PDO::FETCH_ASSOC);
 
-$req = $connect->query("SELECT idPersonne, nom, prenom FROM  personne WHERE statut = 1");
+$req = $connect->query("SELECT personne.idPersonne, personne.nom, personne.prenom, categorie.idCategorie FROM  personne, metier, categorie WHERE personne.statut = 1 AND personne.FK_metier = metier.nom AND metier.FK_categorie = categorie.idCategorie");
 
 $rowsReq = $req->fetchAll(PDO::FETCH_ASSOC);
 
@@ -78,7 +78,7 @@ foreach ($rows as $row) {
 
                     }
                 }
-                if ($countSoustraction != 1){
+                if ($countSoustraction != 1 && $rowReq['idCategorie'] == $row['idCategorie']){
                     echo '<option value="' . $rowReq['idPersonne'] . '">' . $rowReq['prenom'] . ' ' . $rowReq['nom'] . '</option>';
                 }
                 unset($tabTime);
