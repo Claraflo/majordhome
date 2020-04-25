@@ -42,8 +42,7 @@
 
 	background-color:#aa956f;
 	color: #FFFFFF;
-	
-
+	margin-bottom: 15px;
 }
 
 .masthead{
@@ -137,6 +136,10 @@ footer{
 	font-family: Raleway;
 
 
+}
+
+.lang {
+	margin-left: 15px;
 }
 
 
