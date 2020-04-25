@@ -703,7 +703,7 @@ void modification(GtkWidget *pWidget,t_program* program)
 
             if(!row)
             {
-                requestJob = "INSERT INTO metier (nom,FK_type) VALUES ('";
+                requestJob = "INSERT INTO metier (nom,FK_categorie) VALUES ('";
                 requestJob = g_strconcat(requestJob,conv[8],NULL);
                 requestJob = g_strconcat(requestJob,"','",NULL);
                 requestJob = g_strconcat(requestJob,str_replace(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(program->pageResearch->combo)),"\'","\\\'"),NULL);

@@ -10,6 +10,7 @@
 int main(int argc, char** argv)
 {
 
+
     //Initialization
     gtk_init(&argc,&argv);
     t_program* program = initProgram();

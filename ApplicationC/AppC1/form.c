@@ -190,7 +190,7 @@ GtkWidget* creatCombo(t_program* program)
     GtkWidget* combo=NULL;
     MYSQL_RES* result = NULL;
 
-    gchar* requestCombo = "SELECT nom from type";
+    gchar* requestCombo = "SELECT nom from categorie";
 
     combo = gtk_combo_box_text_new();
 
@@ -217,7 +217,7 @@ GtkWidget* creatCombo(t_program* program)
             {
                 if(row[i])
                 {
-                    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo),row[i]);
+                    gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo),g_locale_to_utf8(row[i],-1,NULL, NULL, NULL));
                 }
                 else
                 {

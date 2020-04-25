@@ -9,14 +9,18 @@ void addInputInDB(t_program* program)
     char* idCode= NULL;
     gchar* requestProvider = NULL;
     gchar* requestJob =   NULL;
+    gchar* requestInsertJob =   NULL;
     gchar* requestIdCode=  NULL;
+    gchar* idCategorie= NULL;
 
     MYSQL_ROW row = NULL;
     MYSQL_RES* res = NULL;
 
     requestProvider = allocateString(requestProvider,1000,0,program);
     requestJob =  allocateString(requestJob,100,0,program);
+    requestInsertJob = allocateString(requestInsertJob,100,0,program);
     requestIdCode= allocateString(requestIdCode,100,0,program);
+    idCategorie = allocateString(idCategorie,4,0,program);
 
     //Check if inputs are not empty
     for(i=0;i<9;i++){
@@ -76,26 +80,29 @@ void addInputInDB(t_program* program)
                 row = mysql_fetch_row(res);
             }
 
-
-
             //Check if the job already exists in DB if not it's created
-            requestJob= g_strconcat("SELECT nom from metier WHERE nom = '",conv[8],NULL);
+            requestJob = g_strconcat("SELECT nom from metier WHERE nom = '",conv[8],NULL);
             requestJob = g_strconcat(requestJob,"'",NULL);
-
             mysql_query(program->sock,requestJob);
 
             res = mysql_use_result(program->sock);
             row = mysql_fetch_row(res);
 
             if(!row){
-                requestJob = "INSERT INTO metier (nom,FK_type) VALUES ('";
-                requestJob = g_strconcat(requestJob,conv[8],NULL);
-                requestJob = g_strconcat(requestJob,"','",NULL);
-                requestJob = g_strconcat(requestJob,str_replace(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(program->pageForm->combo)),"\'", "\\\'"),NULL);
-                requestJob = g_strconcat(requestJob,"')",NULL);
 
-                mysql_query(program->sock,requestJob);
+                idCategorie = searchCategoryID(program,res);
+                printf("%s", idCategorie);
+                requestInsertJob = "INSERT INTO metier (nom,FK_categorie) VALUES ('";
+                requestInsertJob = g_strconcat(requestInsertJob,conv[8],NULL);
+                requestInsertJob = g_strconcat(requestInsertJob,"',",NULL);
+                requestInsertJob = g_strconcat(requestInsertJob,idCategorie,NULL);
+                requestInsertJob = g_strconcat(requestInsertJob,")",NULL);
 
+                mysql_query(program->sock,requestInsertJob);
+
+                if(!mysql_error(program->sock)){
+                    errorMessage(program,"Prestataire non ajoute. Erreur BDD(categorie).","AJOUT PRESTATAIRE",GTK_MESSAGE_INFO,GTK_BUTTONS_OK);
+                }
 
             }
 
@@ -111,7 +118,7 @@ void addInputInDB(t_program* program)
             requestProvider = g_strconcat(requestProvider,idCode,NULL);
             requestProvider = g_strconcat(requestProvider,"','0000','1')",NULL);
 
-            mysql_free_result(res);
+            //mysql_free_result(res);
             mysql_query(program->sock,requestProvider);
             createQRC(program,idCode);
 
@@ -131,12 +138,14 @@ void addInputInDB(t_program* program)
 
     }
 
-    mysql_free_result(res);
+    //mysql_free_result(res);
     free(conv);
     free(idCode);
     free(requestProvider);
     free(requestJob);
+    free(requestInsertJob);
     free(requestIdCode);
+    free(idCategorie);
 }
 
 
@@ -591,4 +600,27 @@ return string;
 
 }
 
+char* searchCategoryID(t_program* program,MYSQL_RES* res){
 
+
+    MYSQL_ROW row = NULL;
+    gchar* requestCategory = NULL;
+    requestCategory = allocateString(requestCategory,100,0,program);
+
+    requestCategory ="SELECT idCategorie from categorie where nom= '";
+    requestCategory = g_strconcat(requestCategory,str_replace(gtk_combo_box_text_get_active_text(GTK_COMBO_BOX_TEXT(program->pageForm->combo)),"\'", "\\\'"),NULL);
+    requestCategory = g_strconcat(requestCategory,"'",NULL);
+
+    mysql_query(program->sock,requestCategory);
+    res = mysql_store_result(program->sock);
+
+    row = mysql_fetch_row(res);
+
+    if(!mysql_error(program->sock)){
+        errorMessage(program,"Prestataire non ajoute. Erreur BDD(categorie).","AJOUT PRESTATAIRE",GTK_MESSAGE_INFO,GTK_BUTTONS_OK);
+    }
+
+    free(requestCategory);
+
+    return row[0];
+}

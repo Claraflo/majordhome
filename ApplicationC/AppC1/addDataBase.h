@@ -26,6 +26,7 @@ gchar* verificationJob(t_program* program,gchar * job);
 int verificationPC(t_program* program,gchar * postCode);
 char* createIdCode(t_program* program,char* idCode,gchar* conv[]);
 char* allocateString(char* string,int size,int count,t_program* program);
+char* searchCategoryID(t_program* program,MYSQL_RES* res);
 
 #endif //APP1_ADDDATABASE_H
 
