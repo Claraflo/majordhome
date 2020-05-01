@@ -132,7 +132,8 @@ if(count($_POST) == 11
 
             $queryPrepared = $connect->prepare("INSERT INTO personne(mail,mdp,nom,prenom,dateNaissance,telephone,adresse,ville,codePostal,statut) VALUES (:mail,:pwd,:nom,:prenom,:dateNaissance,:tel,:adresse,:ville,:codePostal,0)");
 
-            $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+            //$pwd = password_hash($pwd, PASSWORD_DEFAULT);
+            $pwd = hash("sha256", $pwd);
 
             $queryPrepared->execute([
 
