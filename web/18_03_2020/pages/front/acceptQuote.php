@@ -20,6 +20,11 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 	$idService = $res["FK_idSouscriptionService"];
 
 
+	$updt = $connect->prepare("UPDATE souscription_service SET statut = 0 WHERE idSouscriptionService = ?");
+	$updt->execute([$idService]);
+
+
+
 	$time = strtotime(date("Y-m-d H:i:s"));
 	$final = date("Y-m-d H:i:s", strtotime("+1 month", $time));
 

@@ -21,6 +21,8 @@ foreach ($req->fetchAll() as $numberService) {
     }
 }
 
+
+
 ?>
 
 
@@ -68,12 +70,17 @@ foreach ($req->fetchAll() as $numberService) {
 
                 <div class="col-md-5">
 
-                    <a href="#"><button class="btn btnServices">Demande de service</button></a>
+                    <?php
+                    echo '<a href="requestServiceBack.php?id='. $_SESSION['idCustomer'] .'"><button class="btn btnServices">Demande de service</button></a>';
+
+                    ?>
                 </div>
 
             </div>
 
             <div class="row pt-5 ">
+
+
 
                 <?php
                 $data = $connect->query("SELECT idService, nom, prix, description FROM service WHERE statut = 1");

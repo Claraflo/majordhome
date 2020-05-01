@@ -67,7 +67,7 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 			echo "<tr>";
 					echo '<td>
 
-						<a href="" class="btn btn-dark"><i class="far fa-file-alt"></i></a>
+						<a href="quoteToPdf.php?id='. $value['idDevis'].'" class="btn btn-dark"><i class="far fa-file-alt"></i></a>
 					</td>';
 				echo "<td>".$value['idDevis']."</td>";
 				echo "<td>".$value['dateEmission']."</td>";

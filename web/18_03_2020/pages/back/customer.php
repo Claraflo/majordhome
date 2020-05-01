@@ -19,6 +19,14 @@ if (!empty($_SESSION["delete"])) {
     }
     echo "</div>";
     unset($_SESSION["delete"]);
+
+
+if(!empty($_SESSION["successForm"])){
+        echo "<div class='alert alert-success'>";
+          echo "<li>".$_SESSION["successForm"];
+        echo "</div>";
+        unset($_SESSION["successForm"]);
+    }
 }
 
 
