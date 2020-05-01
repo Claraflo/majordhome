@@ -1,7 +1,7 @@
 //
-// Created by Group 4 on 02/02/2020.
+// App Created by Group 4 on 02/02/2020.
 //Main App1 provider management
-// Use Copyright (c) Project Nayuki. (MIT License)
+// Use some part of Project Nayuki. (MIT License)
 //
 
 #include "main.h"

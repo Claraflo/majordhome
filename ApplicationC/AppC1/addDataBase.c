@@ -91,7 +91,7 @@ void addInputInDB(t_program* program)
             if(!row){
 
                 idCategorie = searchCategoryID(program,res);
-                printf("%s", idCategorie);
+
                 requestInsertJob = "INSERT INTO metier (nom,FK_categorie) VALUES ('";
                 requestInsertJob = g_strconcat(requestInsertJob,conv[8],NULL);
                 requestInsertJob = g_strconcat(requestInsertJob,"',",NULL);

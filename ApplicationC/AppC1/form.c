@@ -198,7 +198,7 @@ GtkWidget* creatCombo(t_program* program)
     {
         gtk_combo_box_text_append_text(GTK_COMBO_BOX_TEXT(combo),"");
         free(requestCombo);
-        printf("Erreur envoie requete");
+
         return combo;
     }
 
