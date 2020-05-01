@@ -58,7 +58,11 @@ require "header.php";
 
                             foreach ($rows as $row) {
 
-                                if($row["statut"] ==0) {
+                                $dateFin = time() - strtotime($row['dateFin']);
+                                $now = time() - strtotime(date("Y-m-d"));
+                                
+
+                                if($dateFin < $now ){
                                     echo '<tr>';
                                     echo '<td>' . $row["nom"] . '</td>';
                                     echo '<td>' . $row["dateAchat"] . '</td>';
@@ -89,7 +93,12 @@ require "header.php";
 
                             foreach ($rows as $row) {
 
-                                if ($row["statut"] == -1) {
+
+
+                                $dateFin = time() - strtotime($row['dateFin']);
+                                $now = time() - strtotime(date("Y-m-d"));
+
+                                if ($dateFin > $now ) {
                                     echo '<tr>';
                                     echo '<td>' . $row["nom"] . '</td>';
                                     echo '<td>' . $row["dateAchat"] . '</td>';

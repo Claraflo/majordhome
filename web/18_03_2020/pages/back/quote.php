@@ -25,6 +25,9 @@ if (isset($_GET['idSouscription']) && isset($_GET['idUser'])) {
 		$firstname = $data[2];
 		$mail = $data[3];
 
+}else{
+
+	header("Location: pageRequestService.php");
 }
 
 

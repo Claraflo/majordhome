@@ -39,8 +39,7 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 </div>
 
 
-<a href="quote.php" class="btn btn-success"><i class="fa fa-plus"></i> Créer un devis</a>
-<hr>
+
 
 
 <table class='table table-striped table-hover table-bordered'>
