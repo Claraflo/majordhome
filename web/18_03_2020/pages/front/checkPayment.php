@@ -14,6 +14,8 @@ $data->execute(array());
 $payment = $data->fetchAll(PDO::FETCH_ASSOC);
 
 
+
+
 $countCheck = 0;
 
 foreach ($payment as $value) {

@@ -13,6 +13,19 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 
 <section class="container pt-4">
+
+
+
+	<?php if(!empty($_SESSION["errorsQuote"])){
+        echo "<div class='alert alert-danger'>";
+       	 foreach ($_SESSION["errorsQuote"] as $error) {
+            echo "<li>".$error;
+        }
+        echo "</div>";
+        unset($_SESSION["errorsQuote"]);
+    }
+
+    ?>
 	
 <div class="title text-center pt-1 pb-3">
 	<h1>Demandes</h1>
@@ -56,7 +69,7 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 				echo "<td>".$value['prenom'] . " " . $value['nom']."</td>";
 				echo '<td>
 
-						<a href="quote.php?idSouscription=\'' . $value["idSouscriptionService"] . '\'&idUser='.$value["idPersonne"].'" class="btn btn-success">Devis</a>
+						<a href="quote.php?idSouscription=' . $value["idSouscriptionService"] . '&idUser='.$value["idPersonne"].'" class="btn btn-success">Devis</a>
 					</td>';
 			
 				

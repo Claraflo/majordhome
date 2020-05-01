@@ -47,6 +47,12 @@ function displayHisService(){
         tabSer.style.display = "block";
     }
 
+      if (tabQuote.style.display != "none") {
+        tabQuote.style.display = "none";
+    }
+
+  
+
 }
 
 
@@ -65,6 +71,10 @@ function displayHisBill(){
 
     if (tabBill.style.display != "block"){
         tabBill.style.display = "block";
+    }
+
+      if (tabQuote.style.display != "none") {
+        tabQuote.style.display = "none";
     }
 }
 

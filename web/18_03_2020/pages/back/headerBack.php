@@ -70,10 +70,12 @@ if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION[
                     <li class="nav-item">
                         <a class="nav-link colorLink" href="pageRequestService.php" title="">Demandes</a>
 
+                    <li class="nav-item">
+                        <a class="nav-link colorLink" href="displayQuote.php" title="">Devis</a>
 
                     <li class="nav-item">
 
-                        <a class="nav-link colorLink" href="#" title="">Mon compte</a>
+                        <a class="nav-link colorLink" href="bills.php" title="">Factures</a>
 
 
                     <li class="nav-item">
