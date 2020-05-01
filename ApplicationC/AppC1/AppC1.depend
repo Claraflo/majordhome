@@ -2764,7 +2764,7 @@
 	"authentication.h"
 	"error.h"
 
-1587765875 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\appc1\main.c
+1588345016 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\appc1\main.c
 	"main.h"
 
 1587765875 c:\mamp\htdocs\projetannuel\majordhome\applicationc\appc1\main.h
@@ -2792,13 +2792,13 @@
 	<string.h>
 	"qrcodegen.h"
 
-1587840678 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\appc1\adddatabase.c
+1588371588 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\appc1\adddatabase.c
 	"addDataBase.h"
 
 1587766231 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\appc1\research.c
 	"research.h"
 	<gtk/gtk.h>
 
-1587767127 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\appc1\form.c
+1588344882 source:c:\mamp\htdocs\projetannuel\majordhome\applicationc\appc1\form.c
 	"form.h"
 

@@ -108,7 +108,8 @@ void addInputInDB(t_program* program)
 
 
             //Request of insert new provider
-            requestProvider = g_strconcat("INSERT INTO personne (nom, prenom,mail,dateNaissance,telephone,adresse,ville,codePostal,FK_metier,idCode,mdp,statut) VALUES ('",conv[0],NULL);
+            requestProvider = g_strconcat("INSERT INTO personne (nom, prenom,mail,dateNaissance,telephone,adresse,ville,codePostal,FK_metier,idCode,statut) VALUES ('",conv[0],NULL);
+
             for(i =1; i<9;i++){
                 requestProvider = g_strconcat(requestProvider,"','",NULL);
                 requestProvider = g_strconcat(requestProvider,conv[i],NULL);
@@ -116,9 +117,9 @@ void addInputInDB(t_program* program)
 
             requestProvider = g_strconcat(requestProvider,"','",NULL);
             requestProvider = g_strconcat(requestProvider,idCode,NULL);
-            requestProvider = g_strconcat(requestProvider,"','0000','1')",NULL);
+            requestProvider = g_strconcat(requestProvider,"','1')",NULL);
 
-            //mysql_free_result(res);
+            mysql_free_result(res);
             mysql_query(program->sock,requestProvider);
             createQRC(program,idCode);
 
