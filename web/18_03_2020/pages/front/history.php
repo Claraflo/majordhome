@@ -6,7 +6,8 @@ require "header.php";
 
         <div class="row" id="tabSection">
 
-            <nav id="navHistory" class="col-2" >
+
+            <nav id="navHistory" class="col-md-3" >
 
                 <ul class="">
                     <li class="">
@@ -18,11 +19,15 @@ require "header.php";
                     <li class="">
                         <a class="nav-link colorLink" onclick="displayHisBill()">Historique paiements</a>
                     </li>
+
+                     <li class="">
+                        <a class="nav-link colorLink" onclick="displayHisQuote()">Mes devis</a>
+                    </li>
                 </ul>
 
             </nav>
 
-            <div class="col">
+            <div class="col-md-9">
                 <div id="tableHistory">
 
                     <div id="tableHisSubscription">
@@ -219,6 +224,8 @@ require "header.php";
 
                             if($row["statut"] ==0) {
 
+
+
                                 echo '<tr>';
                                 echo '<td>' . $row["idFacture"] . '</td>';
                                 echo '<td>' . $row["nom"] . '</td>';
@@ -235,7 +242,7 @@ require "header.php";
 
                         echo '<br>';
 
-                        echo '<table class="table" >';
+                        echo '<table class="table table-hover" >';
                         echo '<thead>';
                         echo '<tr>';
                         echo '<th id = "titleTable" >Factures réglées</th>';
@@ -257,7 +264,7 @@ require "header.php";
 
                         foreach ($rows as $row) {
 
-                            if ($row["statut"] = 1) {
+                            if ($row["statut"] == 1) {
                                 echo '<tr>';
                                 echo '<td>' . $row["idFacture"] . '</td>';
                                 echo '<td>' . $row["nom"] . '</td>';
@@ -372,8 +379,65 @@ require "header.php";
                         }
                         echo '</tbody>';
                         echo '</table>';
+
+
                         echo '<br>';
 
+                        ?>
+
+                    </div>
+
+
+                    <div id="tableHisQuote">
+                        <?php
+
+
+                         $connect=  connectDb();
+
+                        $query = $connect->prepare('SELECT idDevis,DATE_FORMAT(dateEmission,"%d/%m/%Y") as dateEmission,titre,statut FROM devis WHERE FK_idPersonne = :id');
+                        $query->execute([":id" => $_SESSION['user']["idPersonne"]]);
+
+                        $rows = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                     
+                        echo '<table class="table" >';
+                        echo '<thead>';
+                        echo '<tr>';
+                        echo '<th id ="titleTable" >Devis</th>';
+                        echo '<th>';
+                        echo '<th>';
+                        echo '</tr>';
+                        echo '<tr>';
+                        echo '<th class="SubtitleTable">Numéro Devis</th>';
+                        echo '<th class="SubtitleTable">Titre</th>';
+                        echo '<th class="SubtitleTable">Date</th>';
+                        echo '<th class="SubtitleTable">Actions</th>';
+                        echo '</tr>';
+                        echo '</thead>';
+
+                        echo '<tbody>';
+
+                           foreach ($rows as $row) {
+
+                             echo '<tr>';
+                                echo '<td>' . $row["idDevis"] . '</td>';
+                                echo '<td>' . $row["titre"] . '</td>';
+                                echo '<td>' . $row["dateEmission"] . '</td>';
+                                echo '<td> <a href="generateQuote.php?id='. $row['idDevis'].'" class ="btn btn-dark">PDF</a>';
+
+                                if ($row['statut'] == 0) {
+                                    
+                                    echo ' <a href="acceptQuote.php?id='. $row['idDevis'].'" class ="btn btn-warning">Accepter</a>';
+                                }
+                                   
+                                echo '</td>';
+                            echo '</tr>';
+
+                           }
+
+                           
+                        echo '</tbody>';
+                        echo '</table>';
                         ?>
 
                     </div>

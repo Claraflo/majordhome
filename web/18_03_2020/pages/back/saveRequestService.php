@@ -4,10 +4,10 @@ require("../functions.php");
 $connect = connectDb();
 
 
-
 date_default_timezone_set('Europe/Paris');
-if(count($_POST) >= 3
+if(count($_POST) >= 4
     && !empty($_POST['name'])
+    && !empty($_POST['email'])
     && !empty($_POST['startDate'])
     && !empty($_POST['startTime'])
     
@@ -16,6 +16,9 @@ if(count($_POST) >= 3
 $name = trim($_POST['name']);
 $startDate = trim($_POST['startDate']);
 $startTime = trim($_POST['startTime']);
+$email = trim($_POST['email']);
+
+$id = $_SESSION['idCustomer'];
 
 $endDate = NULL;
 $endTime = NULL;
@@ -33,7 +36,17 @@ $time = date('H:i');
 
 $time2 = date("H:i", strtotime("+30 minutes"));
 
+	
+	$queryPrepared = $connect->prepare("SELECT mail FROM personne WHERE idPersonne = ?");
+	$queryPrepared->execute([$_SESSION['idCustomer']]);
 
+	$data = $queryPrepared->fetch(PDO::FETCH_ASSOC);
+
+	if ($data['mail'] != $email) {
+	
+		$errors['mail'] = "Erreur email";
+
+	}
 
 
 	if (strlen($name) > 80) {
@@ -165,18 +178,18 @@ $time2 = date("H:i", strtotime("+30 minutes"));
 		checkId($idSouscriptionService, $connect);
 
 			
-		$queryPrepared = $connect->prepare("INSERT INTO souscription_service(idSouscriptionService,statutReservation,FK_idPersonne,FK_idService) VALUES(:id,3,:idPersonne,0);");
+		$queryPrepared = $connect->prepare("INSERT INTO souscription_service(idSouscriptionService,statutReservation,FK_idPersonne,FK_idService) VALUES(:id,0,:idPersonne,0);");
 
 
 		$res = $queryPrepared->execute([
 
 			":id" =>$idSouscriptionService,
-			":idPersonne"=>$_SESSION['user']['idPersonne']
+			":idPersonne"=>$id
 
 		]);
 
 		$req = $connect->prepare("SELECT idSouscriptionService FROM souscription_service WHERE FK_idPersonne = ? AND FK_idService = 0 ORDER BY dateReservation DESC LIMIT 1" );
-		$req->execute([$_SESSION["user"]['idPersonne']]);
+		$req->execute([$id]);
 		$dataSouscription = $req->fetch();
 
 
@@ -200,9 +213,9 @@ $time2 = date("H:i", strtotime("+30 minutes"));
 
 		}
 
-		header('Location: requestService.php');
+		header('Location: customer.php');
 
-		$_SESSION["successForm"] = "Votre demande de service a bien été envoyé. Si votre demande est validé, un devis vous sera alors proposé dans la partie Devis";
+		$_SESSION["successForm"] = "Demande de service enregistrée";
 
 
 
@@ -211,7 +224,7 @@ $time2 = date("H:i", strtotime("+30 minutes"));
 
 
 		$_SESSION["errorsForm"] = $errors;
-		header('Location: requestService.php');
+		header('Location: requestServiceBack.php?id='.$id);
 
 	}
 
@@ -225,5 +238,5 @@ $time2 = date("H:i", strtotime("+30 minutes"));
 
 	$_SESSION['errors'] = "Merci de bien vouloir remplir les champs obligatoires !";
 
-	header('Location: requestService.php');
+	header('Location: requestServiceBack.php?id=' . $_SESSION['idCustomer']);
 }

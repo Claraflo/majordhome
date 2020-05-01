@@ -2,7 +2,7 @@
 require('headerBack.php');
 $connect = connectDb();
 
-$queryPrepared = $connect->prepare('SELECT s.idSouscriptionService , DATE_FORMAT(s.dateReservation,"%d/%m/%Y %H:%m") AS dateReservation ,p.nom ,p.prenom FROM souscription_service s, personne p WHERE s.FK_idPersonne = p.idPersonne AND s.FK_idService = 0 AND s.statutReservation = 0');
+$queryPrepared = $connect->prepare('SELECT s.idSouscriptionService , DATE_FORMAT(s.dateReservation,"%d/%m/%Y %H:%m") AS dateReservation ,p.nom ,p.prenom FROM souscription_service s, personne p WHERE s.FK_idPersonne = p.idPersonne AND s.FK_idService = 0 AND s.statutReservation = 3');
 $queryPrepared->execute();
 
 $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
