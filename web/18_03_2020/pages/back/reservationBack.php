@@ -47,6 +47,7 @@ if (!empty($_SESSION["numberService"])) {
                         <th scope="col">Durée</th>
                         <th scope="col">Statut de la réservation</th>
                         <th scope="col">Statut du paiement</th>
+                        <th scope="col">Nombre de paiements</th>
                         <th scope="col">Actions</th>
                         </thead>
                         <tbody id="reservation">
