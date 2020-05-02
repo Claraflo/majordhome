@@ -32,6 +32,10 @@ if (isset($_GET['idSouscription']) && isset($_GET['idUser'])) {
 
 
 
+$queryPrepared= $connect->prepare("SELECT nom FROM categorie");
+$queryPrepared->execute();
+$data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -96,6 +100,23 @@ if (isset($_GET['idSouscription']) && isset($_GET['idUser'])) {
 		            <input name="priceCent" type="number" class="form-control">
 		        </div>
 
+	        </div>
+
+
+	        <div class="form-group">
+	            <label>Catégorie</label>
+	            <select name="categ" class="form-control">
+	            	<?php
+
+	            		 foreach ($data as $value) {
+
+                            echo "<option value='".$value['nom']."'>".$value['nom']."</option>";
+
+                     }
+
+	            	?>
+	            	
+	            </select>
 	        </div>
 
 

@@ -32,9 +32,6 @@ if (!empty($_SESSION["numberService"])) {
 
                         <select class="custom-select" id="inputGroupSelect01">
                             <option selected>Sélectionnez une catégorie de service ...</option>
-                            <?php
-                            echo "test";
-                            ?>
 
                               <?php
 

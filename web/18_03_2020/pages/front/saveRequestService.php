@@ -23,6 +23,7 @@ $address = NULL;
 $city = NULL;
 $code = NULL;
 $informations = NULL;
+$category = "Non défini";
 $array = [];
 $errors = [];
 
@@ -126,7 +127,8 @@ $time2 = date("H:i", strtotime("+30 minutes"));
 
 	}
 
-	$array = array($name,$startDate,$endDate,$startTime,$endTime,$address,$city,$code,$informations);
+
+	$array = array($name,$startDate,$endDate,$startTime,$endTime,$address,$informations,$category);
 
 
 
@@ -184,6 +186,7 @@ $time2 = date("H:i", strtotime("+30 minutes"));
 		$req = $connect->prepare("SELECT idCaracteristique FROM caracteristique WHERE idService = 0");
 		$req->execute();
 		$dataCaracteristique = $req->fetchAll(PDO::FETCH_ASSOC);
+
 
 		foreach ($array as $key => $value) {
 

@@ -4,17 +4,16 @@ require('../functions.php');
 
 $connect = connectDb();
 
-if(count($_POST) == 6
+if(count($_POST) == 7
     && !empty($_POST['mail'])
     && !empty($_POST['request'])
     && !empty($_POST['priceEur'])
     && !empty($_POST['priceCent'])
     && !empty($_POST['informations'])
     && !empty($_POST['id'])
+    && !empty($_POST['categ'])
    
 ){
-
-
 
 
 $dateEmission = date("Y-m-d");
@@ -86,6 +85,22 @@ if(!preg_match('/^[0-9]+$/', $priceEur)) {
 
 		$id = $data[0];
 
+
+        $select = $connect->prepare('SELECT idCaracteristique FROM caracteristique WHERE nom = "Categorie" ');
+        $select->execute();
+        $carac = $select->fetch();
+
+
+        $updt = $connect->prepare("UPDATE donnees_service SET information = :categ WHERE FK_idSouscriptionService = :service AND FK_idCaracteristique = :id ");
+
+
+         $updt->execute([
+
+            ":categ" => $_POST['categ'],
+            ":service" => $idSouscription,
+            ":id" => $carac[0]
+
+        ]);
 
      	$query = $connect->prepare("INSERT INTO devis(dateEmission,titre,description,prix,statut,FK_idPersonne,FK_idSouscriptionService) VALUES(:dateEmission,:titre,:description,:prix,0,:id,:idSouscription)");
 
