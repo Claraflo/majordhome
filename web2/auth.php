@@ -14,8 +14,9 @@ if (isset($_POST['email']) && isset($_POST['pwd'])) {
 		$queryPrepared->execute([':email' => $email]);
 		$user = $queryPrepared->fetch();
 
+		$pwd = hash("sha256", $pwd);
 				
-		if (password_verify($pwd,$user['mdp']) &&  ($user['statut'] == 2 || $user['statut'])){
+		if (hash_equals($pwd,$user['mdp']) && ($user['statut'] == 2 || $user['statut'] == 3)){
                 $_SESSION['user'] = $user;
                 header('Location: pages/dashboard.php');
 			}else{
