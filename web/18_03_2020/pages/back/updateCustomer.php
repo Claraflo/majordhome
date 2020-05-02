@@ -147,7 +147,25 @@ if(count($_POST) == 9
 
         }else if ($pwdSelect == 'yes') {
 
-            $pwd = password_hash(pwdGenerator(15), PASSWORD_DEFAULT);
+            $pwd = pwdGenerator(15);
+
+            $header="MIME-Version: 1.0\r\n";
+            $header.='From: "Contact Majordhome"<contact@majordhome.fr>'."\n";
+            $header.='Content-Type:text/html; charset="uft-8"'."\n";
+            $header.='Content-Transfer-Encoding: 8bit';
+
+            $message="
+            <html>
+                <body>
+                  <h3>Modification du compte de ".$firstName." ".$lastName."</h3>
+                  <p>Votre nouveau mot de passe est: </p><strong>".$pwd."</strong>
+                </body>
+            </html>
+           ";
+
+            mail($email, "Bienvenue", $message, $header);
+
+            $pwd = hash("sha256", $pwd);
 
 
             $req = $connect->prepare("UPDATE personne set prenom =:prenom, nom =:nom, mail =:mail, dateNaissance =:dateNaissance, adresse =:adresse, ville =:ville, codePostal =:codePostal, telephone =:telephone, mdp =:mdp WHERE idPersonne =:id;");
