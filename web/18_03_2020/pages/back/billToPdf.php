@@ -135,8 +135,8 @@ class PDF extends FPDF
         $query = $connect->prepare("SELECT service.nom,prixTotal,sommeVersee,sommeRestante FROM facture, souscription_service, service WHERE FK_idSouscriptionService= ? AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService");
     	$query->execute([$serv["FK_idSouscriptionService"]]);
     }else{
-        $query = $connect->prepare("SELECT abonnement.nom,prixTotal,sommeVersee,sommeRestante FROM facture, souscription_abonnement,abonnement WHERE FK_idSouscriptionAbonnement= " . $subs["FK_idSouscriptionAbonnement"] . " AND facture.FK_idSouscriptionAbonnement = souscription_abonnement.idSouscriptionAbonnement AND souscription_abonnement.FK_idAbonnement = abonnement.idAbonnement");
-    	$query->execute([$serv["FK_idSouscriptionSubscription"]]);
+        $query = $connect->prepare("SELECT abonnement.nom,prixTotal,sommeVersee,sommeRestante FROM facture, souscription_abonnement,abonnement WHERE FK_idSouscriptionAbonnement= ? AND facture.FK_idSouscriptionAbonnement = souscription_abonnement.idSouscriptionAbonnement AND souscription_abonnement.FK_idAbonnement = abonnement.idAbonnement");
+    	$query->execute([$subs["FK_idSouscriptionAbonnement"]]);
 
     }
     

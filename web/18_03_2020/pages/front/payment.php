@@ -14,10 +14,13 @@ unset($_SESSION['idPayment']);
 
 $numberPayment = explode('.', $number);
 
+
 for ($i = 0; $i < count($numberPayment); $i++) {
-    $req = $connect->prepare("SELECT somme, facture.FK_idPersonne FROM versement, facture WHERE idVersement = ".$numberPayment[$i]);
+    
+    $req = $connect->prepare("SELECT somme, facture.FK_idPersonne FROM versement, facture WHERE facture.idFacture = FK_idFacture AND idVersement = ".$numberPayment[$i]);
     $req->execute(array());
     $versement = $req->fetch();
+
     if (empty($versement) || $versement['FK_idPersonne'] != $_SESSION['user']['idPersonne'] || $versement['somme'] != 0){
         header('Location: history.php');
     }

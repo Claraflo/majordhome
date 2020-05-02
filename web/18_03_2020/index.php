@@ -75,7 +75,7 @@ require "language.php";
                                 <a class="dropdown-item" href="?lang=en"><img src="img/flag_en.png"> English</a>
                             </div>
                         </div>
-                        <?php echo $lang['flag'] ?>
+                       
 
                 </ul>
             </div>
