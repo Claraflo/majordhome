@@ -150,6 +150,22 @@ if(count($_POST) == 11
 
                 ]);
 
+            $header="MIME-Version: 1.0\r\n";
+            $header.='From: "Contact Majordhome"<contact@majordhome.fr>'."\n";
+            $header.='Content-Type:text/html; charset="uft-8"'."\n";
+            $header.='Content-Transfer-Encoding: 8bit';
+
+            $message="
+            <html>
+                <body>
+                  <h3>Bienvenue ".$firstName." ".$lastName." chez Majordhome</h3>
+                  <a>majordhome.ddns.net</a>
+                </body>
+            </html>
+           ";
+
+            mail($email, "Bienvenue", $message, $header);
+
 
 
             header("Location: login.php");
