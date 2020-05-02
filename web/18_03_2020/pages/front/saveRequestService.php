@@ -165,12 +165,13 @@ $time2 = date("H:i", strtotime("+30 minutes"));
 		checkId($idSouscriptionService, $connect);
 
 			
-		$queryPrepared = $connect->prepare("INSERT INTO souscription_service(idSouscriptionService,statutReservation,FK_idPersonne,FK_idService) VALUES(:id,3,:idPersonne,0);");
+		$queryPrepared = $connect->prepare("INSERT INTO souscription_service(idSouscriptionService,statutReservation,dateIntervention,FK_idPersonne,FK_idService) VALUES(:id,3,:dateIntervention,:idPersonne,0);");
 
 
 		$res = $queryPrepared->execute([
 
 			":id" =>$idSouscriptionService,
+			":dateIntervention"=>$startDate,
 			":idPersonne"=>$_SESSION['user']['idPersonne']
 
 		]);
