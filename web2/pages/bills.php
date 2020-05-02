@@ -3,8 +3,8 @@ require("header.php");
 
 $connect = connectDb();
 
- $queryPrepared = $connect->prepare('SELECT s.idSouscriptionService , DATE_FORMAT(s.dateIntervention,"%d/%m/%Y %H:%m") AS dateIntervention ,p.nom ,p.prenom,serv.nom AS nomService FROM souscription_service s, personne p, service serv WHERE s.FK_idService = serv.idService AND  s.FK_idPersonne = p.idPersonne AND s.dateIntervention < NOW()');
 
+$queryPrepared = $connect->prepare('SELECT s.idSouscriptionService , DATE_FORMAT(s.dateIntervention,"%d/%m/%Y %H:%m") AS dateIntervention ,p.nom ,p.prenom, p1.nom AS nomP ,p1.prenom AS prenomP, serv.nom AS nomService FROM souscription_service s INNER JOIN personne p ON s.FK_idPersonne = p.idPersonne INNER JOIN service serv ON s.FK_idService = serv.idService INNER JOIN personne p1 ON s.FK_idPrestataire = p1.idPersonne AND s.dateIntervention < NOW()');
 
 $queryPrepared->execute();
 
@@ -12,7 +12,7 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-
+var_dump($data);
 
 ?>
 
@@ -32,7 +32,7 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 		<tr>
 			
 			<th scope="col">Id</th>
-			<th>Date</th>
+			<th>Date intervention</th>
 			<th>Service</th>
 			<th>Client</th>
 			<th>Prestataire</th>
@@ -55,10 +55,10 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 				echo "<td>".$value['nomService']."</td>";
 				
 				echo "<td>".$value['prenom'] . " " . $value['nom']."</td>";
-				echo "<td>".$value['dateIntervention']."</td>";
+				echo "<td>".$value['prenomP'] . " " . $value['nomP']."</td>";
 				echo '<td>
 
-						<a href="createBills.php?id=\''. $value["idSouscriptionService"] .'\'" class="btn btn-success">PDF</button>
+						<a href="createBills.php?id='. $value["idSouscriptionService"] .'" class="btn btn-success">PDF</button>
 					</td>';
 			
 				

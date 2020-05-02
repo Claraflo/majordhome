@@ -77,7 +77,7 @@ $connect=  connectDb();
                 $this->Cell(185, 6, 'Prix total de la prestation : ' . ($row[1] / 100) . ' euros', 'LR', 0, 'L', $fill);
                 $this->Ln();
                 $fill = !$fill;
-                $this->Cell(185, 6, '20 % de la prestation : ' . (($row[1] / 100) * (20 /100) ) . ' euros', 'LR', 0, 'L', $fill);
+                $this->Cell(185, 6, '80 % de la prestation : ' . (($row[1] / 100) * (80 /100) ) . ' euros', 'LR', 0, 'L', $fill);
                 $this->Ln();
                
 
@@ -88,29 +88,31 @@ $connect=  connectDb();
 
     }
 
+   
+
     //Load of data
-    $query = $connect->query("SELECT DATE_FORMAT(dateEmission,\"%d/%m/%Y\") as date,prixTotal FROM facture WHERE FK_idSouscriptionService=" . $_GET["id"]."");
-    $query->execute();
+    $query = $connect->prepare('SELECT DATE_FORMAT(dateEmission,"%d/%m/%Y") as date,prixTotal FROM facture WHERE FK_idSouscriptionService= ?');
+    $query->execute([$_GET['id']]);
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
 
     foreach ($results as $result) {
         $date = $result["date"];
-        $price = (($result["prixTotal"] / 100) * (20 /100));
+        $price = (($result["prixTotal"] / 100) * (80 /100));
     }
     $stringDevice = " euros";
     $header = array('DETAILS');
 
 
-        $query = $connect->query("SELECT service.nom,prixTotal,idFacture FROM facture, souscription_service, service WHERE FK_idSouscriptionService=" . $_GET["id"] . " AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService");
+        $query = $connect->prepare("SELECT service.nom,prixTotal,idFacture FROM facture, souscription_service, service WHERE FK_idSouscriptionService= ? AND facture.FK_idSouscriptionService = souscription_service.idSouscriptionService AND souscription_service.FK_idService = service.idService");
   
-    $query->execute();
+    $query->execute([$_GET['id']]);
     $data = $query->fetchAll(PDO::FETCH_BOTH);
 
 
-     $ok = $connect->prepare("SELECT nom,prenom FROM personne , souscription_service  WHERE idSouscriptionService=" . $_GET["id"] . " AND FK_idPrestataire = idPersonne ");
+     $ok = $connect->prepare("SELECT nom,prenom FROM personne , souscription_service  WHERE idSouscriptionService= ? AND FK_idPrestataire = idPersonne ");
   
-    $ok->execute();
+    $ok->execute([$_GET['id']]);
     $workers = $ok->fetch(PDO::FETCH_ASSOC);
 
 
