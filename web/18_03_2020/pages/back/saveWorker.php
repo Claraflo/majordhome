@@ -117,9 +117,25 @@ if(count($_POST) == 8
         $_SESSION["confirmFormAuth"] = $confirm;
 
 
-        $pwd = password_hash(pwdGenerator(15), PASSWORD_DEFAULT);
+        $pwd = pwdGenerator(15);
 
+        $header="MIME-Version: 1.0\r\n";
+        $header.='From: "Contact Majordhome"<contact@majordhome.fr>'."\n";
+        $header.='Content-Type:text/html; charset="uft-8"'."\n";
+        $header.='Content-Transfer-Encoding: 8bit';
 
+        $message="
+       <html>
+        <body>
+          <h3>Bienvenue ".$firstName." ".$lastName." chez Majordhome</h3>
+          <p>Votre mot de passe est: </p><strong>".$pwd."</strong>
+        </body>
+      </html>
+       ";
+
+        mail($email, "Bienvenue", $message, $header);
+
+        $pwd = hash("sha256", $pwd);
 
         $req = $connect->prepare('INSERT INTO personne(nom, prenom, mail, statut, dateNaissance, adresse, ville, codePostal, telephone, mdp) VALUES(:nom, :prenom, :mail, :statut, :dateNaissance, :adresse, :ville, :codePostal, :telephone, :mdp)');
         $req->execute([':nom'=>$lastName,
