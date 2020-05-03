@@ -4,7 +4,6 @@
      "title" => "Accueil",
      "about" => "A propos",
      "service" => "Services",
-     "subscription" => "Abonnements",
      "contact" => "Contact",
      "login" => "Connexion",
      "who" => "Qui sommes-nous ?",

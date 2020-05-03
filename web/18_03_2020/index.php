@@ -48,17 +48,14 @@ require "language.php";
 
 
                     <li class="nav-item ">
-                        <a class="nav-link colorLink" href="#" title=""><?php echo $lang['about'] ?></a>
+                        <a class="nav-link colorLink" href="#who" title=""><?php echo $lang['about'] ?></a>
 
                     <li class="nav-item">
-                        <a class="nav-link colorLink" href="#" title=""><?php echo $lang['service'] ?></a>
-
-                    <li class="nav-item">
-                        <a class="nav-link colorLink" href="#" title=""><?php echo $lang['subscription'] ?></a>
+                        <a class="nav-link colorLink" href="#services" title=""><?php echo $lang['service'] ?></a>
 
 
                     <li class="nav-item">
-                        <a class="nav-link colorLink" href="#" title=""><?php echo $lang['contact'] ?></a>
+                        <a class="nav-link colorLink" href="#contact" title=""><?php echo $lang['contact'] ?></a>
 
                     <li class="nav-item">
 
@@ -90,7 +87,7 @@ require "language.php";
 
     <div class="container-fluid">
 
-        <div class="AboutUs">
+        <div class="AboutUs" id="who">
             <h3 class="text-center title"><?php echo $lang['who'] ?></h3>
             <hr class="hr">
         </div>
@@ -173,7 +170,7 @@ require "language.php";
 </section>
 
 
-<section class="services">
+<section class="services" id="services">
     <div class="container pb-5">
         <h3 class="text-center title2"><?php echo $lang['our_services'] ?></h3>
         <hr class="hr">
@@ -236,7 +233,7 @@ require "language.php";
     </div>
 </section>
 
-<section class="contactUs">
+<section class="contactUs" id="contact">
 
     <div class="container-fluid text-center">
 

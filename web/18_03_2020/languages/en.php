@@ -4,7 +4,6 @@ $lang = array(
     "title" => "Home",
     "about" => "About",
     "service" => "Services",
-    "subscription" => "Subscriptions",
     "contact" => "Contact",
     "login" => "Login",
     "who" => "Who we are ?",
