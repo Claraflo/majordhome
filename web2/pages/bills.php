@@ -12,8 +12,6 @@ $data = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-var_dump($data);
-
 ?>
 
 

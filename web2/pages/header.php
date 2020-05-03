@@ -34,7 +34,7 @@ if (!isset($_SESSION['user']) || ($_SESSION['user']['statut'] != 2 && $_SESSION[
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark" id="nav">
         <div class="container-fluid">
-            <a class="navbar-brand active" href="services.php" title="">
+            <a class="navbar-brand active" href="dashboard.php" title="">
                 <img class="logo" src="../img/majordhome.png" title="logo" alt="Logo Majord'home">
             </a>
 
