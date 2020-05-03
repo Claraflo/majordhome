@@ -6,10 +6,10 @@ if (isset($_GET['id'])) {
 	$connect = connectDb();
 
 
-	$query = $connect->prepare('UPDATE Messagerie SET statut = 0 WHERE idMessagerie = ?');
+	$query = $connect->prepare('UPDATE messagerie SET statut = 0 WHERE idMessagerie = ?');
 	$query->execute([$_GET['id']]);
 
-	$query = $connect->prepare('SELECT m.idMessagerie,m.serviceMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail,p.nom FROM messagerie m INNER JOIN Personne p ON p.idPersonne = m.idSource WHERE idMessagerie = ?');
+	$query = $connect->prepare('SELECT m.idMessagerie,m.serviceMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail,p.nom FROM messagerie m INNER JOIN personne p ON p.idPersonne = m.idSource WHERE idMessagerie = ?');
  	
  	$query->execute([$_GET['id']]);
 

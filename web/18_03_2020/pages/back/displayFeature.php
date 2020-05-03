@@ -5,7 +5,7 @@ $connect = connectDb();
 
 if (isset($_GET['id'])) {
 
-$queryPrepared = $connect->prepare('SELECT c.idCaracteristique, c.nom,c.type FROM Caracteristique c, Service s WHERE c.idService = s.idService AND c.idService = :id ');
+$queryPrepared = $connect->prepare('SELECT c.idCaracteristique, c.nom,c.type FROM caracteristique c, service s WHERE c.idService = s.idService AND c.idService = :id ');
 
 $queryPrepared->execute([
 

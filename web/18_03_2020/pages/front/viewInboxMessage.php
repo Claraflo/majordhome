@@ -9,7 +9,7 @@ if (isset($_GET['id'])) {
 	$query = $connect->prepare('UPDATE messagerie SET statut = 0 WHERE idMessagerie = ?');
 	$query->execute([$_GET['id']]);
 
-	$query = $connect->prepare('SELECT m.idMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail FROM messagerie m INNER JOIN Personne p ON p.idPersonne = m.idDestinataire WHERE idMessagerie = ?');
+	$query = $connect->prepare('SELECT m.idMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail FROM messagerie m INNER JOIN personne p ON p.idPersonne = m.idDestinataire WHERE idMessagerie = ?');
  	
  	$query->execute([$_GET['id']]);
 

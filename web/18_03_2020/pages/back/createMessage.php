@@ -27,7 +27,7 @@ if(count($_POST) == 3
 
             $connect = connectDb();
 
-            $req = $connect->prepare("SELECT mail,idPersonne FROM Personne WHERE mail = :mail");
+            $req = $connect->prepare("SELECT mail,idPersonne FROM personne WHERE mail = :mail");
             $req->execute([":mail" => $to]);
 
             $data = $req->fetchAll(PDO::FETCH_ASSOC);
@@ -38,7 +38,7 @@ if(count($_POST) == 3
 
             }else{
 
-                $req = $connect->prepare("SELECT mail,idPersonne FROM Personne WHERE mail = :mail and statut = 2");
+                $req = $connect->prepare("SELECT mail,idPersonne FROM personne WHERE mail = :mail and statut = 2");
                 $req->execute([":mail" => $to]);
 
                 $array = $req->fetchAll(PDO::FETCH_ASSOC);

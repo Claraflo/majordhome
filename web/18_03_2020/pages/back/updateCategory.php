@@ -13,7 +13,7 @@ if (isset($_POST['name']) && !empty($_POST['name'])) {
 
 		$description = trim($_POST['description']);
 		
-		$queryPrepared = $connect->prepare("UPDATE Categorie SET nom = :name, description = :description WHERE idCategorie = :id");
+		$queryPrepared = $connect->prepare("UPDATE categorie SET nom = :name, description = :description WHERE idCategorie = :id");
 		$res = $queryPrepared->execute([
 			":name"=>$name,
 			":description"=>$description,

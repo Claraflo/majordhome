@@ -8,7 +8,7 @@ if(isset($_GET['id'])) {
 
   if (isset($_GET['action']) && $_GET['action'] == 'd') {
 
-  	 $stmt = $connect->prepare('UPDATE Messagerie SET statutSource = -1 WHERE idMessagerie = ?');
+  	 $stmt = $connect->prepare('UPDATE messagerie SET statutSource = -1 WHERE idMessagerie = ?');
   	$res = $stmt->execute([
       $_GET['id']
     ]);
@@ -16,7 +16,7 @@ if(isset($_GET['id'])) {
   	
   }else{
 
-  $stmt = $connect->prepare('UPDATE Messagerie SET statutSource = 1 WHERE idMessagerie = ?');
+  $stmt = $connect->prepare('UPDATE messagerie SET statutSource = 1 WHERE idMessagerie = ?');
   $res = $stmt->execute([
       $_GET['id']
     ]);

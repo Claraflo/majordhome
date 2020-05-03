@@ -6,7 +6,7 @@ $connect = connectDb();
 $query = $connect->query('SELECT nom FROM categorie;');
 $query->execute();
 
-$queryPrepared = $connect->prepare('SELECT s.idService,s.nom,s.prix,s.description,c.nom AS nomCateg FROM Service s, Categorie c WHERE s.idCategorie = c.idCategorie  AND s.statut = 1;');
+$queryPrepared = $connect->prepare('SELECT s.idService,s.nom,s.prix,s.description,c.nom AS nomCateg FROM service s, categorie c WHERE s.idCategorie = c.idCategorie  AND s.statut = 1;');
 
 $queryPrepared->execute();
 $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);

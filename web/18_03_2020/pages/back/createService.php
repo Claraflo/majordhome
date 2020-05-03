@@ -1,7 +1,7 @@
 <?php
 require('headerBack.php');
 
-$query = $connect->query('SELECT nom FROM Categorie;');
+$query = $connect->query('SELECT nom FROM categorie;');
 $query->execute();
 
 

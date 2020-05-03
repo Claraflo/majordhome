@@ -31,7 +31,7 @@ if(!empty($_POST['name'])
    	$connect = connectDb();
 
 
-   	$queryPrepared = $connect->prepare("SELECT idCategorie,nom FROM Categorie WHERE nom = :nom");
+   	$queryPrepared = $connect->prepare("SELECT idCategorie,nom FROM categorie WHERE nom = :nom");
    	$queryPrepared->execute([":nom" => $selectValue]);
    	$data = $queryPrepared->fetch(PDO::FETCH_ASSOC);
 
@@ -61,7 +61,7 @@ if(!empty($_POST['name'])
 
 				
 
-		$queryPrepared = $connect->prepare("INSERT INTO Service(nom,description,prix,statut,idCategorie) VALUES (:nom,:description,:prix,0,:idCategorie)");
+		$queryPrepared = $connect->prepare("INSERT INTO service(nom,description,prix,statut,idCategorie) VALUES (:nom,:description,:prix,0,:idCategorie)");
 
 				
 

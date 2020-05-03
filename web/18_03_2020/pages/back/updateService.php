@@ -11,11 +11,11 @@ if (!isset($_GET['id'])) {
 $connect = connectDb();
 
 
-$query = $connect->query('SELECT nom FROM Categorie;');
+$query = $connect->query('SELECT nom FROM categorie;');
 $query->execute();
 
 
-$queryPrepared = $connect->prepare('SELECT c.nom,c.type FROM Caracteristique c, Service s WHERE c.idService = s.idService AND c.idService = :id ');
+$queryPrepared = $connect->prepare('SELECT c.nom,c.type FROM caracteristique c, service s WHERE c.idService = s.idService AND c.idService = :id ');
 		
 		$queryPrepared->execute([
 

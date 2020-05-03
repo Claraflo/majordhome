@@ -13,11 +13,11 @@ if (isset($_GET['id'])) {
 
 	if ($data['serviceMessagerie'] == NULL) {
 
-		$query = $connect->prepare('SELECT m.idMessagerie,m.serviceMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail,p1.mail AS dest,p.nom FROM messagerie m INNER JOIN Personne p ON p.idPersonne = m.idSource INNER JOIN Personne p1 ON p1.idPersonne = m.idDestinataire WHERE idMessagerie = ?');
+		$query = $connect->prepare('SELECT m.idMessagerie,m.serviceMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail,p1.mail AS dest,p.nom FROM messagerie m INNER JOIN personne p ON p.idPersonne = m.idSource INNER JOIN personne p1 ON p1.idPersonne = m.idDestinataire WHERE idMessagerie = ?');
 		
 	}else{
 	
-		$query = $connect->prepare('SELECT m.idMessagerie,m.serviceMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail FROM messagerie m INNER JOIN Personne p ON p.idPersonne = m.idSource WHERE idMessagerie = ?');
+		$query = $connect->prepare('SELECT m.idMessagerie,m.serviceMessagerie,m.titre,m.texte,m.dateEnvoie,p.mail FROM messagerie m INNER JOIN personne p ON p.idPersonne = m.idSource WHERE idMessagerie = ?');
  	}
  	
  	$query->execute([$_GET['id']]);

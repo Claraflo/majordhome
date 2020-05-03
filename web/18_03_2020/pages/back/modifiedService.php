@@ -30,7 +30,7 @@ if (isset($_POST['name']) && !empty($_POST['name'])
 	$connect = connectDb();
 
 
-   	$queryPrepared = $connect->prepare("SELECT idCategorie,nom FROM Categorie WHERE nom = :nom");
+   	$queryPrepared = $connect->prepare("SELECT idCategorie,nom FROM categorie WHERE nom = :nom");
    	$queryPrepared->execute([":nom" => $selectValue]);
    	$data = $queryPrepared->fetch(PDO::FETCH_ASSOC);
 
@@ -47,7 +47,7 @@ if (isset($_POST['name']) && !empty($_POST['name'])
 
 				
 
-		$queryPrepared = $connect->prepare("UPDATE Service SET nom = :nom, description = :description,prix= :price,idCategorie = :idCategorie WHERE idService = :id;");
+		$queryPrepared = $connect->prepare("UPDATE service SET nom = :nom, description = :description,prix= :price,idCategorie = :idCategorie WHERE idService = :id;");
 
 				
 

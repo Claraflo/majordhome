@@ -18,7 +18,7 @@ if (!empty($_POST['name'])) {
 	$connect = connectDb();
 
 
-   	$queryPrepared = $connect->prepare("SELECT nom FROM Categorie WHERE nom = :name");
+   	$queryPrepared = $connect->prepare("SELECT nom FROM categorie WHERE nom = :name");
    	$queryPrepared->execute([":name" => $name]);
    	$data = $queryPrepared->fetch(PDO::FETCH_ASSOC);
 
@@ -38,7 +38,7 @@ if (!empty($_POST['name'])) {
    	if (empty($errors)) {
    		$connect = connectDb();
 			
-		$queryPrepared = $connect->prepare("INSERT INTO Categorie(nom,description) VALUES(:name,:description);");
+		$queryPrepared = $connect->prepare("INSERT INTO categorie(nom,description) VALUES(:name,:description);");
 		$queryPrepared->execute([
 			":name"=>$name,
 			":description"=>$description

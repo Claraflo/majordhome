@@ -11,7 +11,7 @@ if (!isset($_GET['id'])) {
 
 $connect = connectDb();
 
-$queryPrepared = $connect->prepare('SELECT s.idService, s.nom,s.prix,s.description,c.nom AS nomCateg FROM Service s, Categorie c WHERE s.idCategorie = c.idCategorie  AND s.statut = 0 AND s.idService = :id;');
+$queryPrepared = $connect->prepare('SELECT s.idService, s.nom,s.prix,s.description,c.nom AS nomCateg FROM service s, categorie c WHERE s.idCategorie = c.idCategorie  AND s.statut = 0 AND s.idService = :id;');
 $queryPrepared->execute([":id" => $_GET["id"]]);
 $value = $queryPrepared->fetch(PDO::FETCH_ASSOC);
 

@@ -4,7 +4,7 @@ require('../functions.php');
 
 $connect = connectDb();
 
-$query = $connect->prepare('SELECT m.statut,m.idMessagerie,m.titre,m.texte,m.dateEnvoie FROM Messagerie m INNER JOIN Personne p1 ON p1.idPersonne = m.idSource WHERE m.idDestinataire = ? AND p1.statut = 2 AND m.statutDestinataire = 0 ORDER BY m.dateEnvoie desc;');
+$query = $connect->prepare('SELECT m.statut,m.idMessagerie,m.titre,m.texte,m.dateEnvoie FROM messagerie m INNER JOIN personne p1 ON p1.idPersonne = m.idSource WHERE m.idDestinataire = ? AND p1.statut = 2 AND m.statutDestinataire = 0 ORDER BY m.dateEnvoie desc;');
 $query->execute([$_SESSION['user']['idPersonne']]);
 $data = $query->fetchAll();
 

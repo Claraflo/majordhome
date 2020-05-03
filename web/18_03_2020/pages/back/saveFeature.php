@@ -42,7 +42,7 @@ if(!empty($_POST['name'])
 
    		$connect = connectDb();
 
-   		$queryPrepared = $connect->prepare('SELECT c.idCaracteristique FROM Caracteristique c, Service s WHERE c.idService = :id AND c.nom = :nom AND c.idService = s.idService');
+   		$queryPrepared = $connect->prepare('SELECT c.idCaracteristique FROM caracteristique c, service s WHERE c.idService = :id AND c.nom = :nom AND c.idService = s.idService');
 		
 		$queryPrepared->execute([
 
@@ -72,7 +72,7 @@ if(!empty($_POST['name'])
 		
 
 		
-		$queryPrepared = $connect->prepare('INSERT INTO Caracteristique(nom,type,idService) VALUES (:nom,:type,:id)');
+		$queryPrepared = $connect->prepare('INSERT INTO caracteristique(nom,type,idService) VALUES (:nom,:type,:id)');
 		
 		$res =$queryPrepared->execute([
 

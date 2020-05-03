@@ -4,7 +4,7 @@ require('../functions.php');
 
 $connect = connectDb();
 
-$queryPrepared = $connect->prepare('SELECT s.idService,s.nom,s.prix,s.description,c.nom AS nomCateg FROM Service s, Categorie c WHERE s.idCategorie = c.idCategorie  AND s.statut = 0;');
+$queryPrepared = $connect->prepare('SELECT s.idService,s.nom,s.prix,s.description,c.nom AS nomCateg FROM service s, categorie c WHERE s.idCategorie = c.idCategorie  AND s.statut = 0;');
 
 $queryPrepared->execute();
 $dataService = $queryPrepared->fetchAll(PDO::FETCH_ASSOC);

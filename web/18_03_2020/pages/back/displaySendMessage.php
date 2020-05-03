@@ -4,7 +4,7 @@ require('../functions.php');
 
 $connect = connectDb();
 
-$query = $connect->prepare('SELECT m.idMessagerie,m.titre,m.texte,m.dateEnvoie,p.nom AS destinataire,p1.nom AS source FROM Messagerie m INNER JOIN Personne p ON p.idPersonne = m.idDestinataire INNER JOIN Personne p1 ON p1.idPersonne = m.idSource WHERE m.serviceMessagerie IS NULL AND m.statutSource = 0 ORDER BY m.dateEnvoie desc;');
+$query = $connect->prepare('SELECT m.idMessagerie,m.titre,m.texte,m.dateEnvoie,p.nom AS destinataire,p1.nom AS source FROM messagerie m INNER JOIN personne p ON p.idPersonne = m.idDestinataire INNER JOIN personne p1 ON p1.idPersonne = m.idSource WHERE m.serviceMessagerie IS NULL AND m.statutSource = 0 ORDER BY m.dateEnvoie desc;');
 $query->execute();
 
 echo "<table class='table table-inbox table-hover'>";

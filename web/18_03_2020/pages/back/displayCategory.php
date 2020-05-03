@@ -4,7 +4,7 @@ require('../functions.php');
 
 $connect = connectDb();
 
-$query = $connect->query('SELECT idCategorie,nom,description FROM Categorie;');
+$query = $connect->query('SELECT idCategorie,nom,description FROM categorie;');
 $query->execute();
 
 
